@@ -1,0 +1,53 @@
+# .windsurfrules
+# Example Windsurf rules for working with and building the Laravel Doctrine JSON:API Skeleton
+
+[core]
+# Use conventional commits for all commit messages
+commit_message_format = "conventional"
+
+# Enforce PSR-12 coding standard for PHP
+php_cs_standard = "psr12"
+
+# Use Composer for PHP dependency management
+php_dependency_manager = "composer"
+
+# Always run tests before pushing
+require_tests_pass = true
+
+default_branch = "main"
+
+# Ignore .env and other sensitive files
+ignore_files = [".env", ".env.*", "node_modules/", "vendor/"]
+
+[workflow]
+# Pull requests must be reviewed before merging
+require_pr_review = true
+
+# Require up-to-date with main before merge
+require_up_to_date_with_main = true
+
+# Documentation must be updated for any API change
+require_docs_update_on_api_change = true
+
+[api]
+# Only expose API routes (no web or Blade routes)
+expose_only_api_routes = true
+
+# Use OpenAPI/Scribe for API documentation
+api_docs_tool = "scribe"
+
+[migrations]
+# Use Doctrine migrations for all DB schema changes
+migration_tool = "doctrine-migrations"
+
+[entities]
+# Use Doctrine entities, not Eloquent models
+entity_type = "doctrine"
+
+[extensions]
+# Enable Doctrine extensions for features like sluggable, timestamps, etc.
+enable_extensions = true
+
+[jsonapi]
+# All API endpoints must be JSON:API compliant
+require_jsonapi_compliance = true
