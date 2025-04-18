@@ -65,3 +65,15 @@ commit_only = true
 
 # Do not add files to index before commit
 commit_add_staged = false
+[documentation]
+# Require logging of all major setup and architectural changes in Setup.md
+require_setup_log = true
+setup_log_file = "docs/Setup.md"
+setup_log_format = "tutorial"
+
+# Description:
+# All significant changes to the project setup, especially those that differ from standard Laravel/Eloquent usage (such as Doctrine configuration, entity setup, migration approach, and API-only design), must be documented in docs/Setup.md in a step-by-step, tutorial-like format.
+
+# Enforcement:
+# - During code review, verify that any new architectural or setup change is reflected in docs/Setup.md.
+# - Pull requests that introduce such changes should be blocked if the setup log is not updated.
