@@ -34,9 +34,10 @@ You get a clean Laravel installation, ready for Doctrine and JSON:API integratio
 This is a high-level roadmap for fully implementing the skeleton:
 
 - [X] Remove default Laravel web routes and Blade views
-- [ ] Install and configure Doctrine ORM ([laravel-doctrine/orm](https://github.com/laravel-doctrine/orm))
-  - [ ] Publish and customize Doctrine config
+- [X] Install and configure Doctrine ORM ([laravel-doctrine/orm](https://github.com/laravel-doctrine/orm))
+  - [X] Publish and customize Doctrine config
   - [ ] Set up entity folder structure
+  - [ ] Set up basic `User` entity
   - [ ] Configure environment variables for Doctrine
 - [ ] Install and configure Doctrine Migrations ([laravel-doctrine/migrations](https://github.com/laravel-doctrine/migrations))
   - [ ] Set up migration paths
