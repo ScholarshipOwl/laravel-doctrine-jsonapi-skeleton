@@ -44,6 +44,8 @@ migration_tool = "doctrine-migrations"
 # Use Doctrine entities, not Eloquent models
 entity_type = "doctrine"
 entity_setters_return_self = true
+entity_property_visibility = "private"
+entity_property_format = "camelCase"
 
 [extensions]
 # Enable Doctrine extensions for features like sluggable, timestamps, etc.

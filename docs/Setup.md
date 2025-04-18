@@ -131,4 +131,50 @@ For more details and advanced configuration, see the [official Laravel Doctrine 
 
 ---
 
+## 7. Doctrine Migrations: What We Changed
+
+All database schema changes in this project are managed using Doctrine migrations, not Laravel's default migration system.
+
+- We configured Doctrine migrations via `config/migrations.php` and removed reliance on Laravel's native migration workflow.
+- Whenever we update or add Doctrine entities, we use Doctrine's migration tools to generate and run migrations, ensuring our database schema always matches our entity definitions.
+- This approach means we do **not** write migration files by hand for schema changes—instead, Doctrine analyzes the entity mappings and generates the necessary migration code automatically.
+- As a result, our schema stays in sync with our codebase, and migrations are fully compatible with Doctrine's advanced features.
+
+For more details, see the official documentation:
+- [Laravel Doctrine Migrations Documentation](https://laravel-doctrine-orm.readthedocs.io/en/latest/migrations.html)
+- [laravel-doctrine/migrations GitHub Repository](https://github.com/laravel-doctrine/migrations)
+
+### Example: Generating and Running Doctrine Migrations
+
+After you update or create Doctrine entities, you can generate a migration file to reflect your changes in the database using:
+
+```bash
+php artisan doctrine:migrations:diff
+```
+
+This command analyzes your Doctrine entity mappings and generates a migration file in your migrations directory.
+
+To apply the migration and update your database schema, run:
+
+```bash
+php artisan doctrine:migrations:migrate
+```
+
+These commands ensure your database schema always matches your Doctrine entities, leveraging the full power of Doctrine's migration system.
+
+---
+
 *This guide highlights only the steps and differences specific to using Doctrine ORM in Laravel. For standard Laravel setup, refer to the official documentation.*
+
+---
+
+## Keeping the Setup Up-to-Date with Laravel Versions
+
+The setup process described in `Setup.md` is tailored for Laravel 12 and the current state of the Laravel Doctrine integration. **With each new Laravel version, you must review and update the setup process to ensure compatibility and take advantage of new features or changes in the framework.**
+
+- Always check for breaking changes, new conventions, or deprecations in Laravel's release notes.
+- Revisit the setup steps, especially those related to service provider registration, authentication, migrations, and any customizations for Doctrine ORM.
+- Update `Setup.md` to reflect any new requirements or best practices for the latest Laravel version.
+- Clearly state which Laravel version the setup instructions are relevant to at the top of the documentation.
+
+> **Note:** The current setup guide is relevant for Laravel 12. Future contributors should incrementally update the documentation as the project upgrades to newer Laravel versions.

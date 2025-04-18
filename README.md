@@ -45,7 +45,7 @@ This is a high-level roadmap for fully implementing the skeleton:
 - [ ] Set up basic `User` entity
   - [X] Set up entity folder structure
   - [X] Setup authentication and all the relevant user traits
-  - [ ] Add migration of the `User` entity
+  - [X] Add migration of the `User` entity and rest default entities.
   - [ ] Tests for authentication logic
 - [ ] Install and configure laravel-doctrine-jsonapi ([sowl/laravel-doctrine-jsonapi](https://github.com/ScholarshipOwl/laravel-doctrine-jsonapi))
   - [ ] Publish and customize `jsonapi.php` config

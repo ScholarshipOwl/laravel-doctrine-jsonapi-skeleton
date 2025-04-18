@@ -39,7 +39,8 @@ return [
             | filter all tables.
             |
             */
-            'schema_filter'    => '/^(?!password_resets|failed_jobs).*$/'
+            // Example: '/^(?!password_resets|failed_jobs).*$/'
+            'schema_filter'    => '/^.*$/',
         ],
 
         'migrations_paths' => [
