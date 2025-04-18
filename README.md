@@ -36,14 +36,16 @@ This is a high-level roadmap for fully implementing the skeleton:
 - [X] Remove default Laravel web routes and Blade views
 - [X] Install and configure Doctrine ORM ([laravel-doctrine/orm](https://github.com/laravel-doctrine/orm))
   - [X] Publish and customize Doctrine config
+  - [X] Configure environment variables for Doctrine
+- [X] Install and configure Doctrine Migrations ([laravel-doctrine/migrations](https://github.com/laravel-doctrine/migrations))
+  - [X] Set up migration paths
+- [X] Install and configure Doctrine Extensions ([laravel-doctrine/extensions](https://github.com/laravel-doctrine/extensions))
+  - [X] Install Gedmo extensions requirement
+  - [X] Enable useful extensions (timestamps, sluggable, soft deletes, etc.)
+- [ ] Set up basic `User` entity
   - [ ] Set up entity folder structure
-  - [ ] Set up basic `User` entity
-  - [ ] Configure environment variables for Doctrine
-- [ ] Install and configure Doctrine Migrations ([laravel-doctrine/migrations](https://github.com/laravel-doctrine/migrations))
-  - [ ] Set up migration paths
-  - [ ] Add example migration
-- [ ] Install and configure Doctrine Extensions ([laravel-doctrine/extensions](https://github.com/laravel-doctrine/extensions))
-  - [ ] Enable useful extensions (timestamps, sluggable, soft deletes, etc.)
+  - [ ] Setup authentication and all the relevant user traits
+  - [ ] Add migration of the `User` entity
 - [ ] Install and configure laravel-doctrine-jsonapi ([sowl/laravel-doctrine-jsonapi](https://github.com/ScholarshipOwl/laravel-doctrine-jsonapi))
   - [ ] Publish and customize `jsonapi.php` config
   - [ ] Register resources in `config/jsonapi.php`
