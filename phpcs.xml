@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<ruleset name="Laravel Doctrine JSON:API Skeleton">
+    <description>Project coding standard: PSR-12</description>
+    <rule ref="PSR12"/>
+
+    <!-- Exclude vendor and node_modules directories -->
+    <exclude-pattern>vendor/*</exclude-pattern>
+    <exclude-pattern>node_modules/*</exclude-pattern>
+    <exclude-pattern>storage/*</exclude-pattern>
+    <exclude-pattern>bootstrap/cache/*</exclude-pattern>
+    <exclude-pattern>public/*</exclude-pattern>
+    <exclude-pattern>resources/*</exclude-pattern>
+
+    <!-- Show progress and report summary -->
+    <arg name="colors"/>
+    <arg value="p"/>
+</ruleset>
