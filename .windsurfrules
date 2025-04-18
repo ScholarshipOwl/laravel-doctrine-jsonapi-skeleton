@@ -43,6 +43,7 @@ migration_tool = "doctrine-migrations"
 [entities]
 # Use Doctrine entities, not Eloquent models
 entity_type = "doctrine"
+entity_setters_return_self = true
 
 [extensions]
 # Enable Doctrine extensions for features like sluggable, timestamps, etc.
@@ -51,3 +52,16 @@ enable_extensions = true
 [jsonapi]
 # All API endpoints must be JSON:API compliant
 require_jsonapi_compliance = true
+
+[git]
+# Use conventional commits for all commit messages
+commit_message_format = "conventional"
+
+# Read diff of staged files before commit
+commit_read_diff_staged = true
+
+# Only do commit and generate message from diff
+commit_only = true
+
+# Do not add files to index before commit
+commit_add_staged = false

@@ -43,9 +43,10 @@ This is a high-level roadmap for fully implementing the skeleton:
   - [X] Install Gedmo extensions requirement
   - [X] Enable useful extensions (timestamps, sluggable, soft deletes, etc.)
 - [ ] Set up basic `User` entity
-  - [ ] Set up entity folder structure
-  - [ ] Setup authentication and all the relevant user traits
+  - [X] Set up entity folder structure
+  - [X] Setup authentication and all the relevant user traits
   - [ ] Add migration of the `User` entity
+  - [ ] Tests for authentication logic
 - [ ] Install and configure laravel-doctrine-jsonapi ([sowl/laravel-doctrine-jsonapi](https://github.com/ScholarshipOwl/laravel-doctrine-jsonapi))
   - [ ] Publish and customize `jsonapi.php` config
   - [ ] Register resources in `config/jsonapi.php`
