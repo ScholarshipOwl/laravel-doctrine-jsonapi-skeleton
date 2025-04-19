@@ -42,26 +42,35 @@ This is a high-level roadmap for fully implementing the skeleton:
 - [X] Install and configure Doctrine Extensions ([laravel-doctrine/extensions](https://github.com/laravel-doctrine/extensions))
   - [X] Install Gedmo extensions requirement
   - [X] Enable useful extensions (timestamps, sluggable, soft deletes, etc.)
-- [ ] Set up basic `User` entity
+- [X] Set up basic `User` entity
   - [X] Set up entity folder structure
   - [X] Setup authentication and all the relevant user traits
   - [X] Add migration of the `User` entity and rest default entities.
-  - [ ] Tests for authentication logic
-- [ ] Install and configure laravel-doctrine-jsonapi ([sowl/laravel-doctrine-jsonapi](https://github.com/ScholarshipOwl/laravel-doctrine-jsonapi))
-  - [ ] Publish and customize `jsonapi.php` config
-  - [ ] Register resources in `config/jsonapi.php`
-- [ ] Create sample Doctrine entity implementing `ResourceInterface`
-- [ ] Create a transformer extending `AbstractTransformer`
-- [ ] Set up API routes (remove `web.php`, use `api.php` only)
-- [ ] Add example resource controller (using default or custom controller)
-- [ ] Implement authentication (e.g., Laravel Passport, Sanctum, or JWT)
-- [ ] Add policy-based authorization for resources
+  - [X] Tests for authentication logic
+- [X] Install and configure laravel-doctrine-jsonapi ([sowl/laravel-doctrine-jsonapi](https://github.com/ScholarshipOwl/laravel-doctrine-jsonapi))
+  - [X] Publish and customize `jsonapi.php` config
+  - [X] Register resources in `config/jsonapi.php`
+- [X] Create sample Doctrine entity implementing `ResourceInterface`
+- [X] Create a transformer extending `AbstractTransformer`
+- [X] Set up API routes (remove `web.php`, use `api.php` only)
+- [X] Add example resource controller (using default or custom controller)
+- [X] Add policy-based authorization for resources
 - [ ] Add validation for JSON:API requests
-- [ ] Add automated tests for API endpoints
-- [ ] Add documentation/examples for consumers
+- [ ] Implement authentication (e.g., Laravel Passport, Sanctum, or JWT)
 - [ ] Integrate [Scribe](https://scribe.knuckles.wtf/) for automatic generation of OpenAPI specs and API docs
   - [ ] Configure Scribe for API-only docs
   - [ ] Ensure docs include OpenAPI spec, Postman collection, and sample responses
+  - [ ] Add custom docs for example resource
+- [ ] Implement extensive testing of this skeleton
+  - [ ] Make sure all features work as expected
+  - [ ] Add tests for queue-failed jobs
+  - [ ] Add tests for cache
+  - [ ] Add tests for authentication
+  - [ ] Add tests for authorization
+  - [ ] Add tests for validation
+  - [ ] Add tests for API endpoints
+  - [ ] Add tests for API docs
+  - [ ] Add tests for API consumers
 
 ---
 

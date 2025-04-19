@@ -4,9 +4,15 @@ namespace App\Entities;
 
 use Doctrine\ORM\Mapping as ORM;
 
+/**
+ * INTERNAL LARAVEL ENTITY (DO NOT MODIFY)
+ *
+ * This entity exists solely to allow Doctrine migrations for the `failed_jobs` table.
+ * It is not intended for direct use or modification. Schema and logic should match Laravel's default.
+ */
 #[ORM\Entity]
 #[ORM\Table(name: "failed_jobs")]
-class FailedJob
+final class FailedJob
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]

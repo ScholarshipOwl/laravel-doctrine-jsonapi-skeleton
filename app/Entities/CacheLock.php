@@ -4,9 +4,15 @@ namespace App\Entities;
 
 use Doctrine\ORM\Mapping as ORM;
 
+/**
+ * INTERNAL LARAVEL ENTITY (DO NOT MODIFY)
+ *
+ * This entity exists solely to allow Doctrine migrations for the `cache_locks` table.
+ * It is not intended for direct use or modification. Schema and logic should match Laravel's default.
+ */
 #[ORM\Entity]
 #[ORM\Table(name: "cache_locks")]
-class CacheLock
+final class CacheLock
 {
     #[ORM\Id]
     #[ORM\Column(type: "string")]

@@ -164,6 +164,100 @@ These commands ensure your database schema always matches your Doctrine entities
 
 ---
 
+## 8. Testing with Doctrine: RefreshDatabase, Migrations & Factories
+
+This project replaces Laravel's Eloquent-based test helpers with Doctrine-specific logic for all database testing and seeding. Key setup and usage:
+
+### DoctrineRefreshDatabase Trait
+- All test cases use the [DoctrineRefreshDatabase](tests/Traits/DoctrineRefreshDatabase.php) trait
+- This trait ensures before each test:
+    - Doctrine migrations are run using `$this->artisan('doctrine:migrations:migrate')`
+    - A transaction is started on the Doctrine EntityManager
+    - The transaction is rolled back after each test for isolation
+- No direct use of Laravel's `RefreshDatabase` or `DatabaseTransactions` traits
+
+**Example:**
+```php
+// tests/TestCase.php
+abstract class TestCase extends BaseTestCase
+{
+    // ...
+    protected function setUp(): void
+    {
+        parent::setUp();
+        $this->refreshDoctrineDatabase();
+    }
+    // ...
+}
+```
+
+### Using Doctrine Entity Factories
+- All entity factories are defined in `database/factories` using `LaravelDoctrine\ORM\Testing\Factory`
+- Use the global `entity()` helper or `$factory->of()` for generating entities in tests and seeds
+- Use `entity(...)->create()` for persisted entities, and `entity(...)->make()` for non-persisted
+- Factory definitions must use Doctrine property names (not DB columns)
+- Custom factory types are supported via `defineAs`
+
+**Example Usage in Tests:**
+```php
+$user = entity(App\Entities\User::class)->create();
+$users = entity(App\Entities\User::class, 3)->make();
+$admin = entity(App\Entities\User::class, 'admin')->create(['name' => 'Alice']);
+```
+
+See: [https://laravel-doctrine-orm-official.readthedocs.io/en/latest/testing.html#entity-factories](https://laravel-doctrine-orm-official.readthedocs.io/en/latest/testing.html#entity-factories)
+
+### Example Feature Test
+```php
+public function testProtectedRouteFails(): void
+{
+    $user = entity(User::class)->create();
+    $this->actingAs($user);
+
+    $response = $this->get('/me');
+    $response->assertStatus(200);
+    $response->assertJson([
+        'name' => $user->getName(),
+        'email' => $user->getEmail(),
+    ]);
+}
+```
+
+---
+
+## 9. JSON:API Skeleton Folder Structure and Conventions
+
+This skeleton enforces strict conventions for organizing JSON:API controllers, actions, requests, and responses. This ensures maintainability and consistency across all resources.
+
+### Controller & Action Structure
+- Controllers must extend `App\Http\Controllers\Controller`.
+- Controllers for each resource type are placed in: `app/Http/Controllers/{ResourceType}/{ControllerName}.php`
+- Actions for each resource type are placed in: `app/Http/Controllers/{ResourceType}/{ActionName}.php`
+- All actions must extend `Sowl\JsonApi\AbstractAction` (or a subclass).
+
+### Request and Response Classes
+- Use `Sowl\JsonApi\Request` for all JSON:API requests.
+- Use `Sowl\JsonApi\Response` for all JSON:API responses.
+- Custom requests (e.g. for create/update) should be placed in: `app/Http/Controllers/{ResourceType}/{RequestName}.php`
+
+### Example: User Resource
+- Controller: `app/Http/Controllers/User/UserController.php`
+- Action: `app/Http/Controllers/User/UserMeAction.php`
+- Route registration:
+  ```php
+  use App\Http\Controllers\User\UserController;
+  Route::get('/users/me', [UserController::class, 'me']);
+  ```
+
+### Why This Matters
+- Keeps all resource logic grouped by type for clarity.
+- Makes it easy to find, test, and maintain actions and controllers.
+- Enforces PSR-12 and project-specific rules for JSON:API compliance.
+
+**Be sure to update this section if you add new resource types or change the folder structure.**
+
+---
+
 *This guide highlights only the steps and differences specific to using Doctrine ORM in Laravel. For standard Laravel setup, refer to the official documentation.*
 
 ---

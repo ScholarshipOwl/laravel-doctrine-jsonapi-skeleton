@@ -4,9 +4,15 @@ namespace App\Entities;
 
 use Doctrine\ORM\Mapping as ORM;
 
+/**
+ * INTERNAL LARAVEL ENTITY (DO NOT MODIFY)
+ *
+ * This entity exists solely to allow Doctrine migrations for the `sessions` table.
+ * It is not intended for direct use or modification. Schema and logic should match Laravel's default.
+ */
 #[ORM\Entity]
 #[ORM\Table(name: "sessions")]
-class Session
+final class Session
 {
     #[ORM\Id]
     #[ORM\Column(type: "string")]

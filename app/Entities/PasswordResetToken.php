@@ -4,9 +4,15 @@ namespace App\Entities;
 
 use Doctrine\ORM\Mapping as ORM;
 
+/**
+ * INTERNAL LARAVEL ENTITY (DO NOT MODIFY)
+ *
+ * This entity exists solely to allow Doctrine migrations for the `password_reset_tokens` table.
+ * It is not intended for direct use or modification. Schema and logic should match Laravel's default.
+ */
 #[ORM\Entity]
 #[ORM\Table(name: "password_reset_tokens")]
-class PasswordResetToken
+final class PasswordResetToken
 {
     #[ORM\Id]
     #[ORM\Column(type: "string")]

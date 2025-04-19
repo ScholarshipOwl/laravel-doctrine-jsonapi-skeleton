@@ -10,10 +10,14 @@ use Illuminate\Contracts\Auth\CanResetPassword as CanResetPasswordContract;
 use LaravelDoctrine\ORM\Auth\Authenticatable;
 use Illuminate\Foundation\Auth\Access\Authorizable;
 use Illuminate\Auth\Passwords\CanResetPassword;
+use Sowl\JsonApi\ResourceInterface;
+use Sowl\JsonApi\Relationships\RelationshipsCollection;
+use Sowl\JsonApi\AbstractTransformer;
+use App\Transformers\UserTransformer;
 
 #[ORM\Entity]
 #[ORM\Table(name: 'users')]
-class User implements AuthenticatableContract, AuthorizableContract, CanResetPasswordContract
+class User implements AuthenticatableContract, AuthorizableContract, CanResetPasswordContract, ResourceInterface
 {
     use HasTimestamps;
     use Authenticatable;
@@ -70,5 +74,21 @@ class User implements AuthenticatableContract, AuthorizableContract, CanResetPas
     {
         $this->emailVerifiedAt = $emailVerifiedAt;
         return $this;
+    }
+
+    public static function getResourceType(): string
+    {
+        return 'users';
+    }
+
+    public static function relationships(): RelationshipsCollection
+    {
+        // Return an empty collection or define relationships as needed
+        return new RelationshipsCollection([]);
+    }
+
+    public static function transformer(): AbstractTransformer
+    {
+        return new UserTransformer();
     }
 }

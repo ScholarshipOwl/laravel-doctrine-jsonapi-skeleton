@@ -1,81 +1,106 @@
-# .windsurfrules
-# Example Windsurf rules for working with and building the Laravel Doctrine JSON:API Skeleton
+# Windsurf Rules for Laravel Doctrine JSON:API Skeleton
 
-[core]
-# Use conventional commits for all commit messages
-commit_message_format = "conventional"
+## Core Principles
+- Follow PSR-12 coding standard for all PHP code.
+- Manage PHP dependencies with Composer only.
+- Always run tests before pushing code to the repository.
+- Default branch is `main`.
+- Sensitive files (such as `.env`, `node_modules/`, `vendor/`) must not be committed.
 
-# Enforce PSR-12 coding standard for PHP
-php_cs_standard = "psr12"
+## Workflow
+- Pull requests must be reviewed before merging.
+- Branches must be up-to-date with `main` before merging.
+- Update documentation for any API changes.
 
-# Use Composer for PHP dependency management
-php_dependency_manager = "composer"
+## Laravel
+- Use Laravel 12 for development.
+- Look into `config` and `.env` files for configuration.
 
-# Always run tests before pushing
-require_tests_pass = true
+## API Guidelines
+- Expose only API routes; do not use web or Blade routes.
+- Document APIs with Scribe and provide OpenAPI specifications.
 
-default_branch = "main"
+## Migrations
+- Use Doctrine migrations for all database schema changes.
 
-# Ignore .env and other sensitive files
-ignore_files = [".env", ".env.*", "node_modules/", "vendor/"]
+## Entities
+- Use Doctrine entities (not Eloquent models).
+- Entity setters should return `$this` for method chaining.
+- Entity properties must be `private` and use `camelCase` naming.
 
-[workflow]
-# Pull requests must be reviewed before merging
-require_pr_review = true
+### Entity Factories
+- Define all entity factories in `database/factories` using `LaravelDoctrine\ORM\Testing\Factory`.
+- Use the `entity()` helper or `$factory->of()` for generating entities in tests and seeds.
+- Persisted entities: use `entity(...)->create()`.
+- Non-persisted entities: use `entity(...)->make()`.
+- Factory definitions: use Doctrine entity property names (not DB columns).
+- Support custom factory types via `defineAs` and named types.
+- Example usage in tests:
+  ```php
+  $user = entity(App\Entities\User::class)->create();
+  $users = entity(App\Entities\User::class, 3)->make();
+  $admin = entity(App\Entities\User::class, 'admin')->create(['name' => 'Alice']);
+  ```
 
-# Require up-to-date with main before merge
-require_up_to_date_with_main = true
+## Authorization
+- Use Laravel's authorization system for API endpoints.
+- Policies can be find at `app/Policies`.
 
-# Documentation must be updated for any API change
-require_docs_update_on_api_change = true
+## Doctrine Extensions
+- Enable Doctrine extensions for features like sluggable, timestamps, etc.
 
-[api]
-# Only expose API routes (no web or Blade routes)
-expose_only_api_routes = true
+## Unit Tests
+- Write unit tests for all entities and controllers.
+- Use camelCase in the test names.
+- Use command `./vendor/bin/phpunit` to run tests.
+- On test failure make sure link failed tests with line numbers in response message. Link them in format that Cascade can understand and the links are clickable and will open file in editor.
+- Use options `--stop-on-failure` and `--stop-on-error` to stop on first failure or error, use this approach by default.
+- Use `--filter` option if changes done in single controller and we still in development phase.
 
-# Use OpenAPI/Scribe for API documentation
-api_docs_tool = "scribe"
+## Doctrine
+- Use Doctrine ORM for database interactions.
+- Use Doctrine Migrations for database schema changes.
+- Use Doctrine Extensions for features like sluggable, timestamps, etc.
+- We can compare two entities with `===` operator without checking their identifiers.
 
-[migrations]
-# Use Doctrine migrations for all DB schema changes
-migration_tool = "doctrine-migrations"
+## Laravel Doctrine JSON:API
+- All API endpoints must be JSON:API compliant.
+- Controllers must be thin and contain minimal logic, the logic should be places in Actions classes and classes could use services.
+- Actions from `Sowl\JsonApi\Action` can be reused in many custom cases.
 
-[entities]
-# Use Doctrine entities, not Eloquent models
-entity_type = "doctrine"
-entity_setters_return_self = true
-entity_property_visibility = "private"
-entity_property_format = "camelCase"
+### JSON:API Controllers
+- Use `App\Http\Controllers\Controller` as base controller.
+- Folder structure: `app/Http/Controllers/{ResourceType}/{ControllerName}`
+- Use `Sowl\JsonApi\Request` as request class.
+- Use `Sowl\JsonApi\Response` as response class.
+- Use `Sowl\JsonApi\AbstractAction` as action class.
 
-[extensions]
-# Enable Doctrine extensions for features like sluggable, timestamps, etc.
-enable_extensions = true
+### JSON:API Actions
+- Use `Sowl\JsonApi\AbstractAction` as base action.
+- Use `Sowl\JsonApi\Action` as action class.
+- Folder structure: `app/Http/Controllers/{ResourceType}/{ActionName}`
 
-[jsonapi]
-# All API endpoints must be JSON:API compliant
-require_jsonapi_compliance = true
+### JSON:API Requests
+- Use `Sowl\JsonApi\Request` as request class.
+- Folder structure: `app/Http/Controllers/{ResourceType}/{RequestName}`
+- Create custom controllers for create and update or custom requests with properly defined validation rules.
 
-[git]
-# Use conventional commits for all commit messages
-commit_message_format = "conventional"
+### JSON:API Response
+- Use `Sowl\JsonApi\Response` as response class.
 
-# Read diff of staged files before commit
-commit_read_diff_staged = true
 
-# Only do commit and generate message from diff
-commit_only = true
+## Git & Commit Rules
+- Use conventional commit messages. For more details, see the [Git Commit Rules](https://github.com/ScholarshipOwl/laravel-doctrine-jsonapi/blob/main/docs/Setup.md#git-commit-rules).
+- Do commits only when you asked for it.
+- Review diff of staged files before committing.
+- Only commit staged files.
+- Do not add files to the index automatically.
+- When you asked to commit run a git diff and prepare commit message based on the changes.
 
-# Do not add files to index before commit
-commit_add_staged = false
-[documentation]
-# Require logging of all major setup and architectural changes in Setup.md
-require_setup_log = true
-setup_log_file = "docs/Setup.md"
-setup_log_format = "tutorial"
+## Skeleton Development
+- Log all major setup and architectural changes in `docs/Setup.md` as a step-by-step tutorial.
+- Update `docs/Setup.md` when you make changes to the skeleton.
 
-# Description:
-# All significant changes to the project setup, especially those that differ from standard Laravel/Eloquent usage (such as Doctrine configuration, entity setup, migration approach, and API-only design), must be documented in docs/Setup.md in a step-by-step, tutorial-like format.
+---
 
-# Enforcement:
-# - During code review, verify that any new architectural or setup change is reflected in docs/Setup.md.
-# - Pull requests that introduce such changes should be blocked if the setup log is not updated.
+These rules are designed to keep the codebase clean, maintainable, and consistent for all contributors. Please follow them strictly for every contribution.
