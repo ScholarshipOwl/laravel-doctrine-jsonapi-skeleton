@@ -164,6 +164,8 @@ return [
     ])->replace([
         \Illuminate\Auth\Passwords\PasswordResetServiceProvider::class =>
              \LaravelDoctrine\ORM\Auth\Passwords\PasswordResetServiceProvider::class,
+        \Illuminate\Validation\ValidationServiceProvider::class =>
+             \LaravelDoctrine\ORM\Validation\PresenceVerifierProvider::class
     ])
     ->toArray(),
 
