@@ -3,7 +3,6 @@
 namespace App\Entities;
 
 use Doctrine\ORM\Mapping as ORM;
-use App\Concerns\HasTimestamps;
 use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
 use Illuminate\Contracts\Auth\Access\Authorizable as AuthorizableContract;
 use Illuminate\Contracts\Auth\CanResetPassword as CanResetPasswordContract;
@@ -13,6 +12,7 @@ use Illuminate\Auth\Passwords\CanResetPassword;
 use Sowl\JsonApi\ResourceInterface;
 use Sowl\JsonApi\Relationships\RelationshipsCollection;
 use Sowl\JsonApi\AbstractTransformer;
+use Sowl\JsonApi\Concerns\HasTimestamps;
 use App\Transformers\UserTransformer;
 
 #[ORM\Entity]
