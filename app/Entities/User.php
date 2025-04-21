@@ -14,6 +14,7 @@ use Sowl\JsonApi\Relationships\RelationshipsCollection;
 use Sowl\JsonApi\AbstractTransformer;
 use Sowl\JsonApi\Concerns\HasTimestamps;
 use App\Transformers\UserTransformer;
+use LaravelDoctrine\ORM\Notifications\Notifiable;
 
 #[ORM\Entity]
 #[ORM\Table(name: 'users')]
@@ -23,6 +24,7 @@ class User implements AuthenticatableContract, AuthorizableContract, CanResetPas
     use Authenticatable;
     use Authorizable;
     use CanResetPassword;
+    use Notifiable;
 
     #[ORM\Id]
     #[ORM\GeneratedValue]

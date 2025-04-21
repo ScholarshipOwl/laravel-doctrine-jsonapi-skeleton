@@ -2,22 +2,16 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Auth\AuthController;
 
 // Web routes have been removed. Only API routes are exposed as per project rules.
 Route::get('/', function () {
     return response('', 200);
 })->name('index');
 
-Route::get('/login', function () {
-    return response('', 200);
-})->name('login');
 
-Route::group(['middleware' => 'auth'], function () {
-    Route::get('/me', function (Request $request) {
-        $user = $request->user();
-        return response([
-            'name' => $user->getName(),
-            'email' => $user->getEmail(),
-        ], 200);
-    })->name('me');
-});
+// JWT Auth endpoints (not JSON:API)
+Route::post('/auth/login', [AuthController::class, 'login'])->name('auth.login');
+Route::post('/auth/request-reset-password', [AuthController::class, 'requestResetPassword'])->name('auth.request-reset-password');
+Route::post('/auth/reset-password', [AuthController::class, 'resetPassword'])->name('auth.reset-password');
+Route::post('/auth/logout', [AuthController::class, 'logout'])->middleware('auth')->name('auth.logout');

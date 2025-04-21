@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\User;
 
 use App\Entities\User;
+use Illuminate\Validation\Rule;
 use Sowl\JsonApi\Request;
 
 /**
@@ -17,7 +18,7 @@ class UserCreateRequest extends Request
     {
         return [
             'data.type' => ['required', 'in:users'],
-            'data.attributes.email' => ['required', 'email', 'unique:users,email'],
+            'data.attributes.email' => ['required', 'email', Rule::unique(User::class, 'email')],
             'data.attributes.password' => ['required', 'string', 'min:8'],
             'data.attributes.name' => ['required', 'string', 'max:255'],
         ];
