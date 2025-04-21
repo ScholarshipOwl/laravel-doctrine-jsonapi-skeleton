@@ -103,6 +103,12 @@ class UserTest extends TestCase
         $response = $this->postJson('/users', $payload);
 
         $response->assertStatus(201);
+        $response->assertHeader('Location');
+        $location = $response->headers->get('Location');
+        $this->assertNotEmpty($location);
+        $id = $response->json('data.id');
+        $this->assertStringContainsString("/users/{$id}", $location);
+
         $response->assertJsonStructure([
             'data' => [
                 'type',
@@ -121,8 +127,6 @@ class UserTest extends TestCase
                 'email' => 'test@example.com',
             ],
         ]);
-
-        $id = $response->json('data.id');
 
         $this->assertDatabaseHas('users', [
             'id' => $id,
@@ -148,10 +152,83 @@ class UserTest extends TestCase
         $response = $this->patchJson("/users/{$user->getId()}", $payload);
 
         $response->assertStatus(200);
+        $response->assertJsonStructure([
+            'data' => [
+                'type',
+                'id',
+                'attributes' => [
+                    'name',
+                    'email',
+                ],
+            ],
+        ]);
         $response->assertJsonFragment([
             'id' => (string)$user->getId(),
             'name' => 'Updated Name',
         ]);
+    }
+
+    /**
+     * Test PATCH /users/{id} fails validation for invalid email.
+     */
+    public function testUpdateUserFailsWithInvalidEmail(): void
+    {
+        $user = entity(User::class)->create();
+        $payload = [
+            'data' => [
+                'type' => 'users',
+                'id' => (string)$user->getId(),
+                'attributes' => [
+                    'email' => 'not-an-email',
+                ],
+            ],
+        ];
+        $this->actingAs($user);
+        $response = $this->patchJson("/users/{$user->getId()}", $payload);
+        $response->assertStatus(422);
+        $this->assertJsonApiValidationErrors($response, ['/data/attributes/email']);
+    }
+
+    /**
+     * Test PATCH /users/{id} fails validation for short password.
+     */
+    public function testUpdateUserFailsWithShortPassword(): void
+    {
+        $user = entity(User::class)->create();
+        $payload = [
+            'data' => [
+                'type' => 'users',
+                'id' => (string)$user->getId(),
+                'attributes' => [
+                    'password' => '123',
+                ],
+            ],
+        ];
+        $this->actingAs($user);
+        $response = $this->patchJson("/users/{$user->getId()}", $payload);
+        $response->assertStatus(422);
+        $this->assertJsonApiValidationErrors($response, ['/data/attributes/password']);
+    }
+
+    /**
+     * Test PATCH /users/{id} fails validation for too long name.
+     */
+    public function testUpdateUserFailsWithLongName(): void
+    {
+        $user = entity(User::class)->create();
+        $payload = [
+            'data' => [
+                'type' => 'users',
+                'id' => (string)$user->getId(),
+                'attributes' => [
+                    'name' => str_repeat('a', 256),
+                ],
+            ],
+        ];
+        $this->actingAs($user);
+        $response = $this->patchJson("/users/{$user->getId()}", $payload);
+        $response->assertStatus(422);
+        $this->assertJsonApiValidationErrors($response, ['/data/attributes/name']);
     }
 
     /**

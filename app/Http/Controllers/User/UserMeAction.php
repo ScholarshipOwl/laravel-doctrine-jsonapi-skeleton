@@ -16,6 +16,6 @@ class UserMeAction extends AbstractAction
     {
         $user = $this->request()->user();
 
-        return response()->item($user);
+        return $this->response()->item($user);
     }
 }

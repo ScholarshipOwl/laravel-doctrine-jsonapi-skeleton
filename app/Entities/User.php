@@ -76,6 +76,12 @@ class User implements AuthenticatableContract, AuthorizableContract, CanResetPas
         return $this;
     }
 
+    public function setPassword(string $password): self
+    {
+        $this->password = $password;
+        return $this;
+    }
+
     public static function getResourceType(): string
     {
         return 'users';

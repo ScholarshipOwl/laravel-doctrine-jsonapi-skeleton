@@ -6,6 +6,7 @@
 - Always run tests before pushing code to the repository.
 - Default branch is `main`.
 - Sensitive files (such as `.env`, `node_modules/`, `vendor/`) must not be committed.
+- Always use `use` for importing classes.
 
 ## Workflow
 - Pull requests must be reviewed before merging.
@@ -51,6 +52,7 @@
 
 ## Unit Tests
 - Write unit tests for all entities and controllers.
+- Run tests after you doing change to confirm that it is working.
 - Use camelCase in the test names.
 - Use command `./vendor/bin/phpunit` to run tests.
 - On test failure make sure link failed tests with line numbers in response message. Link them in format that Cascade can understand and the links are clickable and will open file in editor.
@@ -79,15 +81,36 @@
 - Use `Sowl\JsonApi\AbstractAction` as base action.
 - Use `Sowl\JsonApi\Action` as action class.
 - Folder structure: `app/Http/Controllers/{ResourceType}/{ActionName}`
+- Use `request()` method if you need a request, this request validated when resolved in controller.
+- Append a typehint using docblock in the action class definition for the request @property and @method also repository() @method, use generic typehint.
+- Action must response with `Sowl\JsonApi\Response` if it is not exception and it is JSON:API endpoint.
+- Use `$request->getData()` method to retrieve the validated data or `$request->validated($key)` to retrieve a specific validated value.
+- Use `repository()` method for Doctrine repository.
+- Use `rm()` method for resource manager.
+- Use `getId()` method to retrieve the id from the request.
+- Use `repository()->em()` if you need to use Doctrine EntityManager.
+- Use `response()` method that returns ResponseFactory for creating responses.
 
 ### JSON:API Requests
 - Use `Sowl\JsonApi\Request` as request class.
 - Folder structure: `app/Http/Controllers/{ResourceType}/{RequestName}`
 - Create custom controllers for create and update or custom requests with properly defined validation rules.
+- Append a @extends docblock to class with providing generic type of resource.
+- Use `dataRules` method for validation rules of the `data` part of the request, override this method to customize data validation rules.
+- Use `queryParameterRules` method for validation rules of the query parameters, override this method to customize query parameter validation rules calling parent method.
+- Method `resource` is used to retrieve the resource entity from the request, it's using `id` route parameter.
 
 ### JSON:API Response
 - Use `Sowl\JsonApi\Response` as response class.
+- Use `response()` method that returns ResponseFactory for creating responses.
+- Use `item()` method to create a single resource response.
+- Use `collection()` method to create a collection of resources response.
+- Use `query()` method to create a query response, used for pagination.
 
+### JSON:API Repositories
+- Use `Sowl\JsonApi\ResourceRepository` as repository class.
+- Folder structure: `app/Repositories/{RepositoryName}`
+- If custom repository not exists use generic `ResourceRepository<Resource>`
 
 ## Git & Commit Rules
 - Use conventional commit messages. For more details, see the [Git Commit Rules](https://github.com/ScholarshipOwl/laravel-doctrine-jsonapi/blob/main/docs/Setup.md#git-commit-rules).

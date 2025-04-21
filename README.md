@@ -55,7 +55,7 @@ This is a high-level roadmap for fully implementing the skeleton:
 - [X] Set up API routes (remove `web.php`, use `api.php` only)
 - [X] Add example resource controller (using default or custom controller)
 - [X] Add policy-based authorization for resources
-- [ ] Add validation for JSON:API requests
+- [X] Add validation for JSON:API requests
 - [ ] Implement authentication (e.g., Laravel Passport, Sanctum, or JWT)
 - [ ] Integrate [Scribe](https://scribe.knuckles.wtf/) for automatic generation of OpenAPI specs and API docs
   - [ ] Configure Scribe for API-only docs

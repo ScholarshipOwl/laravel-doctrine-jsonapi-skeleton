@@ -249,7 +249,7 @@ This skeleton enforces strict conventions for organizing JSON:API controllers, a
   Route::get('/users/me', [UserController::class, 'me']);
   ```
 
-### Why This Matters
+### Why?
 - Keeps all resource logic grouped by type for clarity.
 - Makes it easy to find, test, and maintain actions and controllers.
 - Enforces PSR-12 and project-specific rules for JSON:API compliance.
@@ -258,7 +258,113 @@ This skeleton enforces strict conventions for organizing JSON:API controllers, a
 
 ---
 
-*This guide highlights only the steps and differences specific to using Doctrine ORM in Laravel. For standard Laravel setup, refer to the official documentation.*
+---
+
+## 10. JSON:API Validation Testing
+
+### Custom Requests and Actions for Validation
+
+We implement custom request and action classes for each resource to handle validation and business logic in a JSON:API-compliant way:
+
+- **Custom Requests** encapsulate validation rules for create and update endpoints, ensuring all incoming data is validated according to JSON:API and project standards.
+- **Custom Actions** (such as [`UserCreateAction`](../app/Http/Controllers/User/UserCreateAction.php) and [`UserUpdateAction`](../app/Http/Controllers/User/UserUpdateAction.php)) are responsible for handling the business logic, updating or creating entities, and returning JSON:API-compliant responses. Actions are thin and reusable, with most logic delegated to services or actions as per windsurf rules.
+
+Below is an example of how validation is implemented for both update and create requests:
+
+#### Example: [`UserCreateRequest`](../app/Http/Controllers/User/UserCreateRequest.php)
+```php
+use App\Entities\User;
+use Sowl\JsonApi\Request;
+use Sowl\JsonApi\ResourceRepository;
+
+/**
+ * @extends Request<User>
+ * @property UserCreateRequest $request
+ * @method UserCreateRequest request()
+ * @method ResourceRepository<User> repository()
+ */
+class UserCreateRequest extends Request
+{
+    public function dataRules(): array
+    {
+        return [
+            'data.type' => ['required', 'in:users'],
+            'data.attributes.email' => ['required', 'email', 'unique:users,email'],
+            'data.attributes.password' => ['required', 'string', 'min:8'],
+            'data.attributes.name' => ['required', 'string', 'max:255'],
+        ];
+    }
+}
+```
+
+#### Example: [`UserUpdateRequest`](../app/Http/Controllers/User/UserUpdateRequest.php)
+```php
+use App\Entities\User;
+use Sowl\JsonApi\Request;
+use Sowl\JsonApi\ResourceRepository;
+
+/**
+ * @extends Request<User>
+ * @property UserUpdateRequest $request
+ * @method UserUpdateRequest request()
+ * @method ResourceRepository<User> repository()
+ */
+class UserUpdateRequest extends Request
+{
+    public function dataRules(): array
+    {
+        return [
+            'data.attributes.email' => ['sometimes', 'email', 'max:255'],
+            'data.attributes.password' => ['sometimes', 'string', 'min:6'],
+            'data.attributes.name' => ['sometimes', 'string', 'max:255'],
+        ];
+    }
+}
+```
+
+These custom request classes are used in their respective action classes ([`UserCreateAction`](../app/Http/Controllers/User/UserCreateAction.php), [`UserUpdateAction`](../app/Http/Controllers/User/UserUpdateAction.php)) to validate incoming data for create and update endpoints.
+
+### Custom Validation Assertion
+
+We now use a custom assertion helper for JSON:API validation errors in tests. This ensures that validation error responses conform to the JSON:API specification (with error objects and proper pointers):
+
+```php
+/**
+ * Assert that the response contains JSON:API validation errors for the given pointers.
+ *
+ * @param array $pointers Array of JSON pointer strings, e.g., ['/data/attributes/email']
+ */
+public function assertJsonApiValidationErrors($response, array $pointers): void
+{
+    $json = $response->json();
+    $errors = $json['errors'] ?? [];
+    $found = [];
+    foreach ($pointers as $pointer) {
+        foreach ($errors as $error) {
+            if (isset($error['source']['pointer']) && $error['source']['pointer'] === $pointer) {
+                $found[] = $pointer;
+                break;
+            }
+        }
+    }
+    foreach ($pointers as $pointer) {
+        $this->assertContains($pointer, $found, "Validation error for pointer '{$pointer}' not found in response.");
+    }
+}
+```
+
+- Use this assertion in your tests instead of Laravel's default `assertJsonValidationErrors`.
+- Example usage:
+
+```php
+$response->assertStatus(422);
+$this->assertJsonApiValidationErrors($response, ['/data/attributes/email']);
+```
+
+### Why?
+- Ensures strict JSON:API compliance for error responses.
+- Makes your tests robust against JSON:API error object structure.
+- Required by windsurf project rules.
 
 ---
 

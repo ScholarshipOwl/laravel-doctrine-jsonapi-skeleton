@@ -4620,12 +4620,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/ScholarshipOwl/laravel-doctrine-jsonapi.git",
-                "reference": "43b1c9c492b78023b9ff025362d8c2bd507ffc3c"
+                "reference": "8d3bbe457957a850eb0889b244d8b2aaba2e9f4e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ScholarshipOwl/laravel-doctrine-jsonapi/zipball/43b1c9c492b78023b9ff025362d8c2bd507ffc3c",
-                "reference": "43b1c9c492b78023b9ff025362d8c2bd507ffc3c",
+                "url": "https://api.github.com/repos/ScholarshipOwl/laravel-doctrine-jsonapi/zipball/8d3bbe457957a850eb0889b244d8b2aaba2e9f4e",
+                "reference": "8d3bbe457957a850eb0889b244d8b2aaba2e9f4e",
                 "shasum": ""
             },
             "require": {
@@ -4665,7 +4665,7 @@
                 "issues": "https://github.com/ScholarshipOwl/laravel-doctrine-jsonapi/issues",
                 "source": "https://github.com/ScholarshipOwl/laravel-doctrine-jsonapi/tree/main"
             },
-            "time": "2025-04-21T09:59:35+00:00"
+            "time": "2025-04-21T11:40:30+00:00"
         },
         {
             "name": "symfony/cache",
