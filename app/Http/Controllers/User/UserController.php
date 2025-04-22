@@ -10,28 +10,34 @@ use App\Http\Controllers\User\UserUpdateRequest;
 use App\Http\Controllers\Controller;
 use Sowl\JsonApi\Request;
 use Sowl\JsonApi\Response;
+use Sowl\JsonApi\Scribe\Attributes\ResourceRequest;
+use Sowl\JsonApi\Scribe\Attributes\ResourceRequestCreate;
+use Sowl\JsonApi\Scribe\Attributes\ResourceResponse;
 
 class UserController extends Controller
 {
     /**
-     * Return the authenticated user's profile using an Action class.
+     * User Me
+     *
+     * Return currently authenticated user's resource.
+     * Should be used with authentication logic, first login than use this endpoint.
      */
+    #[ResourceRequest]
+    #[ResourceResponse]
     public function me(Request $request): Response
     {
         return UserMeAction::create()->dispatch($request);
     }
 
-    /**
-     * Create a new user with validation.
-     */
+    #[ResourceRequestCreate]
+    #[ResourceResponse]
     public function create(UserCreateRequest $request): Response
     {
         return UserCreateAction::create()->dispatch($request);
     }
 
-    /**
-     * Update an existing user with validation.
-     */
+    #[ResourceRequest]
+    #[ResourceResponse]
     public function update(UserUpdateRequest $request): Response
     {
         return UserUpdateAction::create()->dispatch($request);

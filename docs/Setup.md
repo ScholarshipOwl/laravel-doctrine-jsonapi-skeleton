@@ -114,6 +114,18 @@ In `config/app.php`, use the following approach to override the default provider
 
 Ensure your User entity implements the `Illuminate\Contracts\Auth\CanResetPassword` contract. You can use the `Illuminate\Auth\Passwords\CanResetPassword` trait, which provides the required methods (the trait expects your email property to be named `email`).
 
+Additionally:
+- Add the `Notifiable` trait to your `App\Entities\User` (via `LaravelDoctrine\ORM\Notifications\Notifiable`) to enable password reset notifications.
+- In `App\Providers\AppServiceProvider::boot()`, customize the reset link URL:
+
+```php
+use Illuminate\Auth\Notifications\ResetPassword;
+
+ResetPassword::createUrlUsing(function ($notifiable, $url) {
+    return $url;
+});
+```
+
 For more details and advanced configuration, see the [official Laravel Doctrine password reset documentation](https://laravel-doctrine-orm-official.readthedocs.io/en/latest/passwords.html).
 
 **Key Differences:**
@@ -124,10 +136,21 @@ For more details and advanced configuration, see the [official Laravel Doctrine 
 
 ---
 
-## 6. Remove All Web Routes and Blade Views (API-Only)
+## 6. Configure Authentication Routes (API-Only)
 
-- Delete `routes/web.php` and all Blade views.
-- Only expose API routes as per JSON:API specification.
+- Remove default UI routes and Blade views.
+- In `routes/web.php`, define the following API endpoints for session-based auth:
+
+```php
+use App\Http\Controllers\Auth\AuthController;
+
+Route::post('/auth/login', [AuthController::class, 'login'])->name('auth.login');
+Route::post('/auth/request-reset-password', [AuthController::class, 'requestResetPassword'])->name('auth.request-reset-password');
+Route::post('/auth/reset-password', [AuthController::class, 'resetPassword'])->name('auth.reset-password');
+Route::post('/auth/logout', [AuthController::class, 'logout'])->middleware('auth')->name('auth.logout');
+```
+
+- Ensure these routes return only JSON responses; no Blade views should be rendered.
 
 ---
 
@@ -368,13 +391,30 @@ $this->assertJsonApiValidationErrors($response, ['/data/attributes/email']);
 
 ---
 
-## Keeping the Setup Up-to-Date with Laravel Versions
+## 11. Integrate Scribe for API Documentation
 
-The setup process described in `Setup.md` is tailored for Laravel 12 and the current state of the Laravel Doctrine integration. **With each new Laravel version, you must review and update the setup process to ensure compatibility and take advantage of new features or changes in the framework.**
+This project uses [Scribe](https://scribe.knuckles.wtf/) to automatically generate OpenAPI specifications, Postman collections, and static API documentation for all API endpoints.
 
-- Always check for breaking changes, new conventions, or deprecations in Laravel's release notes.
-- Revisit the setup steps, especially those related to service provider registration, authentication, migrations, and any customizations for Doctrine ORM.
-- Update `Setup.md` to reflect any new requirements or best practices for the latest Laravel version.
-- Clearly state which Laravel version the setup instructions are relevant to at the top of the documentation.
+- Scribe is included as a dev dependency. If needed, install with:
+  ```bash
+  composer require --dev knuckleswtf/scribe
+  ```
+- Publish Scribe's config:
+  ```bash
+  php artisan vendor:publish --provider="Knuckles\\Scribe\\ScribeServiceProvider"
+  ```
+- (Optional) Publish JSON:API language files:
+  ```bash
+  php artisan vendor:publish --tag=jsonapi-scribe-translations
+  ```
+- Main configuration is in `config/scribe.php`. See [docs/SetupScribe.md](./SetupScribe.md) for detailed options and code examples.
+- To generate docs, run:
+  ```bash
+  php artisan scribe:generate
+  ```
+- The docs UI will be available at `/docs` (e.g., `localhost/docs`).
+- OpenAPI spec and Postman collection are also generated and available for download.
 
-> **Note:** The current setup guide is relevant for Laravel 12. Future contributors should incrementally update the documentation as the project upgrades to newer Laravel versions.
+> See [docs/SetupScribe.md](./SetupScribe.md) for advanced configuration (JSON:API strategies, grouping, example generation, etc.).
+
+---

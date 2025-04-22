@@ -8,9 +8,16 @@ use Illuminate\Support\Facades\Password;
 use Illuminate\Support\Facades\Hash;
 use App\Entities\User;
 use Illuminate\Auth\Events\PasswordReset;
+use Knuckles\Scribe\Attributes\Endpoint;
+use Knuckles\Scribe\Attributes\Group;
+use Knuckles\Scribe\Attributes\Response;
 
+#[Group('Auth')]
 class AuthController
 {
+    #[Endpoint('Login')]
+    #[Response(['id' => 1], 200)]
+    #[Response(null, 401)]
     public function login(LoginRequest $request)
     {
         $credentials = $request->only(['email', 'password']);
@@ -29,6 +36,9 @@ class AuthController
         return response(null, 401);
     }
 
+    #[Endpoint('Request password reset')]
+    #[Response(['status' => 'Password reset link sent'], 200)]
+    #[Response(['status' => 'Failed to send password reset link'], 400)]
     public function requestResetPassword(RequestResetPasswordRequest $request)
     {
         $email = $request->input('email');
@@ -45,6 +55,9 @@ class AuthController
         ], 400);
     }
 
+    #[Endpoint('Reset password')]
+    #[Response(['status' => 'Password reset'], 200)]
+    #[Response(['status' => 'Failed to reset password'], 400)]
     public function resetPassword(ResetPasswordRequest $request)
     {
         $credentials = $request->only(['email', 'password', 'token']);
@@ -70,6 +83,8 @@ class AuthController
         ], 400);
     }
 
+    #[Endpoint('Logout')]
+    #[Response(['status' => 'Logged out successfully'], 200)]
     public function logout(Request $request)
     {
         Auth::logout();

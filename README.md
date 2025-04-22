@@ -23,10 +23,12 @@ You get a clean Laravel installation, ready for Doctrine and JSON:API integratio
 ---
 
 ## Main Packages
+- [laravel/laravel](https://github.com/laravel/laravel): Laravel framework
 - [laravel-doctrine/orm](https://github.com/laravel-doctrine/orm): Doctrine ORM integration for Laravel ([docs](https://laravel-doctrine-orm-official.readthedocs.io/en/latest/))
 - [laravel-doctrine/migrations](https://github.com/laravel-doctrine/migrations): Integration with Doctrine2's migrations package for Laravel
 - [laravel-doctrine/extensions](https://github.com/laravel-doctrine/extensions): Doctrine extensions for Laravel (Gedmo, Beberlei, etc.)
 - [sowl/laravel-doctrine-jsonapi](https://github.com/ScholarshipOwl/laravel-doctrine-jsonapi): JSON:API implementation for Laravel + Doctrine
+- [scribe](https://github.com/knuckleswtf/scribe): API documentation generator
 
 ---
 
@@ -57,10 +59,11 @@ This is a high-level roadmap for fully implementing the skeleton:
 - [X] Add policy-based authorization for resources
 - [X] Add validation for JSON:API requests
 - [X] Implement authentication (e.g., Laravel Passport, Sanctum, or JWT)
-- [ ] Integrate [Scribe](https://scribe.knuckles.wtf/) for automatic generation of OpenAPI specs and API docs
-  - [ ] Configure Scribe for API-only docs
-  - [ ] Ensure docs include OpenAPI spec, Postman collection, and sample responses
-  - [ ] Add custom docs for example resource
+- [X] Integrate [Scribe](https://scribe.knuckles.wtf/) for automatic generation of OpenAPI specs and API docs
+  - [X] Configure Scribe for API-only docs
+  - [X] Ensure docs include OpenAPI spec, Postman collection, and sample responses
+  - [X] Add custom docs for example resource
+- [ ] Configure proper exception handling with showing JSON:API errors.
 - [ ] Implement extensive testing of this skeleton
   - [ ] Make sure all features work as expected
   - [ ] Add tests for queue-failed jobs

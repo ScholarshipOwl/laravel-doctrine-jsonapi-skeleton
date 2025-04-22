@@ -114,11 +114,8 @@
 
 ## Git & Commit Rules
 - Use conventional commit messages. For more details, see the [Git Commit Rules](https://github.com/ScholarshipOwl/laravel-doctrine-jsonapi/blob/main/docs/Setup.md#git-commit-rules).
-- Do commits only when you asked for it.
-- Review diff of staged files before committing.
-- Only commit staged files.
-- Do not add files to the index automatically.
-- When you asked to commit run a git diff and prepare commit message based on the changes.
+- When doing commits relay on the client to add files to the commit.
+- Use `git diff --cached` for generation of commit messages.
 
 ## Skeleton Development
 - Log all major setup and architectural changes in `docs/Setup.md` as a step-by-step tutorial.
