@@ -73,7 +73,23 @@ This is a high-level roadmap for fully implementing the skeleton:
   - [ ] Add tests for validation
   - [ ] Add tests for API endpoints
   - [ ] Add tests for API docs
-  - [ ] Add tests for API consumers
+- [ ] Implement RBAC (Role-Based Access Control) authorization logic
+  - [ ] Define roles and permissions (e.g., Admin, User, Guest)
+  - [ ] Assign roles to users and restrict resource actions accordingly
+  - [ ] Add policies and middleware for RBAC enforcement
+  - [ ] Document RBAC usage and configuration
+- [ ] Add detailed onboarding and contribution guide for new developers
+  - [ ] Document setup, coding standards, and contribution workflow
+  - [ ] Provide example PR and review process
+  - [ ] Add FAQ and troubleshooting section
+- [ ] Build and document default `.windsurfrules` for this repository
+  - [ ] Describe commit, branch, and review policies
+  - [ ] Add rules for sensitive files, migrations, and API docs
+  - [ ] Ensure `.windsurfrules` is kept up to date with project conventions
+- [ ] Add API rate limiting and throttling
+  - [ ] Configure Laravel's built-in rate limiting for API endpoints
+  - [ ] Add custom logic for user/role-based limits if needed
+- [ ] Set up CI/CD for automated testing and code quality checks
 
 ---
 
