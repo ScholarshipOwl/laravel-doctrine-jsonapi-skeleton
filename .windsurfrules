@@ -7,6 +7,9 @@
 - Default branch is `main`.
 - Sensitive files (such as `.env`, `node_modules/`, `vendor/`) must not be committed.
 - Always use `use` for importing classes.
+- Do not add docblock of @param if param type is already defined.
+- Do not add docblock of @return if return type is already defined.
+- Always import class that you are using in a generated code, do not use fully qualified names, only imported names. Make sure to import all classes that you are using in a generated code.
 
 ## Workflow
 - Pull requests must be reviewed before merging.
@@ -28,6 +31,7 @@
 - Use Doctrine entities (not Eloquent models).
 - Entity setters should return `$this` for method chaining.
 - Entity properties must be `private` and use `camelCase` naming.
+- Use attributes for doctrine metadata definition.
 
 ### Entity Factories
 - Define all entity factories in `database/factories` using `LaravelDoctrine\ORM\Testing\Factory`.
@@ -69,6 +73,39 @@
 - All API endpoints must be JSON:API compliant.
 - Controllers must be thin and contain minimal logic, the logic should be places in Actions classes and classes could use services.
 - Actions from `Sowl\JsonApi\Action` can be reused in many custom cases.
+
+### JSON:API Resources
+- `Sowl\JsonApi\ResourceInterface` must be implemented by each resource entity.
+- Resources by default are in `app/Entities` folder.
+- `getId()` method must be implemented by each resource entity.
+- Use `static::getResourceType()` method to define resource type, put this method in the top of the class.
+- Use `static::transformer()` method to define transformer, put this method in the top of the class.
+- Use `static::relationships()` method to define relationships to other resources, put this method in the top of the class.
+
+#### JSON:API Resource Relationships
+- Use `Sowl\JsonApi\Relationships\MemoizeRelationshipsTrait` for resources with relationships.
+- Use `Sowl\JsonApi\Relationships\ToOneRelationship` for ToOne relationships.
+- Use `Sowl\JsonApi\Relationships\ToManyRelationship` for ToMany relationships.
+- Collections or properties that do not reference resource entities (such as arrays of strings, primitive types, or non-resource objects) should not be defined as JSON:API relationships. Instead, expose them as attributes in the transformer.
+-This ensures that only true resource-to-resource links are represented as relationships in the JSON:API output, maintaining semantic correctness and consistency with the JSON:API specification.
+- Example:
+  ```php
+  public static function relationships(): RelationshipsCollection
+  {
+      return static::memoizeRelationships(fn () => [
+          ToOneRelationship::create('author', User::class),
+          ToManyRelationship::create('comments', Comment::class),
+      ]);
+  }
+  ```
+
+### JSON:API Transformers
+- Use `Sowl\JsonApi\AbstractTransformer` as base transformer.
+- Transformers by default are in `app/Transformers` folder.
+- Use `transform({ResourceClass} %resourceType%)` method to transform the resource, the %resourceType% variable name build from resource type.
+- When generating from scratch set `$availableIncludes` property with the list of `::relationships()` that implementing `Sowl\JsonApi\ResourceInterface`.
+- Implement `include{Relationship}` method for each include in $availableIncludes property.
+- Always provide `{ResourceClass}::getResourceType()` as a 3rd parameter to the `item()` and `collection()` methods.
 
 ### JSON:API Controllers
 - Use `App\Http\Controllers\Controller` as base controller.
