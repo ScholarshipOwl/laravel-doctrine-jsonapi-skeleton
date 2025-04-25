@@ -11,6 +11,14 @@ use Sowl\JsonApi\Request;
 class UserUpdateRequest extends Request
 {
     /**
+     * Determine if the user is authorized to make this request.
+     */
+    public function authorize(): bool
+    {
+        return $this->user()->can('update', $this->resource());
+    }
+
+    /**
      * Validation rules for updating a user.
      */
     public function dataRules(): array

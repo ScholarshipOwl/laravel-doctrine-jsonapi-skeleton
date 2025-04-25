@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Facade;
 use Illuminate\Support\ServiceProvider;
+use Knuckles\Scribe\ScribeServiceProvider;
 
 return [
 
@@ -166,6 +167,9 @@ return [
              \LaravelDoctrine\ORM\Auth\Passwords\PasswordResetServiceProvider::class,
         \Illuminate\Validation\ValidationServiceProvider::class =>
              \LaravelDoctrine\ORM\Validation\PresenceVerifierProvider::class
+    ])
+    ->except([
+        env('APP_ENV') === 'production' ? null : ScribeServiceProvider::class
     ])
     ->toArray(),
 

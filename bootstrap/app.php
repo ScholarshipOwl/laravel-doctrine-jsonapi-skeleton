@@ -11,10 +11,11 @@ return Application::configure(basePath: dirname(__DIR__))
         commands: __DIR__.'/../routes/console.php',
         health: '/up',
         then: function () {
-            Route::prefix(config('jsonapi.routing.rootPathPrefix', ''))
-                ->name(config('jsonapi.routing.rootNamePrefix', 'jsonapi.'))
-                ->middleware(config('jsonapi.routing.rootMiddleware'))
-                ->group(base_path('routes/jsonapi.php'));
+            // Route::prefix(config('jsonapi.routing.rootPathPrefix', ''))
+            //     ->name(config('jsonapi.routing.rootNamePrefix', 'jsonapi.'))
+            //     ->middleware(config('jsonapi.routing.rootMiddleware'))
+            //     ->group(base_path('routes/jsonapi.php'));
+
         }
     )
     ->withMiddleware(function (Middleware $middleware) {
@@ -32,5 +33,6 @@ return Application::configure(basePath: dirname(__DIR__))
         );
     })
     ->withExceptions(function (Exceptions $exceptions) {
-        //
+        // Always render JSON responses
+        $exceptions->shouldRenderJsonWhen(fn () => true);
     })->create();

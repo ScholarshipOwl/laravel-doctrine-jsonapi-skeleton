@@ -39,21 +39,6 @@ final class Version20250418210636 extends AbstractMigration
                 PRIMARY KEY(id)
             )
         ');
-        $this->addSql('
-            CREATE TABLE users (
-                id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
-                name VARCHAR(255) NOT NULL,
-                email VARCHAR(255) NOT NULL,
-                email_verified_at DATETIME DEFAULT NULL,
-                created_at DATETIME DEFAULT NULL,
-                updated_at DATETIME DEFAULT NULL,
-                password VARCHAR(255) NOT NULL,
-                remember_token VARCHAR(255) DEFAULT NULL
-            )
-        ');
-        $this->addSql('
-            CREATE UNIQUE INDEX UNIQ_1483A5E9E7927C74 ON users (email)
-        ');
     }
 
     public function down(Schema $schema): void
@@ -64,9 +49,6 @@ final class Version20250418210636 extends AbstractMigration
         SQL);
         $this->addSql(<<<'SQL'
             DROP TABLE sessions
-        SQL);
-        $this->addSql(<<<'SQL'
-            DROP TABLE users
         SQL);
     }
 }

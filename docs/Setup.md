@@ -418,3 +418,35 @@ This project uses [Scribe](https://scribe.knuckles.wtf/) to automatically genera
 > See [docs/SetupScribe.md](./SetupScribe.md) for advanced configuration (JSON:API strategies, grouping, example generation, etc.).
 
 ---
+
+## 12. Role-Based Access Control (RBAC) & ACL
+
+This project uses Laravel Doctrine ACL for robust Role-Based Access Control (RBAC), allowing you to define roles, assign permissions, and protect resources using policies.
+
+**Key Concepts:**
+- **Roles:** Define user roles (e.g., Admin, User, Guest) in `App\Entities\Role`. You can add constants and logic for your roles.
+- **Permissions:** Define permissions in `App\Entities\Permission` and configure them in `config/acl.php`.
+- **Assigning Roles:** Users implement `HasRoles` and use the `WithRoles` trait. Assign roles using `$user->addRole($role)` or factories.
+- **Policies:** Authorization logic is in `app/Policies` (e.g., `UserPolicy`, `RolePolicy`). Use these to restrict actions based on roles/permissions.
+- **Configuration:** The main ACL config is in `config/acl.php`. Here you can set the entity classes and permission driver.
+- **Middleware:** Use Laravel's authorization middleware (`can`, `policy`) to protect routes and controllers.
+
+**Example: Assigning a Role in a Factory or Seeder**
+```php
+$user = entity(App\Entities\User::class)->create();
+$role = entity(App\Entities\Role::class)->create(['name' => 'admin']);
+$user->addRole($role);
+```
+
+**Example: Policy Enforcement**
+```php
+// In a controller or action
+$this->authorize('update', $user); // Uses UserPolicy::update
+```
+
+**Best Practices:**
+- Define all roles and permissions in code, not in the database.
+- Use policies for all resource access checks.
+- Keep your ACL configuration (`config/acl.php`) up to date with your entities.
+
+For more details, see the `app/Entities/Role.php`, `app/Entities/User.php`, `app/Policies/RolePolicy.php`, `app/Policies/UserPolicy.php`, and `config/acl.php`.

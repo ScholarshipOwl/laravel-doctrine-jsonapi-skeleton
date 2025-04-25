@@ -8,6 +8,7 @@ use App\Http\Controllers\User\UserCreateAction;
 use App\Http\Controllers\User\UserUpdateAction;
 use App\Http\Controllers\User\UserUpdateRequest;
 use App\Http\Controllers\Controller;
+use Knuckles\Scribe\Attributes\Endpoint;
 use Sowl\JsonApi\Request;
 use Sowl\JsonApi\Response;
 use Sowl\JsonApi\Scribe\Attributes\ResourceRequest;

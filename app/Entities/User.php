@@ -14,17 +14,49 @@ use Sowl\JsonApi\Relationships\RelationshipsCollection;
 use Sowl\JsonApi\AbstractTransformer;
 use Sowl\JsonApi\Concerns\HasTimestamps;
 use App\Transformers\UserTransformer;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
+use LaravelDoctrine\ACL\Contracts\HasPermissions;
+use LaravelDoctrine\ACL\Contracts\HasRoles;
+use LaravelDoctrine\ACL\Attribute as ACL;
+use LaravelDoctrine\ACL\Permissions\WithPermissions;
+use LaravelDoctrine\ACL\Roles\WithRoles;
 use LaravelDoctrine\ORM\Notifications\Notifiable;
+use Sowl\JsonApi\Relationships\MemoizeRelationshipsTrait;
 
 #[ORM\Entity]
 #[ORM\Table(name: 'users')]
-class User implements AuthenticatableContract, AuthorizableContract, CanResetPasswordContract, ResourceInterface
+class User implements AuthenticatableContract,
+                      AuthorizableContract,
+                      CanResetPasswordContract,
+                      ResourceInterface,
+                      HasPermissions,
+                      HasRoles
 {
     use HasTimestamps;
     use Authenticatable;
     use Authorizable;
     use CanResetPassword;
     use Notifiable;
+    use MemoizeRelationshipsTrait;
+    use WithPermissions;
+    use WithRoles;
+
+    public static function getResourceType(): string
+    {
+        return 'users';
+    }
+
+    public static function relationships(): RelationshipsCollection
+    {
+        return static::memoizeRelationships()
+            ->addToMany('roles', Role::class, 'users');
+    }
+
+    public static function transformer(): AbstractTransformer
+    {
+        return new UserTransformer();
+    }
 
     #[ORM\Id]
     #[ORM\GeneratedValue]
@@ -39,6 +71,17 @@ class User implements AuthenticatableContract, AuthorizableContract, CanResetPas
 
     #[ORM\Column(type: 'datetime', nullable: true)]
     private ?\DateTime $emailVerifiedAt = null;
+
+    #[ACL\HasPermissions()]
+    private array $permissions = [];
+
+    #[ACL\HasRoles()]
+    private Collection $roles;
+
+    public function __construct()
+    {
+        $this->roles = new ArrayCollection();
+    }
 
     public function getId(): int
     {
@@ -84,19 +127,57 @@ class User implements AuthenticatableContract, AuthorizableContract, CanResetPas
         return $this;
     }
 
-    public static function getResourceType(): string
+    /** @return array<string> */
+    public function getPermissions(): array
     {
-        return 'users';
+        return $this->permissions;
     }
 
-    public static function relationships(): RelationshipsCollection
+    /** @return array<string> */
+    public function setPermissions(array $permissions): self
     {
-        // Return an empty collection or define relationships as needed
-        return new RelationshipsCollection([]);
+        $this->permissions = $permissions;
+        return $this;
     }
 
-    public static function transformer(): AbstractTransformer
+    public function addPermission(string $permission): self
     {
-        return new UserTransformer();
+        if (!in_array($permission, $this->permissions)) {
+            $this->permissions[] = $permission;
+        }
+
+        return $this;
+    }
+
+    public function removePermission(string $permission): self
+    {
+        $this->permissions = array_filter($this->permissions, fn($p) => $p !== $permission);
+        return $this;
+    }
+
+    public function getRoles(): Collection
+    {
+        return $this->roles;
+    }
+
+    public function setRoles(Collection $roles): self
+    {
+        $this->roles = $roles;
+        return $this;
+    }
+
+    public function addRole(Role $role): self
+    {
+        if (!$this->roles->contains($role)) {
+            $this->roles->add($role);
+        }
+
+        return $this;
+    }
+
+    public function removeRole(Role $role): self
+    {
+        $this->roles->removeElement($role);
+        return $this;
     }
 }

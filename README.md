@@ -64,6 +64,7 @@ This is a high-level roadmap for fully implementing the skeleton:
   - [X] Ensure docs include OpenAPI spec, Postman collection, and sample responses
   - [X] Add custom docs for example resource
 - [ ] Configure proper exception handling with showing JSON:API errors.
+- [ ] Use GUID for the primary key of the entities.
 - [ ] Implement extensive testing of this skeleton
   - [ ] Make sure all features work as expected
   - [ ] Add tests for queue-failed jobs

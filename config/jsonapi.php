@@ -15,6 +15,7 @@ return [
 
     'resources' => [
         App\Entities\User::class,
+        App\Entities\Role::class,
     ],
 
     /*
@@ -28,7 +29,7 @@ return [
         /**
          * Middleware to apply to all JSON:API routes.
          */
-        'rootMiddleware' => 'jsonapi',
+        'rootMiddleware' => ['jsonapi', 'auth'],
 
         /**
          * Prefix for all the JSON:API route names.

@@ -3,53 +3,92 @@
 namespace App\Policies;
 
 use App\Entities\User;
+use App\Entities\Role;
 
 class UserPolicy
 {
     /**
      * Determine whether the user can create users.
-     * Allow anyone (including guests) for JSON:API test/demo.
+     * Allow anyone for JSON:API test/demo.
      */
-    public function create(?User $authUser): bool
+    public function create(User $user): bool
     {
         return true;
     }
 
     /**
      * Determine whether the user can view any users (list users).
-     * Allow anyone (including guests) for JSON:API test/demo.
+     * Allow anyone for JSON:API test/demo.
      */
-    public function viewAny(?User $authUser): bool
+    public function viewAny(User $user): bool
     {
-        return true;
+        return $user->hasRoleByName(Role::ADMIN);
     }
 
     /**
-     * Determine whether the user can view the model.
-     * Allow anyone (including guests) to view users for JSON:API test/demo.
+     * Determine whether the user can see a specific user.
+     * Allow anyone to view users for JSON:API test/demo.
      */
-    public function view(?User $authUser, User $user): bool
+    public function view(User $user, User $userToSee): bool
     {
-        return true;
+        return $user === $userToSee || $user->hasRoleByName(Role::ADMIN);
     }
 
     /**
      * Determine whether the user can update users.
      * Only allow users to update themselves (entity comparison).
      */
-    public function update(?User $authUser, User $user): bool
+    public function update(User $user, User $userToEdit): bool
     {
-        return $authUser !== null && $authUser === $user;
+        return $user === $userToEdit;
     }
 
     /**
      * Determine whether the user can delete users.
      * Only allow users to delete themselves (entity comparison).
      */
-    public function delete(?User $authUser, User $user): bool
+    public function delete(User $user, User $userToDelete): bool
     {
-        return $authUser !== null && $authUser === $user;
+        return $user === $userToDelete;
     }
 
-    // Implement other abilities as needed
+    /**
+     * Determine whether the user can view any roles of the user.
+     * Only allow admins.
+     */
+    public function viewAnyRoles(User $user, User $ofUser): bool
+    {
+        if ($user === $ofUser) {
+            return true;
+        }
+
+        return $user->hasRoleByName(Role::ADMIN);
+    }
+
+    /**
+     * Determine whether the user can update roles of the user.
+     * Only allow admins.
+     */
+    public function updateRoles(User $user, User $ofUser): bool
+    {
+        return $user->hasRoleByName(Role::ADMIN);
+    }
+
+    /**
+     * Determine whether the user can attach roles to the user.
+     * Only allow admins.
+     */
+    public function attachRoles(User $user, User $toUser): bool
+    {
+        return $user->hasRoleByName(Role::ADMIN);
+    }
+
+    /**
+     * Determine whether the user can detach roles from the user.
+     * Only allow admins.
+     */
+    public function detachRoles(User $user, User $fromUser): bool
+    {
+        return $user->hasRoleByName(Role::ADMIN);
+    }
 }
