@@ -21,8 +21,6 @@ class AppServiceProvider extends ServiceProvider
     public function boot(): void
     {
         // TODO: Implement proper URL generation
-        ResetPassword::createUrlUsing(function ($notifiable, $url) {
-            return $url;
-        });
+        ResetPassword::createUrlUsing(fn ($notifiable, $url) => $url);
     }
 }

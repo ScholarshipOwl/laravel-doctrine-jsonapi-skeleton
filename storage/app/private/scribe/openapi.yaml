@@ -42,10 +42,10 @@ components:
               properties:
                 name:
                   type: string
-                  example: 'Mrs. Destiney Bernhard MD'
+                  example: 'Okey Towne'
                 email:
                   type: string
-                  example: ggreenholt@example.com
+                  example: emilie87@example.org
             relationships:
               type: object
               properties:
@@ -90,7 +90,7 @@ components:
               properties:
                 name:
                   type: string
-                  example: ut
+                  example: sint
                 permissions:
                   type: array
                   example: []
@@ -114,9 +114,6 @@ components:
                           example: users
                           enum:
                             - users
-security:
-  -
-    default: []
 paths:
   /auth/login:
     post:
@@ -166,6 +163,7 @@ paths:
               required:
                 - email
                 - password
+      security: []
   /auth/request-reset-password:
     post:
       summary: 'Request password reset'
@@ -213,6 +211,7 @@ paths:
                   nullable: false
               required:
                 - email
+      security: []
   /auth/reset-password:
     post:
       summary: 'Reset password'
@@ -272,6 +271,7 @@ paths:
                 - email
                 - password
                 - token
+      security: []
   /auth/logout:
     post:
       summary: Logout
@@ -293,6 +293,7 @@ paths:
                     example: 'Logged out successfully'
       tags:
         - Auth
+      security: []
   /roles:
     get:
       summary: 'List Roles'
@@ -361,28 +362,28 @@ paths:
                   data:
                     -
                       type: roles
-                      id: '990'
+                      id: '5'
                       attributes:
-                        name: qui
+                        name: et
                         permissions: []
                       links:
-                        self: /roles/990
+                        self: /roles/5
                     -
                       type: roles
-                      id: '991'
+                      id: '6'
                       attributes:
-                        name: commodi
+                        name: tenetur
                         permissions: []
                       links:
-                        self: /roles/991
+                        self: /roles/6
                     -
                       type: roles
-                      id: '992'
+                      id: '7'
                       attributes:
-                        name: incidunt
+                        name: ab
                         permissions: []
                       links:
-                        self: /roles/992
+                        self: /roles/7
                   meta:
                     pagination:
                       total: 100
@@ -401,28 +402,28 @@ paths:
                     example:
                       -
                         type: roles
-                        id: '990'
+                        id: '5'
                         attributes:
-                          name: qui
+                          name: et
                           permissions: []
                         links:
-                          self: /roles/990
+                          self: /roles/5
                       -
                         type: roles
-                        id: '991'
+                        id: '6'
                         attributes:
-                          name: commodi
+                          name: tenetur
                           permissions: []
                         links:
-                          self: /roles/991
+                          self: /roles/6
                       -
                         type: roles
-                        id: '992'
+                        id: '7'
                         attributes:
-                          name: incidunt
+                          name: ab
                           permissions: []
                         links:
-                          self: /roles/992
+                          self: /roles/7
                     items:
                       type: object
                       properties:
@@ -431,13 +432,13 @@ paths:
                           example: roles
                         id:
                           type: string
-                          example: '990'
+                          example: '5'
                         attributes:
                           type: object
                           properties:
                             name:
                               type: string
-                              example: qui
+                              example: et
                             permissions:
                               type: array
                               example: []
@@ -446,7 +447,7 @@ paths:
                           properties:
                             self:
                               type: string
-                              example: /roles/990
+                              example: /roles/5
                   meta:
                     type: object
                     properties:
@@ -522,6 +523,7 @@ paths:
                           example: 'No "viewAny" ability on "roles" resource.'
       tags:
         - Roles
+      security: []
     post:
       summary: 'Create Role'
       operationId: createRole
@@ -557,12 +559,12 @@ paths:
                 example:
                   data:
                     type: roles
-                    id: '995'
+                    id: '10'
                     attributes:
                       name: eius
                       permissions: []
                     links:
-                      self: /roles/995
+                      self: /roles/10
                 properties:
                   data:
                     type: object
@@ -572,7 +574,7 @@ paths:
                         example: roles
                       id:
                         type: string
-                        example: '995'
+                        example: '10'
                       attributes:
                         type: object
                         properties:
@@ -587,7 +589,7 @@ paths:
                         properties:
                           self:
                             type: string
-                            example: /roles/995
+                            example: /roles/10
       tags:
         - Roles
       requestBody:
@@ -640,6 +642,7 @@ paths:
                             - data
               required:
                 - data
+      security: []
   '/roles/{id}':
     get:
       summary: 'Show Role'
@@ -676,12 +679,12 @@ paths:
                 example:
                   data:
                     type: roles
-                    id: '997'
+                    id: '12'
                     attributes:
-                      name: modi
+                      name: quos
                       permissions: []
                     links:
-                      self: /roles/997
+                      self: /roles/12
                 properties:
                   data:
                     type: object
@@ -691,13 +694,13 @@ paths:
                         example: roles
                       id:
                         type: string
-                        example: '997'
+                        example: '12'
                       attributes:
                         type: object
                         properties:
                           name:
                             type: string
-                            example: modi
+                            example: quos
                           permissions:
                             type: array
                             example: []
@@ -706,7 +709,7 @@ paths:
                         properties:
                           self:
                             type: string
-                            example: /roles/997
+                            example: /roles/12
         404:
           description: ''
           content:
@@ -741,6 +744,7 @@ paths:
                           example: 'Resource type "roles" and id "1" is not found.'
       tags:
         - Roles
+      security: []
     patch:
       summary: 'Update Role'
       operationId: updateRole
@@ -776,12 +780,12 @@ paths:
                 example:
                   data:
                     type: roles
-                    id: '999'
+                    id: '14'
                     attributes:
-                      name: animi
+                      name: fugiat
                       permissions: []
                     links:
-                      self: /roles/999
+                      self: /roles/14
                 properties:
                   data:
                     type: object
@@ -791,13 +795,13 @@ paths:
                         example: roles
                       id:
                         type: string
-                        example: '999'
+                        example: '14'
                       attributes:
                         type: object
                         properties:
                           name:
                             type: string
-                            example: animi
+                            example: fugiat
                           permissions:
                             type: array
                             example: []
@@ -806,7 +810,7 @@ paths:
                         properties:
                           self:
                             type: string
-                            example: /roles/999
+                            example: /roles/14
       tags:
         - Roles
       requestBody:
@@ -859,6 +863,7 @@ paths:
                             - data
               required:
                 - data
+      security: []
     delete:
       summary: 'Delete Role'
       operationId: deleteRole
@@ -869,6 +874,7 @@ paths:
           description: ''
       tags:
         - Roles
+      security: []
     parameters:
       -
         in: path
@@ -918,28 +924,28 @@ paths:
                       data:
                         -
                           type: users
-                          id: '1049'
+                          id: '19'
                           attributes:
-                            name: 'Myrtis Tromp'
-                            email: nstokes@example.org
+                            name: 'Jermaine Tillman'
+                            email: pfritsch@example.com
                           links:
-                            self: /users/1049
+                            self: /users/19
                         -
                           type: users
-                          id: '1050'
+                          id: '20'
                           attributes:
-                            name: 'Dr. Grayson Glover'
-                            email: schultz.audrey@example.org
+                            name: 'Carey Smitham'
+                            email: tleuschke@example.net
                           links:
-                            self: /users/1050
+                            self: /users/20
                         -
                           type: users
-                          id: '1051'
+                          id: '21'
                           attributes:
-                            name: 'Abbey Gaylord MD'
-                            email: qankunding@example.com
+                            name: 'Janick Schultz DDS'
+                            email: kconsidine@example.net
                           links:
-                            self: /users/1051
+                            self: /users/21
                       meta:
                         pagination:
                           total: 100
@@ -958,28 +964,28 @@ paths:
                         example:
                           -
                             type: users
-                            id: '1049'
+                            id: '19'
                             attributes:
-                              name: 'Myrtis Tromp'
-                              email: nstokes@example.org
+                              name: 'Jermaine Tillman'
+                              email: pfritsch@example.com
                             links:
-                              self: /users/1049
+                              self: /users/19
                           -
                             type: users
-                            id: '1050'
+                            id: '20'
                             attributes:
-                              name: 'Dr. Grayson Glover'
-                              email: schultz.audrey@example.org
+                              name: 'Carey Smitham'
+                              email: tleuschke@example.net
                             links:
-                              self: /users/1050
+                              self: /users/20
                           -
                             type: users
-                            id: '1051'
+                            id: '21'
                             attributes:
-                              name: 'Abbey Gaylord MD'
-                              email: qankunding@example.com
+                              name: 'Janick Schultz DDS'
+                              email: kconsidine@example.net
                             links:
-                              self: /users/1051
+                              self: /users/21
                         items:
                           type: object
                           properties:
@@ -988,22 +994,22 @@ paths:
                               example: users
                             id:
                               type: string
-                              example: '1049'
+                              example: '19'
                             attributes:
                               type: object
                               properties:
                                 name:
                                   type: string
-                                  example: 'Myrtis Tromp'
+                                  example: 'Jermaine Tillman'
                                 email:
                                   type: string
-                                  example: nstokes@example.org
+                                  example: pfritsch@example.com
                             links:
                               type: object
                               properties:
                                 self:
                                   type: string
-                                  example: /users/1049
+                                  example: /users/19
                       meta:
                         type: object
                         properties:
@@ -1047,28 +1053,28 @@ paths:
                       data:
                         -
                           type: users
-                          id: '1052'
+                          id: '22'
                           attributes:
-                            name: 'Mr. Madisen Schaden'
-                            email: colt.balistreri@example.net
+                            name: 'Kirstin Nitzsche V'
+                            email: verlie08@example.net
                           links:
-                            self: /users/1052
+                            self: /users/22
                         -
                           type: users
-                          id: '1053'
+                          id: '23'
                           attributes:
-                            name: 'Mrs. Kirsten Ward'
-                            email: cbeier@example.com
+                            name: 'Cynthia Fahey'
+                            email: balistreri.josiane@example.net
                           links:
-                            self: /users/1053
+                            self: /users/23
                         -
                           type: users
-                          id: '1054'
+                          id: '24'
                           attributes:
-                            name: 'Dr. Alan Green'
-                            email: oreilly.jacques@example.com
+                            name: "Rodrigo O'Connell"
+                            email: emanuel.emmerich@example.org
                           links:
-                            self: /users/1054
+                            self: /users/24
                       meta:
                         pagination:
                           total: 100
@@ -1087,28 +1093,28 @@ paths:
                         example:
                           -
                             type: users
-                            id: '1052'
+                            id: '22'
                             attributes:
-                              name: 'Mr. Madisen Schaden'
-                              email: colt.balistreri@example.net
+                              name: 'Kirstin Nitzsche V'
+                              email: verlie08@example.net
                             links:
-                              self: /users/1052
+                              self: /users/22
                           -
                             type: users
-                            id: '1053'
+                            id: '23'
                             attributes:
-                              name: 'Mrs. Kirsten Ward'
-                              email: cbeier@example.com
+                              name: 'Cynthia Fahey'
+                              email: balistreri.josiane@example.net
                             links:
-                              self: /users/1053
+                              self: /users/23
                           -
                             type: users
-                            id: '1054'
+                            id: '24'
                             attributes:
-                              name: 'Dr. Alan Green'
-                              email: oreilly.jacques@example.com
+                              name: "Rodrigo O'Connell"
+                              email: emanuel.emmerich@example.org
                             links:
-                              self: /users/1054
+                              self: /users/24
                         items:
                           type: object
                           properties:
@@ -1117,22 +1123,22 @@ paths:
                               example: users
                             id:
                               type: string
-                              example: '1052'
+                              example: '22'
                             attributes:
                               type: object
                               properties:
                                 name:
                                   type: string
-                                  example: 'Mr. Madisen Schaden'
+                                  example: 'Kirstin Nitzsche V'
                                 email:
                                   type: string
-                                  example: colt.balistreri@example.net
+                                  example: verlie08@example.net
                             links:
                               type: object
                               properties:
                                 self:
                                   type: string
-                                  example: /users/1052
+                                  example: /users/22
                       meta:
                         type: object
                         properties:
@@ -1203,6 +1209,7 @@ paths:
                           example: 'Resource type "roles" and id "1" is not found.'
       tags:
         - Roles
+      security: []
     parameters:
       -
         in: path
@@ -1232,19 +1239,19 @@ paths:
                       data:
                         -
                           type: users
-                          id: '1055'
+                          id: '25'
                           links:
-                            self: /users/1055
+                            self: /users/25
                         -
                           type: users
-                          id: '1056'
+                          id: '26'
                           links:
-                            self: /users/1056
+                            self: /users/26
                         -
                           type: users
-                          id: '1057'
+                          id: '27'
                           links:
-                            self: /users/1057
+                            self: /users/27
                       meta:
                         pagination:
                           total: 100
@@ -1263,19 +1270,19 @@ paths:
                         example:
                           -
                             type: users
-                            id: '1055'
+                            id: '25'
                             links:
-                              self: /users/1055
+                              self: /users/25
                           -
                             type: users
-                            id: '1056'
+                            id: '26'
                             links:
-                              self: /users/1056
+                              self: /users/26
                           -
                             type: users
-                            id: '1057'
+                            id: '27'
                             links:
-                              self: /users/1057
+                              self: /users/27
                         items:
                           type: object
                           properties:
@@ -1284,13 +1291,13 @@ paths:
                               example: users
                             id:
                               type: string
-                              example: '1055'
+                              example: '25'
                             links:
                               type: object
                               properties:
                                 self:
                                   type: string
-                                  example: /users/1055
+                                  example: /users/25
                       meta:
                         type: object
                         properties:
@@ -1334,19 +1341,19 @@ paths:
                       data:
                         -
                           type: users
-                          id: '1058'
+                          id: '28'
                           links:
-                            self: /users/1058
+                            self: /users/28
                         -
                           type: users
-                          id: '1059'
+                          id: '29'
                           links:
-                            self: /users/1059
+                            self: /users/29
                         -
                           type: users
-                          id: '1060'
+                          id: '30'
                           links:
-                            self: /users/1060
+                            self: /users/30
                       meta:
                         pagination:
                           total: 100
@@ -1365,19 +1372,19 @@ paths:
                         example:
                           -
                             type: users
-                            id: '1058'
+                            id: '28'
                             links:
-                              self: /users/1058
+                              self: /users/28
                           -
                             type: users
-                            id: '1059'
+                            id: '29'
                             links:
-                              self: /users/1059
+                              self: /users/29
                           -
                             type: users
-                            id: '1060'
+                            id: '30'
                             links:
-                              self: /users/1060
+                              self: /users/30
                         items:
                           type: object
                           properties:
@@ -1386,13 +1393,13 @@ paths:
                               example: users
                             id:
                               type: string
-                              example: '1058'
+                              example: '28'
                             links:
                               type: object
                               properties:
                                 self:
                                   type: string
-                                  example: /users/1058
+                                  example: /users/28
                       meta:
                         type: object
                         properties:
@@ -1463,6 +1470,7 @@ paths:
                           example: 'Resource type "roles" and id "1" is not found.'
       tags:
         - Roles
+      security: []
     post:
       summary: 'Add to Users relationships'
       operationId: addToUsersRelationships
@@ -1482,19 +1490,19 @@ paths:
                       data:
                         -
                           type: users
-                          id: '1061'
+                          id: '31'
                           links:
-                            self: /users/1061
+                            self: /users/31
                         -
                           type: users
-                          id: '1062'
+                          id: '32'
                           links:
-                            self: /users/1062
+                            self: /users/32
                         -
                           type: users
-                          id: '1063'
+                          id: '33'
                           links:
-                            self: /users/1063
+                            self: /users/33
                       meta:
                         pagination:
                           total: 100
@@ -1513,19 +1521,19 @@ paths:
                         example:
                           -
                             type: users
-                            id: '1061'
+                            id: '31'
                             links:
-                              self: /users/1061
+                              self: /users/31
                           -
                             type: users
-                            id: '1062'
+                            id: '32'
                             links:
-                              self: /users/1062
+                              self: /users/32
                           -
                             type: users
-                            id: '1063'
+                            id: '33'
                             links:
-                              self: /users/1063
+                              self: /users/33
                         items:
                           type: object
                           properties:
@@ -1534,13 +1542,13 @@ paths:
                               example: users
                             id:
                               type: string
-                              example: '1061'
+                              example: '31'
                             links:
                               type: object
                               properties:
                                 self:
                                   type: string
-                                  example: /users/1061
+                                  example: /users/31
                       meta:
                         type: object
                         properties:
@@ -1584,19 +1592,19 @@ paths:
                       data:
                         -
                           type: users
-                          id: '1064'
+                          id: '34'
                           links:
-                            self: /users/1064
+                            self: /users/34
                         -
                           type: users
-                          id: '1065'
+                          id: '35'
                           links:
-                            self: /users/1065
+                            self: /users/35
                         -
                           type: users
-                          id: '1066'
+                          id: '36'
                           links:
-                            self: /users/1066
+                            self: /users/36
                       meta:
                         pagination:
                           total: 100
@@ -1615,19 +1623,19 @@ paths:
                         example:
                           -
                             type: users
-                            id: '1064'
+                            id: '34'
                             links:
-                              self: /users/1064
+                              self: /users/34
                           -
                             type: users
-                            id: '1065'
+                            id: '35'
                             links:
-                              self: /users/1065
+                              self: /users/35
                           -
                             type: users
-                            id: '1066'
+                            id: '36'
                             links:
-                              self: /users/1066
+                              self: /users/36
                         items:
                           type: object
                           properties:
@@ -1636,13 +1644,13 @@ paths:
                               example: users
                             id:
                               type: string
-                              example: '1064'
+                              example: '34'
                             links:
                               type: object
                               properties:
                                 self:
                                   type: string
-                                  example: /users/1064
+                                  example: /users/34
                       meta:
                         type: object
                         properties:
@@ -1699,6 +1707,7 @@ paths:
                     type: object
               required:
                 - data
+      security: []
     patch:
       summary: 'Update Users relationships'
       operationId: updateUsersRelationships
@@ -1718,19 +1727,19 @@ paths:
                       data:
                         -
                           type: users
-                          id: '1067'
+                          id: '37'
                           links:
-                            self: /users/1067
+                            self: /users/37
                         -
                           type: users
-                          id: '1068'
+                          id: '38'
                           links:
-                            self: /users/1068
+                            self: /users/38
                         -
                           type: users
-                          id: '1069'
+                          id: '39'
                           links:
-                            self: /users/1069
+                            self: /users/39
                       meta:
                         pagination:
                           total: 100
@@ -1749,19 +1758,19 @@ paths:
                         example:
                           -
                             type: users
-                            id: '1067'
+                            id: '37'
                             links:
-                              self: /users/1067
+                              self: /users/37
                           -
                             type: users
-                            id: '1068'
+                            id: '38'
                             links:
-                              self: /users/1068
+                              self: /users/38
                           -
                             type: users
-                            id: '1069'
+                            id: '39'
                             links:
-                              self: /users/1069
+                              self: /users/39
                         items:
                           type: object
                           properties:
@@ -1770,13 +1779,13 @@ paths:
                               example: users
                             id:
                               type: string
-                              example: '1067'
+                              example: '37'
                             links:
                               type: object
                               properties:
                                 self:
                                   type: string
-                                  example: /users/1067
+                                  example: /users/37
                       meta:
                         type: object
                         properties:
@@ -1820,19 +1829,19 @@ paths:
                       data:
                         -
                           type: users
-                          id: '1070'
+                          id: '40'
                           links:
-                            self: /users/1070
+                            self: /users/40
                         -
                           type: users
-                          id: '1071'
+                          id: '41'
                           links:
-                            self: /users/1071
+                            self: /users/41
                         -
                           type: users
-                          id: '1072'
+                          id: '42'
                           links:
-                            self: /users/1072
+                            self: /users/42
                       meta:
                         pagination:
                           total: 100
@@ -1851,19 +1860,19 @@ paths:
                         example:
                           -
                             type: users
-                            id: '1070'
+                            id: '40'
                             links:
-                              self: /users/1070
+                              self: /users/40
                           -
                             type: users
-                            id: '1071'
+                            id: '41'
                             links:
-                              self: /users/1071
+                              self: /users/41
                           -
                             type: users
-                            id: '1072'
+                            id: '42'
                             links:
-                              self: /users/1072
+                              self: /users/42
                         items:
                           type: object
                           properties:
@@ -1872,13 +1881,13 @@ paths:
                               example: users
                             id:
                               type: string
-                              example: '1070'
+                              example: '40'
                             links:
                               type: object
                               properties:
                                 self:
                                   type: string
-                                  example: /users/1070
+                                  example: /users/40
                       meta:
                         type: object
                         properties:
@@ -1935,6 +1944,7 @@ paths:
                     type: object
               required:
                 - data
+      security: []
     delete:
       summary: 'Remove from Users relationships'
       operationId: removeFromUsersRelationships
@@ -1963,6 +1973,7 @@ paths:
                     type: object
               required:
                 - data
+      security: []
     parameters:
       -
         in: path
@@ -1972,76 +1983,6 @@ paths:
         required: true
         schema:
           type: number
-  /users/me:
-    get:
-      summary: 'User Me'
-      operationId: userMe
-      description: "Return currently authenticated user's resource.\nShould be used with authentication logic, first login than use this endpoint."
-      parameters:
-        -
-          in: query
-          name: 'fields[users]'
-          description: "Sparse fieldsets - specify which fields to include in the response for each resource type. ([Spec](https://jsonapi.org/format/#fetching-sparse-fieldsets))\n\n**Available fields:** `name`, `email`"
-          required: false
-          schema:
-            type: string
-            description: "Sparse fieldsets - specify which fields to include in the response for each resource type. ([Spec](https://jsonapi.org/format/#fetching-sparse-fieldsets))\n\n**Available fields:** `name`, `email`"
-            nullable: false
-      responses:
-        200:
-          description: ''
-          content:
-            application/json:
-              schema:
-                type: object
-                example:
-                  data:
-                    type: users
-                    id: '1032'
-                    attributes:
-                      name: 'Prof. Mina Bauch'
-                      email: okeefe.isidro@example.org
-                    links:
-                      self: /users/1032
-                properties:
-                  data:
-                    type: object
-                    properties:
-                      type:
-                        type: string
-                        example: users
-                      id:
-                        type: string
-                        example: '1032'
-                      attributes:
-                        type: object
-                        properties:
-                          name:
-                            type: string
-                            example: 'Prof. Mina Bauch'
-                          email:
-                            type: string
-                            example: okeefe.isidro@example.org
-                      links:
-                        type: object
-                        properties:
-                          self:
-                            type: string
-                            example: /users/1032
-        401:
-          description: ''
-          content:
-            application/json:
-              schema:
-                type: object
-                example:
-                  message: Unauthenticated.
-                properties:
-                  message:
-                    type: string
-                    example: Unauthenticated.
-      tags:
-        - Users
   /users:
     post:
       summary: 'User registration'
@@ -2067,12 +2008,12 @@ paths:
                 example:
                   data:
                     type: users
-                    id: '1035'
+                    id: '3'
                     attributes:
                       name: 'Clara Cronin V'
                       email: wleuschke@example.net
                     links:
-                      self: /users/1035
+                      self: /users/3
                 properties:
                   data:
                     type: object
@@ -2082,7 +2023,7 @@ paths:
                         example: users
                       id:
                         type: string
-                        example: '1035'
+                        example: '3'
                       attributes:
                         type: object
                         properties:
@@ -2097,7 +2038,7 @@ paths:
                         properties:
                           self:
                             type: string
-                            example: /users/1035
+                            example: /users/3
       tags:
         - Users
       requestBody:
@@ -2145,6 +2086,7 @@ paths:
                         - name
                   required:
                     - type
+      security: []
     get:
       summary: 'List Users'
       operationId: listUsers
@@ -2201,28 +2143,28 @@ paths:
                   data:
                     -
                       type: users
-                      id: '1042'
+                      id: '12'
                       attributes:
-                        name: "Rodrigo O'Connell"
-                        email: emanuel.emmerich@example.org
+                        name: 'Mrs. Kirsten Ward'
+                        email: cbeier@example.com
                       links:
-                        self: /users/1042
+                        self: /users/12
                     -
                       type: users
-                      id: '1043'
+                      id: '13'
                       attributes:
-                        name: 'Liliana Conroy'
-                        email: franecki.brennon@example.org
+                        name: 'Dr. Alan Green'
+                        email: oreilly.jacques@example.com
                       links:
-                        self: /users/1043
+                        self: /users/13
                     -
                       type: users
-                      id: '1044'
+                      id: '14'
                       attributes:
-                        name: 'Mr. Murl Cruickshank Jr.'
-                        email: modesta58@example.net
+                        name: 'Cristobal Smith'
+                        email: bcruickshank@example.org
                       links:
-                        self: /users/1044
+                        self: /users/14
                   meta:
                     pagination:
                       total: 100
@@ -2241,28 +2183,28 @@ paths:
                     example:
                       -
                         type: users
-                        id: '1042'
+                        id: '12'
                         attributes:
-                          name: "Rodrigo O'Connell"
-                          email: emanuel.emmerich@example.org
+                          name: 'Mrs. Kirsten Ward'
+                          email: cbeier@example.com
                         links:
-                          self: /users/1042
+                          self: /users/12
                       -
                         type: users
-                        id: '1043'
+                        id: '13'
                         attributes:
-                          name: 'Liliana Conroy'
-                          email: franecki.brennon@example.org
+                          name: 'Dr. Alan Green'
+                          email: oreilly.jacques@example.com
                         links:
-                          self: /users/1043
+                          self: /users/13
                       -
                         type: users
-                        id: '1044'
+                        id: '14'
                         attributes:
-                          name: 'Mr. Murl Cruickshank Jr.'
-                          email: modesta58@example.net
+                          name: 'Cristobal Smith'
+                          email: bcruickshank@example.org
                         links:
-                          self: /users/1044
+                          self: /users/14
                     items:
                       type: object
                       properties:
@@ -2271,22 +2213,22 @@ paths:
                           example: users
                         id:
                           type: string
-                          example: '1042'
+                          example: '12'
                         attributes:
                           type: object
                           properties:
                             name:
                               type: string
-                              example: "Rodrigo O'Connell"
+                              example: 'Mrs. Kirsten Ward'
                             email:
                               type: string
-                              example: emanuel.emmerich@example.org
+                              example: cbeier@example.com
                         links:
                           type: object
                           properties:
                             self:
                               type: string
-                              example: /users/1042
+                              example: /users/12
                   meta:
                     type: object
                     properties:
@@ -2362,6 +2304,78 @@ paths:
                           example: 'No "viewAny" ability on "users" resource.'
       tags:
         - Users
+      security: []
+  /users/me:
+    get:
+      summary: 'User Me'
+      operationId: userMe
+      description: "Return currently authenticated user's resource.\nShould be used with authentication logic, first login than use this endpoint."
+      parameters:
+        -
+          in: query
+          name: 'fields[users]'
+          description: "Sparse fieldsets - specify which fields to include in the response for each resource type. ([Spec](https://jsonapi.org/format/#fetching-sparse-fieldsets))\n\n**Available fields:** `name`, `email`"
+          required: false
+          schema:
+            type: string
+            description: "Sparse fieldsets - specify which fields to include in the response for each resource type. ([Spec](https://jsonapi.org/format/#fetching-sparse-fieldsets))\n\n**Available fields:** `name`, `email`"
+            nullable: false
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  data:
+                    type: users
+                    id: '5'
+                    attributes:
+                      name: 'Donny Leffler'
+                      email: mitchell.matilda@example.org
+                    links:
+                      self: /users/5
+                properties:
+                  data:
+                    type: object
+                    properties:
+                      type:
+                        type: string
+                        example: users
+                      id:
+                        type: string
+                        example: '5'
+                      attributes:
+                        type: object
+                        properties:
+                          name:
+                            type: string
+                            example: 'Donny Leffler'
+                          email:
+                            type: string
+                            example: mitchell.matilda@example.org
+                      links:
+                        type: object
+                        properties:
+                          self:
+                            type: string
+                            example: /users/5
+        401:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: Unauthenticated.
+                properties:
+                  message:
+                    type: string
+                    example: Unauthenticated.
+      tags:
+        - Users
+      security: []
   '/users/{id}':
     patch:
       summary: 'Update User'
@@ -2387,12 +2401,12 @@ paths:
                 example:
                   data:
                     type: users
-                    id: '1037'
+                    id: '7'
                     attributes:
                       name: 'Clara Cronin V'
                       email: ferne52@example.com
                     links:
-                      self: /users/1037
+                      self: /users/7
                 properties:
                   data:
                     type: object
@@ -2402,7 +2416,7 @@ paths:
                         example: users
                       id:
                         type: string
-                        example: '1037'
+                        example: '7'
                       attributes:
                         type: object
                         properties:
@@ -2417,7 +2431,7 @@ paths:
                         properties:
                           self:
                             type: string
-                            example: /users/1037
+                            example: /users/7
       tags:
         - Users
       requestBody:
@@ -2452,6 +2466,7 @@ paths:
                           description: 'Must not be greater than 255 characters.'
                           example: u
                           nullable: false
+      security: []
     get:
       summary: 'Show User'
       operationId: showUser
@@ -2476,12 +2491,12 @@ paths:
                 example:
                   data:
                     type: users
-                    id: '1046'
+                    id: '16'
                     attributes:
-                      name: 'Prof. Annabelle Kshlerin'
-                      email: micaela88@example.org
+                      name: 'Mr. Gilbert Swift V'
+                      email: hirthe.theo@example.com
                     links:
-                      self: /users/1046
+                      self: /users/16
                 properties:
                   data:
                     type: object
@@ -2491,22 +2506,22 @@ paths:
                         example: users
                       id:
                         type: string
-                        example: '1046'
+                        example: '16'
                       attributes:
                         type: object
                         properties:
                           name:
                             type: string
-                            example: 'Prof. Annabelle Kshlerin'
+                            example: 'Mr. Gilbert Swift V'
                           email:
                             type: string
-                            example: micaela88@example.org
+                            example: hirthe.theo@example.com
                       links:
                         type: object
                         properties:
                           self:
                             type: string
-                            example: /users/1046
+                            example: /users/16
         404:
           description: ''
           content:
@@ -2541,6 +2556,7 @@ paths:
                           example: 'Resource type "users" and id "1" is not found.'
       tags:
         - Users
+      security: []
     delete:
       summary: 'Delete User'
       operationId: deleteUser
@@ -2551,6 +2567,7 @@ paths:
           description: ''
       tags:
         - Users
+      security: []
     parameters:
       -
         in: path
@@ -2589,28 +2606,28 @@ paths:
                       data:
                         -
                           type: roles
-                          id: '1001'
+                          id: '16'
                           attributes:
-                            name: quia
+                            name: modi
                             permissions: []
                           links:
-                            self: /roles/1001
+                            self: /roles/16
                         -
                           type: roles
-                          id: '1002'
+                          id: '17'
                           attributes:
-                            name: officia
+                            name: ipsum
                             permissions: []
                           links:
-                            self: /roles/1002
+                            self: /roles/17
                         -
                           type: roles
-                          id: '1003'
+                          id: '18'
                           attributes:
-                            name: est
+                            name: nostrum
                             permissions: []
                           links:
-                            self: /roles/1003
+                            self: /roles/18
                       meta:
                         pagination:
                           total: 100
@@ -2629,28 +2646,28 @@ paths:
                         example:
                           -
                             type: roles
-                            id: '1001'
+                            id: '16'
                             attributes:
-                              name: quia
+                              name: modi
                               permissions: []
                             links:
-                              self: /roles/1001
+                              self: /roles/16
                           -
                             type: roles
-                            id: '1002'
+                            id: '17'
                             attributes:
-                              name: officia
+                              name: ipsum
                               permissions: []
                             links:
-                              self: /roles/1002
+                              self: /roles/17
                           -
                             type: roles
-                            id: '1003'
+                            id: '18'
                             attributes:
-                              name: est
+                              name: nostrum
                               permissions: []
                             links:
-                              self: /roles/1003
+                              self: /roles/18
                         items:
                           type: object
                           properties:
@@ -2659,13 +2676,13 @@ paths:
                               example: roles
                             id:
                               type: string
-                              example: '1001'
+                              example: '16'
                             attributes:
                               type: object
                               properties:
                                 name:
                                   type: string
-                                  example: quia
+                                  example: modi
                                 permissions:
                                   type: array
                                   example: []
@@ -2674,7 +2691,7 @@ paths:
                               properties:
                                 self:
                                   type: string
-                                  example: /roles/1001
+                                  example: /roles/16
                       meta:
                         type: object
                         properties:
@@ -2718,28 +2735,28 @@ paths:
                       data:
                         -
                           type: roles
-                          id: '1004'
+                          id: '19'
                           attributes:
-                            name: dignissimos
+                            name: omnis
                             permissions: []
                           links:
-                            self: /roles/1004
+                            self: /roles/19
                         -
                           type: roles
-                          id: '1005'
+                          id: '20'
                           attributes:
-                            name: neque
+                            name: autem
                             permissions: []
                           links:
-                            self: /roles/1005
+                            self: /roles/20
                         -
                           type: roles
-                          id: '1006'
+                          id: '21'
                           attributes:
-                            name: blanditiis
+                            name: consequatur
                             permissions: []
                           links:
-                            self: /roles/1006
+                            self: /roles/21
                       meta:
                         pagination:
                           total: 100
@@ -2758,28 +2775,28 @@ paths:
                         example:
                           -
                             type: roles
-                            id: '1004'
+                            id: '19'
                             attributes:
-                              name: dignissimos
+                              name: omnis
                               permissions: []
                             links:
-                              self: /roles/1004
+                              self: /roles/19
                           -
                             type: roles
-                            id: '1005'
+                            id: '20'
                             attributes:
-                              name: neque
+                              name: autem
                               permissions: []
                             links:
-                              self: /roles/1005
+                              self: /roles/20
                           -
                             type: roles
-                            id: '1006'
+                            id: '21'
                             attributes:
-                              name: blanditiis
+                              name: consequatur
                               permissions: []
                             links:
-                              self: /roles/1006
+                              self: /roles/21
                         items:
                           type: object
                           properties:
@@ -2788,13 +2805,13 @@ paths:
                               example: roles
                             id:
                               type: string
-                              example: '1004'
+                              example: '19'
                             attributes:
                               type: object
                               properties:
                                 name:
                                   type: string
-                                  example: dignissimos
+                                  example: omnis
                                 permissions:
                                   type: array
                                   example: []
@@ -2803,7 +2820,7 @@ paths:
                               properties:
                                 self:
                                   type: string
-                                  example: /roles/1004
+                                  example: /roles/19
                       meta:
                         type: object
                         properties:
@@ -2874,6 +2891,7 @@ paths:
                           example: 'Resource type "users" and id "1" is not found.'
       tags:
         - Users
+      security: []
     parameters:
       -
         in: path
@@ -2903,19 +2921,19 @@ paths:
                       data:
                         -
                           type: roles
-                          id: '1008'
+                          id: '23'
                           links:
-                            self: /roles/1008
+                            self: /roles/23
                         -
                           type: roles
-                          id: '1009'
+                          id: '24'
                           links:
-                            self: /roles/1009
+                            self: /roles/24
                         -
                           type: roles
-                          id: '1010'
+                          id: '25'
                           links:
-                            self: /roles/1010
+                            self: /roles/25
                       meta:
                         pagination:
                           total: 100
@@ -2934,19 +2952,19 @@ paths:
                         example:
                           -
                             type: roles
-                            id: '1008'
+                            id: '23'
                             links:
-                              self: /roles/1008
+                              self: /roles/23
                           -
                             type: roles
-                            id: '1009'
+                            id: '24'
                             links:
-                              self: /roles/1009
+                              self: /roles/24
                           -
                             type: roles
-                            id: '1010'
+                            id: '25'
                             links:
-                              self: /roles/1010
+                              self: /roles/25
                         items:
                           type: object
                           properties:
@@ -2955,13 +2973,13 @@ paths:
                               example: roles
                             id:
                               type: string
-                              example: '1008'
+                              example: '23'
                             links:
                               type: object
                               properties:
                                 self:
                                   type: string
-                                  example: /roles/1008
+                                  example: /roles/23
                       meta:
                         type: object
                         properties:
@@ -3005,19 +3023,19 @@ paths:
                       data:
                         -
                           type: roles
-                          id: '1011'
+                          id: '26'
                           links:
-                            self: /roles/1011
+                            self: /roles/26
                         -
                           type: roles
-                          id: '1012'
+                          id: '27'
                           links:
-                            self: /roles/1012
+                            self: /roles/27
                         -
                           type: roles
-                          id: '1013'
+                          id: '28'
                           links:
-                            self: /roles/1013
+                            self: /roles/28
                       meta:
                         pagination:
                           total: 100
@@ -3036,19 +3054,19 @@ paths:
                         example:
                           -
                             type: roles
-                            id: '1011'
+                            id: '26'
                             links:
-                              self: /roles/1011
+                              self: /roles/26
                           -
                             type: roles
-                            id: '1012'
+                            id: '27'
                             links:
-                              self: /roles/1012
+                              self: /roles/27
                           -
                             type: roles
-                            id: '1013'
+                            id: '28'
                             links:
-                              self: /roles/1013
+                              self: /roles/28
                         items:
                           type: object
                           properties:
@@ -3057,13 +3075,13 @@ paths:
                               example: roles
                             id:
                               type: string
-                              example: '1011'
+                              example: '26'
                             links:
                               type: object
                               properties:
                                 self:
                                   type: string
-                                  example: /roles/1011
+                                  example: /roles/26
                       meta:
                         type: object
                         properties:
@@ -3134,6 +3152,7 @@ paths:
                           example: 'Resource type "users" and id "1" is not found.'
       tags:
         - Users
+      security: []
     post:
       summary: 'Add to Roles relationships'
       operationId: addToRolesRelationships
@@ -3153,19 +3172,19 @@ paths:
                       data:
                         -
                           type: roles
-                          id: '1014'
+                          id: '29'
                           links:
-                            self: /roles/1014
+                            self: /roles/29
                         -
                           type: roles
-                          id: '1015'
+                          id: '30'
                           links:
-                            self: /roles/1015
+                            self: /roles/30
                         -
                           type: roles
-                          id: '1016'
+                          id: '31'
                           links:
-                            self: /roles/1016
+                            self: /roles/31
                       meta:
                         pagination:
                           total: 100
@@ -3184,19 +3203,19 @@ paths:
                         example:
                           -
                             type: roles
-                            id: '1014'
+                            id: '29'
                             links:
-                              self: /roles/1014
+                              self: /roles/29
                           -
                             type: roles
-                            id: '1015'
+                            id: '30'
                             links:
-                              self: /roles/1015
+                              self: /roles/30
                           -
                             type: roles
-                            id: '1016'
+                            id: '31'
                             links:
-                              self: /roles/1016
+                              self: /roles/31
                         items:
                           type: object
                           properties:
@@ -3205,13 +3224,13 @@ paths:
                               example: roles
                             id:
                               type: string
-                              example: '1014'
+                              example: '29'
                             links:
                               type: object
                               properties:
                                 self:
                                   type: string
-                                  example: /roles/1014
+                                  example: /roles/29
                       meta:
                         type: object
                         properties:
@@ -3255,19 +3274,19 @@ paths:
                       data:
                         -
                           type: roles
-                          id: '1017'
+                          id: '32'
                           links:
-                            self: /roles/1017
+                            self: /roles/32
                         -
                           type: roles
-                          id: '1018'
+                          id: '33'
                           links:
-                            self: /roles/1018
+                            self: /roles/33
                         -
                           type: roles
-                          id: '1019'
+                          id: '34'
                           links:
-                            self: /roles/1019
+                            self: /roles/34
                       meta:
                         pagination:
                           total: 100
@@ -3286,19 +3305,19 @@ paths:
                         example:
                           -
                             type: roles
-                            id: '1017'
+                            id: '32'
                             links:
-                              self: /roles/1017
+                              self: /roles/32
                           -
                             type: roles
-                            id: '1018'
+                            id: '33'
                             links:
-                              self: /roles/1018
+                              self: /roles/33
                           -
                             type: roles
-                            id: '1019'
+                            id: '34'
                             links:
-                              self: /roles/1019
+                              self: /roles/34
                         items:
                           type: object
                           properties:
@@ -3307,13 +3326,13 @@ paths:
                               example: roles
                             id:
                               type: string
-                              example: '1017'
+                              example: '32'
                             links:
                               type: object
                               properties:
                                 self:
                                   type: string
-                                  example: /roles/1017
+                                  example: /roles/32
                       meta:
                         type: object
                         properties:
@@ -3370,6 +3389,7 @@ paths:
                     type: object
               required:
                 - data
+      security: []
     patch:
       summary: 'Update Roles relationships'
       operationId: updateRolesRelationships
@@ -3389,19 +3409,19 @@ paths:
                       data:
                         -
                           type: roles
-                          id: '1020'
+                          id: '35'
                           links:
-                            self: /roles/1020
+                            self: /roles/35
                         -
                           type: roles
-                          id: '1021'
+                          id: '36'
                           links:
-                            self: /roles/1021
+                            self: /roles/36
                         -
                           type: roles
-                          id: '1022'
+                          id: '37'
                           links:
-                            self: /roles/1022
+                            self: /roles/37
                       meta:
                         pagination:
                           total: 100
@@ -3420,19 +3440,19 @@ paths:
                         example:
                           -
                             type: roles
-                            id: '1020'
+                            id: '35'
                             links:
-                              self: /roles/1020
+                              self: /roles/35
                           -
                             type: roles
-                            id: '1021'
+                            id: '36'
                             links:
-                              self: /roles/1021
+                              self: /roles/36
                           -
                             type: roles
-                            id: '1022'
+                            id: '37'
                             links:
-                              self: /roles/1022
+                              self: /roles/37
                         items:
                           type: object
                           properties:
@@ -3441,13 +3461,13 @@ paths:
                               example: roles
                             id:
                               type: string
-                              example: '1020'
+                              example: '35'
                             links:
                               type: object
                               properties:
                                 self:
                                   type: string
-                                  example: /roles/1020
+                                  example: /roles/35
                       meta:
                         type: object
                         properties:
@@ -3491,19 +3511,19 @@ paths:
                       data:
                         -
                           type: roles
-                          id: '1023'
+                          id: '38'
                           links:
-                            self: /roles/1023
+                            self: /roles/38
                         -
                           type: roles
-                          id: '1024'
+                          id: '39'
                           links:
-                            self: /roles/1024
+                            self: /roles/39
                         -
                           type: roles
-                          id: '1025'
+                          id: '40'
                           links:
-                            self: /roles/1025
+                            self: /roles/40
                       meta:
                         pagination:
                           total: 100
@@ -3522,19 +3542,19 @@ paths:
                         example:
                           -
                             type: roles
-                            id: '1023'
+                            id: '38'
                             links:
-                              self: /roles/1023
+                              self: /roles/38
                           -
                             type: roles
-                            id: '1024'
+                            id: '39'
                             links:
-                              self: /roles/1024
+                              self: /roles/39
                           -
                             type: roles
-                            id: '1025'
+                            id: '40'
                             links:
-                              self: /roles/1025
+                              self: /roles/40
                         items:
                           type: object
                           properties:
@@ -3543,13 +3563,13 @@ paths:
                               example: roles
                             id:
                               type: string
-                              example: '1023'
+                              example: '38'
                             links:
                               type: object
                               properties:
                                 self:
                                   type: string
-                                  example: /roles/1023
+                                  example: /roles/38
                       meta:
                         type: object
                         properties:
@@ -3606,6 +3626,7 @@ paths:
                     type: object
               required:
                 - data
+      security: []
     delete:
       summary: 'Remove from Roles relationships'
       operationId: removeFromRolesRelationships
@@ -3634,6 +3655,7 @@ paths:
                     type: object
               required:
                 - data
+      security: []
     parameters:
       -
         in: path

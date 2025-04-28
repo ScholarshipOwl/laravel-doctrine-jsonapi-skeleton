@@ -7,7 +7,7 @@ This project uses [Scribe](https://scribe.knuckles.wtf/) to automatically genera
 Scribe is already included as a dev dependency. If you need to reinstall, run:
 
 ```bash
-composer require --dev knuckleswtf/scribe
+composer require knuckleswtf/scribe
 ```
 
 ## Publishing Scribe Config

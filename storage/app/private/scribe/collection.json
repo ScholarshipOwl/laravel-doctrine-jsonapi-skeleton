@@ -10,7 +10,7 @@
     ],
     "info": {
         "name": "Laravel Doctrine JSON:API Skeleton API Documentation",
-        "_postman_id": "d8874a11-2f46-407e-989a-09ba816b7d81",
+        "_postman_id": "b93521d9-d682-4e5b-bdee-241b9f3e667f",
         "description": "",
         "schema": "https:\/\/schema.getpostman.com\/json\/collection\/v2.1.0\/collection.json"
     },
@@ -43,7 +43,10 @@
                             "mode": "raw",
                             "raw": "{\"email\":\"gbailey@example.net\",\"password\":\"|]|{+-\"}"
                         },
-                        "description": ""
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
                     },
                     "response": [
                         {
@@ -84,7 +87,10 @@
                             "mode": "raw",
                             "raw": "{\"email\":\"gbailey@example.net\"}"
                         },
-                        "description": ""
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
                     },
                     "response": [
                         {
@@ -125,7 +131,10 @@
                             "mode": "raw",
                             "raw": "{\"email\":\"gbailey@example.net\",\"password\":\"+-0pBNvYgxwmi\\\/#iw\",\"token\":\"architecto\"}"
                         },
-                        "description": ""
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
                     },
                     "response": [
                         {
@@ -159,7 +168,10 @@
                             }
                         ],
                         "body": null,
-                        "description": ""
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
                     },
                     "response": [
                         {
@@ -228,7 +240,10 @@
                             }
                         ],
                         "body": null,
-                        "description": "Retrieve a list of Roles."
+                        "description": "Retrieve a list of Roles.",
+                        "auth": {
+                            "type": "noauth"
+                        }
                     },
                     "response": [
                         {
@@ -239,7 +254,7 @@
                                 }
                             ],
                             "code": 200,
-                            "body": "{\"data\":[{\"type\":\"roles\",\"id\":\"990\",\"attributes\":{\"name\":\"qui\",\"permissions\":[]},\"links\":{\"self\":\"\/roles\/990\"}},{\"type\":\"roles\",\"id\":\"991\",\"attributes\":{\"name\":\"commodi\",\"permissions\":[]},\"links\":{\"self\":\"\/roles\/991\"}},{\"type\":\"roles\",\"id\":\"992\",\"attributes\":{\"name\":\"incidunt\",\"permissions\":[]},\"links\":{\"self\":\"\/roles\/992\"}}],\"meta\":{\"pagination\":{\"total\":100,\"count\":20,\"per_page\":3,\"current_page\":1,\"total_pages\":5}},\"links\":{\"self\":\"roles?page%5Bnumber%5D=1&page%5Bsize%5D=3\",\"first\":\"roles?page%5Bnumber%5D=1&page%5Bsize%5D=3\",\"next\":\"roles?page%5Bnumber%5D=1&page%5Bsize%5D=3\",\"last\":\"roles?page%5Bnumber%5D=1&page%5Bsize%5D=3\"}}",
+                            "body": "{\"data\":[{\"type\":\"roles\",\"id\":\"5\",\"attributes\":{\"name\":\"et\",\"permissions\":[]},\"links\":{\"self\":\"\/roles\/5\"}},{\"type\":\"roles\",\"id\":\"6\",\"attributes\":{\"name\":\"tenetur\",\"permissions\":[]},\"links\":{\"self\":\"\/roles\/6\"}},{\"type\":\"roles\",\"id\":\"7\",\"attributes\":{\"name\":\"ab\",\"permissions\":[]},\"links\":{\"self\":\"\/roles\/7\"}}],\"meta\":{\"pagination\":{\"total\":100,\"count\":20,\"per_page\":3,\"current_page\":1,\"total_pages\":5}},\"links\":{\"self\":\"roles?page%5Bnumber%5D=1&page%5Bsize%5D=3\",\"first\":\"roles?page%5Bnumber%5D=1&page%5Bsize%5D=3\",\"next\":\"roles?page%5Bnumber%5D=1&page%5Bsize%5D=3\",\"last\":\"roles?page%5Bnumber%5D=1&page%5Bsize%5D=3\"}}",
                             "name": ""
                         },
                         {
@@ -254,7 +269,7 @@
                                 },
                                 {
                                     "key": "set-cookie",
-                                    "value": "XSRF-TOKEN=eyJpdiI6InBBQUlPQTFLZTIvOEU3L0pSY09kdkE9PSIsInZhbHVlIjoiSHhrd21Da0VkRFRTd1UvOUE4ZkhZUUN6MnhNbWt0RW9mZHROMXhTbUFqWlNTWXJJOHlYeDJHc3FCcnRxazVtU3loNkY2ZG94WkZQcm5idkNLT3QveHRteUxTUGJKTW8xQXRoVjZXbHpselFlQmU2UEtmZXE5WjNDbVF5QU00SFYiLCJtYWMiOiIwNWJiNjcwYzc3NTFlOTdhMDVlZTA2MmU3YjM5YWFkNWU1NjEwYjE1MjJmODEzYzk5MGNhN2E3YWQxMTQyNTdlIiwidGFnIjoiIn0%3D; expires=Tue, 29 Apr 2025 18:55:40 GMT; Max-Age=7200; path=\/; samesite=lax; laravel_session=eyJpdiI6IkxTM21OZWZ5MUdaUXdwdzNoalRjUnc9PSIsInZhbHVlIjoiNCtxK1o4KzBWc0NNRE41SkR1ZllLNnR1aDJrMEI4QnJTeldObDlwbUpYVXY3RnI5dU1tbGZkL2FaN3E4UmR0L0NHOHQ4VDEwU1VqNUczNXF3bzBza2kyQjVJTUl0UEJTZkEzQ0grUlEzTG1IaWVzVXhtNjJFY2lCODFFd1ZYZm4iLCJtYWMiOiJjYjIxYzA0ODRmNGRjN2EzZDRlMWY0OGI1OTRjZmJiNTlkYmVkNzQzNTE3ODEzN2NmZTE4MDVjYTk2NjZmY2Y3IiwidGFnIjoiIn0%3D; expires=Tue, 29 Apr 2025 18:55:40 GMT; Max-Age=7200; path=\/; httponly; samesite=lax"
+                                    "value": "XSRF-TOKEN=eyJpdiI6IjRCV0pja0tlZXFJTTVVNGFFZ215OWc9PSIsInZhbHVlIjoidlkxRHBvWjREZmdhbzBrbTdXUzlDaUFwYVlGT2xWOGdrRXo0T2JjcERIdjdwSWova2lRV2pWMklIbWFHZlgvTHA4YzRZODZIMHVZRlNIOXNJY1NFRlNyNEwwRFNLY2JyNG50ajM1NG5WSmlVUlRkN1E3VG5aNndLZTVBbUpsZm0iLCJtYWMiOiJhODgwZjYwZDFjZjk1NjIxYjc4ZjcwMDU5NDY5ZWQwYmI0MWM1YWJjNzQxMmI3YWQzNDE0ZWVkYzllYWMxOTRhIiwidGFnIjoiIn0%3D; expires=Wed, 30 Apr 2025 12:27:25 GMT; Max-Age=7200; path=\/; samesite=lax; laravel_session=eyJpdiI6IkgvbkpmUnQ0djdWT3pyaDM2SW1xQ2c9PSIsInZhbHVlIjoiZVZCR1d3emsvaXF0QSsxSEQ1WXYvWE1raUFzTittUG42RlpXZ0hUNTNVZktLTVI2ZHJ0aEZJY0V2MUZ1YVR0ZXJiUVhaYm16Y1BaMm1qdTVkNkIvUzl3RFBrYXcvQko4YXRqNmtQdElLeXJtcFBjdk5Na0dKbndxK0tQZ2pQNEsiLCJtYWMiOiJlYzJhYjJiYTBlYTQ2OWQ4ZGIyYjg3OTJiOTg0Y2RmMzI2MThjNDE0YzFiOTJhMzJlZmY0YTFjNDM4NWQ1ZGRlIiwidGFnIjoiIn0%3D; expires=Wed, 30 Apr 2025 12:27:25 GMT; Max-Age=7200; path=\/; httponly; samesite=lax"
                                 }
                             ],
                             "code": 403,
@@ -300,7 +315,10 @@
                             "mode": "raw",
                             "raw": "{\"data\":{\"attributes\":{\"name\":\"b\"},\"relationships\":{\"users\":{\"data\":{\"id\":\"1\",\"type\":\"users\"}}}}}"
                         },
-                        "description": "Create a new Role."
+                        "description": "Create a new Role.",
+                        "auth": {
+                            "type": "noauth"
+                        }
                     },
                     "response": [
                         {
@@ -311,7 +329,7 @@
                                 }
                             ],
                             "code": 201,
-                            "body": "{\"data\":{\"type\":\"roles\",\"id\":\"995\",\"attributes\":{\"name\":\"eius\",\"permissions\":[]},\"links\":{\"self\":\"\/roles\/995\"}}}",
+                            "body": "{\"data\":{\"type\":\"roles\",\"id\":\"10\",\"attributes\":{\"name\":\"eius\",\"permissions\":[]},\"links\":{\"self\":\"\/roles\/10\"}}}",
                             "name": "Created resource."
                         }
                     ]
@@ -358,7 +376,10 @@
                             }
                         ],
                         "body": null,
-                        "description": "Retrieve a specific Role by ID."
+                        "description": "Retrieve a specific Role by ID.",
+                        "auth": {
+                            "type": "noauth"
+                        }
                     },
                     "response": [
                         {
@@ -369,7 +390,7 @@
                                 }
                             ],
                             "code": 200,
-                            "body": "{\"data\":{\"type\":\"roles\",\"id\":\"997\",\"attributes\":{\"name\":\"modi\",\"permissions\":[]},\"links\":{\"self\":\"\/roles\/997\"}}}",
+                            "body": "{\"data\":{\"type\":\"roles\",\"id\":\"12\",\"attributes\":{\"name\":\"quos\",\"permissions\":[]},\"links\":{\"self\":\"\/roles\/12\"}}}",
                             "name": ""
                         },
                         {
@@ -384,7 +405,7 @@
                                 },
                                 {
                                     "key": "set-cookie",
-                                    "value": "XSRF-TOKEN=eyJpdiI6IkRIVkJiVTNOSmJNZSs0VlZkMDJHc0E9PSIsInZhbHVlIjoiQ0N0RHByMnMxNnEzaS9mc3JUSjNydDVRQ0RzbFB1WFF3Z2VEakhzb2Njdjh2d3FFNE9TWklRSFJ4U2hzMFNqeng5TGNraVFTOXlpbUZCdERyZHlUaEFWT0RZbEt4Z2V5bEs1YkFRaTN2ZE1XYVBibENwUzF4dG9nWDJ0dzIvZCsiLCJtYWMiOiJjMjRlMzJmNmIyZjYyMGZkYmE4NTBkMmE5OWEyNWVlNDZkNWVlMjQzZDE3MmY0NzVlMDEwMDFhMzE4ZGYwNDM1IiwidGFnIjoiIn0%3D; expires=Tue, 29 Apr 2025 18:55:40 GMT; Max-Age=7200; path=\/; samesite=lax; laravel_session=eyJpdiI6IlhwemthRE8xWVhXQ2Zyb3NSdlUzeVE9PSIsInZhbHVlIjoiM0tSbkhFTXFtME5SdzgveFg4QkJSVUd2eU51cFRYTWpUYzMybEdmTy9aVFdybHExOWQ2OEFZVzVYUzA0bGlKOXN2YXMyM0drNXpiQjd3QlY3MXlWQ0x1S2hpSlRwa3pHcUVXNFB3VlA4L0dsSnVmNXNJNGJVN3RSNmxRanBpV1UiLCJtYWMiOiIzZWYwNDJiNDdhMWQ2N2ZhOGQxMDY5ZjUxMTU0MGYyODcxNmZkOTk2NTEyOTcxNmE1YmQxZWVmMjVmNjYzZmU3IiwidGFnIjoiIn0%3D; expires=Tue, 29 Apr 2025 18:55:40 GMT; Max-Age=7200; path=\/; httponly; samesite=lax"
+                                    "value": "XSRF-TOKEN=eyJpdiI6InUzK28xR1pFbWNobHJWZFcxc0s5dEE9PSIsInZhbHVlIjoiT0xjNHJBNVFNV2g4YjlEcmRSQVd6dFlCbEloRUJvdUNlaGt5a1hHQUZMSlVCUGdZaEE0U1F4N0tuSEdodVFLbVE4TEFsYlFZQWlWNlRiNnJaUU9YcU9MKzI1RGZhQ2hqNjExQzc1V0N3S3Ryc3h1VnliTXpkWElFL2g3MWN2RVEiLCJtYWMiOiI1NGZiMDg2Y2I5ZmVjODE0ZjBlYTkzZjA3YjNkOWJiZjRlNWRlYjhjODE2MjExM2FhODMwMzhiY2E5ZTg3M2ZmIiwidGFnIjoiIn0%3D; expires=Wed, 30 Apr 2025 12:27:25 GMT; Max-Age=7200; path=\/; samesite=lax; laravel_session=eyJpdiI6IlQ4RzR4eldCcjAzZUd5eDB0dE4xU3c9PSIsInZhbHVlIjoiQ2ZFZExhWXhnMEJ0WFF5L1BmaGl0SWNUSkZJNXpwenZLMlNKaW9qZC9yMTl3NkpUK0FQR2dQd1hZc1JhaHdsUU1WZGlZb1lGNEo2OVMyWUFTMHJCMEh2bW9OK0NZWElPenlISHp2K1dHTFM3ZDlCV2pKemtWb2hLYW9kb2NIZmciLCJtYWMiOiIzZmMxYWM0YjgwMDk2Y2M1MmYzZWE5Njg4NGRlY2Y3NTExMDFiMTgzNjM2ZTQzOTUzYTdhNDVkMjQ2ZjNhZDZlIiwidGFnIjoiIn0%3D; expires=Wed, 30 Apr 2025 12:27:25 GMT; Max-Age=7200; path=\/; httponly; samesite=lax"
                                 }
                             ],
                             "code": 404,
@@ -438,7 +459,10 @@
                             "mode": "raw",
                             "raw": "{\"data\":{\"attributes\":{\"name\":\"b\"},\"relationships\":{\"users\":{\"data\":{\"id\":\"1\",\"type\":\"users\"}}}}}"
                         },
-                        "description": "Update a specific Role by ID."
+                        "description": "Update a specific Role by ID.",
+                        "auth": {
+                            "type": "noauth"
+                        }
                     },
                     "response": [
                         {
@@ -449,7 +473,7 @@
                                 }
                             ],
                             "code": 200,
-                            "body": "{\"data\":{\"type\":\"roles\",\"id\":\"999\",\"attributes\":{\"name\":\"animi\",\"permissions\":[]},\"links\":{\"self\":\"\/roles\/999\"}}}",
+                            "body": "{\"data\":{\"type\":\"roles\",\"id\":\"14\",\"attributes\":{\"name\":\"fugiat\",\"permissions\":[]},\"links\":{\"self\":\"\/roles\/14\"}}}",
                             "name": "The updated resource."
                         }
                     ]
@@ -483,7 +507,10 @@
                             }
                         ],
                         "body": null,
-                        "description": "Delete a specific Role by ID."
+                        "description": "Delete a specific Role by ID.",
+                        "auth": {
+                            "type": "noauth"
+                        }
                     },
                     "response": [
                         {
@@ -494,7 +521,7 @@
                                 }
                             ],
                             "code": 204,
-                            "body": "{\"data\":{\"type\":\"roles\",\"id\":\"1000\",\"attributes\":{\"name\":\"omnis\",\"permissions\":[]},\"links\":{\"self\":\"\/roles\/1000\"}}}",
+                            "body": "{\"data\":{\"type\":\"roles\",\"id\":\"15\",\"attributes\":{\"name\":\"sunt\",\"permissions\":[]},\"links\":{\"self\":\"\/roles\/15\"}}}",
                             "name": ""
                         }
                     ]
@@ -541,7 +568,10 @@
                             }
                         ],
                         "body": null,
-                        "description": "Retrieve the list of related Users for a specific Role."
+                        "description": "Retrieve the list of related Users for a specific Role.",
+                        "auth": {
+                            "type": "noauth"
+                        }
                     },
                     "response": [
                         {
@@ -552,7 +582,7 @@
                                 }
                             ],
                             "code": 200,
-                            "body": "{\"data\":[{\"type\":\"users\",\"id\":\"1049\",\"attributes\":{\"name\":\"Myrtis Tromp\",\"email\":\"nstokes@example.org\"},\"links\":{\"self\":\"\/users\/1049\"}},{\"type\":\"users\",\"id\":\"1050\",\"attributes\":{\"name\":\"Dr. Grayson Glover\",\"email\":\"schultz.audrey@example.org\"},\"links\":{\"self\":\"\/users\/1050\"}},{\"type\":\"users\",\"id\":\"1051\",\"attributes\":{\"name\":\"Abbey Gaylord MD\",\"email\":\"qankunding@example.com\"},\"links\":{\"self\":\"\/users\/1051\"}}],\"meta\":{\"pagination\":{\"total\":100,\"count\":20,\"per_page\":3,\"current_page\":1,\"total_pages\":5}},\"links\":{\"self\":\"users?page%5Bnumber%5D=1&page%5Bsize%5D=3\",\"first\":\"users?page%5Bnumber%5D=1&page%5Bsize%5D=3\",\"next\":\"users?page%5Bnumber%5D=1&page%5Bsize%5D=3\",\"last\":\"users?page%5Bnumber%5D=1&page%5Bsize%5D=3\"}}",
+                            "body": "{\"data\":[{\"type\":\"users\",\"id\":\"19\",\"attributes\":{\"name\":\"Jermaine Tillman\",\"email\":\"pfritsch@example.com\"},\"links\":{\"self\":\"\/users\/19\"}},{\"type\":\"users\",\"id\":\"20\",\"attributes\":{\"name\":\"Carey Smitham\",\"email\":\"tleuschke@example.net\"},\"links\":{\"self\":\"\/users\/20\"}},{\"type\":\"users\",\"id\":\"21\",\"attributes\":{\"name\":\"Janick Schultz DDS\",\"email\":\"kconsidine@example.net\"},\"links\":{\"self\":\"\/users\/21\"}}],\"meta\":{\"pagination\":{\"total\":100,\"count\":20,\"per_page\":3,\"current_page\":1,\"total_pages\":5}},\"links\":{\"self\":\"users?page%5Bnumber%5D=1&page%5Bsize%5D=3\",\"first\":\"users?page%5Bnumber%5D=1&page%5Bsize%5D=3\",\"next\":\"users?page%5Bnumber%5D=1&page%5Bsize%5D=3\",\"last\":\"users?page%5Bnumber%5D=1&page%5Bsize%5D=3\"}}",
                             "name": ""
                         },
                         {
@@ -563,7 +593,7 @@
                                 }
                             ],
                             "code": 200,
-                            "body": "{\"data\":[{\"type\":\"users\",\"id\":\"1052\",\"attributes\":{\"name\":\"Mr. Madisen Schaden\",\"email\":\"colt.balistreri@example.net\"},\"links\":{\"self\":\"\/users\/1052\"}},{\"type\":\"users\",\"id\":\"1053\",\"attributes\":{\"name\":\"Mrs. Kirsten Ward\",\"email\":\"cbeier@example.com\"},\"links\":{\"self\":\"\/users\/1053\"}},{\"type\":\"users\",\"id\":\"1054\",\"attributes\":{\"name\":\"Dr. Alan Green\",\"email\":\"oreilly.jacques@example.com\"},\"links\":{\"self\":\"\/users\/1054\"}}],\"meta\":{\"pagination\":{\"total\":100,\"count\":20,\"per_page\":3,\"current_page\":1,\"total_pages\":5}},\"links\":{\"self\":\"users?page%5Bnumber%5D=1&page%5Bsize%5D=3\",\"first\":\"users?page%5Bnumber%5D=1&page%5Bsize%5D=3\",\"next\":\"users?page%5Bnumber%5D=1&page%5Bsize%5D=3\",\"last\":\"users?page%5Bnumber%5D=1&page%5Bsize%5D=3\"}}",
+                            "body": "{\"data\":[{\"type\":\"users\",\"id\":\"22\",\"attributes\":{\"name\":\"Kirstin Nitzsche V\",\"email\":\"verlie08@example.net\"},\"links\":{\"self\":\"\/users\/22\"}},{\"type\":\"users\",\"id\":\"23\",\"attributes\":{\"name\":\"Cynthia Fahey\",\"email\":\"balistreri.josiane@example.net\"},\"links\":{\"self\":\"\/users\/23\"}},{\"type\":\"users\",\"id\":\"24\",\"attributes\":{\"name\":\"Rodrigo O'Connell\",\"email\":\"emanuel.emmerich@example.org\"},\"links\":{\"self\":\"\/users\/24\"}}],\"meta\":{\"pagination\":{\"total\":100,\"count\":20,\"per_page\":3,\"current_page\":1,\"total_pages\":5}},\"links\":{\"self\":\"users?page%5Bnumber%5D=1&page%5Bsize%5D=3\",\"first\":\"users?page%5Bnumber%5D=1&page%5Bsize%5D=3\",\"next\":\"users?page%5Bnumber%5D=1&page%5Bsize%5D=3\",\"last\":\"users?page%5Bnumber%5D=1&page%5Bsize%5D=3\"}}",
                             "name": ""
                         },
                         {
@@ -578,7 +608,7 @@
                                 },
                                 {
                                     "key": "set-cookie",
-                                    "value": "XSRF-TOKEN=eyJpdiI6IjBISDFmeC9NbXp6NHg0eUNrOGM1a3c9PSIsInZhbHVlIjoiVUphcnRsNi8xTGVJTUloZTBNQUUvVitlSko1YWZNRGFFRmpScDV5ZGtySHMzZXJDQzB6NEd3YUk1MDdDMGRxVmUzdzUzWm5hUlY4WkRkZUN6U24yb3VhOXU5RHpEYUUxWEl1c0VnZCtwVkhHa1BMWS9MYi9nZElNUlF1MHE4ZS8iLCJtYWMiOiIzNDc0YTk0MDE3NjNiMTQ0OGJhNGMwZTYzY2UzMDFjMDIwODY4OWZhNzBmNGY4ODE2MGQwNzNlOTQ3MTUzYjcxIiwidGFnIjoiIn0%3D; expires=Tue, 29 Apr 2025 18:55:41 GMT; Max-Age=7200; path=\/; samesite=lax; laravel_session=eyJpdiI6InNxV0tEcjFkR2JQRmovYklKNXVvMHc9PSIsInZhbHVlIjoiNUNPUldqcFFlV0V4TklBc2pwTTdLUFJpV0dNVEV3UXlCQldtRlovUUgxTldYdGNBdTRFd0ZTejh2U0cyZEdyQlJEZ3EvejQwSk1ISjdFK24wbXRDNjdlNGgwQ2xrbC9PczNwN0ZQSGZheGFjSTRyb0d6enEvWDA2QzhXSXBnYXAiLCJtYWMiOiIxNTFjMTFiZDA2NDU0MGI1ZTBhYTYxZjNjYTdhNGExNGY0YTkwNjAxOTA5ODdjOGM3MDhiZGMwMDRkMjNlY2RmIiwidGFnIjoiIn0%3D; expires=Tue, 29 Apr 2025 18:55:41 GMT; Max-Age=7200; path=\/; httponly; samesite=lax"
+                                    "value": "XSRF-TOKEN=eyJpdiI6InB4b3dHb1UzcHNlSEdtL1NCcU9QNnc9PSIsInZhbHVlIjoiazNNNVV0elhPTHJIZXFvMzM2M0pCcWVvWG9tU3kzdFNqNmRQK0dNRnBFMU9TbE5DTDFFNFB1aXBTdnZnVkE0WXlzUkJZRG9MRGpPMmJzSlVYL2FaQUxHeUM1OFkvTUdLVWRqendsbTRRSlkvM3NXbUUrOVhwZDVnYnVaTTBPblEiLCJtYWMiOiIyMTU5YWY1NGM1NjUxYTZkYjcxMzgyNTM0Mzc2NWUzNWVhZWEyYzM3ZDMzNjNlMmY4NmFkZGJlZmM0MmIzM2ZmIiwidGFnIjoiIn0%3D; expires=Wed, 30 Apr 2025 12:27:25 GMT; Max-Age=7200; path=\/; samesite=lax; laravel_session=eyJpdiI6IkxxS3NoUzJpZEFhUkJOSHpVWGl2b2c9PSIsInZhbHVlIjoiMUI2M2pQaFBoalFlajVLUU1hU2hNTVFUaWJoTDRKZVV6ek5mOFF5RGVDNDRRTkhaa0pwb3hYT3lhQ243Y3NETzZab1hYMTRCNDlxaEZRWmorZDBidHgwNHVYREpOcTI2cWFLcUhaVXBnemppVXhEOWwzQ0ZqblQrOHRLMkxEaDUiLCJtYWMiOiI5ZWU5NDhjOWJhOGZhYTMzN2ZhMjllODM4MTBkZDc1NTM2OGFlNWZlOTBiZDIyZTIyOWRmMGRjYTAyNTkxMDE0IiwidGFnIjoiIn0%3D; expires=Wed, 30 Apr 2025 12:27:25 GMT; Max-Age=7200; path=\/; httponly; samesite=lax"
                                 }
                             ],
                             "code": 404,
@@ -620,7 +650,10 @@
                                     }
                                 ],
                                 "body": null,
-                                "description": "Retrieve the identifiers of the related Users for a specific Role."
+                                "description": "Retrieve the identifiers of the related Users for a specific Role.",
+                                "auth": {
+                                    "type": "noauth"
+                                }
                             },
                             "response": [
                                 {
@@ -631,7 +664,7 @@
                                         }
                                     ],
                                     "code": 200,
-                                    "body": "{\"data\":[{\"type\":\"users\",\"id\":\"1055\",\"links\":{\"self\":\"\/users\/1055\"}},{\"type\":\"users\",\"id\":\"1056\",\"links\":{\"self\":\"\/users\/1056\"}},{\"type\":\"users\",\"id\":\"1057\",\"links\":{\"self\":\"\/users\/1057\"}}],\"meta\":{\"pagination\":{\"total\":100,\"count\":20,\"per_page\":3,\"current_page\":1,\"total_pages\":5}},\"links\":{\"self\":\"users?page%5Bnumber%5D=1&page%5Bsize%5D=3\",\"first\":\"users?page%5Bnumber%5D=1&page%5Bsize%5D=3\",\"next\":\"users?page%5Bnumber%5D=1&page%5Bsize%5D=3\",\"last\":\"users?page%5Bnumber%5D=1&page%5Bsize%5D=3\"}}",
+                                    "body": "{\"data\":[{\"type\":\"users\",\"id\":\"25\",\"links\":{\"self\":\"\/users\/25\"}},{\"type\":\"users\",\"id\":\"26\",\"links\":{\"self\":\"\/users\/26\"}},{\"type\":\"users\",\"id\":\"27\",\"links\":{\"self\":\"\/users\/27\"}}],\"meta\":{\"pagination\":{\"total\":100,\"count\":20,\"per_page\":3,\"current_page\":1,\"total_pages\":5}},\"links\":{\"self\":\"users?page%5Bnumber%5D=1&page%5Bsize%5D=3\",\"first\":\"users?page%5Bnumber%5D=1&page%5Bsize%5D=3\",\"next\":\"users?page%5Bnumber%5D=1&page%5Bsize%5D=3\",\"last\":\"users?page%5Bnumber%5D=1&page%5Bsize%5D=3\"}}",
                                     "name": ""
                                 },
                                 {
@@ -642,7 +675,7 @@
                                         }
                                     ],
                                     "code": 200,
-                                    "body": "{\"data\":[{\"type\":\"users\",\"id\":\"1058\",\"links\":{\"self\":\"\/users\/1058\"}},{\"type\":\"users\",\"id\":\"1059\",\"links\":{\"self\":\"\/users\/1059\"}},{\"type\":\"users\",\"id\":\"1060\",\"links\":{\"self\":\"\/users\/1060\"}}],\"meta\":{\"pagination\":{\"total\":100,\"count\":20,\"per_page\":3,\"current_page\":1,\"total_pages\":5}},\"links\":{\"self\":\"users?page%5Bnumber%5D=1&page%5Bsize%5D=3\",\"first\":\"users?page%5Bnumber%5D=1&page%5Bsize%5D=3\",\"next\":\"users?page%5Bnumber%5D=1&page%5Bsize%5D=3\",\"last\":\"users?page%5Bnumber%5D=1&page%5Bsize%5D=3\"}}",
+                                    "body": "{\"data\":[{\"type\":\"users\",\"id\":\"28\",\"links\":{\"self\":\"\/users\/28\"}},{\"type\":\"users\",\"id\":\"29\",\"links\":{\"self\":\"\/users\/29\"}},{\"type\":\"users\",\"id\":\"30\",\"links\":{\"self\":\"\/users\/30\"}}],\"meta\":{\"pagination\":{\"total\":100,\"count\":20,\"per_page\":3,\"current_page\":1,\"total_pages\":5}},\"links\":{\"self\":\"users?page%5Bnumber%5D=1&page%5Bsize%5D=3\",\"first\":\"users?page%5Bnumber%5D=1&page%5Bsize%5D=3\",\"next\":\"users?page%5Bnumber%5D=1&page%5Bsize%5D=3\",\"last\":\"users?page%5Bnumber%5D=1&page%5Bsize%5D=3\"}}",
                                     "name": ""
                                 },
                                 {
@@ -657,7 +690,7 @@
                                         },
                                         {
                                             "key": "set-cookie",
-                                            "value": "XSRF-TOKEN=eyJpdiI6IjF2Q3VZRTJiSmxQOXhDaDd1SlpIQWc9PSIsInZhbHVlIjoiS012a1FkM2xKb0VJMnZsVmxEUitYZ3RkbG1UZUR5K1FLeU5la0pMZHhRd2R6Q203NGVGcGpMd20xL0lIV1hJSFNuQ1ZyNUFTSkJVUzNLWCtqTk1GRVhoZ3U3OHhzV1lVNVg0aUhRbE5BSWdSOUVqV1lpRW9jZ0RxQ0R2M3Bob1IiLCJtYWMiOiI5YzNiNTAxODA4YzM2ZjU3Yzc0ZTI3Y2I4OTdmODJlNzgwYjEyNzlkYWIwMDc2MjgzNWU0NmNmZDI2MDM1NmYyIiwidGFnIjoiIn0%3D; expires=Tue, 29 Apr 2025 18:55:41 GMT; Max-Age=7200; path=\/; samesite=lax; laravel_session=eyJpdiI6ImttVmZJTGNtWWY0UEp5aXJYZXRvcnc9PSIsInZhbHVlIjoiMEZHdVdFeEV4WjB4aXNXbmRyZklYS2lGQkhiY0ZMMWJVS0dHTDRtTUIzSmtzT21CTkdJWVJCMUdzWTEzWVBOTnNjWi82WE5ZdllRa08xa3FoMUh1T0E3RWVuMTBJWGZqU2Y4cnZmRDBYckFaajZDNDlYSndlNzJoUGpnY0s0RkMiLCJtYWMiOiI5YzY2NzZjMjZjN2ExOTU5ZGY3ZGEwNjczNzNhZWM1YWNjNzIzOTY1MWFjZGVhMDM3MWJlMjE1NTBlODMwNTViIiwidGFnIjoiIn0%3D; expires=Tue, 29 Apr 2025 18:55:41 GMT; Max-Age=7200; path=\/; httponly; samesite=lax"
+                                            "value": "XSRF-TOKEN=eyJpdiI6Ik5EZTVPanJXMEhlMVYycE9WbEZUNEE9PSIsInZhbHVlIjoibjRaMVM1RGUzTGZSY1FJYXhETVdwUE9nTG1HVmVHS1ZodzZmdXFVWjU4dDQ3dmJpd2hFZytabE0yVE1rSmxZMnpqNWtjU0lHaVpEYmJvS09ZUEx6WUY1am0zcE1hK1RENk0rbVlLR1NONDBEeFdEM2VFd3NUeXpyQ1ZBSGs1aEIiLCJtYWMiOiI3YWUzNDUwYWI5Mzk4MDQ3Mzg0ZWMzMGU2ZTlkM2FlMmY1NDc5MDdhZGFlZTg2OTY2NTIyMjIwYjJhN2MwMjdiIiwidGFnIjoiIn0%3D; expires=Wed, 30 Apr 2025 12:27:26 GMT; Max-Age=7200; path=\/; samesite=lax; laravel_session=eyJpdiI6Im43OHNyUjgvLzR0azFoOEFQZTNLTHc9PSIsInZhbHVlIjoiUk5oZUxHWGVoVHFsbVlySENqS2Nkb2VuRDlJWG9GWi9vdkExMEYvRFIvV2J6OC9YaHMxQ1I4TitwVzV6MnpuVm9rSitDVHRaOTkvSXB4UXhTck1Udk54czlMTU5vWG5oTXNnTU5VdnpuQ2V3QnhrSzZ4cHcydWtvRlQxZHEvTlEiLCJtYWMiOiI2ZjgxODBmMjExNjgyOTMzOGUyZjgzZjdiNGM5NGI5Mzg3ZGU5YTM3Y2IzNjE3Mjk0MDU2OThlMTIxYjM1OTlkIiwidGFnIjoiIn0%3D; expires=Wed, 30 Apr 2025 12:27:26 GMT; Max-Age=7200; path=\/; httponly; samesite=lax"
                                         }
                                     ],
                                     "code": 404,
@@ -698,7 +731,10 @@
                                     "mode": "raw",
                                     "raw": "{\"data\":[{\"id\":\"1\",\"type\":\"users\"}]}"
                                 },
-                                "description": "Add identifiers to the Users relationship of a specific Role."
+                                "description": "Add identifiers to the Users relationship of a specific Role.",
+                                "auth": {
+                                    "type": "noauth"
+                                }
                             },
                             "response": [
                                 {
@@ -709,7 +745,7 @@
                                         }
                                     ],
                                     "code": 201,
-                                    "body": "{\"data\":[{\"type\":\"users\",\"id\":\"1061\",\"links\":{\"self\":\"\/users\/1061\"}},{\"type\":\"users\",\"id\":\"1062\",\"links\":{\"self\":\"\/users\/1062\"}},{\"type\":\"users\",\"id\":\"1063\",\"links\":{\"self\":\"\/users\/1063\"}}],\"meta\":{\"pagination\":{\"total\":100,\"count\":20,\"per_page\":3,\"current_page\":1,\"total_pages\":5}},\"links\":{\"self\":\"users?page%5Bnumber%5D=1&page%5Bsize%5D=3\",\"first\":\"users?page%5Bnumber%5D=1&page%5Bsize%5D=3\",\"next\":\"users?page%5Bnumber%5D=1&page%5Bsize%5D=3\",\"last\":\"users?page%5Bnumber%5D=1&page%5Bsize%5D=3\"}}",
+                                    "body": "{\"data\":[{\"type\":\"users\",\"id\":\"31\",\"links\":{\"self\":\"\/users\/31\"}},{\"type\":\"users\",\"id\":\"32\",\"links\":{\"self\":\"\/users\/32\"}},{\"type\":\"users\",\"id\":\"33\",\"links\":{\"self\":\"\/users\/33\"}}],\"meta\":{\"pagination\":{\"total\":100,\"count\":20,\"per_page\":3,\"current_page\":1,\"total_pages\":5}},\"links\":{\"self\":\"users?page%5Bnumber%5D=1&page%5Bsize%5D=3\",\"first\":\"users?page%5Bnumber%5D=1&page%5Bsize%5D=3\",\"next\":\"users?page%5Bnumber%5D=1&page%5Bsize%5D=3\",\"last\":\"users?page%5Bnumber%5D=1&page%5Bsize%5D=3\"}}",
                                     "name": ""
                                 },
                                 {
@@ -720,7 +756,7 @@
                                         }
                                     ],
                                     "code": 201,
-                                    "body": "{\"data\":[{\"type\":\"users\",\"id\":\"1064\",\"links\":{\"self\":\"\/users\/1064\"}},{\"type\":\"users\",\"id\":\"1065\",\"links\":{\"self\":\"\/users\/1065\"}},{\"type\":\"users\",\"id\":\"1066\",\"links\":{\"self\":\"\/users\/1066\"}}],\"meta\":{\"pagination\":{\"total\":100,\"count\":20,\"per_page\":3,\"current_page\":1,\"total_pages\":5}},\"links\":{\"self\":\"users?page%5Bnumber%5D=1&page%5Bsize%5D=3\",\"first\":\"users?page%5Bnumber%5D=1&page%5Bsize%5D=3\",\"next\":\"users?page%5Bnumber%5D=1&page%5Bsize%5D=3\",\"last\":\"users?page%5Bnumber%5D=1&page%5Bsize%5D=3\"}}",
+                                    "body": "{\"data\":[{\"type\":\"users\",\"id\":\"34\",\"links\":{\"self\":\"\/users\/34\"}},{\"type\":\"users\",\"id\":\"35\",\"links\":{\"self\":\"\/users\/35\"}},{\"type\":\"users\",\"id\":\"36\",\"links\":{\"self\":\"\/users\/36\"}}],\"meta\":{\"pagination\":{\"total\":100,\"count\":20,\"per_page\":3,\"current_page\":1,\"total_pages\":5}},\"links\":{\"self\":\"users?page%5Bnumber%5D=1&page%5Bsize%5D=3\",\"first\":\"users?page%5Bnumber%5D=1&page%5Bsize%5D=3\",\"next\":\"users?page%5Bnumber%5D=1&page%5Bsize%5D=3\",\"last\":\"users?page%5Bnumber%5D=1&page%5Bsize%5D=3\"}}",
                                     "name": ""
                                 }
                             ]
@@ -757,7 +793,10 @@
                                     "mode": "raw",
                                     "raw": "{\"data\":[{\"id\":\"1\",\"type\":\"users\"}]}"
                                 },
-                                "description": "Replace all identifiers in the Users relationship of a specific Role."
+                                "description": "Replace all identifiers in the Users relationship of a specific Role.",
+                                "auth": {
+                                    "type": "noauth"
+                                }
                             },
                             "response": [
                                 {
@@ -768,7 +807,7 @@
                                         }
                                     ],
                                     "code": 200,
-                                    "body": "{\"data\":[{\"type\":\"users\",\"id\":\"1067\",\"links\":{\"self\":\"\/users\/1067\"}},{\"type\":\"users\",\"id\":\"1068\",\"links\":{\"self\":\"\/users\/1068\"}},{\"type\":\"users\",\"id\":\"1069\",\"links\":{\"self\":\"\/users\/1069\"}}],\"meta\":{\"pagination\":{\"total\":100,\"count\":20,\"per_page\":3,\"current_page\":1,\"total_pages\":5}},\"links\":{\"self\":\"users?page%5Bnumber%5D=1&page%5Bsize%5D=3\",\"first\":\"users?page%5Bnumber%5D=1&page%5Bsize%5D=3\",\"next\":\"users?page%5Bnumber%5D=1&page%5Bsize%5D=3\",\"last\":\"users?page%5Bnumber%5D=1&page%5Bsize%5D=3\"}}",
+                                    "body": "{\"data\":[{\"type\":\"users\",\"id\":\"37\",\"links\":{\"self\":\"\/users\/37\"}},{\"type\":\"users\",\"id\":\"38\",\"links\":{\"self\":\"\/users\/38\"}},{\"type\":\"users\",\"id\":\"39\",\"links\":{\"self\":\"\/users\/39\"}}],\"meta\":{\"pagination\":{\"total\":100,\"count\":20,\"per_page\":3,\"current_page\":1,\"total_pages\":5}},\"links\":{\"self\":\"users?page%5Bnumber%5D=1&page%5Bsize%5D=3\",\"first\":\"users?page%5Bnumber%5D=1&page%5Bsize%5D=3\",\"next\":\"users?page%5Bnumber%5D=1&page%5Bsize%5D=3\",\"last\":\"users?page%5Bnumber%5D=1&page%5Bsize%5D=3\"}}",
                                     "name": ""
                                 },
                                 {
@@ -779,7 +818,7 @@
                                         }
                                     ],
                                     "code": 200,
-                                    "body": "{\"data\":[{\"type\":\"users\",\"id\":\"1070\",\"links\":{\"self\":\"\/users\/1070\"}},{\"type\":\"users\",\"id\":\"1071\",\"links\":{\"self\":\"\/users\/1071\"}},{\"type\":\"users\",\"id\":\"1072\",\"links\":{\"self\":\"\/users\/1072\"}}],\"meta\":{\"pagination\":{\"total\":100,\"count\":20,\"per_page\":3,\"current_page\":1,\"total_pages\":5}},\"links\":{\"self\":\"users?page%5Bnumber%5D=1&page%5Bsize%5D=3\",\"first\":\"users?page%5Bnumber%5D=1&page%5Bsize%5D=3\",\"next\":\"users?page%5Bnumber%5D=1&page%5Bsize%5D=3\",\"last\":\"users?page%5Bnumber%5D=1&page%5Bsize%5D=3\"}}",
+                                    "body": "{\"data\":[{\"type\":\"users\",\"id\":\"40\",\"links\":{\"self\":\"\/users\/40\"}},{\"type\":\"users\",\"id\":\"41\",\"links\":{\"self\":\"\/users\/41\"}},{\"type\":\"users\",\"id\":\"42\",\"links\":{\"self\":\"\/users\/42\"}}],\"meta\":{\"pagination\":{\"total\":100,\"count\":20,\"per_page\":3,\"current_page\":1,\"total_pages\":5}},\"links\":{\"self\":\"users?page%5Bnumber%5D=1&page%5Bsize%5D=3\",\"first\":\"users?page%5Bnumber%5D=1&page%5Bsize%5D=3\",\"next\":\"users?page%5Bnumber%5D=1&page%5Bsize%5D=3\",\"last\":\"users?page%5Bnumber%5D=1&page%5Bsize%5D=3\"}}",
                                     "name": ""
                                 }
                             ]
@@ -816,7 +855,10 @@
                                     "mode": "raw",
                                     "raw": "{\"data\":[{\"id\":\"1\",\"type\":\"users\"}]}"
                                 },
-                                "description": "Remove identifiers from the Users relationship of a specific Role."
+                                "description": "Remove identifiers from the Users relationship of a specific Role.",
+                                "auth": {
+                                    "type": "noauth"
+                                }
                             },
                             "response": [
                                 {
@@ -827,7 +869,7 @@
                                         }
                                     ],
                                     "code": 204,
-                                    "body": "{\"data\":[{\"type\":\"users\",\"id\":\"1073\",\"links\":{\"self\":\"\/users\/1073\"}},{\"type\":\"users\",\"id\":\"1074\",\"links\":{\"self\":\"\/users\/1074\"}},{\"type\":\"users\",\"id\":\"1075\",\"links\":{\"self\":\"\/users\/1075\"}}],\"meta\":{\"pagination\":{\"total\":100,\"count\":20,\"per_page\":3,\"current_page\":1,\"total_pages\":5}},\"links\":{\"self\":\"users?page%5Bnumber%5D=1&page%5Bsize%5D=3\",\"first\":\"users?page%5Bnumber%5D=1&page%5Bsize%5D=3\",\"next\":\"users?page%5Bnumber%5D=1&page%5Bsize%5D=3\",\"last\":\"users?page%5Bnumber%5D=1&page%5Bsize%5D=3\"}}",
+                                    "body": "{\"data\":[{\"type\":\"users\",\"id\":\"43\",\"links\":{\"self\":\"\/users\/43\"}},{\"type\":\"users\",\"id\":\"44\",\"links\":{\"self\":\"\/users\/44\"}},{\"type\":\"users\",\"id\":\"45\",\"links\":{\"self\":\"\/users\/45\"}}],\"meta\":{\"pagination\":{\"total\":100,\"count\":20,\"per_page\":3,\"current_page\":1,\"total_pages\":5}},\"links\":{\"self\":\"users?page%5Bnumber%5D=1&page%5Bsize%5D=3\",\"first\":\"users?page%5Bnumber%5D=1&page%5Bsize%5D=3\",\"next\":\"users?page%5Bnumber%5D=1&page%5Bsize%5D=3\",\"last\":\"users?page%5Bnumber%5D=1&page%5Bsize%5D=3\"}}",
                                     "name": ""
                                 },
                                 {
@@ -838,7 +880,7 @@
                                         }
                                     ],
                                     "code": 204,
-                                    "body": "{\"data\":[{\"type\":\"users\",\"id\":\"1076\",\"links\":{\"self\":\"\/users\/1076\"}},{\"type\":\"users\",\"id\":\"1077\",\"links\":{\"self\":\"\/users\/1077\"}},{\"type\":\"users\",\"id\":\"1078\",\"links\":{\"self\":\"\/users\/1078\"}}],\"meta\":{\"pagination\":{\"total\":100,\"count\":20,\"per_page\":3,\"current_page\":1,\"total_pages\":5}},\"links\":{\"self\":\"users?page%5Bnumber%5D=1&page%5Bsize%5D=3\",\"first\":\"users?page%5Bnumber%5D=1&page%5Bsize%5D=3\",\"next\":\"users?page%5Bnumber%5D=1&page%5Bsize%5D=3\",\"last\":\"users?page%5Bnumber%5D=1&page%5Bsize%5D=3\"}}",
+                                    "body": "{\"data\":[{\"type\":\"users\",\"id\":\"46\",\"links\":{\"self\":\"\/users\/46\"}},{\"type\":\"users\",\"id\":\"47\",\"links\":{\"self\":\"\/users\/47\"}},{\"type\":\"users\",\"id\":\"48\",\"links\":{\"self\":\"\/users\/48\"}}],\"meta\":{\"pagination\":{\"total\":100,\"count\":20,\"per_page\":3,\"current_page\":1,\"total_pages\":5}},\"links\":{\"self\":\"users?page%5Bnumber%5D=1&page%5Bsize%5D=3\",\"first\":\"users?page%5Bnumber%5D=1&page%5Bsize%5D=3\",\"next\":\"users?page%5Bnumber%5D=1&page%5Bsize%5D=3\",\"last\":\"users?page%5Bnumber%5D=1&page%5Bsize%5D=3\"}}",
                                     "name": ""
                                 }
                             ]
@@ -851,69 +893,6 @@
             "name": "Users",
             "description": "",
             "item": [
-                {
-                    "name": "User Me",
-                    "request": {
-                        "url": {
-                            "host": "{{baseUrl}}",
-                            "path": "users\/me",
-                            "query": [
-                                {
-                                    "key": "fields%5Busers%5D",
-                                    "value": "",
-                                    "description": "Sparse fieldsets - specify which fields to include in the response for each resource type. ([Spec](https:\/\/jsonapi.org\/format\/#fetching-sparse-fieldsets))\n\n**Available fields:** `name`, `email`",
-                                    "disabled": true
-                                }
-                            ],
-                            "raw": "{{baseUrl}}\/users\/me?fields%5Busers%5D="
-                        },
-                        "method": "GET",
-                        "header": [
-                            {
-                                "key": "Accept",
-                                "value": "application\/vnd.api+json"
-                            },
-                            {
-                                "key": "Content-Type",
-                                "value": "application\/vnd.api+json"
-                            }
-                        ],
-                        "body": null,
-                        "description": "Return currently authenticated user's resource.\nShould be used with authentication logic, first login than use this endpoint."
-                    },
-                    "response": [
-                        {
-                            "header": [
-                                {
-                                    "key": "Content-Type",
-                                    "value": "application\/vnd.api+json"
-                                }
-                            ],
-                            "code": 200,
-                            "body": "{\"data\":{\"type\":\"users\",\"id\":\"1032\",\"attributes\":{\"name\":\"Prof. Mina Bauch\",\"email\":\"okeefe.isidro@example.org\"},\"links\":{\"self\":\"\/users\/1032\"}}}",
-                            "name": ""
-                        },
-                        {
-                            "header": [
-                                {
-                                    "key": "cache-control",
-                                    "value": "no-cache, private"
-                                },
-                                {
-                                    "key": "content-type",
-                                    "value": "application\/json"
-                                },
-                                {
-                                    "key": "set-cookie",
-                                    "value": "XSRF-TOKEN=eyJpdiI6InlDK3UzdDE2a1N0Z1ppcUhubzhhcnc9PSIsInZhbHVlIjoiU3FDQUV2ZmxKMEJ5SlV6U0lZZWc1L1VqOHltM2t1Z29aOUc3TnM1dVBXaThZV0g3TUJHcjVrZHA5ejljSUl1ZTBjSHZqYUtmOEFYQ0JCdmJsL0F2Zlc5c2ZvTXF2THcwWDRBL20xYUdxb1FRdGEyN1hNQlpLdEs2YTIwcTlObDkiLCJtYWMiOiI2N2FlZTY5M2Q3MGU4OWE2NGMxNTgxZDY3N2JkZGU3ZTRiODRmNDdmMWExNGYzMjQzYWI1N2I3NmYxYzc4MWM0IiwidGFnIjoiIn0%3D; expires=Tue, 29 Apr 2025 18:55:39 GMT; Max-Age=7200; path=\/; samesite=lax; laravel_session=eyJpdiI6InRMaVNLdWRxb3Z5UDV0bXplOThSUkE9PSIsInZhbHVlIjoiWUtQM2RLTVdxb2dPRnFnMjNWT293N3RZcjQvQUo1eXpmSEpUUFpISElMK09sclNSVWVybjdSVnQwWm1kL0QxTHNydnVSZHl4T00ydVQ0bm93UVVHZmZrcnZ3ZVdxYlM4Znp2L3o5cWdaUDF1SC9hVWFyc3VLQkwydGdSN1hZZnciLCJtYWMiOiJhODg0NzI0Nzg5ZGYwZTBmNDU2MmY5YmNiNDU3NzJmNjVjMmZjMTZmOTM3OGFjNzgwMDVjMWNlZGE3ZjUyMDRiIiwidGFnIjoiIn0%3D; expires=Tue, 29 Apr 2025 18:55:39 GMT; Max-Age=7200; path=\/; httponly; samesite=lax"
-                                }
-                            ],
-                            "code": 401,
-                            "body": "{\"message\":\"Unauthenticated.\"}",
-                            "name": ""
-                        }
-                    ]
-                },
                 {
                     "name": "User registration",
                     "request": {
@@ -945,7 +924,10 @@
                             "mode": "raw",
                             "raw": "{\"data\":{\"type\":\"users\",\"attributes\":{\"email\":\"gbailey@example.net\",\"password\":\"+-0pBNvYgxwmi\\\/#iw\",\"name\":\"u\"}}}"
                         },
-                        "description": "**New user registration**"
+                        "description": "**New user registration**",
+                        "auth": {
+                            "type": "noauth"
+                        }
                     },
                     "response": [
                         {
@@ -956,7 +938,73 @@
                                 }
                             ],
                             "code": 200,
-                            "body": "{\"data\":{\"type\":\"users\",\"id\":\"1035\",\"attributes\":{\"name\":\"Clara Cronin V\",\"email\":\"wleuschke@example.net\"},\"links\":{\"self\":\"\/users\/1035\"}}}",
+                            "body": "{\"data\":{\"type\":\"users\",\"id\":\"3\",\"attributes\":{\"name\":\"Clara Cronin V\",\"email\":\"wleuschke@example.net\"},\"links\":{\"self\":\"\/users\/3\"}}}",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "User Me",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "users\/me",
+                            "query": [
+                                {
+                                    "key": "fields%5Busers%5D",
+                                    "value": "",
+                                    "description": "Sparse fieldsets - specify which fields to include in the response for each resource type. ([Spec](https:\/\/jsonapi.org\/format\/#fetching-sparse-fieldsets))\n\n**Available fields:** `name`, `email`",
+                                    "disabled": true
+                                }
+                            ],
+                            "raw": "{{baseUrl}}\/users\/me?fields%5Busers%5D="
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application\/vnd.api+json"
+                            },
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/vnd.api+json"
+                            }
+                        ],
+                        "body": null,
+                        "description": "Return currently authenticated user's resource.\nShould be used with authentication logic, first login than use this endpoint.",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": [
+                        {
+                            "header": [
+                                {
+                                    "key": "Content-Type",
+                                    "value": "application\/vnd.api+json"
+                                }
+                            ],
+                            "code": 200,
+                            "body": "{\"data\":{\"type\":\"users\",\"id\":\"5\",\"attributes\":{\"name\":\"Donny Leffler\",\"email\":\"mitchell.matilda@example.org\"},\"links\":{\"self\":\"\/users\/5\"}}}",
+                            "name": ""
+                        },
+                        {
+                            "header": [
+                                {
+                                    "key": "cache-control",
+                                    "value": "no-cache, private"
+                                },
+                                {
+                                    "key": "content-type",
+                                    "value": "application\/json"
+                                },
+                                {
+                                    "key": "set-cookie",
+                                    "value": "XSRF-TOKEN=eyJpdiI6IlQydzRkQUxuQTJUTTRwS3JNL1NsYlE9PSIsInZhbHVlIjoidm1QbGtiVEk2Q0pDSnNDL0g3YXNqc2hLZm93bUZSdjYrWUI3VUIwTFovamQ1UjdjR0U3c2NON2Y0MEFOTnlIcVQ5QnErNkRCYnc0MGtVZDJiVlcwdEVuUGlRQWZiM0ltVDBvb0dWdnFZMzNsSkNhWXdaUExUWGhBL0ZiRE5iUHAiLCJtYWMiOiJlNjE1NGQ3ZTY4Y2FmZmVmMThkNTBjODczZWIyNTY4ZTg2NmEyZTQ3NjhiMWEzYmZkYzVhMTQzNDg1NWNlMTNiIiwidGFnIjoiIn0%3D; expires=Wed, 30 Apr 2025 12:27:24 GMT; Max-Age=7200; path=\/; samesite=lax; laravel_session=eyJpdiI6InBLWE1TZHhTaXIzVk9ucTQ5VGFib3c9PSIsInZhbHVlIjoiZ2RWdTB3VDRxWHIrSmtYYVJ0MTM1N2JiREhNYnlrSE9lMkFyOFZXd1piUkgvNk9YMWNidy9HZ3dvSzcvUktETU9aeUdyMm1TNUVyTzJ6NVVuTzdOc3IxdFpwOVRMcU5vSEJ0VnkxWDhXSTNhVWlsUGJrZERidm92eWpVNWlLcDgiLCJtYWMiOiI2YTMwYWZiZTQ2MTQ5N2I2ZjJjMDNkZTJhZmYzNDFmNmViODI2MWVjZDk1YjA2MTYyMTIxZWI3NzNjNzMwNDMwIiwidGFnIjoiIn0%3D; expires=Wed, 30 Apr 2025 12:27:24 GMT; Max-Age=7200; path=\/; httponly; samesite=lax"
+                                }
+                            ],
+                            "code": 401,
+                            "body": "{\"message\":\"Unauthenticated.\"}",
                             "name": ""
                         }
                     ]
@@ -1000,7 +1048,10 @@
                             "mode": "raw",
                             "raw": "{\"data\":{\"attributes\":{\"email\":\"gbailey@example.net\",\"password\":\"+-0pBNvYgxwmi\\\/#iw\",\"name\":\"u\"}}}"
                         },
-                        "description": "Update a specific User by ID."
+                        "description": "Update a specific User by ID.",
+                        "auth": {
+                            "type": "noauth"
+                        }
                     },
                     "response": [
                         {
@@ -1011,7 +1062,7 @@
                                 }
                             ],
                             "code": 200,
-                            "body": "{\"data\":{\"type\":\"users\",\"id\":\"1037\",\"attributes\":{\"name\":\"Clara Cronin V\",\"email\":\"ferne52@example.com\"},\"links\":{\"self\":\"\/users\/1037\"}}}",
+                            "body": "{\"data\":{\"type\":\"users\",\"id\":\"7\",\"attributes\":{\"name\":\"Clara Cronin V\",\"email\":\"ferne52@example.com\"},\"links\":{\"self\":\"\/users\/7\"}}}",
                             "name": ""
                         }
                     ]
@@ -1062,7 +1113,10 @@
                             }
                         ],
                         "body": null,
-                        "description": "Retrieve a list of Users."
+                        "description": "Retrieve a list of Users.",
+                        "auth": {
+                            "type": "noauth"
+                        }
                     },
                     "response": [
                         {
@@ -1073,7 +1127,7 @@
                                 }
                             ],
                             "code": 200,
-                            "body": "{\"data\":[{\"type\":\"users\",\"id\":\"1042\",\"attributes\":{\"name\":\"Rodrigo O'Connell\",\"email\":\"emanuel.emmerich@example.org\"},\"links\":{\"self\":\"\/users\/1042\"}},{\"type\":\"users\",\"id\":\"1043\",\"attributes\":{\"name\":\"Liliana Conroy\",\"email\":\"franecki.brennon@example.org\"},\"links\":{\"self\":\"\/users\/1043\"}},{\"type\":\"users\",\"id\":\"1044\",\"attributes\":{\"name\":\"Mr. Murl Cruickshank Jr.\",\"email\":\"modesta58@example.net\"},\"links\":{\"self\":\"\/users\/1044\"}}],\"meta\":{\"pagination\":{\"total\":100,\"count\":20,\"per_page\":3,\"current_page\":1,\"total_pages\":5}},\"links\":{\"self\":\"users?page%5Bnumber%5D=1&page%5Bsize%5D=3\",\"first\":\"users?page%5Bnumber%5D=1&page%5Bsize%5D=3\",\"next\":\"users?page%5Bnumber%5D=1&page%5Bsize%5D=3\",\"last\":\"users?page%5Bnumber%5D=1&page%5Bsize%5D=3\"}}",
+                            "body": "{\"data\":[{\"type\":\"users\",\"id\":\"12\",\"attributes\":{\"name\":\"Mrs. Kirsten Ward\",\"email\":\"cbeier@example.com\"},\"links\":{\"self\":\"\/users\/12\"}},{\"type\":\"users\",\"id\":\"13\",\"attributes\":{\"name\":\"Dr. Alan Green\",\"email\":\"oreilly.jacques@example.com\"},\"links\":{\"self\":\"\/users\/13\"}},{\"type\":\"users\",\"id\":\"14\",\"attributes\":{\"name\":\"Cristobal Smith\",\"email\":\"bcruickshank@example.org\"},\"links\":{\"self\":\"\/users\/14\"}}],\"meta\":{\"pagination\":{\"total\":100,\"count\":20,\"per_page\":3,\"current_page\":1,\"total_pages\":5}},\"links\":{\"self\":\"users?page%5Bnumber%5D=1&page%5Bsize%5D=3\",\"first\":\"users?page%5Bnumber%5D=1&page%5Bsize%5D=3\",\"next\":\"users?page%5Bnumber%5D=1&page%5Bsize%5D=3\",\"last\":\"users?page%5Bnumber%5D=1&page%5Bsize%5D=3\"}}",
                             "name": ""
                         },
                         {
@@ -1088,7 +1142,7 @@
                                 },
                                 {
                                     "key": "set-cookie",
-                                    "value": "XSRF-TOKEN=eyJpdiI6Ik1wVjF6S09TSE8zRVkyTjRGUkdkU3c9PSIsInZhbHVlIjoiaXJ0bXAyUXNOcEFkeXEzR0tQWnU5SVQ3cFBPUjJSMTVoVjh2QzVkNmVaaUl1OWU0aDBHNmc0UlpBdkVNeDVUOVpEUlcxVHBmRDViVUlsOWNWaWxVQ2RJdDBJYzFFcXBYaFJpOVdCOTh6SlhpbVZsT2lDZStVeFNERFZ5NVNpNlciLCJtYWMiOiJiMGQ5ZTFmNjMzMjZiZGE2MGExZTBiZjA5ZTY2M2YxYTcxNWMwYzRjNDA1OTc2M2JmNWNmZDEyZWY4NWM5NWM2IiwidGFnIjoiIn0%3D; expires=Tue, 29 Apr 2025 18:55:40 GMT; Max-Age=7200; path=\/; samesite=lax; laravel_session=eyJpdiI6IkQyN2tTRnNmTnR6QVQrb2tZK3hpNHc9PSIsInZhbHVlIjoielZpNU81Z2ZsRjVLWGlSdDc0UWl0S205WnlveFErWEx6ekdMMGVNWTFVZjZtQnAyM2xXRzVUN2JaZEVMdE1hZG1EK1VKOGwyYlpVdnVxdHhpV2NCNnFXOXZaL09sMjhsbUhVOWNnWHJUY0hycWF6bWtDQ1l6ODAxSGcwNGdNbnAiLCJtYWMiOiI2MTM5ODgyOTBjNGNiODE2MDhiMGUwZjhlODgxZTAyOWRkMjI3ODljNjQzOTQ0OTExOWFmYWM3NGI3ODU1NWIzIiwidGFnIjoiIn0%3D; expires=Tue, 29 Apr 2025 18:55:40 GMT; Max-Age=7200; path=\/; httponly; samesite=lax"
+                                    "value": "XSRF-TOKEN=eyJpdiI6IlFQUFJCRExCelBVSzRGVEpRbWhYN1E9PSIsInZhbHVlIjoiaGRTTHB3YmMreXl5TEhaTVNaVXE3MGVZNVhtc3Bjb1psMDZvSlpjWEJ4TndpU3F1SUpzRU95SU1WQmhIVzlDY1p6ZjZaZnZVQjRzQWhMVlhGbWVxZzZLZnA2MWVZaHlPZXpkTzJRUms5aHRjdnEvZ1c1YUJwV1JxSjB4YWcyRmUiLCJtYWMiOiI4NWZmNGNjZWQ0N2RhNGFlMzljNGFkZjNlZTYzZDk3YWViZGQ5NDVmY2M2ZWU5ZjQ4OWZjNTY1MmNjOTViYTNlIiwidGFnIjoiIn0%3D; expires=Wed, 30 Apr 2025 12:27:25 GMT; Max-Age=7200; path=\/; samesite=lax; laravel_session=eyJpdiI6IlFjRjlaU3NBT2F0RUtxYkhCbE03TWc9PSIsInZhbHVlIjoiQ0dtWUw4czBVK0VIRFNyRER2RkErVU8yWHpXVU8yS0FKMlh1TlVVbWZhc3NlR1RrQ0w4K1o0aTkzZlVqU0NlMmNpNDRKYVRkN2JPRmxDZVpJcUl3RXFpU0lQVHBLQWV5MTNYUmVKM1JGU0xMamxVMk1zT2RrNXlPbWVhOGI3M2kiLCJtYWMiOiI4ZWExY2Q3NjViYTcxMzZiZDY0YzQxZGViMzAxMTQ2ZGM3Njg1YWRiMmQ2YTBkOWE0YmQ2MTUzNGU5ODRiOGQwIiwidGFnIjoiIn0%3D; expires=Wed, 30 Apr 2025 12:27:25 GMT; Max-Age=7200; path=\/; httponly; samesite=lax"
                                 }
                             ],
                             "code": 403,
@@ -1133,7 +1187,10 @@
                             }
                         ],
                         "body": null,
-                        "description": "Retrieve a specific User by ID."
+                        "description": "Retrieve a specific User by ID.",
+                        "auth": {
+                            "type": "noauth"
+                        }
                     },
                     "response": [
                         {
@@ -1144,7 +1201,7 @@
                                 }
                             ],
                             "code": 200,
-                            "body": "{\"data\":{\"type\":\"users\",\"id\":\"1046\",\"attributes\":{\"name\":\"Prof. Annabelle Kshlerin\",\"email\":\"micaela88@example.org\"},\"links\":{\"self\":\"\/users\/1046\"}}}",
+                            "body": "{\"data\":{\"type\":\"users\",\"id\":\"16\",\"attributes\":{\"name\":\"Mr. Gilbert Swift V\",\"email\":\"hirthe.theo@example.com\"},\"links\":{\"self\":\"\/users\/16\"}}}",
                             "name": ""
                         },
                         {
@@ -1159,7 +1216,7 @@
                                 },
                                 {
                                     "key": "set-cookie",
-                                    "value": "XSRF-TOKEN=eyJpdiI6Im1kN0xqalZ0ZGlBdkxSWEcvaVhIT3c9PSIsInZhbHVlIjoiRzdyK3hjcDZWYzd3dXNqWVhQMU1ra3ZYK0tFZSsxWmRxWklQWnhJNk5yVy80czZVbnVlVytQMUpHVW4vZXB5VDRvZGM3eDIyaktJVnpZUFlOaFhmOGNhVDkxRXdUejAyQUF5ZEpIV0lkVS93QWQxYVVJSlNpQlEzOEVORnMwNUMiLCJtYWMiOiJkOTQxOGM0ODVhOTg1N2Y4NGI3YjYwNzBmMzY2NzVhM2RkNTE0MThmNDk2YjhlMzg4ZmYzYzhmODE4MmFlNGY4IiwidGFnIjoiIn0%3D; expires=Tue, 29 Apr 2025 18:55:40 GMT; Max-Age=7200; path=\/; samesite=lax; laravel_session=eyJpdiI6InJJWlFkeUdKdHlOUmFtVlA4OUVkbmc9PSIsInZhbHVlIjoiMllMVGlIUmsxNlVuMUxSYUFZa0JiekV3dGhna3JKZjhlazRENGdpVks4QXREUUF6SURrem9TYWNjTUYxem9TSVNOd09QWDByWk9oOVhPbDFuMS9aekhleGFDaTU4VjU1ellKM2xGNWNweElNRlBVd3hRZTI1UWsyNXIzbDdlbCsiLCJtYWMiOiI1YWViNGFlMjIwMzA4MWE2NjI0ZWE0NDBlYTAzZDY3NTY2N2IzNDJlMGVkZjc0YWZlOTEzZjBhZDQ0ZWQ1ZTg3IiwidGFnIjoiIn0%3D; expires=Tue, 29 Apr 2025 18:55:40 GMT; Max-Age=7200; path=\/; httponly; samesite=lax"
+                                    "value": "XSRF-TOKEN=eyJpdiI6InNNVURBNjlsZ1VMVFNQWmMzWjhUbEE9PSIsInZhbHVlIjoiZTFEd2ZhR3FiMWluNGMvK3ZVNjQyNEdXQVl6OXVSMldHMGxaTUw3QWlhOWFjT0dXbEhlVDJ0cVhkdlY3czBXWGk5WE1WbHNPWkpycWkyRGp5M2ZtRWQrYTh6YlJLd0RCZktCQVlkYWNyMXI3Q3pJL0hiYUJUM20wN1N2ZzlNb1IiLCJtYWMiOiJlZTMzMTgwODg4MWQ4NzJlZTYyMTA3NmQzNGRlMTY1NmFiOGYwMzJiYTk4M2Q0NzMxYWZkZWI4MzM0MzI4MjUzIiwidGFnIjoiIn0%3D; expires=Wed, 30 Apr 2025 12:27:25 GMT; Max-Age=7200; path=\/; samesite=lax; laravel_session=eyJpdiI6ImRKQndqYjl4N291ZUNWMVBOeERoR3c9PSIsInZhbHVlIjoiaWYrU1Bsc0Z0RnhndFZFUWxQMTRFV3dQcVRuanF3UzBuSEN3WTZQQlBubFBKdWZ4S21ia0hyOWNiQXJLbXFUR2pYZ3hxaDAyUmJZTUhMdVdvekxvTHZtMEVjTUplSytYUTJrak5vVWhSUTVaT1MzK0p6djBlOC9hTkVUU0ppd1ciLCJtYWMiOiI2ZTdkNjhlYjRkODFmNjIyOTAxNzllYTIyNzIyYWE5ODcyZjdiN2U3YWQxNmY0YWM5Yjg1ODU3MWU3MTY1NWMzIiwidGFnIjoiIn0%3D; expires=Wed, 30 Apr 2025 12:27:25 GMT; Max-Age=7200; path=\/; httponly; samesite=lax"
                                 }
                             ],
                             "code": 404,
@@ -1197,7 +1254,10 @@
                             }
                         ],
                         "body": null,
-                        "description": "Delete a specific User by ID."
+                        "description": "Delete a specific User by ID.",
+                        "auth": {
+                            "type": "noauth"
+                        }
                     },
                     "response": [
                         {
@@ -1208,7 +1268,7 @@
                                 }
                             ],
                             "code": 204,
-                            "body": "{\"data\":{\"type\":\"users\",\"id\":\"1047\",\"attributes\":{\"name\":\"Morgan Hirthe\",\"email\":\"wbatz@example.net\"},\"links\":{\"self\":\"\/users\/1047\"}}}",
+                            "body": "{\"data\":{\"type\":\"users\",\"id\":\"17\",\"attributes\":{\"name\":\"Ms. Elisabeth Okuneva\",\"email\":\"gilbert32@example.com\"},\"links\":{\"self\":\"\/users\/17\"}}}",
                             "name": ""
                         }
                     ]
@@ -1249,7 +1309,10 @@
                             }
                         ],
                         "body": null,
-                        "description": "Retrieve the list of related Roles for a specific User."
+                        "description": "Retrieve the list of related Roles for a specific User.",
+                        "auth": {
+                            "type": "noauth"
+                        }
                     },
                     "response": [
                         {
@@ -1260,7 +1323,7 @@
                                 }
                             ],
                             "code": 200,
-                            "body": "{\"data\":[{\"type\":\"roles\",\"id\":\"1001\",\"attributes\":{\"name\":\"quia\",\"permissions\":[]},\"links\":{\"self\":\"\/roles\/1001\"}},{\"type\":\"roles\",\"id\":\"1002\",\"attributes\":{\"name\":\"officia\",\"permissions\":[]},\"links\":{\"self\":\"\/roles\/1002\"}},{\"type\":\"roles\",\"id\":\"1003\",\"attributes\":{\"name\":\"est\",\"permissions\":[]},\"links\":{\"self\":\"\/roles\/1003\"}}],\"meta\":{\"pagination\":{\"total\":100,\"count\":20,\"per_page\":3,\"current_page\":1,\"total_pages\":5}},\"links\":{\"self\":\"roles?page%5Bnumber%5D=1&page%5Bsize%5D=3\",\"first\":\"roles?page%5Bnumber%5D=1&page%5Bsize%5D=3\",\"next\":\"roles?page%5Bnumber%5D=1&page%5Bsize%5D=3\",\"last\":\"roles?page%5Bnumber%5D=1&page%5Bsize%5D=3\"}}",
+                            "body": "{\"data\":[{\"type\":\"roles\",\"id\":\"16\",\"attributes\":{\"name\":\"modi\",\"permissions\":[]},\"links\":{\"self\":\"\/roles\/16\"}},{\"type\":\"roles\",\"id\":\"17\",\"attributes\":{\"name\":\"ipsum\",\"permissions\":[]},\"links\":{\"self\":\"\/roles\/17\"}},{\"type\":\"roles\",\"id\":\"18\",\"attributes\":{\"name\":\"nostrum\",\"permissions\":[]},\"links\":{\"self\":\"\/roles\/18\"}}],\"meta\":{\"pagination\":{\"total\":100,\"count\":20,\"per_page\":3,\"current_page\":1,\"total_pages\":5}},\"links\":{\"self\":\"roles?page%5Bnumber%5D=1&page%5Bsize%5D=3\",\"first\":\"roles?page%5Bnumber%5D=1&page%5Bsize%5D=3\",\"next\":\"roles?page%5Bnumber%5D=1&page%5Bsize%5D=3\",\"last\":\"roles?page%5Bnumber%5D=1&page%5Bsize%5D=3\"}}",
                             "name": ""
                         },
                         {
@@ -1271,7 +1334,7 @@
                                 }
                             ],
                             "code": 200,
-                            "body": "{\"data\":[{\"type\":\"roles\",\"id\":\"1004\",\"attributes\":{\"name\":\"dignissimos\",\"permissions\":[]},\"links\":{\"self\":\"\/roles\/1004\"}},{\"type\":\"roles\",\"id\":\"1005\",\"attributes\":{\"name\":\"neque\",\"permissions\":[]},\"links\":{\"self\":\"\/roles\/1005\"}},{\"type\":\"roles\",\"id\":\"1006\",\"attributes\":{\"name\":\"blanditiis\",\"permissions\":[]},\"links\":{\"self\":\"\/roles\/1006\"}}],\"meta\":{\"pagination\":{\"total\":100,\"count\":20,\"per_page\":3,\"current_page\":1,\"total_pages\":5}},\"links\":{\"self\":\"roles?page%5Bnumber%5D=1&page%5Bsize%5D=3\",\"first\":\"roles?page%5Bnumber%5D=1&page%5Bsize%5D=3\",\"next\":\"roles?page%5Bnumber%5D=1&page%5Bsize%5D=3\",\"last\":\"roles?page%5Bnumber%5D=1&page%5Bsize%5D=3\"}}",
+                            "body": "{\"data\":[{\"type\":\"roles\",\"id\":\"19\",\"attributes\":{\"name\":\"omnis\",\"permissions\":[]},\"links\":{\"self\":\"\/roles\/19\"}},{\"type\":\"roles\",\"id\":\"20\",\"attributes\":{\"name\":\"autem\",\"permissions\":[]},\"links\":{\"self\":\"\/roles\/20\"}},{\"type\":\"roles\",\"id\":\"21\",\"attributes\":{\"name\":\"consequatur\",\"permissions\":[]},\"links\":{\"self\":\"\/roles\/21\"}}],\"meta\":{\"pagination\":{\"total\":100,\"count\":20,\"per_page\":3,\"current_page\":1,\"total_pages\":5}},\"links\":{\"self\":\"roles?page%5Bnumber%5D=1&page%5Bsize%5D=3\",\"first\":\"roles?page%5Bnumber%5D=1&page%5Bsize%5D=3\",\"next\":\"roles?page%5Bnumber%5D=1&page%5Bsize%5D=3\",\"last\":\"roles?page%5Bnumber%5D=1&page%5Bsize%5D=3\"}}",
                             "name": ""
                         },
                         {
@@ -1286,7 +1349,7 @@
                                 },
                                 {
                                     "key": "set-cookie",
-                                    "value": "XSRF-TOKEN=eyJpdiI6IjhEc3Fhd0ZzSlUrektIdTJBNUR3QlE9PSIsInZhbHVlIjoiY0lZaEtxU0JGSjNFOGxOTmtsQWg0Yk1veVpQRTVmVm9QZ0V3bGdtRGY4aGF5Yks3Q3lWKys5eExrQW9IUkVwVVljSVFjOTVERDJDLzhxMVc2VWUvazd4WUs5V3VFZDRTWVlFdThQdnVGaVorOXkwSmZSMU5kNkV0dHZEcTRKS0ciLCJtYWMiOiJlODM0YWJlNTEwM2E3YmJlMDU2YTI1NjU0MjA2MmQ4ODJlNTM3MWFmNDllMzNiMjhkYzFhNDlmMGFhMGJmYTgxIiwidGFnIjoiIn0%3D; expires=Tue, 29 Apr 2025 18:55:41 GMT; Max-Age=7200; path=\/; samesite=lax; laravel_session=eyJpdiI6IlFRc0pTZnBGTyt6NXM1eE9jQWVFRFE9PSIsInZhbHVlIjoiRDB6dXlQNVNEVlc1Qm1sNDBwQXdIWFhDM0NqcnNVM1FJV0czR2lkd0x2YzBVbS8vSFhqS0Y3UTF6L2NqMmtUS1lyazZteTJ2NC96dUc3UHZPblUxRkU0K2p3S2xzN0JJNGs3VTdnRFNjUitpK0h2T2dGMTZ0cmpydXoweWdQSmoiLCJtYWMiOiIxODZlMTFlOTBhZmVhNDAyOWU2OTM5MTBkMWUxZmY1MjlmOWI0ODkzMTU4NGE2MGU1MzViZGIwZDcwNDc1ZDQ5IiwidGFnIjoiIn0%3D; expires=Tue, 29 Apr 2025 18:55:41 GMT; Max-Age=7200; path=\/; httponly; samesite=lax"
+                                    "value": "XSRF-TOKEN=eyJpdiI6IlpCWmtuZy9aQWJVNndvS21MSXNkQlE9PSIsInZhbHVlIjoiU1J5YVhMU0RTbVpjK2owM1BaK2FFbXYxejlqWG85WG1mZTR3MWhmK2tkZEdzNklEUXNzdWJhd3NyQk5PZjNIOTlxQXJLM0RpNnJ5QkltMzVMMDVnZy9XejVXbFNQT2JJK0dCajdiUUVHV1orYUFqaVZhZXVhYlp2Y1F0YXI0TmgiLCJtYWMiOiIwMWE4YWE0ZjQ0YjFmN2M5YTIxYjMwMDY0NzAyOTYxNjFkMmJmYjE5YmIwOTg0NzQyNWU3MmUyMjRkMDZiNWUxIiwidGFnIjoiIn0%3D; expires=Wed, 30 Apr 2025 12:27:25 GMT; Max-Age=7200; path=\/; samesite=lax; laravel_session=eyJpdiI6Ii96M0VUUEZPN0dPdERvb0k2UE9jRWc9PSIsInZhbHVlIjoiSjFHOHZRQURWeEZXWnBvNkNxbmk1UkRDVk9JVUppUVBoZUR6VFA0ekFyOUdPR1l5RmtXTTVtd01PSWExOXdsR0pRMFZVV0JDOTFVMHVGM3pyMzFUMXdDRnllTzVrb2ZFb2dRYy9KZnh4dmFRWlI2WVdTNDhzYStMM0hIQTNuZGUiLCJtYWMiOiIyZTk0MzIxN2IwZDgxZmRhOTdjMjhhN2FlNzkyNzc4MDQ5ZjIzNThhYTYxMzRiNWU5MTM5ODE3NDBmZjNmMWFlIiwidGFnIjoiIn0%3D; expires=Wed, 30 Apr 2025 12:27:25 GMT; Max-Age=7200; path=\/; httponly; samesite=lax"
                                 }
                             ],
                             "code": 404,
@@ -1328,7 +1391,10 @@
                                     }
                                 ],
                                 "body": null,
-                                "description": "Retrieve the identifiers of the related Roles for a specific User."
+                                "description": "Retrieve the identifiers of the related Roles for a specific User.",
+                                "auth": {
+                                    "type": "noauth"
+                                }
                             },
                             "response": [
                                 {
@@ -1339,7 +1405,7 @@
                                         }
                                     ],
                                     "code": 200,
-                                    "body": "{\"data\":[{\"type\":\"roles\",\"id\":\"1008\",\"links\":{\"self\":\"\/roles\/1008\"}},{\"type\":\"roles\",\"id\":\"1009\",\"links\":{\"self\":\"\/roles\/1009\"}},{\"type\":\"roles\",\"id\":\"1010\",\"links\":{\"self\":\"\/roles\/1010\"}}],\"meta\":{\"pagination\":{\"total\":100,\"count\":20,\"per_page\":3,\"current_page\":1,\"total_pages\":5}},\"links\":{\"self\":\"roles?page%5Bnumber%5D=1&page%5Bsize%5D=3\",\"first\":\"roles?page%5Bnumber%5D=1&page%5Bsize%5D=3\",\"next\":\"roles?page%5Bnumber%5D=1&page%5Bsize%5D=3\",\"last\":\"roles?page%5Bnumber%5D=1&page%5Bsize%5D=3\"}}",
+                                    "body": "{\"data\":[{\"type\":\"roles\",\"id\":\"23\",\"links\":{\"self\":\"\/roles\/23\"}},{\"type\":\"roles\",\"id\":\"24\",\"links\":{\"self\":\"\/roles\/24\"}},{\"type\":\"roles\",\"id\":\"25\",\"links\":{\"self\":\"\/roles\/25\"}}],\"meta\":{\"pagination\":{\"total\":100,\"count\":20,\"per_page\":3,\"current_page\":1,\"total_pages\":5}},\"links\":{\"self\":\"roles?page%5Bnumber%5D=1&page%5Bsize%5D=3\",\"first\":\"roles?page%5Bnumber%5D=1&page%5Bsize%5D=3\",\"next\":\"roles?page%5Bnumber%5D=1&page%5Bsize%5D=3\",\"last\":\"roles?page%5Bnumber%5D=1&page%5Bsize%5D=3\"}}",
                                     "name": ""
                                 },
                                 {
@@ -1350,7 +1416,7 @@
                                         }
                                     ],
                                     "code": 200,
-                                    "body": "{\"data\":[{\"type\":\"roles\",\"id\":\"1011\",\"links\":{\"self\":\"\/roles\/1011\"}},{\"type\":\"roles\",\"id\":\"1012\",\"links\":{\"self\":\"\/roles\/1012\"}},{\"type\":\"roles\",\"id\":\"1013\",\"links\":{\"self\":\"\/roles\/1013\"}}],\"meta\":{\"pagination\":{\"total\":100,\"count\":20,\"per_page\":3,\"current_page\":1,\"total_pages\":5}},\"links\":{\"self\":\"roles?page%5Bnumber%5D=1&page%5Bsize%5D=3\",\"first\":\"roles?page%5Bnumber%5D=1&page%5Bsize%5D=3\",\"next\":\"roles?page%5Bnumber%5D=1&page%5Bsize%5D=3\",\"last\":\"roles?page%5Bnumber%5D=1&page%5Bsize%5D=3\"}}",
+                                    "body": "{\"data\":[{\"type\":\"roles\",\"id\":\"26\",\"links\":{\"self\":\"\/roles\/26\"}},{\"type\":\"roles\",\"id\":\"27\",\"links\":{\"self\":\"\/roles\/27\"}},{\"type\":\"roles\",\"id\":\"28\",\"links\":{\"self\":\"\/roles\/28\"}}],\"meta\":{\"pagination\":{\"total\":100,\"count\":20,\"per_page\":3,\"current_page\":1,\"total_pages\":5}},\"links\":{\"self\":\"roles?page%5Bnumber%5D=1&page%5Bsize%5D=3\",\"first\":\"roles?page%5Bnumber%5D=1&page%5Bsize%5D=3\",\"next\":\"roles?page%5Bnumber%5D=1&page%5Bsize%5D=3\",\"last\":\"roles?page%5Bnumber%5D=1&page%5Bsize%5D=3\"}}",
                                     "name": ""
                                 },
                                 {
@@ -1365,7 +1431,7 @@
                                         },
                                         {
                                             "key": "set-cookie",
-                                            "value": "XSRF-TOKEN=eyJpdiI6Im40cUdZRHd3UkZreXBBWlNDTk1EMlE9PSIsInZhbHVlIjoieWF2N2xLWFYwMU1obVZlK28vd3Q4UkVzRWhRQjhzTlg4Y210dXBLVi9lUkI3SzI5TG9IdWdXTmpESmk2UkRkNStwYXRMYlJFREJWaGVvMWxkd0hhRXl0M05MaW90OU01Q1ZTQm1td1piZkdoZDJUbk1kTnZ2ajBIbHpjZXpNeGIiLCJtYWMiOiJhZTMyZTNiY2FlM2M3MjcyZWE0MTNhMjdkYWU5YzE0MGI0YzBiMTM5NjI3NmRiMjM2Y2FkNTRjYWFkODVkOGY0IiwidGFnIjoiIn0%3D; expires=Tue, 29 Apr 2025 18:55:41 GMT; Max-Age=7200; path=\/; samesite=lax; laravel_session=eyJpdiI6Img5djU2S3JKUnFKb0VpQ1JJaTlnVUE9PSIsInZhbHVlIjoiUTVlMmIwS2k2Y3NPRmJsend2OGFCUEhBUEl5b2lWSmFJdzNkMWdzVG05aEtYa2hZb1hYYXpBNWIrKzFZUVpkQmllTldQVnV4OVNOeFZaLzY2TllaMU5IQW9KNU13MVZCUm5FZ3ZKbk9iT1NRbHZjQ3JDUjh1QmVVMytJQzhoNG8iLCJtYWMiOiIzZWI2YTZmY2JiY2EwMmZlOTAyNjM4MWVmMzAyY2MzYTBlMDM0ZDIyYzMxZmU1ZDI2NjNiNTkyZjNiNTEyNmMyIiwidGFnIjoiIn0%3D; expires=Tue, 29 Apr 2025 18:55:41 GMT; Max-Age=7200; path=\/; httponly; samesite=lax"
+                                            "value": "XSRF-TOKEN=eyJpdiI6IjNPYVExQ3R1YXFUcERmeFkxc0lNaGc9PSIsInZhbHVlIjoiZ2ZSa3ZpZW1RU2dJTDFHL2YrYlh6QW13TXJmODlnWW04czBaTDBGYVFPR05VeVl2RDRpdXdHQUZDREJkVys0SXhhbkd3eDNuQkhJV2F5TVFBNGFUNzRZdGRieklnS09STHBuR1EydFNZazYwY1lzNDE0ZUEzSGxzS3EzNmdyeisiLCJtYWMiOiI0MDdjMzhmZDhjZjlmZDlkMjNkNTgxYmRhMmY2NjczYzA5ZTJlYWQwYzljMmE4ZTkyMmRhNzhhMDRiYjhkYTQwIiwidGFnIjoiIn0%3D; expires=Wed, 30 Apr 2025 12:27:26 GMT; Max-Age=7200; path=\/; samesite=lax; laravel_session=eyJpdiI6Ik1maXpvVDFtblk1VVdpTVRuZi9Panc9PSIsInZhbHVlIjoiTHRKRnVueHhoTEJsUFplUFNZVFJreTZvRmtLR2R1RDNNU2pqQUN6eFlLQng5QWIvcW4yYVprZHBHY0pVRFlmYlREQzZnL29jUEZmL3lqV1kvWEt0RWQ3RUZOcFJoUTYxbGE1LzZPOUQxUlk4dUcwVFdtT3FtWm5MUXFNR1kxcTIiLCJtYWMiOiI1ZDhkZmJmM2UyZjM0NDI1NzYxZTZhYjM1ZTA1ZjYxYTZiZTg0ZjJkMzgzYWM1ZTg1ZjdmMWNkYmQwYThiOGJiIiwidGFnIjoiIn0%3D; expires=Wed, 30 Apr 2025 12:27:26 GMT; Max-Age=7200; path=\/; httponly; samesite=lax"
                                         }
                                     ],
                                     "code": 404,
@@ -1406,7 +1472,10 @@
                                     "mode": "raw",
                                     "raw": "{\"data\":[{\"id\":\"1\",\"type\":\"roles\"}]}"
                                 },
-                                "description": "Add identifiers to the Roles relationship of a specific User."
+                                "description": "Add identifiers to the Roles relationship of a specific User.",
+                                "auth": {
+                                    "type": "noauth"
+                                }
                             },
                             "response": [
                                 {
@@ -1417,7 +1486,7 @@
                                         }
                                     ],
                                     "code": 201,
-                                    "body": "{\"data\":[{\"type\":\"roles\",\"id\":\"1014\",\"links\":{\"self\":\"\/roles\/1014\"}},{\"type\":\"roles\",\"id\":\"1015\",\"links\":{\"self\":\"\/roles\/1015\"}},{\"type\":\"roles\",\"id\":\"1016\",\"links\":{\"self\":\"\/roles\/1016\"}}],\"meta\":{\"pagination\":{\"total\":100,\"count\":20,\"per_page\":3,\"current_page\":1,\"total_pages\":5}},\"links\":{\"self\":\"roles?page%5Bnumber%5D=1&page%5Bsize%5D=3\",\"first\":\"roles?page%5Bnumber%5D=1&page%5Bsize%5D=3\",\"next\":\"roles?page%5Bnumber%5D=1&page%5Bsize%5D=3\",\"last\":\"roles?page%5Bnumber%5D=1&page%5Bsize%5D=3\"}}",
+                                    "body": "{\"data\":[{\"type\":\"roles\",\"id\":\"29\",\"links\":{\"self\":\"\/roles\/29\"}},{\"type\":\"roles\",\"id\":\"30\",\"links\":{\"self\":\"\/roles\/30\"}},{\"type\":\"roles\",\"id\":\"31\",\"links\":{\"self\":\"\/roles\/31\"}}],\"meta\":{\"pagination\":{\"total\":100,\"count\":20,\"per_page\":3,\"current_page\":1,\"total_pages\":5}},\"links\":{\"self\":\"roles?page%5Bnumber%5D=1&page%5Bsize%5D=3\",\"first\":\"roles?page%5Bnumber%5D=1&page%5Bsize%5D=3\",\"next\":\"roles?page%5Bnumber%5D=1&page%5Bsize%5D=3\",\"last\":\"roles?page%5Bnumber%5D=1&page%5Bsize%5D=3\"}}",
                                     "name": ""
                                 },
                                 {
@@ -1428,7 +1497,7 @@
                                         }
                                     ],
                                     "code": 201,
-                                    "body": "{\"data\":[{\"type\":\"roles\",\"id\":\"1017\",\"links\":{\"self\":\"\/roles\/1017\"}},{\"type\":\"roles\",\"id\":\"1018\",\"links\":{\"self\":\"\/roles\/1018\"}},{\"type\":\"roles\",\"id\":\"1019\",\"links\":{\"self\":\"\/roles\/1019\"}}],\"meta\":{\"pagination\":{\"total\":100,\"count\":20,\"per_page\":3,\"current_page\":1,\"total_pages\":5}},\"links\":{\"self\":\"roles?page%5Bnumber%5D=1&page%5Bsize%5D=3\",\"first\":\"roles?page%5Bnumber%5D=1&page%5Bsize%5D=3\",\"next\":\"roles?page%5Bnumber%5D=1&page%5Bsize%5D=3\",\"last\":\"roles?page%5Bnumber%5D=1&page%5Bsize%5D=3\"}}",
+                                    "body": "{\"data\":[{\"type\":\"roles\",\"id\":\"32\",\"links\":{\"self\":\"\/roles\/32\"}},{\"type\":\"roles\",\"id\":\"33\",\"links\":{\"self\":\"\/roles\/33\"}},{\"type\":\"roles\",\"id\":\"34\",\"links\":{\"self\":\"\/roles\/34\"}}],\"meta\":{\"pagination\":{\"total\":100,\"count\":20,\"per_page\":3,\"current_page\":1,\"total_pages\":5}},\"links\":{\"self\":\"roles?page%5Bnumber%5D=1&page%5Bsize%5D=3\",\"first\":\"roles?page%5Bnumber%5D=1&page%5Bsize%5D=3\",\"next\":\"roles?page%5Bnumber%5D=1&page%5Bsize%5D=3\",\"last\":\"roles?page%5Bnumber%5D=1&page%5Bsize%5D=3\"}}",
                                     "name": ""
                                 }
                             ]
@@ -1465,7 +1534,10 @@
                                     "mode": "raw",
                                     "raw": "{\"data\":[{\"id\":\"1\",\"type\":\"roles\"}]}"
                                 },
-                                "description": "Replace all identifiers in the Roles relationship of a specific User."
+                                "description": "Replace all identifiers in the Roles relationship of a specific User.",
+                                "auth": {
+                                    "type": "noauth"
+                                }
                             },
                             "response": [
                                 {
@@ -1476,7 +1548,7 @@
                                         }
                                     ],
                                     "code": 200,
-                                    "body": "{\"data\":[{\"type\":\"roles\",\"id\":\"1020\",\"links\":{\"self\":\"\/roles\/1020\"}},{\"type\":\"roles\",\"id\":\"1021\",\"links\":{\"self\":\"\/roles\/1021\"}},{\"type\":\"roles\",\"id\":\"1022\",\"links\":{\"self\":\"\/roles\/1022\"}}],\"meta\":{\"pagination\":{\"total\":100,\"count\":20,\"per_page\":3,\"current_page\":1,\"total_pages\":5}},\"links\":{\"self\":\"roles?page%5Bnumber%5D=1&page%5Bsize%5D=3\",\"first\":\"roles?page%5Bnumber%5D=1&page%5Bsize%5D=3\",\"next\":\"roles?page%5Bnumber%5D=1&page%5Bsize%5D=3\",\"last\":\"roles?page%5Bnumber%5D=1&page%5Bsize%5D=3\"}}",
+                                    "body": "{\"data\":[{\"type\":\"roles\",\"id\":\"35\",\"links\":{\"self\":\"\/roles\/35\"}},{\"type\":\"roles\",\"id\":\"36\",\"links\":{\"self\":\"\/roles\/36\"}},{\"type\":\"roles\",\"id\":\"37\",\"links\":{\"self\":\"\/roles\/37\"}}],\"meta\":{\"pagination\":{\"total\":100,\"count\":20,\"per_page\":3,\"current_page\":1,\"total_pages\":5}},\"links\":{\"self\":\"roles?page%5Bnumber%5D=1&page%5Bsize%5D=3\",\"first\":\"roles?page%5Bnumber%5D=1&page%5Bsize%5D=3\",\"next\":\"roles?page%5Bnumber%5D=1&page%5Bsize%5D=3\",\"last\":\"roles?page%5Bnumber%5D=1&page%5Bsize%5D=3\"}}",
                                     "name": ""
                                 },
                                 {
@@ -1487,7 +1559,7 @@
                                         }
                                     ],
                                     "code": 200,
-                                    "body": "{\"data\":[{\"type\":\"roles\",\"id\":\"1023\",\"links\":{\"self\":\"\/roles\/1023\"}},{\"type\":\"roles\",\"id\":\"1024\",\"links\":{\"self\":\"\/roles\/1024\"}},{\"type\":\"roles\",\"id\":\"1025\",\"links\":{\"self\":\"\/roles\/1025\"}}],\"meta\":{\"pagination\":{\"total\":100,\"count\":20,\"per_page\":3,\"current_page\":1,\"total_pages\":5}},\"links\":{\"self\":\"roles?page%5Bnumber%5D=1&page%5Bsize%5D=3\",\"first\":\"roles?page%5Bnumber%5D=1&page%5Bsize%5D=3\",\"next\":\"roles?page%5Bnumber%5D=1&page%5Bsize%5D=3\",\"last\":\"roles?page%5Bnumber%5D=1&page%5Bsize%5D=3\"}}",
+                                    "body": "{\"data\":[{\"type\":\"roles\",\"id\":\"38\",\"links\":{\"self\":\"\/roles\/38\"}},{\"type\":\"roles\",\"id\":\"39\",\"links\":{\"self\":\"\/roles\/39\"}},{\"type\":\"roles\",\"id\":\"40\",\"links\":{\"self\":\"\/roles\/40\"}}],\"meta\":{\"pagination\":{\"total\":100,\"count\":20,\"per_page\":3,\"current_page\":1,\"total_pages\":5}},\"links\":{\"self\":\"roles?page%5Bnumber%5D=1&page%5Bsize%5D=3\",\"first\":\"roles?page%5Bnumber%5D=1&page%5Bsize%5D=3\",\"next\":\"roles?page%5Bnumber%5D=1&page%5Bsize%5D=3\",\"last\":\"roles?page%5Bnumber%5D=1&page%5Bsize%5D=3\"}}",
                                     "name": ""
                                 }
                             ]
@@ -1524,7 +1596,10 @@
                                     "mode": "raw",
                                     "raw": "{\"data\":[{\"id\":\"1\",\"type\":\"roles\"}]}"
                                 },
-                                "description": "Remove identifiers from the Roles relationship of a specific User."
+                                "description": "Remove identifiers from the Roles relationship of a specific User.",
+                                "auth": {
+                                    "type": "noauth"
+                                }
                             },
                             "response": [
                                 {
@@ -1535,7 +1610,7 @@
                                         }
                                     ],
                                     "code": 204,
-                                    "body": "{\"data\":[{\"type\":\"roles\",\"id\":\"1026\",\"links\":{\"self\":\"\/roles\/1026\"}},{\"type\":\"roles\",\"id\":\"1027\",\"links\":{\"self\":\"\/roles\/1027\"}},{\"type\":\"roles\",\"id\":\"1028\",\"links\":{\"self\":\"\/roles\/1028\"}}],\"meta\":{\"pagination\":{\"total\":100,\"count\":20,\"per_page\":3,\"current_page\":1,\"total_pages\":5}},\"links\":{\"self\":\"roles?page%5Bnumber%5D=1&page%5Bsize%5D=3\",\"first\":\"roles?page%5Bnumber%5D=1&page%5Bsize%5D=3\",\"next\":\"roles?page%5Bnumber%5D=1&page%5Bsize%5D=3\",\"last\":\"roles?page%5Bnumber%5D=1&page%5Bsize%5D=3\"}}",
+                                    "body": "{\"data\":[{\"type\":\"roles\",\"id\":\"41\",\"links\":{\"self\":\"\/roles\/41\"}},{\"type\":\"roles\",\"id\":\"42\",\"links\":{\"self\":\"\/roles\/42\"}},{\"type\":\"roles\",\"id\":\"43\",\"links\":{\"self\":\"\/roles\/43\"}}],\"meta\":{\"pagination\":{\"total\":100,\"count\":20,\"per_page\":3,\"current_page\":1,\"total_pages\":5}},\"links\":{\"self\":\"roles?page%5Bnumber%5D=1&page%5Bsize%5D=3\",\"first\":\"roles?page%5Bnumber%5D=1&page%5Bsize%5D=3\",\"next\":\"roles?page%5Bnumber%5D=1&page%5Bsize%5D=3\",\"last\":\"roles?page%5Bnumber%5D=1&page%5Bsize%5D=3\"}}",
                                     "name": ""
                                 },
                                 {
@@ -1546,7 +1621,7 @@
                                         }
                                     ],
                                     "code": 204,
-                                    "body": "{\"data\":[{\"type\":\"roles\",\"id\":\"1029\",\"links\":{\"self\":\"\/roles\/1029\"}},{\"type\":\"roles\",\"id\":\"1030\",\"links\":{\"self\":\"\/roles\/1030\"}},{\"type\":\"roles\",\"id\":\"1031\",\"links\":{\"self\":\"\/roles\/1031\"}}],\"meta\":{\"pagination\":{\"total\":100,\"count\":20,\"per_page\":3,\"current_page\":1,\"total_pages\":5}},\"links\":{\"self\":\"roles?page%5Bnumber%5D=1&page%5Bsize%5D=3\",\"first\":\"roles?page%5Bnumber%5D=1&page%5Bsize%5D=3\",\"next\":\"roles?page%5Bnumber%5D=1&page%5Bsize%5D=3\",\"last\":\"roles?page%5Bnumber%5D=1&page%5Bsize%5D=3\"}}",
+                                    "body": "{\"data\":[{\"type\":\"roles\",\"id\":\"44\",\"links\":{\"self\":\"\/roles\/44\"}},{\"type\":\"roles\",\"id\":\"45\",\"links\":{\"self\":\"\/roles\/45\"}},{\"type\":\"roles\",\"id\":\"46\",\"links\":{\"self\":\"\/roles\/46\"}}],\"meta\":{\"pagination\":{\"total\":100,\"count\":20,\"per_page\":3,\"current_page\":1,\"total_pages\":5}},\"links\":{\"self\":\"roles?page%5Bnumber%5D=1&page%5Bsize%5D=3\",\"first\":\"roles?page%5Bnumber%5D=1&page%5Bsize%5D=3\",\"next\":\"roles?page%5Bnumber%5D=1&page%5Bsize%5D=3\",\"last\":\"roles?page%5Bnumber%5D=1&page%5Bsize%5D=3\"}}",
                                     "name": ""
                                 }
                             ]
@@ -1557,12 +1632,6 @@
         }
     ],
     "auth": {
-        "type": "bearer",
-        "bearer": [
-            {
-                "key": "key",
-                "type": "string"
-            }
-        ]
+        "type": "noauth"
     }
 }

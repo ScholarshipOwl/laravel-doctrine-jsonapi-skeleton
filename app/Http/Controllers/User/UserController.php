@@ -30,6 +30,7 @@ class UserController extends Controller
         return UserMeAction::create()->dispatch($request);
     }
 
+    #[Endpoint(title: 'User registration', description: '**New user registration**')]
     #[ResourceRequestCreate]
     #[ResourceResponse]
     public function create(UserCreateRequest $request): Response
