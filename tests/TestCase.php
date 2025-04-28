@@ -2,6 +2,8 @@
 
 namespace Tests;
 
+use App\Entities\User;
+use Database\Seeders\DatabaseSeeder;
 use Doctrine\ORM\EntityManager;
 use Illuminate\Foundation\Testing\TestCase as BaseTestCase;
 use Illuminate\Foundation\Testing\WithFaker;
@@ -20,6 +22,8 @@ abstract class TestCase extends BaseTestCase
 
         $this->refreshDoctrineDatabase();
         $this->interactsWithDoctrineDatabase();
+
+        $this->seed(DatabaseSeeder::class);
     }
 
     protected function em(): EntityManager

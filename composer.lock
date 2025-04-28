@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "3e916b55f3d3e222bfe8bbfc584c69db",
+    "content-hash": "f7a0d58195a3b8b460f0caece4d464bd",
     "packages": [
         {
             "name": "behat/transliterator",
@@ -5235,6 +5235,7 @@
                 "type": "git",
                 "url": "https://github.com/ScholarshipOwl/laravel-doctrine-jsonapi.git",
 <<<<<<< HEAD
+<<<<<<< HEAD
                 "reference": "abd82f7b0a390159a8c903ff0dde439b9226c37e"
             },
             "dist": {
@@ -5249,6 +5250,14 @@
                 "url": "https://api.github.com/repos/ScholarshipOwl/laravel-doctrine-jsonapi/zipball/552893b528f123093371c74de37bb03f6d5c87ef",
                 "reference": "552893b528f123093371c74de37bb03f6d5c87ef",
 >>>>>>> 3ea4065 (acl fixes)
+=======
+                "reference": "3e676fe5ae520bcb52c143bfe035cea40ed13f73"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/ScholarshipOwl/laravel-doctrine-jsonapi/zipball/3e676fe5ae520bcb52c143bfe035cea40ed13f73",
+                "reference": "3e676fe5ae520bcb52c143bfe035cea40ed13f73",
+>>>>>>> 1b07975 (feat: migrated to mysql db)
                 "shasum": ""
             },
             "require": {
@@ -5262,7 +5271,10 @@
                 "laravel-doctrine/extensions": "^2.0",
                 "laravel-doctrine/migrations": "^3.4",
                 "laravel-doctrine/orm": "^3.1",
+                "laravel/pint": "^1.22",
                 "mockery/mockery": "^1.6",
+                "orchestra/testbench": "^10.2",
+                "phpstan/phpstan": "^2.1",
                 "phpunit/phpunit": "^11.4"
             },
             "default-branch": true,
@@ -5289,10 +5301,14 @@
                 "source": "https://github.com/ScholarshipOwl/laravel-doctrine-jsonapi/tree/main"
             },
 <<<<<<< HEAD
+<<<<<<< HEAD
             "time": "2025-04-27T14:07:24+00:00"
 =======
             "time": "2025-04-29T12:58:11+00:00"
 >>>>>>> 3ea4065 (acl fixes)
+=======
+            "time": "2025-04-29T11:19:05+00:00"
+>>>>>>> 1b07975 (feat: migrated to mysql db)
         },
         {
             "name": "spatie/data-transfer-object",

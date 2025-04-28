@@ -1,0 +1,1568 @@
+{
+    "variable": [
+        {
+            "id": "baseUrl",
+            "key": "baseUrl",
+            "type": "string",
+            "name": "string",
+            "value": "{{ config(\"app.url\") }}"
+        }
+    ],
+    "info": {
+        "name": "Laravel Doctrine JSON:API Skeleton API Documentation",
+        "_postman_id": "d8874a11-2f46-407e-989a-09ba816b7d81",
+        "description": "",
+        "schema": "https:\/\/schema.getpostman.com\/json\/collection\/v2.1.0\/collection.json"
+    },
+    "item": [
+        {
+            "name": "Auth",
+            "description": "",
+            "item": [
+                {
+                    "name": "Login",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "auth\/login",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/auth\/login"
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\"email\":\"gbailey@example.net\",\"password\":\"|]|{+-\"}"
+                        },
+                        "description": ""
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 200,
+                            "body": "{\"id\":1}",
+                            "name": ""
+                        },
+                        {
+                            "header": [],
+                            "code": 401,
+                            "body": null,
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "Request password reset",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "auth\/request-reset-password",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/auth\/request-reset-password"
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\"email\":\"gbailey@example.net\"}"
+                        },
+                        "description": ""
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 200,
+                            "body": "{\"status\":\"Password reset link sent\"}",
+                            "name": ""
+                        },
+                        {
+                            "header": [],
+                            "code": 400,
+                            "body": "{\"status\":\"Failed to send password reset link\"}",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "Reset password",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "auth\/reset-password",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/auth\/reset-password"
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\"email\":\"gbailey@example.net\",\"password\":\"+-0pBNvYgxwmi\\\/#iw\",\"token\":\"architecto\"}"
+                        },
+                        "description": ""
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 200,
+                            "body": "{\"status\":\"Password reset\"}",
+                            "name": ""
+                        },
+                        {
+                            "header": [],
+                            "code": 400,
+                            "body": "{\"status\":\"Failed to reset password\"}",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "Logout",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "auth\/logout",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/auth\/logout"
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": ""
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 200,
+                            "body": "{\"status\":\"Logged out successfully\"}",
+                            "name": ""
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "Roles",
+            "description": "",
+            "item": [
+                {
+                    "name": "List Roles",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "roles",
+                            "query": [
+                                {
+                                    "key": "fields%5Broles%5D",
+                                    "value": "",
+                                    "description": "Sparse fieldsets - specify which fields to include in the response for each resource type. ([Spec](https:\/\/jsonapi.org\/format\/#fetching-sparse-fieldsets))\n\n**Available fields:** `name`, `permissions`",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "include",
+                                    "value": "users",
+                                    "description": "Include related resources. ([Spec](https:\/\/jsonapi.org\/format\/#fetching-includes))\n\n**Available includes:** `users`",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "page%5Bnumber%5D",
+                                    "value": "1",
+                                    "description": "Page number. ([Spec](https:\/\/jsonapi.org\/format\/#fetching-pagination))",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "page%5Bsize%5D",
+                                    "value": "10",
+                                    "description": "Number of results per page. ([Spec](https:\/\/jsonapi.org\/format\/#fetching-pagination))",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "sort",
+                                    "value": "",
+                                    "description": "Sort the results by attributes. Prefix with `-` for descending order. ([Spec](https:\/\/jsonapi.org\/format\/#fetching-sorting))\n\n**Available sort fields:** `name`, `permissions`",
+                                    "disabled": true
+                                }
+                            ],
+                            "raw": "{{baseUrl}}\/roles?fields%5Broles%5D=&include=users&page%5Bnumber%5D=1&page%5Bsize%5D=10&sort="
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application\/vnd.api+json"
+                            },
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/vnd.api+json"
+                            }
+                        ],
+                        "body": null,
+                        "description": "Retrieve a list of Roles."
+                    },
+                    "response": [
+                        {
+                            "header": [
+                                {
+                                    "key": "Content-Type",
+                                    "value": "application\/vnd.api+json"
+                                }
+                            ],
+                            "code": 200,
+                            "body": "{\"data\":[{\"type\":\"roles\",\"id\":\"990\",\"attributes\":{\"name\":\"qui\",\"permissions\":[]},\"links\":{\"self\":\"\/roles\/990\"}},{\"type\":\"roles\",\"id\":\"991\",\"attributes\":{\"name\":\"commodi\",\"permissions\":[]},\"links\":{\"self\":\"\/roles\/991\"}},{\"type\":\"roles\",\"id\":\"992\",\"attributes\":{\"name\":\"incidunt\",\"permissions\":[]},\"links\":{\"self\":\"\/roles\/992\"}}],\"meta\":{\"pagination\":{\"total\":100,\"count\":20,\"per_page\":3,\"current_page\":1,\"total_pages\":5}},\"links\":{\"self\":\"roles?page%5Bnumber%5D=1&page%5Bsize%5D=3\",\"first\":\"roles?page%5Bnumber%5D=1&page%5Bsize%5D=3\",\"next\":\"roles?page%5Bnumber%5D=1&page%5Bsize%5D=3\",\"last\":\"roles?page%5Bnumber%5D=1&page%5Bsize%5D=3\"}}",
+                            "name": ""
+                        },
+                        {
+                            "header": [
+                                {
+                                    "key": "content-type",
+                                    "value": "application\/vnd.api+json"
+                                },
+                                {
+                                    "key": "cache-control",
+                                    "value": "no-cache, private"
+                                },
+                                {
+                                    "key": "set-cookie",
+                                    "value": "XSRF-TOKEN=eyJpdiI6InBBQUlPQTFLZTIvOEU3L0pSY09kdkE9PSIsInZhbHVlIjoiSHhrd21Da0VkRFRTd1UvOUE4ZkhZUUN6MnhNbWt0RW9mZHROMXhTbUFqWlNTWXJJOHlYeDJHc3FCcnRxazVtU3loNkY2ZG94WkZQcm5idkNLT3QveHRteUxTUGJKTW8xQXRoVjZXbHpselFlQmU2UEtmZXE5WjNDbVF5QU00SFYiLCJtYWMiOiIwNWJiNjcwYzc3NTFlOTdhMDVlZTA2MmU3YjM5YWFkNWU1NjEwYjE1MjJmODEzYzk5MGNhN2E3YWQxMTQyNTdlIiwidGFnIjoiIn0%3D; expires=Tue, 29 Apr 2025 18:55:40 GMT; Max-Age=7200; path=\/; samesite=lax; laravel_session=eyJpdiI6IkxTM21OZWZ5MUdaUXdwdzNoalRjUnc9PSIsInZhbHVlIjoiNCtxK1o4KzBWc0NNRE41SkR1ZllLNnR1aDJrMEI4QnJTeldObDlwbUpYVXY3RnI5dU1tbGZkL2FaN3E4UmR0L0NHOHQ4VDEwU1VqNUczNXF3bzBza2kyQjVJTUl0UEJTZkEzQ0grUlEzTG1IaWVzVXhtNjJFY2lCODFFd1ZYZm4iLCJtYWMiOiJjYjIxYzA0ODRmNGRjN2EzZDRlMWY0OGI1OTRjZmJiNTlkYmVkNzQzNTE3ODEzN2NmZTE4MDVjYTk2NjZmY2Y3IiwidGFnIjoiIn0%3D; expires=Tue, 29 Apr 2025 18:55:40 GMT; Max-Age=7200; path=\/; httponly; samesite=lax"
+                                }
+                            ],
+                            "code": 403,
+                            "body": "{\"errors\":[{\"code\":403,\"source\":{\"pointer\":\"\\\/\"},\"detail\":\"No \\\"viewAny\\\" ability on \\\"roles\\\" resource.\"}]}",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "Create Role",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "roles",
+                            "query": [
+                                {
+                                    "key": "fields%5Broles%5D",
+                                    "value": "",
+                                    "description": "Sparse fieldsets - specify which fields to include in the response for each resource type. ([Spec](https:\/\/jsonapi.org\/format\/#fetching-sparse-fieldsets))\n\n**Available fields:** `name`, `permissions`",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "include",
+                                    "value": "users",
+                                    "description": "Include related resources. ([Spec](https:\/\/jsonapi.org\/format\/#fetching-includes))\n\n**Available includes:** `users`",
+                                    "disabled": false
+                                }
+                            ],
+                            "raw": "{{baseUrl}}\/roles?fields%5Broles%5D=&include=users"
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application\/vnd.api+json"
+                            },
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/vnd.api+json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\"data\":{\"attributes\":{\"name\":\"b\"},\"relationships\":{\"users\":{\"data\":{\"id\":\"1\",\"type\":\"users\"}}}}}"
+                        },
+                        "description": "Create a new Role."
+                    },
+                    "response": [
+                        {
+                            "header": [
+                                {
+                                    "key": "Content-Type",
+                                    "value": "application\/vnd.api+json"
+                                }
+                            ],
+                            "code": 201,
+                            "body": "{\"data\":{\"type\":\"roles\",\"id\":\"995\",\"attributes\":{\"name\":\"eius\",\"permissions\":[]},\"links\":{\"self\":\"\/roles\/995\"}}}",
+                            "name": "Created resource."
+                        }
+                    ]
+                },
+                {
+                    "name": "Show Role",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "roles\/:id",
+                            "query": [
+                                {
+                                    "key": "fields%5Broles%5D",
+                                    "value": "",
+                                    "description": "Sparse fieldsets - specify which fields to include in the response for each resource type. ([Spec](https:\/\/jsonapi.org\/format\/#fetching-sparse-fieldsets))\n\n**Available fields:** `name`, `permissions`",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "include",
+                                    "value": "users",
+                                    "description": "Include related resources. ([Spec](https:\/\/jsonapi.org\/format\/#fetching-includes))\n\n**Available includes:** `users`",
+                                    "disabled": false
+                                }
+                            ],
+                            "raw": "{{baseUrl}}\/roles\/:id?fields%5Broles%5D=&include=users",
+                            "variable": [
+                                {
+                                    "id": "id",
+                                    "key": "id",
+                                    "value": "1",
+                                    "description": "The unique identifier of the 'roles' resource"
+                                }
+                            ]
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application\/vnd.api+json"
+                            },
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/vnd.api+json"
+                            }
+                        ],
+                        "body": null,
+                        "description": "Retrieve a specific Role by ID."
+                    },
+                    "response": [
+                        {
+                            "header": [
+                                {
+                                    "key": "Content-Type",
+                                    "value": "application\/vnd.api+json"
+                                }
+                            ],
+                            "code": 200,
+                            "body": "{\"data\":{\"type\":\"roles\",\"id\":\"997\",\"attributes\":{\"name\":\"modi\",\"permissions\":[]},\"links\":{\"self\":\"\/roles\/997\"}}}",
+                            "name": ""
+                        },
+                        {
+                            "header": [
+                                {
+                                    "key": "content-type",
+                                    "value": "application\/vnd.api+json"
+                                },
+                                {
+                                    "key": "cache-control",
+                                    "value": "no-cache, private"
+                                },
+                                {
+                                    "key": "set-cookie",
+                                    "value": "XSRF-TOKEN=eyJpdiI6IkRIVkJiVTNOSmJNZSs0VlZkMDJHc0E9PSIsInZhbHVlIjoiQ0N0RHByMnMxNnEzaS9mc3JUSjNydDVRQ0RzbFB1WFF3Z2VEakhzb2Njdjh2d3FFNE9TWklRSFJ4U2hzMFNqeng5TGNraVFTOXlpbUZCdERyZHlUaEFWT0RZbEt4Z2V5bEs1YkFRaTN2ZE1XYVBibENwUzF4dG9nWDJ0dzIvZCsiLCJtYWMiOiJjMjRlMzJmNmIyZjYyMGZkYmE4NTBkMmE5OWEyNWVlNDZkNWVlMjQzZDE3MmY0NzVlMDEwMDFhMzE4ZGYwNDM1IiwidGFnIjoiIn0%3D; expires=Tue, 29 Apr 2025 18:55:40 GMT; Max-Age=7200; path=\/; samesite=lax; laravel_session=eyJpdiI6IlhwemthRE8xWVhXQ2Zyb3NSdlUzeVE9PSIsInZhbHVlIjoiM0tSbkhFTXFtME5SdzgveFg4QkJSVUd2eU51cFRYTWpUYzMybEdmTy9aVFdybHExOWQ2OEFZVzVYUzA0bGlKOXN2YXMyM0drNXpiQjd3QlY3MXlWQ0x1S2hpSlRwa3pHcUVXNFB3VlA4L0dsSnVmNXNJNGJVN3RSNmxRanBpV1UiLCJtYWMiOiIzZWYwNDJiNDdhMWQ2N2ZhOGQxMDY5ZjUxMTU0MGYyODcxNmZkOTk2NTEyOTcxNmE1YmQxZWVmMjVmNjYzZmU3IiwidGFnIjoiIn0%3D; expires=Tue, 29 Apr 2025 18:55:40 GMT; Max-Age=7200; path=\/; httponly; samesite=lax"
+                                }
+                            ],
+                            "code": 404,
+                            "body": "{\"errors\":[{\"code\":404,\"source\":[],\"detail\":\"Resource type \\\"roles\\\" and id \\\"1\\\" is not found.\"}]}",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "Update Role",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "roles\/:id",
+                            "query": [
+                                {
+                                    "key": "fields%5Broles%5D",
+                                    "value": "",
+                                    "description": "Sparse fieldsets - specify which fields to include in the response for each resource type. ([Spec](https:\/\/jsonapi.org\/format\/#fetching-sparse-fieldsets))\n\n**Available fields:** `name`, `permissions`",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "include",
+                                    "value": "users",
+                                    "description": "Include related resources. ([Spec](https:\/\/jsonapi.org\/format\/#fetching-includes))\n\n**Available includes:** `users`",
+                                    "disabled": false
+                                }
+                            ],
+                            "raw": "{{baseUrl}}\/roles\/:id?fields%5Broles%5D=&include=users",
+                            "variable": [
+                                {
+                                    "id": "id",
+                                    "key": "id",
+                                    "value": "1",
+                                    "description": "The unique identifier of the 'roles' resource"
+                                }
+                            ]
+                        },
+                        "method": "PATCH",
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application\/vnd.api+json"
+                            },
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/vnd.api+json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\"data\":{\"attributes\":{\"name\":\"b\"},\"relationships\":{\"users\":{\"data\":{\"id\":\"1\",\"type\":\"users\"}}}}}"
+                        },
+                        "description": "Update a specific Role by ID."
+                    },
+                    "response": [
+                        {
+                            "header": [
+                                {
+                                    "key": "Content-Type",
+                                    "value": "application\/vnd.api+json"
+                                }
+                            ],
+                            "code": 200,
+                            "body": "{\"data\":{\"type\":\"roles\",\"id\":\"999\",\"attributes\":{\"name\":\"animi\",\"permissions\":[]},\"links\":{\"self\":\"\/roles\/999\"}}}",
+                            "name": "The updated resource."
+                        }
+                    ]
+                },
+                {
+                    "name": "Delete Role",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "roles\/:id",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/roles\/:id",
+                            "variable": [
+                                {
+                                    "id": "id",
+                                    "key": "id",
+                                    "value": "1",
+                                    "description": "The unique identifier of the 'roles' resource"
+                                }
+                            ]
+                        },
+                        "method": "DELETE",
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application\/vnd.api+json"
+                            },
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/vnd.api+json"
+                            }
+                        ],
+                        "body": null,
+                        "description": "Delete a specific Role by ID."
+                    },
+                    "response": [
+                        {
+                            "header": [
+                                {
+                                    "key": "Content-Type",
+                                    "value": "application\/vnd.api+json"
+                                }
+                            ],
+                            "code": 204,
+                            "body": "{\"data\":{\"type\":\"roles\",\"id\":\"1000\",\"attributes\":{\"name\":\"omnis\",\"permissions\":[]},\"links\":{\"self\":\"\/roles\/1000\"}}}",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "List related Users",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "roles\/:id\/users",
+                            "query": [
+                                {
+                                    "key": "fields%5Broles%5D",
+                                    "value": "",
+                                    "description": "Sparse fieldsets - specify which fields to include in the response for each resource type. ([Spec](https:\/\/jsonapi.org\/format\/#fetching-sparse-fieldsets))\n\n**Available fields:** `name`, `permissions`",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "include",
+                                    "value": "users",
+                                    "description": "Include related resources. ([Spec](https:\/\/jsonapi.org\/format\/#fetching-includes))\n\n**Available includes:** `users`",
+                                    "disabled": false
+                                }
+                            ],
+                            "raw": "{{baseUrl}}\/roles\/:id\/users?fields%5Broles%5D=&include=users",
+                            "variable": [
+                                {
+                                    "id": "id",
+                                    "key": "id",
+                                    "value": "1",
+                                    "description": "The unique identifier of the 'roles' resource"
+                                }
+                            ]
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application\/vnd.api+json"
+                            },
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/vnd.api+json"
+                            }
+                        ],
+                        "body": null,
+                        "description": "Retrieve the list of related Users for a specific Role."
+                    },
+                    "response": [
+                        {
+                            "header": [
+                                {
+                                    "key": "Content-Type",
+                                    "value": "application\/vnd.api+json"
+                                }
+                            ],
+                            "code": 200,
+                            "body": "{\"data\":[{\"type\":\"users\",\"id\":\"1049\",\"attributes\":{\"name\":\"Myrtis Tromp\",\"email\":\"nstokes@example.org\"},\"links\":{\"self\":\"\/users\/1049\"}},{\"type\":\"users\",\"id\":\"1050\",\"attributes\":{\"name\":\"Dr. Grayson Glover\",\"email\":\"schultz.audrey@example.org\"},\"links\":{\"self\":\"\/users\/1050\"}},{\"type\":\"users\",\"id\":\"1051\",\"attributes\":{\"name\":\"Abbey Gaylord MD\",\"email\":\"qankunding@example.com\"},\"links\":{\"self\":\"\/users\/1051\"}}],\"meta\":{\"pagination\":{\"total\":100,\"count\":20,\"per_page\":3,\"current_page\":1,\"total_pages\":5}},\"links\":{\"self\":\"users?page%5Bnumber%5D=1&page%5Bsize%5D=3\",\"first\":\"users?page%5Bnumber%5D=1&page%5Bsize%5D=3\",\"next\":\"users?page%5Bnumber%5D=1&page%5Bsize%5D=3\",\"last\":\"users?page%5Bnumber%5D=1&page%5Bsize%5D=3\"}}",
+                            "name": ""
+                        },
+                        {
+                            "header": [
+                                {
+                                    "key": "Content-Type",
+                                    "value": "application\/vnd.api+json"
+                                }
+                            ],
+                            "code": 200,
+                            "body": "{\"data\":[{\"type\":\"users\",\"id\":\"1052\",\"attributes\":{\"name\":\"Mr. Madisen Schaden\",\"email\":\"colt.balistreri@example.net\"},\"links\":{\"self\":\"\/users\/1052\"}},{\"type\":\"users\",\"id\":\"1053\",\"attributes\":{\"name\":\"Mrs. Kirsten Ward\",\"email\":\"cbeier@example.com\"},\"links\":{\"self\":\"\/users\/1053\"}},{\"type\":\"users\",\"id\":\"1054\",\"attributes\":{\"name\":\"Dr. Alan Green\",\"email\":\"oreilly.jacques@example.com\"},\"links\":{\"self\":\"\/users\/1054\"}}],\"meta\":{\"pagination\":{\"total\":100,\"count\":20,\"per_page\":3,\"current_page\":1,\"total_pages\":5}},\"links\":{\"self\":\"users?page%5Bnumber%5D=1&page%5Bsize%5D=3\",\"first\":\"users?page%5Bnumber%5D=1&page%5Bsize%5D=3\",\"next\":\"users?page%5Bnumber%5D=1&page%5Bsize%5D=3\",\"last\":\"users?page%5Bnumber%5D=1&page%5Bsize%5D=3\"}}",
+                            "name": ""
+                        },
+                        {
+                            "header": [
+                                {
+                                    "key": "content-type",
+                                    "value": "application\/vnd.api+json"
+                                },
+                                {
+                                    "key": "cache-control",
+                                    "value": "no-cache, private"
+                                },
+                                {
+                                    "key": "set-cookie",
+                                    "value": "XSRF-TOKEN=eyJpdiI6IjBISDFmeC9NbXp6NHg0eUNrOGM1a3c9PSIsInZhbHVlIjoiVUphcnRsNi8xTGVJTUloZTBNQUUvVitlSko1YWZNRGFFRmpScDV5ZGtySHMzZXJDQzB6NEd3YUk1MDdDMGRxVmUzdzUzWm5hUlY4WkRkZUN6U24yb3VhOXU5RHpEYUUxWEl1c0VnZCtwVkhHa1BMWS9MYi9nZElNUlF1MHE4ZS8iLCJtYWMiOiIzNDc0YTk0MDE3NjNiMTQ0OGJhNGMwZTYzY2UzMDFjMDIwODY4OWZhNzBmNGY4ODE2MGQwNzNlOTQ3MTUzYjcxIiwidGFnIjoiIn0%3D; expires=Tue, 29 Apr 2025 18:55:41 GMT; Max-Age=7200; path=\/; samesite=lax; laravel_session=eyJpdiI6InNxV0tEcjFkR2JQRmovYklKNXVvMHc9PSIsInZhbHVlIjoiNUNPUldqcFFlV0V4TklBc2pwTTdLUFJpV0dNVEV3UXlCQldtRlovUUgxTldYdGNBdTRFd0ZTejh2U0cyZEdyQlJEZ3EvejQwSk1ISjdFK24wbXRDNjdlNGgwQ2xrbC9PczNwN0ZQSGZheGFjSTRyb0d6enEvWDA2QzhXSXBnYXAiLCJtYWMiOiIxNTFjMTFiZDA2NDU0MGI1ZTBhYTYxZjNjYTdhNGExNGY0YTkwNjAxOTA5ODdjOGM3MDhiZGMwMDRkMjNlY2RmIiwidGFnIjoiIn0%3D; expires=Tue, 29 Apr 2025 18:55:41 GMT; Max-Age=7200; path=\/; httponly; samesite=lax"
+                                }
+                            ],
+                            "code": 404,
+                            "body": "{\"errors\":[{\"code\":404,\"source\":[],\"detail\":\"Resource type \\\"roles\\\" and id \\\"1\\\" is not found.\"}]}",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "Relationship users",
+                    "description": "",
+                    "item": [
+                        {
+                            "name": "Show Users relationships",
+                            "request": {
+                                "url": {
+                                    "host": "{{baseUrl}}",
+                                    "path": "roles\/:id\/relationships\/users",
+                                    "query": [],
+                                    "raw": "{{baseUrl}}\/roles\/:id\/relationships\/users",
+                                    "variable": [
+                                        {
+                                            "id": "id",
+                                            "key": "id",
+                                            "value": "1",
+                                            "description": "The unique identifier of the 'roles' resource"
+                                        }
+                                    ]
+                                },
+                                "method": "GET",
+                                "header": [
+                                    {
+                                        "key": "Accept",
+                                        "value": "application\/vnd.api+json"
+                                    },
+                                    {
+                                        "key": "Content-Type",
+                                        "value": "application\/vnd.api+json"
+                                    }
+                                ],
+                                "body": null,
+                                "description": "Retrieve the identifiers of the related Users for a specific Role."
+                            },
+                            "response": [
+                                {
+                                    "header": [
+                                        {
+                                            "key": "Content-Type",
+                                            "value": "application\/vnd.api+json"
+                                        }
+                                    ],
+                                    "code": 200,
+                                    "body": "{\"data\":[{\"type\":\"users\",\"id\":\"1055\",\"links\":{\"self\":\"\/users\/1055\"}},{\"type\":\"users\",\"id\":\"1056\",\"links\":{\"self\":\"\/users\/1056\"}},{\"type\":\"users\",\"id\":\"1057\",\"links\":{\"self\":\"\/users\/1057\"}}],\"meta\":{\"pagination\":{\"total\":100,\"count\":20,\"per_page\":3,\"current_page\":1,\"total_pages\":5}},\"links\":{\"self\":\"users?page%5Bnumber%5D=1&page%5Bsize%5D=3\",\"first\":\"users?page%5Bnumber%5D=1&page%5Bsize%5D=3\",\"next\":\"users?page%5Bnumber%5D=1&page%5Bsize%5D=3\",\"last\":\"users?page%5Bnumber%5D=1&page%5Bsize%5D=3\"}}",
+                                    "name": ""
+                                },
+                                {
+                                    "header": [
+                                        {
+                                            "key": "Content-Type",
+                                            "value": "application\/vnd.api+json"
+                                        }
+                                    ],
+                                    "code": 200,
+                                    "body": "{\"data\":[{\"type\":\"users\",\"id\":\"1058\",\"links\":{\"self\":\"\/users\/1058\"}},{\"type\":\"users\",\"id\":\"1059\",\"links\":{\"self\":\"\/users\/1059\"}},{\"type\":\"users\",\"id\":\"1060\",\"links\":{\"self\":\"\/users\/1060\"}}],\"meta\":{\"pagination\":{\"total\":100,\"count\":20,\"per_page\":3,\"current_page\":1,\"total_pages\":5}},\"links\":{\"self\":\"users?page%5Bnumber%5D=1&page%5Bsize%5D=3\",\"first\":\"users?page%5Bnumber%5D=1&page%5Bsize%5D=3\",\"next\":\"users?page%5Bnumber%5D=1&page%5Bsize%5D=3\",\"last\":\"users?page%5Bnumber%5D=1&page%5Bsize%5D=3\"}}",
+                                    "name": ""
+                                },
+                                {
+                                    "header": [
+                                        {
+                                            "key": "content-type",
+                                            "value": "application\/vnd.api+json"
+                                        },
+                                        {
+                                            "key": "cache-control",
+                                            "value": "no-cache, private"
+                                        },
+                                        {
+                                            "key": "set-cookie",
+                                            "value": "XSRF-TOKEN=eyJpdiI6IjF2Q3VZRTJiSmxQOXhDaDd1SlpIQWc9PSIsInZhbHVlIjoiS012a1FkM2xKb0VJMnZsVmxEUitYZ3RkbG1UZUR5K1FLeU5la0pMZHhRd2R6Q203NGVGcGpMd20xL0lIV1hJSFNuQ1ZyNUFTSkJVUzNLWCtqTk1GRVhoZ3U3OHhzV1lVNVg0aUhRbE5BSWdSOUVqV1lpRW9jZ0RxQ0R2M3Bob1IiLCJtYWMiOiI5YzNiNTAxODA4YzM2ZjU3Yzc0ZTI3Y2I4OTdmODJlNzgwYjEyNzlkYWIwMDc2MjgzNWU0NmNmZDI2MDM1NmYyIiwidGFnIjoiIn0%3D; expires=Tue, 29 Apr 2025 18:55:41 GMT; Max-Age=7200; path=\/; samesite=lax; laravel_session=eyJpdiI6ImttVmZJTGNtWWY0UEp5aXJYZXRvcnc9PSIsInZhbHVlIjoiMEZHdVdFeEV4WjB4aXNXbmRyZklYS2lGQkhiY0ZMMWJVS0dHTDRtTUIzSmtzT21CTkdJWVJCMUdzWTEzWVBOTnNjWi82WE5ZdllRa08xa3FoMUh1T0E3RWVuMTBJWGZqU2Y4cnZmRDBYckFaajZDNDlYSndlNzJoUGpnY0s0RkMiLCJtYWMiOiI5YzY2NzZjMjZjN2ExOTU5ZGY3ZGEwNjczNzNhZWM1YWNjNzIzOTY1MWFjZGVhMDM3MWJlMjE1NTBlODMwNTViIiwidGFnIjoiIn0%3D; expires=Tue, 29 Apr 2025 18:55:41 GMT; Max-Age=7200; path=\/; httponly; samesite=lax"
+                                        }
+                                    ],
+                                    "code": 404,
+                                    "body": "{\"errors\":[{\"code\":404,\"source\":[],\"detail\":\"Resource type \\\"roles\\\" and id \\\"1\\\" is not found.\"}]}",
+                                    "name": ""
+                                }
+                            ]
+                        },
+                        {
+                            "name": "Add to Users relationships",
+                            "request": {
+                                "url": {
+                                    "host": "{{baseUrl}}",
+                                    "path": "roles\/:id\/relationships\/users",
+                                    "query": [],
+                                    "raw": "{{baseUrl}}\/roles\/:id\/relationships\/users",
+                                    "variable": [
+                                        {
+                                            "id": "id",
+                                            "key": "id",
+                                            "value": "1",
+                                            "description": "The unique identifier of the 'roles' resource"
+                                        }
+                                    ]
+                                },
+                                "method": "POST",
+                                "header": [
+                                    {
+                                        "key": "Accept",
+                                        "value": "application\/vnd.api+json"
+                                    },
+                                    {
+                                        "key": "Content-Type",
+                                        "value": "application\/vnd.api+json"
+                                    }
+                                ],
+                                "body": {
+                                    "mode": "raw",
+                                    "raw": "{\"data\":[{\"id\":\"1\",\"type\":\"users\"}]}"
+                                },
+                                "description": "Add identifiers to the Users relationship of a specific Role."
+                            },
+                            "response": [
+                                {
+                                    "header": [
+                                        {
+                                            "key": "Content-Type",
+                                            "value": "application\/vnd.api+json"
+                                        }
+                                    ],
+                                    "code": 201,
+                                    "body": "{\"data\":[{\"type\":\"users\",\"id\":\"1061\",\"links\":{\"self\":\"\/users\/1061\"}},{\"type\":\"users\",\"id\":\"1062\",\"links\":{\"self\":\"\/users\/1062\"}},{\"type\":\"users\",\"id\":\"1063\",\"links\":{\"self\":\"\/users\/1063\"}}],\"meta\":{\"pagination\":{\"total\":100,\"count\":20,\"per_page\":3,\"current_page\":1,\"total_pages\":5}},\"links\":{\"self\":\"users?page%5Bnumber%5D=1&page%5Bsize%5D=3\",\"first\":\"users?page%5Bnumber%5D=1&page%5Bsize%5D=3\",\"next\":\"users?page%5Bnumber%5D=1&page%5Bsize%5D=3\",\"last\":\"users?page%5Bnumber%5D=1&page%5Bsize%5D=3\"}}",
+                                    "name": ""
+                                },
+                                {
+                                    "header": [
+                                        {
+                                            "key": "Content-Type",
+                                            "value": "application\/vnd.api+json"
+                                        }
+                                    ],
+                                    "code": 201,
+                                    "body": "{\"data\":[{\"type\":\"users\",\"id\":\"1064\",\"links\":{\"self\":\"\/users\/1064\"}},{\"type\":\"users\",\"id\":\"1065\",\"links\":{\"self\":\"\/users\/1065\"}},{\"type\":\"users\",\"id\":\"1066\",\"links\":{\"self\":\"\/users\/1066\"}}],\"meta\":{\"pagination\":{\"total\":100,\"count\":20,\"per_page\":3,\"current_page\":1,\"total_pages\":5}},\"links\":{\"self\":\"users?page%5Bnumber%5D=1&page%5Bsize%5D=3\",\"first\":\"users?page%5Bnumber%5D=1&page%5Bsize%5D=3\",\"next\":\"users?page%5Bnumber%5D=1&page%5Bsize%5D=3\",\"last\":\"users?page%5Bnumber%5D=1&page%5Bsize%5D=3\"}}",
+                                    "name": ""
+                                }
+                            ]
+                        },
+                        {
+                            "name": "Update Users relationships",
+                            "request": {
+                                "url": {
+                                    "host": "{{baseUrl}}",
+                                    "path": "roles\/:id\/relationships\/users",
+                                    "query": [],
+                                    "raw": "{{baseUrl}}\/roles\/:id\/relationships\/users",
+                                    "variable": [
+                                        {
+                                            "id": "id",
+                                            "key": "id",
+                                            "value": "1",
+                                            "description": "The unique identifier of the 'roles' resource"
+                                        }
+                                    ]
+                                },
+                                "method": "PATCH",
+                                "header": [
+                                    {
+                                        "key": "Accept",
+                                        "value": "application\/vnd.api+json"
+                                    },
+                                    {
+                                        "key": "Content-Type",
+                                        "value": "application\/vnd.api+json"
+                                    }
+                                ],
+                                "body": {
+                                    "mode": "raw",
+                                    "raw": "{\"data\":[{\"id\":\"1\",\"type\":\"users\"}]}"
+                                },
+                                "description": "Replace all identifiers in the Users relationship of a specific Role."
+                            },
+                            "response": [
+                                {
+                                    "header": [
+                                        {
+                                            "key": "Content-Type",
+                                            "value": "application\/vnd.api+json"
+                                        }
+                                    ],
+                                    "code": 200,
+                                    "body": "{\"data\":[{\"type\":\"users\",\"id\":\"1067\",\"links\":{\"self\":\"\/users\/1067\"}},{\"type\":\"users\",\"id\":\"1068\",\"links\":{\"self\":\"\/users\/1068\"}},{\"type\":\"users\",\"id\":\"1069\",\"links\":{\"self\":\"\/users\/1069\"}}],\"meta\":{\"pagination\":{\"total\":100,\"count\":20,\"per_page\":3,\"current_page\":1,\"total_pages\":5}},\"links\":{\"self\":\"users?page%5Bnumber%5D=1&page%5Bsize%5D=3\",\"first\":\"users?page%5Bnumber%5D=1&page%5Bsize%5D=3\",\"next\":\"users?page%5Bnumber%5D=1&page%5Bsize%5D=3\",\"last\":\"users?page%5Bnumber%5D=1&page%5Bsize%5D=3\"}}",
+                                    "name": ""
+                                },
+                                {
+                                    "header": [
+                                        {
+                                            "key": "Content-Type",
+                                            "value": "application\/vnd.api+json"
+                                        }
+                                    ],
+                                    "code": 200,
+                                    "body": "{\"data\":[{\"type\":\"users\",\"id\":\"1070\",\"links\":{\"self\":\"\/users\/1070\"}},{\"type\":\"users\",\"id\":\"1071\",\"links\":{\"self\":\"\/users\/1071\"}},{\"type\":\"users\",\"id\":\"1072\",\"links\":{\"self\":\"\/users\/1072\"}}],\"meta\":{\"pagination\":{\"total\":100,\"count\":20,\"per_page\":3,\"current_page\":1,\"total_pages\":5}},\"links\":{\"self\":\"users?page%5Bnumber%5D=1&page%5Bsize%5D=3\",\"first\":\"users?page%5Bnumber%5D=1&page%5Bsize%5D=3\",\"next\":\"users?page%5Bnumber%5D=1&page%5Bsize%5D=3\",\"last\":\"users?page%5Bnumber%5D=1&page%5Bsize%5D=3\"}}",
+                                    "name": ""
+                                }
+                            ]
+                        },
+                        {
+                            "name": "Remove from Users relationships",
+                            "request": {
+                                "url": {
+                                    "host": "{{baseUrl}}",
+                                    "path": "roles\/:id\/relationships\/users",
+                                    "query": [],
+                                    "raw": "{{baseUrl}}\/roles\/:id\/relationships\/users",
+                                    "variable": [
+                                        {
+                                            "id": "id",
+                                            "key": "id",
+                                            "value": "1",
+                                            "description": "The unique identifier of the 'roles' resource"
+                                        }
+                                    ]
+                                },
+                                "method": "DELETE",
+                                "header": [
+                                    {
+                                        "key": "Accept",
+                                        "value": "application\/vnd.api+json"
+                                    },
+                                    {
+                                        "key": "Content-Type",
+                                        "value": "application\/vnd.api+json"
+                                    }
+                                ],
+                                "body": {
+                                    "mode": "raw",
+                                    "raw": "{\"data\":[{\"id\":\"1\",\"type\":\"users\"}]}"
+                                },
+                                "description": "Remove identifiers from the Users relationship of a specific Role."
+                            },
+                            "response": [
+                                {
+                                    "header": [
+                                        {
+                                            "key": "Content-Type",
+                                            "value": "application\/vnd.api+json"
+                                        }
+                                    ],
+                                    "code": 204,
+                                    "body": "{\"data\":[{\"type\":\"users\",\"id\":\"1073\",\"links\":{\"self\":\"\/users\/1073\"}},{\"type\":\"users\",\"id\":\"1074\",\"links\":{\"self\":\"\/users\/1074\"}},{\"type\":\"users\",\"id\":\"1075\",\"links\":{\"self\":\"\/users\/1075\"}}],\"meta\":{\"pagination\":{\"total\":100,\"count\":20,\"per_page\":3,\"current_page\":1,\"total_pages\":5}},\"links\":{\"self\":\"users?page%5Bnumber%5D=1&page%5Bsize%5D=3\",\"first\":\"users?page%5Bnumber%5D=1&page%5Bsize%5D=3\",\"next\":\"users?page%5Bnumber%5D=1&page%5Bsize%5D=3\",\"last\":\"users?page%5Bnumber%5D=1&page%5Bsize%5D=3\"}}",
+                                    "name": ""
+                                },
+                                {
+                                    "header": [
+                                        {
+                                            "key": "Content-Type",
+                                            "value": "application\/vnd.api+json"
+                                        }
+                                    ],
+                                    "code": 204,
+                                    "body": "{\"data\":[{\"type\":\"users\",\"id\":\"1076\",\"links\":{\"self\":\"\/users\/1076\"}},{\"type\":\"users\",\"id\":\"1077\",\"links\":{\"self\":\"\/users\/1077\"}},{\"type\":\"users\",\"id\":\"1078\",\"links\":{\"self\":\"\/users\/1078\"}}],\"meta\":{\"pagination\":{\"total\":100,\"count\":20,\"per_page\":3,\"current_page\":1,\"total_pages\":5}},\"links\":{\"self\":\"users?page%5Bnumber%5D=1&page%5Bsize%5D=3\",\"first\":\"users?page%5Bnumber%5D=1&page%5Bsize%5D=3\",\"next\":\"users?page%5Bnumber%5D=1&page%5Bsize%5D=3\",\"last\":\"users?page%5Bnumber%5D=1&page%5Bsize%5D=3\"}}",
+                                    "name": ""
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "Users",
+            "description": "",
+            "item": [
+                {
+                    "name": "User Me",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "users\/me",
+                            "query": [
+                                {
+                                    "key": "fields%5Busers%5D",
+                                    "value": "",
+                                    "description": "Sparse fieldsets - specify which fields to include in the response for each resource type. ([Spec](https:\/\/jsonapi.org\/format\/#fetching-sparse-fieldsets))\n\n**Available fields:** `name`, `email`",
+                                    "disabled": true
+                                }
+                            ],
+                            "raw": "{{baseUrl}}\/users\/me?fields%5Busers%5D="
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application\/vnd.api+json"
+                            },
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/vnd.api+json"
+                            }
+                        ],
+                        "body": null,
+                        "description": "Return currently authenticated user's resource.\nShould be used with authentication logic, first login than use this endpoint."
+                    },
+                    "response": [
+                        {
+                            "header": [
+                                {
+                                    "key": "Content-Type",
+                                    "value": "application\/vnd.api+json"
+                                }
+                            ],
+                            "code": 200,
+                            "body": "{\"data\":{\"type\":\"users\",\"id\":\"1032\",\"attributes\":{\"name\":\"Prof. Mina Bauch\",\"email\":\"okeefe.isidro@example.org\"},\"links\":{\"self\":\"\/users\/1032\"}}}",
+                            "name": ""
+                        },
+                        {
+                            "header": [
+                                {
+                                    "key": "cache-control",
+                                    "value": "no-cache, private"
+                                },
+                                {
+                                    "key": "content-type",
+                                    "value": "application\/json"
+                                },
+                                {
+                                    "key": "set-cookie",
+                                    "value": "XSRF-TOKEN=eyJpdiI6InlDK3UzdDE2a1N0Z1ppcUhubzhhcnc9PSIsInZhbHVlIjoiU3FDQUV2ZmxKMEJ5SlV6U0lZZWc1L1VqOHltM2t1Z29aOUc3TnM1dVBXaThZV0g3TUJHcjVrZHA5ejljSUl1ZTBjSHZqYUtmOEFYQ0JCdmJsL0F2Zlc5c2ZvTXF2THcwWDRBL20xYUdxb1FRdGEyN1hNQlpLdEs2YTIwcTlObDkiLCJtYWMiOiI2N2FlZTY5M2Q3MGU4OWE2NGMxNTgxZDY3N2JkZGU3ZTRiODRmNDdmMWExNGYzMjQzYWI1N2I3NmYxYzc4MWM0IiwidGFnIjoiIn0%3D; expires=Tue, 29 Apr 2025 18:55:39 GMT; Max-Age=7200; path=\/; samesite=lax; laravel_session=eyJpdiI6InRMaVNLdWRxb3Z5UDV0bXplOThSUkE9PSIsInZhbHVlIjoiWUtQM2RLTVdxb2dPRnFnMjNWT293N3RZcjQvQUo1eXpmSEpUUFpISElMK09sclNSVWVybjdSVnQwWm1kL0QxTHNydnVSZHl4T00ydVQ0bm93UVVHZmZrcnZ3ZVdxYlM4Znp2L3o5cWdaUDF1SC9hVWFyc3VLQkwydGdSN1hZZnciLCJtYWMiOiJhODg0NzI0Nzg5ZGYwZTBmNDU2MmY5YmNiNDU3NzJmNjVjMmZjMTZmOTM3OGFjNzgwMDVjMWNlZGE3ZjUyMDRiIiwidGFnIjoiIn0%3D; expires=Tue, 29 Apr 2025 18:55:39 GMT; Max-Age=7200; path=\/; httponly; samesite=lax"
+                                }
+                            ],
+                            "code": 401,
+                            "body": "{\"message\":\"Unauthenticated.\"}",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "User registration",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "users",
+                            "query": [
+                                {
+                                    "key": "fields%5Busers%5D",
+                                    "value": "",
+                                    "description": "Sparse fieldsets - specify which fields to include in the response for each resource type. ([Spec](https:\/\/jsonapi.org\/format\/#fetching-sparse-fieldsets))\n\n**Available fields:** `name`, `email`",
+                                    "disabled": true
+                                }
+                            ],
+                            "raw": "{{baseUrl}}\/users?fields%5Busers%5D="
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application\/vnd.api+json"
+                            },
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/vnd.api+json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\"data\":{\"type\":\"users\",\"attributes\":{\"email\":\"gbailey@example.net\",\"password\":\"+-0pBNvYgxwmi\\\/#iw\",\"name\":\"u\"}}}"
+                        },
+                        "description": "**New user registration**"
+                    },
+                    "response": [
+                        {
+                            "header": [
+                                {
+                                    "key": "Content-Type",
+                                    "value": "application\/vnd.api+json"
+                                }
+                            ],
+                            "code": 200,
+                            "body": "{\"data\":{\"type\":\"users\",\"id\":\"1035\",\"attributes\":{\"name\":\"Clara Cronin V\",\"email\":\"wleuschke@example.net\"},\"links\":{\"self\":\"\/users\/1035\"}}}",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "Update User",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "users\/:id",
+                            "query": [
+                                {
+                                    "key": "fields%5Busers%5D",
+                                    "value": "",
+                                    "description": "Sparse fieldsets - specify which fields to include in the response for each resource type. ([Spec](https:\/\/jsonapi.org\/format\/#fetching-sparse-fieldsets))\n\n**Available fields:** `name`, `email`",
+                                    "disabled": true
+                                }
+                            ],
+                            "raw": "{{baseUrl}}\/users\/:id?fields%5Busers%5D=",
+                            "variable": [
+                                {
+                                    "id": "id",
+                                    "key": "id",
+                                    "value": "1",
+                                    "description": "The unique identifier of the 'users' resource"
+                                }
+                            ]
+                        },
+                        "method": "PATCH",
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application\/vnd.api+json"
+                            },
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/vnd.api+json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\"data\":{\"attributes\":{\"email\":\"gbailey@example.net\",\"password\":\"+-0pBNvYgxwmi\\\/#iw\",\"name\":\"u\"}}}"
+                        },
+                        "description": "Update a specific User by ID."
+                    },
+                    "response": [
+                        {
+                            "header": [
+                                {
+                                    "key": "Content-Type",
+                                    "value": "application\/vnd.api+json"
+                                }
+                            ],
+                            "code": 200,
+                            "body": "{\"data\":{\"type\":\"users\",\"id\":\"1037\",\"attributes\":{\"name\":\"Clara Cronin V\",\"email\":\"ferne52@example.com\"},\"links\":{\"self\":\"\/users\/1037\"}}}",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "List Users",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "users",
+                            "query": [
+                                {
+                                    "key": "fields%5Busers%5D",
+                                    "value": "",
+                                    "description": "Sparse fieldsets - specify which fields to include in the response for each resource type. ([Spec](https:\/\/jsonapi.org\/format\/#fetching-sparse-fieldsets))\n\n**Available fields:** `name`, `email`",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "page%5Bnumber%5D",
+                                    "value": "1",
+                                    "description": "Page number. ([Spec](https:\/\/jsonapi.org\/format\/#fetching-pagination))",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "page%5Bsize%5D",
+                                    "value": "10",
+                                    "description": "Number of results per page. ([Spec](https:\/\/jsonapi.org\/format\/#fetching-pagination))",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "sort",
+                                    "value": "",
+                                    "description": "Sort the results by attributes. Prefix with `-` for descending order. ([Spec](https:\/\/jsonapi.org\/format\/#fetching-sorting))\n\n**Available sort fields:** `name`, `email`",
+                                    "disabled": true
+                                }
+                            ],
+                            "raw": "{{baseUrl}}\/users?fields%5Busers%5D=&page%5Bnumber%5D=1&page%5Bsize%5D=10&sort="
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application\/vnd.api+json"
+                            },
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/vnd.api+json"
+                            }
+                        ],
+                        "body": null,
+                        "description": "Retrieve a list of Users."
+                    },
+                    "response": [
+                        {
+                            "header": [
+                                {
+                                    "key": "Content-Type",
+                                    "value": "application\/vnd.api+json"
+                                }
+                            ],
+                            "code": 200,
+                            "body": "{\"data\":[{\"type\":\"users\",\"id\":\"1042\",\"attributes\":{\"name\":\"Rodrigo O'Connell\",\"email\":\"emanuel.emmerich@example.org\"},\"links\":{\"self\":\"\/users\/1042\"}},{\"type\":\"users\",\"id\":\"1043\",\"attributes\":{\"name\":\"Liliana Conroy\",\"email\":\"franecki.brennon@example.org\"},\"links\":{\"self\":\"\/users\/1043\"}},{\"type\":\"users\",\"id\":\"1044\",\"attributes\":{\"name\":\"Mr. Murl Cruickshank Jr.\",\"email\":\"modesta58@example.net\"},\"links\":{\"self\":\"\/users\/1044\"}}],\"meta\":{\"pagination\":{\"total\":100,\"count\":20,\"per_page\":3,\"current_page\":1,\"total_pages\":5}},\"links\":{\"self\":\"users?page%5Bnumber%5D=1&page%5Bsize%5D=3\",\"first\":\"users?page%5Bnumber%5D=1&page%5Bsize%5D=3\",\"next\":\"users?page%5Bnumber%5D=1&page%5Bsize%5D=3\",\"last\":\"users?page%5Bnumber%5D=1&page%5Bsize%5D=3\"}}",
+                            "name": ""
+                        },
+                        {
+                            "header": [
+                                {
+                                    "key": "content-type",
+                                    "value": "application\/vnd.api+json"
+                                },
+                                {
+                                    "key": "cache-control",
+                                    "value": "no-cache, private"
+                                },
+                                {
+                                    "key": "set-cookie",
+                                    "value": "XSRF-TOKEN=eyJpdiI6Ik1wVjF6S09TSE8zRVkyTjRGUkdkU3c9PSIsInZhbHVlIjoiaXJ0bXAyUXNOcEFkeXEzR0tQWnU5SVQ3cFBPUjJSMTVoVjh2QzVkNmVaaUl1OWU0aDBHNmc0UlpBdkVNeDVUOVpEUlcxVHBmRDViVUlsOWNWaWxVQ2RJdDBJYzFFcXBYaFJpOVdCOTh6SlhpbVZsT2lDZStVeFNERFZ5NVNpNlciLCJtYWMiOiJiMGQ5ZTFmNjMzMjZiZGE2MGExZTBiZjA5ZTY2M2YxYTcxNWMwYzRjNDA1OTc2M2JmNWNmZDEyZWY4NWM5NWM2IiwidGFnIjoiIn0%3D; expires=Tue, 29 Apr 2025 18:55:40 GMT; Max-Age=7200; path=\/; samesite=lax; laravel_session=eyJpdiI6IkQyN2tTRnNmTnR6QVQrb2tZK3hpNHc9PSIsInZhbHVlIjoielZpNU81Z2ZsRjVLWGlSdDc0UWl0S205WnlveFErWEx6ekdMMGVNWTFVZjZtQnAyM2xXRzVUN2JaZEVMdE1hZG1EK1VKOGwyYlpVdnVxdHhpV2NCNnFXOXZaL09sMjhsbUhVOWNnWHJUY0hycWF6bWtDQ1l6ODAxSGcwNGdNbnAiLCJtYWMiOiI2MTM5ODgyOTBjNGNiODE2MDhiMGUwZjhlODgxZTAyOWRkMjI3ODljNjQzOTQ0OTExOWFmYWM3NGI3ODU1NWIzIiwidGFnIjoiIn0%3D; expires=Tue, 29 Apr 2025 18:55:40 GMT; Max-Age=7200; path=\/; httponly; samesite=lax"
+                                }
+                            ],
+                            "code": 403,
+                            "body": "{\"errors\":[{\"code\":403,\"source\":{\"pointer\":\"\\\/\"},\"detail\":\"No \\\"viewAny\\\" ability on \\\"users\\\" resource.\"}]}",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "Show User",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "users\/:id",
+                            "query": [
+                                {
+                                    "key": "fields%5Busers%5D",
+                                    "value": "",
+                                    "description": "Sparse fieldsets - specify which fields to include in the response for each resource type. ([Spec](https:\/\/jsonapi.org\/format\/#fetching-sparse-fieldsets))\n\n**Available fields:** `name`, `email`",
+                                    "disabled": true
+                                }
+                            ],
+                            "raw": "{{baseUrl}}\/users\/:id?fields%5Busers%5D=",
+                            "variable": [
+                                {
+                                    "id": "id",
+                                    "key": "id",
+                                    "value": "1",
+                                    "description": "The unique identifier of the 'users' resource"
+                                }
+                            ]
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application\/vnd.api+json"
+                            },
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/vnd.api+json"
+                            }
+                        ],
+                        "body": null,
+                        "description": "Retrieve a specific User by ID."
+                    },
+                    "response": [
+                        {
+                            "header": [
+                                {
+                                    "key": "Content-Type",
+                                    "value": "application\/vnd.api+json"
+                                }
+                            ],
+                            "code": 200,
+                            "body": "{\"data\":{\"type\":\"users\",\"id\":\"1046\",\"attributes\":{\"name\":\"Prof. Annabelle Kshlerin\",\"email\":\"micaela88@example.org\"},\"links\":{\"self\":\"\/users\/1046\"}}}",
+                            "name": ""
+                        },
+                        {
+                            "header": [
+                                {
+                                    "key": "content-type",
+                                    "value": "application\/vnd.api+json"
+                                },
+                                {
+                                    "key": "cache-control",
+                                    "value": "no-cache, private"
+                                },
+                                {
+                                    "key": "set-cookie",
+                                    "value": "XSRF-TOKEN=eyJpdiI6Im1kN0xqalZ0ZGlBdkxSWEcvaVhIT3c9PSIsInZhbHVlIjoiRzdyK3hjcDZWYzd3dXNqWVhQMU1ra3ZYK0tFZSsxWmRxWklQWnhJNk5yVy80czZVbnVlVytQMUpHVW4vZXB5VDRvZGM3eDIyaktJVnpZUFlOaFhmOGNhVDkxRXdUejAyQUF5ZEpIV0lkVS93QWQxYVVJSlNpQlEzOEVORnMwNUMiLCJtYWMiOiJkOTQxOGM0ODVhOTg1N2Y4NGI3YjYwNzBmMzY2NzVhM2RkNTE0MThmNDk2YjhlMzg4ZmYzYzhmODE4MmFlNGY4IiwidGFnIjoiIn0%3D; expires=Tue, 29 Apr 2025 18:55:40 GMT; Max-Age=7200; path=\/; samesite=lax; laravel_session=eyJpdiI6InJJWlFkeUdKdHlOUmFtVlA4OUVkbmc9PSIsInZhbHVlIjoiMllMVGlIUmsxNlVuMUxSYUFZa0JiekV3dGhna3JKZjhlazRENGdpVks4QXREUUF6SURrem9TYWNjTUYxem9TSVNOd09QWDByWk9oOVhPbDFuMS9aekhleGFDaTU4VjU1ellKM2xGNWNweElNRlBVd3hRZTI1UWsyNXIzbDdlbCsiLCJtYWMiOiI1YWViNGFlMjIwMzA4MWE2NjI0ZWE0NDBlYTAzZDY3NTY2N2IzNDJlMGVkZjc0YWZlOTEzZjBhZDQ0ZWQ1ZTg3IiwidGFnIjoiIn0%3D; expires=Tue, 29 Apr 2025 18:55:40 GMT; Max-Age=7200; path=\/; httponly; samesite=lax"
+                                }
+                            ],
+                            "code": 404,
+                            "body": "{\"errors\":[{\"code\":404,\"source\":[],\"detail\":\"Resource type \\\"users\\\" and id \\\"1\\\" is not found.\"}]}",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "Delete User",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "users\/:id",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/users\/:id",
+                            "variable": [
+                                {
+                                    "id": "id",
+                                    "key": "id",
+                                    "value": "1",
+                                    "description": "The unique identifier of the 'users' resource"
+                                }
+                            ]
+                        },
+                        "method": "DELETE",
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application\/vnd.api+json"
+                            },
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/vnd.api+json"
+                            }
+                        ],
+                        "body": null,
+                        "description": "Delete a specific User by ID."
+                    },
+                    "response": [
+                        {
+                            "header": [
+                                {
+                                    "key": "Content-Type",
+                                    "value": "application\/vnd.api+json"
+                                }
+                            ],
+                            "code": 204,
+                            "body": "{\"data\":{\"type\":\"users\",\"id\":\"1047\",\"attributes\":{\"name\":\"Morgan Hirthe\",\"email\":\"wbatz@example.net\"},\"links\":{\"self\":\"\/users\/1047\"}}}",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "List related Roles",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "users\/:id\/roles",
+                            "query": [
+                                {
+                                    "key": "fields%5Busers%5D",
+                                    "value": "",
+                                    "description": "Sparse fieldsets - specify which fields to include in the response for each resource type. ([Spec](https:\/\/jsonapi.org\/format\/#fetching-sparse-fieldsets))\n\n**Available fields:** `name`, `email`",
+                                    "disabled": true
+                                }
+                            ],
+                            "raw": "{{baseUrl}}\/users\/:id\/roles?fields%5Busers%5D=",
+                            "variable": [
+                                {
+                                    "id": "id",
+                                    "key": "id",
+                                    "value": "1",
+                                    "description": "The unique identifier of the 'users' resource"
+                                }
+                            ]
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application\/vnd.api+json"
+                            },
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/vnd.api+json"
+                            }
+                        ],
+                        "body": null,
+                        "description": "Retrieve the list of related Roles for a specific User."
+                    },
+                    "response": [
+                        {
+                            "header": [
+                                {
+                                    "key": "Content-Type",
+                                    "value": "application\/vnd.api+json"
+                                }
+                            ],
+                            "code": 200,
+                            "body": "{\"data\":[{\"type\":\"roles\",\"id\":\"1001\",\"attributes\":{\"name\":\"quia\",\"permissions\":[]},\"links\":{\"self\":\"\/roles\/1001\"}},{\"type\":\"roles\",\"id\":\"1002\",\"attributes\":{\"name\":\"officia\",\"permissions\":[]},\"links\":{\"self\":\"\/roles\/1002\"}},{\"type\":\"roles\",\"id\":\"1003\",\"attributes\":{\"name\":\"est\",\"permissions\":[]},\"links\":{\"self\":\"\/roles\/1003\"}}],\"meta\":{\"pagination\":{\"total\":100,\"count\":20,\"per_page\":3,\"current_page\":1,\"total_pages\":5}},\"links\":{\"self\":\"roles?page%5Bnumber%5D=1&page%5Bsize%5D=3\",\"first\":\"roles?page%5Bnumber%5D=1&page%5Bsize%5D=3\",\"next\":\"roles?page%5Bnumber%5D=1&page%5Bsize%5D=3\",\"last\":\"roles?page%5Bnumber%5D=1&page%5Bsize%5D=3\"}}",
+                            "name": ""
+                        },
+                        {
+                            "header": [
+                                {
+                                    "key": "Content-Type",
+                                    "value": "application\/vnd.api+json"
+                                }
+                            ],
+                            "code": 200,
+                            "body": "{\"data\":[{\"type\":\"roles\",\"id\":\"1004\",\"attributes\":{\"name\":\"dignissimos\",\"permissions\":[]},\"links\":{\"self\":\"\/roles\/1004\"}},{\"type\":\"roles\",\"id\":\"1005\",\"attributes\":{\"name\":\"neque\",\"permissions\":[]},\"links\":{\"self\":\"\/roles\/1005\"}},{\"type\":\"roles\",\"id\":\"1006\",\"attributes\":{\"name\":\"blanditiis\",\"permissions\":[]},\"links\":{\"self\":\"\/roles\/1006\"}}],\"meta\":{\"pagination\":{\"total\":100,\"count\":20,\"per_page\":3,\"current_page\":1,\"total_pages\":5}},\"links\":{\"self\":\"roles?page%5Bnumber%5D=1&page%5Bsize%5D=3\",\"first\":\"roles?page%5Bnumber%5D=1&page%5Bsize%5D=3\",\"next\":\"roles?page%5Bnumber%5D=1&page%5Bsize%5D=3\",\"last\":\"roles?page%5Bnumber%5D=1&page%5Bsize%5D=3\"}}",
+                            "name": ""
+                        },
+                        {
+                            "header": [
+                                {
+                                    "key": "content-type",
+                                    "value": "application\/vnd.api+json"
+                                },
+                                {
+                                    "key": "cache-control",
+                                    "value": "no-cache, private"
+                                },
+                                {
+                                    "key": "set-cookie",
+                                    "value": "XSRF-TOKEN=eyJpdiI6IjhEc3Fhd0ZzSlUrektIdTJBNUR3QlE9PSIsInZhbHVlIjoiY0lZaEtxU0JGSjNFOGxOTmtsQWg0Yk1veVpQRTVmVm9QZ0V3bGdtRGY4aGF5Yks3Q3lWKys5eExrQW9IUkVwVVljSVFjOTVERDJDLzhxMVc2VWUvazd4WUs5V3VFZDRTWVlFdThQdnVGaVorOXkwSmZSMU5kNkV0dHZEcTRKS0ciLCJtYWMiOiJlODM0YWJlNTEwM2E3YmJlMDU2YTI1NjU0MjA2MmQ4ODJlNTM3MWFmNDllMzNiMjhkYzFhNDlmMGFhMGJmYTgxIiwidGFnIjoiIn0%3D; expires=Tue, 29 Apr 2025 18:55:41 GMT; Max-Age=7200; path=\/; samesite=lax; laravel_session=eyJpdiI6IlFRc0pTZnBGTyt6NXM1eE9jQWVFRFE9PSIsInZhbHVlIjoiRDB6dXlQNVNEVlc1Qm1sNDBwQXdIWFhDM0NqcnNVM1FJV0czR2lkd0x2YzBVbS8vSFhqS0Y3UTF6L2NqMmtUS1lyazZteTJ2NC96dUc3UHZPblUxRkU0K2p3S2xzN0JJNGs3VTdnRFNjUitpK0h2T2dGMTZ0cmpydXoweWdQSmoiLCJtYWMiOiIxODZlMTFlOTBhZmVhNDAyOWU2OTM5MTBkMWUxZmY1MjlmOWI0ODkzMTU4NGE2MGU1MzViZGIwZDcwNDc1ZDQ5IiwidGFnIjoiIn0%3D; expires=Tue, 29 Apr 2025 18:55:41 GMT; Max-Age=7200; path=\/; httponly; samesite=lax"
+                                }
+                            ],
+                            "code": 404,
+                            "body": "{\"errors\":[{\"code\":404,\"source\":[],\"detail\":\"Resource type \\\"users\\\" and id \\\"1\\\" is not found.\"}]}",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "Relationship roles",
+                    "description": "",
+                    "item": [
+                        {
+                            "name": "Show Roles relationships",
+                            "request": {
+                                "url": {
+                                    "host": "{{baseUrl}}",
+                                    "path": "users\/:id\/relationships\/roles",
+                                    "query": [],
+                                    "raw": "{{baseUrl}}\/users\/:id\/relationships\/roles",
+                                    "variable": [
+                                        {
+                                            "id": "id",
+                                            "key": "id",
+                                            "value": "1",
+                                            "description": "The unique identifier of the 'users' resource"
+                                        }
+                                    ]
+                                },
+                                "method": "GET",
+                                "header": [
+                                    {
+                                        "key": "Accept",
+                                        "value": "application\/vnd.api+json"
+                                    },
+                                    {
+                                        "key": "Content-Type",
+                                        "value": "application\/vnd.api+json"
+                                    }
+                                ],
+                                "body": null,
+                                "description": "Retrieve the identifiers of the related Roles for a specific User."
+                            },
+                            "response": [
+                                {
+                                    "header": [
+                                        {
+                                            "key": "Content-Type",
+                                            "value": "application\/vnd.api+json"
+                                        }
+                                    ],
+                                    "code": 200,
+                                    "body": "{\"data\":[{\"type\":\"roles\",\"id\":\"1008\",\"links\":{\"self\":\"\/roles\/1008\"}},{\"type\":\"roles\",\"id\":\"1009\",\"links\":{\"self\":\"\/roles\/1009\"}},{\"type\":\"roles\",\"id\":\"1010\",\"links\":{\"self\":\"\/roles\/1010\"}}],\"meta\":{\"pagination\":{\"total\":100,\"count\":20,\"per_page\":3,\"current_page\":1,\"total_pages\":5}},\"links\":{\"self\":\"roles?page%5Bnumber%5D=1&page%5Bsize%5D=3\",\"first\":\"roles?page%5Bnumber%5D=1&page%5Bsize%5D=3\",\"next\":\"roles?page%5Bnumber%5D=1&page%5Bsize%5D=3\",\"last\":\"roles?page%5Bnumber%5D=1&page%5Bsize%5D=3\"}}",
+                                    "name": ""
+                                },
+                                {
+                                    "header": [
+                                        {
+                                            "key": "Content-Type",
+                                            "value": "application\/vnd.api+json"
+                                        }
+                                    ],
+                                    "code": 200,
+                                    "body": "{\"data\":[{\"type\":\"roles\",\"id\":\"1011\",\"links\":{\"self\":\"\/roles\/1011\"}},{\"type\":\"roles\",\"id\":\"1012\",\"links\":{\"self\":\"\/roles\/1012\"}},{\"type\":\"roles\",\"id\":\"1013\",\"links\":{\"self\":\"\/roles\/1013\"}}],\"meta\":{\"pagination\":{\"total\":100,\"count\":20,\"per_page\":3,\"current_page\":1,\"total_pages\":5}},\"links\":{\"self\":\"roles?page%5Bnumber%5D=1&page%5Bsize%5D=3\",\"first\":\"roles?page%5Bnumber%5D=1&page%5Bsize%5D=3\",\"next\":\"roles?page%5Bnumber%5D=1&page%5Bsize%5D=3\",\"last\":\"roles?page%5Bnumber%5D=1&page%5Bsize%5D=3\"}}",
+                                    "name": ""
+                                },
+                                {
+                                    "header": [
+                                        {
+                                            "key": "content-type",
+                                            "value": "application\/vnd.api+json"
+                                        },
+                                        {
+                                            "key": "cache-control",
+                                            "value": "no-cache, private"
+                                        },
+                                        {
+                                            "key": "set-cookie",
+                                            "value": "XSRF-TOKEN=eyJpdiI6Im40cUdZRHd3UkZreXBBWlNDTk1EMlE9PSIsInZhbHVlIjoieWF2N2xLWFYwMU1obVZlK28vd3Q4UkVzRWhRQjhzTlg4Y210dXBLVi9lUkI3SzI5TG9IdWdXTmpESmk2UkRkNStwYXRMYlJFREJWaGVvMWxkd0hhRXl0M05MaW90OU01Q1ZTQm1td1piZkdoZDJUbk1kTnZ2ajBIbHpjZXpNeGIiLCJtYWMiOiJhZTMyZTNiY2FlM2M3MjcyZWE0MTNhMjdkYWU5YzE0MGI0YzBiMTM5NjI3NmRiMjM2Y2FkNTRjYWFkODVkOGY0IiwidGFnIjoiIn0%3D; expires=Tue, 29 Apr 2025 18:55:41 GMT; Max-Age=7200; path=\/; samesite=lax; laravel_session=eyJpdiI6Img5djU2S3JKUnFKb0VpQ1JJaTlnVUE9PSIsInZhbHVlIjoiUTVlMmIwS2k2Y3NPRmJsend2OGFCUEhBUEl5b2lWSmFJdzNkMWdzVG05aEtYa2hZb1hYYXpBNWIrKzFZUVpkQmllTldQVnV4OVNOeFZaLzY2TllaMU5IQW9KNU13MVZCUm5FZ3ZKbk9iT1NRbHZjQ3JDUjh1QmVVMytJQzhoNG8iLCJtYWMiOiIzZWI2YTZmY2JiY2EwMmZlOTAyNjM4MWVmMzAyY2MzYTBlMDM0ZDIyYzMxZmU1ZDI2NjNiNTkyZjNiNTEyNmMyIiwidGFnIjoiIn0%3D; expires=Tue, 29 Apr 2025 18:55:41 GMT; Max-Age=7200; path=\/; httponly; samesite=lax"
+                                        }
+                                    ],
+                                    "code": 404,
+                                    "body": "{\"errors\":[{\"code\":404,\"source\":[],\"detail\":\"Resource type \\\"users\\\" and id \\\"1\\\" is not found.\"}]}",
+                                    "name": ""
+                                }
+                            ]
+                        },
+                        {
+                            "name": "Add to Roles relationships",
+                            "request": {
+                                "url": {
+                                    "host": "{{baseUrl}}",
+                                    "path": "users\/:id\/relationships\/roles",
+                                    "query": [],
+                                    "raw": "{{baseUrl}}\/users\/:id\/relationships\/roles",
+                                    "variable": [
+                                        {
+                                            "id": "id",
+                                            "key": "id",
+                                            "value": "1",
+                                            "description": "The unique identifier of the 'users' resource"
+                                        }
+                                    ]
+                                },
+                                "method": "POST",
+                                "header": [
+                                    {
+                                        "key": "Accept",
+                                        "value": "application\/vnd.api+json"
+                                    },
+                                    {
+                                        "key": "Content-Type",
+                                        "value": "application\/vnd.api+json"
+                                    }
+                                ],
+                                "body": {
+                                    "mode": "raw",
+                                    "raw": "{\"data\":[{\"id\":\"1\",\"type\":\"roles\"}]}"
+                                },
+                                "description": "Add identifiers to the Roles relationship of a specific User."
+                            },
+                            "response": [
+                                {
+                                    "header": [
+                                        {
+                                            "key": "Content-Type",
+                                            "value": "application\/vnd.api+json"
+                                        }
+                                    ],
+                                    "code": 201,
+                                    "body": "{\"data\":[{\"type\":\"roles\",\"id\":\"1014\",\"links\":{\"self\":\"\/roles\/1014\"}},{\"type\":\"roles\",\"id\":\"1015\",\"links\":{\"self\":\"\/roles\/1015\"}},{\"type\":\"roles\",\"id\":\"1016\",\"links\":{\"self\":\"\/roles\/1016\"}}],\"meta\":{\"pagination\":{\"total\":100,\"count\":20,\"per_page\":3,\"current_page\":1,\"total_pages\":5}},\"links\":{\"self\":\"roles?page%5Bnumber%5D=1&page%5Bsize%5D=3\",\"first\":\"roles?page%5Bnumber%5D=1&page%5Bsize%5D=3\",\"next\":\"roles?page%5Bnumber%5D=1&page%5Bsize%5D=3\",\"last\":\"roles?page%5Bnumber%5D=1&page%5Bsize%5D=3\"}}",
+                                    "name": ""
+                                },
+                                {
+                                    "header": [
+                                        {
+                                            "key": "Content-Type",
+                                            "value": "application\/vnd.api+json"
+                                        }
+                                    ],
+                                    "code": 201,
+                                    "body": "{\"data\":[{\"type\":\"roles\",\"id\":\"1017\",\"links\":{\"self\":\"\/roles\/1017\"}},{\"type\":\"roles\",\"id\":\"1018\",\"links\":{\"self\":\"\/roles\/1018\"}},{\"type\":\"roles\",\"id\":\"1019\",\"links\":{\"self\":\"\/roles\/1019\"}}],\"meta\":{\"pagination\":{\"total\":100,\"count\":20,\"per_page\":3,\"current_page\":1,\"total_pages\":5}},\"links\":{\"self\":\"roles?page%5Bnumber%5D=1&page%5Bsize%5D=3\",\"first\":\"roles?page%5Bnumber%5D=1&page%5Bsize%5D=3\",\"next\":\"roles?page%5Bnumber%5D=1&page%5Bsize%5D=3\",\"last\":\"roles?page%5Bnumber%5D=1&page%5Bsize%5D=3\"}}",
+                                    "name": ""
+                                }
+                            ]
+                        },
+                        {
+                            "name": "Update Roles relationships",
+                            "request": {
+                                "url": {
+                                    "host": "{{baseUrl}}",
+                                    "path": "users\/:id\/relationships\/roles",
+                                    "query": [],
+                                    "raw": "{{baseUrl}}\/users\/:id\/relationships\/roles",
+                                    "variable": [
+                                        {
+                                            "id": "id",
+                                            "key": "id",
+                                            "value": "1",
+                                            "description": "The unique identifier of the 'users' resource"
+                                        }
+                                    ]
+                                },
+                                "method": "PATCH",
+                                "header": [
+                                    {
+                                        "key": "Accept",
+                                        "value": "application\/vnd.api+json"
+                                    },
+                                    {
+                                        "key": "Content-Type",
+                                        "value": "application\/vnd.api+json"
+                                    }
+                                ],
+                                "body": {
+                                    "mode": "raw",
+                                    "raw": "{\"data\":[{\"id\":\"1\",\"type\":\"roles\"}]}"
+                                },
+                                "description": "Replace all identifiers in the Roles relationship of a specific User."
+                            },
+                            "response": [
+                                {
+                                    "header": [
+                                        {
+                                            "key": "Content-Type",
+                                            "value": "application\/vnd.api+json"
+                                        }
+                                    ],
+                                    "code": 200,
+                                    "body": "{\"data\":[{\"type\":\"roles\",\"id\":\"1020\",\"links\":{\"self\":\"\/roles\/1020\"}},{\"type\":\"roles\",\"id\":\"1021\",\"links\":{\"self\":\"\/roles\/1021\"}},{\"type\":\"roles\",\"id\":\"1022\",\"links\":{\"self\":\"\/roles\/1022\"}}],\"meta\":{\"pagination\":{\"total\":100,\"count\":20,\"per_page\":3,\"current_page\":1,\"total_pages\":5}},\"links\":{\"self\":\"roles?page%5Bnumber%5D=1&page%5Bsize%5D=3\",\"first\":\"roles?page%5Bnumber%5D=1&page%5Bsize%5D=3\",\"next\":\"roles?page%5Bnumber%5D=1&page%5Bsize%5D=3\",\"last\":\"roles?page%5Bnumber%5D=1&page%5Bsize%5D=3\"}}",
+                                    "name": ""
+                                },
+                                {
+                                    "header": [
+                                        {
+                                            "key": "Content-Type",
+                                            "value": "application\/vnd.api+json"
+                                        }
+                                    ],
+                                    "code": 200,
+                                    "body": "{\"data\":[{\"type\":\"roles\",\"id\":\"1023\",\"links\":{\"self\":\"\/roles\/1023\"}},{\"type\":\"roles\",\"id\":\"1024\",\"links\":{\"self\":\"\/roles\/1024\"}},{\"type\":\"roles\",\"id\":\"1025\",\"links\":{\"self\":\"\/roles\/1025\"}}],\"meta\":{\"pagination\":{\"total\":100,\"count\":20,\"per_page\":3,\"current_page\":1,\"total_pages\":5}},\"links\":{\"self\":\"roles?page%5Bnumber%5D=1&page%5Bsize%5D=3\",\"first\":\"roles?page%5Bnumber%5D=1&page%5Bsize%5D=3\",\"next\":\"roles?page%5Bnumber%5D=1&page%5Bsize%5D=3\",\"last\":\"roles?page%5Bnumber%5D=1&page%5Bsize%5D=3\"}}",
+                                    "name": ""
+                                }
+                            ]
+                        },
+                        {
+                            "name": "Remove from Roles relationships",
+                            "request": {
+                                "url": {
+                                    "host": "{{baseUrl}}",
+                                    "path": "users\/:id\/relationships\/roles",
+                                    "query": [],
+                                    "raw": "{{baseUrl}}\/users\/:id\/relationships\/roles",
+                                    "variable": [
+                                        {
+                                            "id": "id",
+                                            "key": "id",
+                                            "value": "1",
+                                            "description": "The unique identifier of the 'users' resource"
+                                        }
+                                    ]
+                                },
+                                "method": "DELETE",
+                                "header": [
+                                    {
+                                        "key": "Accept",
+                                        "value": "application\/vnd.api+json"
+                                    },
+                                    {
+                                        "key": "Content-Type",
+                                        "value": "application\/vnd.api+json"
+                                    }
+                                ],
+                                "body": {
+                                    "mode": "raw",
+                                    "raw": "{\"data\":[{\"id\":\"1\",\"type\":\"roles\"}]}"
+                                },
+                                "description": "Remove identifiers from the Roles relationship of a specific User."
+                            },
+                            "response": [
+                                {
+                                    "header": [
+                                        {
+                                            "key": "Content-Type",
+                                            "value": "application\/vnd.api+json"
+                                        }
+                                    ],
+                                    "code": 204,
+                                    "body": "{\"data\":[{\"type\":\"roles\",\"id\":\"1026\",\"links\":{\"self\":\"\/roles\/1026\"}},{\"type\":\"roles\",\"id\":\"1027\",\"links\":{\"self\":\"\/roles\/1027\"}},{\"type\":\"roles\",\"id\":\"1028\",\"links\":{\"self\":\"\/roles\/1028\"}}],\"meta\":{\"pagination\":{\"total\":100,\"count\":20,\"per_page\":3,\"current_page\":1,\"total_pages\":5}},\"links\":{\"self\":\"roles?page%5Bnumber%5D=1&page%5Bsize%5D=3\",\"first\":\"roles?page%5Bnumber%5D=1&page%5Bsize%5D=3\",\"next\":\"roles?page%5Bnumber%5D=1&page%5Bsize%5D=3\",\"last\":\"roles?page%5Bnumber%5D=1&page%5Bsize%5D=3\"}}",
+                                    "name": ""
+                                },
+                                {
+                                    "header": [
+                                        {
+                                            "key": "Content-Type",
+                                            "value": "application\/vnd.api+json"
+                                        }
+                                    ],
+                                    "code": 204,
+                                    "body": "{\"data\":[{\"type\":\"roles\",\"id\":\"1029\",\"links\":{\"self\":\"\/roles\/1029\"}},{\"type\":\"roles\",\"id\":\"1030\",\"links\":{\"self\":\"\/roles\/1030\"}},{\"type\":\"roles\",\"id\":\"1031\",\"links\":{\"self\":\"\/roles\/1031\"}}],\"meta\":{\"pagination\":{\"total\":100,\"count\":20,\"per_page\":3,\"current_page\":1,\"total_pages\":5}},\"links\":{\"self\":\"roles?page%5Bnumber%5D=1&page%5Bsize%5D=3\",\"first\":\"roles?page%5Bnumber%5D=1&page%5Bsize%5D=3\",\"next\":\"roles?page%5Bnumber%5D=1&page%5Bsize%5D=3\",\"last\":\"roles?page%5Bnumber%5D=1&page%5Bsize%5D=3\"}}",
+                                    "name": ""
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+    "auth": {
+        "type": "bearer",
+        "bearer": [
+            {
+                "key": "key",
+                "type": "string"
+            }
+        ]
+    }
+}
