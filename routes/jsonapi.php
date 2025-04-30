@@ -1,8 +1,8 @@
 <?php
 
+use App\Http\Controllers\User\UserController;
 use Illuminate\Support\Facades\Route;
 use Sowl\JsonApi\Default\Controller as DefaultController;
-use App\Http\Controllers\User\UserController;
 
 /* ---------------------------------------------------------
     * Add any new custom routes here.

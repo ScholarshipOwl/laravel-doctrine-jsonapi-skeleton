@@ -2,43 +2,44 @@
 
 namespace App\Entities;
 
-use Doctrine\ORM\Mapping as ORM;
-use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
-use Illuminate\Contracts\Auth\Access\Authorizable as AuthorizableContract;
-use Illuminate\Contracts\Auth\CanResetPassword as CanResetPasswordContract;
-use LaravelDoctrine\ORM\Auth\Authenticatable;
-use Illuminate\Foundation\Auth\Access\Authorizable;
-use Illuminate\Auth\Passwords\CanResetPassword;
-use Sowl\JsonApi\ResourceInterface;
-use Sowl\JsonApi\Relationships\RelationshipsCollection;
-use Sowl\JsonApi\AbstractTransformer;
-use Sowl\JsonApi\Concerns\HasTimestamps;
 use App\Transformers\UserTransformer;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
+use Doctrine\ORM\Mapping as ORM;
+use Illuminate\Auth\Passwords\CanResetPassword;
+use Illuminate\Contracts\Auth\Access\Authorizable as AuthorizableContract;
+use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
+use Illuminate\Contracts\Auth\CanResetPassword as CanResetPasswordContract;
+use Illuminate\Foundation\Auth\Access\Authorizable;
+use LaravelDoctrine\ACL\Attribute as ACL;
 use LaravelDoctrine\ACL\Contracts\HasPermissions;
 use LaravelDoctrine\ACL\Contracts\HasRoles;
-use LaravelDoctrine\ACL\Attribute as ACL;
 use LaravelDoctrine\ACL\Permissions\WithPermissions;
 use LaravelDoctrine\ACL\Roles\WithRoles;
+use LaravelDoctrine\ORM\Auth\Authenticatable;
 use LaravelDoctrine\ORM\Notifications\Notifiable;
+use Sowl\JsonApi\AbstractTransformer;
+use Sowl\JsonApi\Concerns\HasTimestamps;
 use Sowl\JsonApi\Relationships\MemoizeRelationshipsTrait;
+use Sowl\JsonApi\Relationships\RelationshipsCollection;
+use Sowl\JsonApi\ResourceInterface;
 
 #[ORM\Entity]
 #[ORM\Table(name: 'users')]
-class User implements AuthenticatableContract,
-                      AuthorizableContract,
-                      CanResetPasswordContract,
-                      ResourceInterface,
-                      HasPermissions,
-                      HasRoles
+class User implements
+    AuthenticatableContract,
+    AuthorizableContract,
+    CanResetPasswordContract,
+    HasPermissions,
+    HasRoles,
+    ResourceInterface
 {
-    use HasTimestamps;
     use Authenticatable;
     use Authorizable;
     use CanResetPassword;
-    use Notifiable;
+    use HasTimestamps;
     use MemoizeRelationshipsTrait;
+    use Notifiable;
     use WithPermissions;
     use WithRoles;
 
@@ -75,7 +76,7 @@ class User implements AuthenticatableContract,
     #[ACL\HasPermissions()]
     private array $permissions = [];
 
-    #[ACL\HasRoles()]
+    #[ACL\HasRoles(inversedBy: 'users')]
     private Collection $roles;
 
     public function __construct()
@@ -96,6 +97,7 @@ class User implements AuthenticatableContract,
     public function setName(string $name): self
     {
         $this->name = $name;
+
         return $this;
     }
 
@@ -107,6 +109,7 @@ class User implements AuthenticatableContract,
     public function setEmail(string $email): self
     {
         $this->email = $email;
+
         return $this;
     }
 
@@ -118,12 +121,14 @@ class User implements AuthenticatableContract,
     public function setEmailVerifiedAt(?\DateTime $emailVerifiedAt): self
     {
         $this->emailVerifiedAt = $emailVerifiedAt;
+
         return $this;
     }
 
     public function setPassword(string $password): self
     {
         $this->password = $password;
+
         return $this;
     }
 
@@ -137,12 +142,13 @@ class User implements AuthenticatableContract,
     public function setPermissions(array $permissions): self
     {
         $this->permissions = $permissions;
+
         return $this;
     }
 
     public function addPermission(string $permission): self
     {
-        if (!in_array($permission, $this->permissions)) {
+        if (! in_array($permission, $this->permissions)) {
             $this->permissions[] = $permission;
         }
 
@@ -151,7 +157,8 @@ class User implements AuthenticatableContract,
 
     public function removePermission(string $permission): self
     {
-        $this->permissions = array_filter($this->permissions, fn($p) => $p !== $permission);
+        $this->permissions = array_filter($this->permissions, fn ($p) => $p !== $permission);
+
         return $this;
     }
 
@@ -163,12 +170,13 @@ class User implements AuthenticatableContract,
     public function setRoles(Collection $roles): self
     {
         $this->roles = $roles;
+
         return $this;
     }
 
     public function addRole(Role $role): self
     {
-        if (!$this->roles->contains($role)) {
+        if (! $this->roles->contains($role)) {
             $this->roles->add($role);
         }
 
@@ -178,6 +186,7 @@ class User implements AuthenticatableContract,
     public function removeRole(Role $role): self
     {
         $this->roles->removeElement($role);
+
         return $this;
     }
 }

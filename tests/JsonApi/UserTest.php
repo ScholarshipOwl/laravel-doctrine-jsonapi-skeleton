@@ -141,7 +141,7 @@ class UserTest extends TestCase
                 ],
             ],
         ]);
-        $ids = array_map(fn($u) => (string)$u->getId(), $users->all());
+        $ids = array_map(fn ($u) => (string) $u->getId(), $users->all());
         foreach ($ids as $id) {
             $response->assertJsonFragment(['id' => $id]);
         }
@@ -205,7 +205,7 @@ class UserTest extends TestCase
         $payload = [
             'data' => [
                 'type' => 'users',
-                'id' => (string)$user->getId(),
+                'id' => (string) $user->getId(),
                 'attributes' => [
                     'name' => 'Updated Name',
                 ],
@@ -226,7 +226,7 @@ class UserTest extends TestCase
             ],
         ]);
         $response->assertJsonFragment([
-            'id' => (string)$user->getId(),
+            'id' => (string) $user->getId(),
             'name' => 'Updated Name',
         ]);
     }
@@ -240,7 +240,7 @@ class UserTest extends TestCase
         $payload = [
             'data' => [
                 'type' => 'users',
-                'id' => (string)$user->getId(),
+                'id' => (string) $user->getId(),
                 'attributes' => [
                     'email' => 'not-an-email',
                 ],
@@ -261,7 +261,7 @@ class UserTest extends TestCase
         $payload = [
             'data' => [
                 'type' => 'users',
-                'id' => (string)$user->getId(),
+                'id' => (string) $user->getId(),
                 'attributes' => [
                     'password' => '123',
                 ],
@@ -282,7 +282,7 @@ class UserTest extends TestCase
         $payload = [
             'data' => [
                 'type' => 'users',
-                'id' => (string)$user->getId(),
+                'id' => (string) $user->getId(),
                 'attributes' => [
                     'name' => str_repeat('a', 256),
                 ],

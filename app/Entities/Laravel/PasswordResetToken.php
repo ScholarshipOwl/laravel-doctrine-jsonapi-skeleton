@@ -11,17 +11,17 @@ use Doctrine\ORM\Mapping as ORM;
  * It is not intended for direct use or modification. Schema and logic should match Laravel's default.
  */
 #[ORM\Entity]
-#[ORM\Table(name: "password_reset_tokens")]
+#[ORM\Table(name: 'password_reset_tokens')]
 final class PasswordResetToken
 {
     #[ORM\Id]
-    #[ORM\Column(type: "string")]
+    #[ORM\Column(type: 'string')]
     private string $email;
 
-    #[ORM\Column(type: "string")]
+    #[ORM\Column(type: 'string')]
     private string $token;
 
-    #[ORM\Column(type: "datetime", nullable: true)]
+    #[ORM\Column(type: 'datetime', nullable: true)]
     private ?\DateTime $createdAt = null;
 
     // Getters and setters
@@ -33,6 +33,7 @@ final class PasswordResetToken
     public function setEmail(string $email): self
     {
         $this->email = $email;
+
         return $this;
     }
 
@@ -44,6 +45,7 @@ final class PasswordResetToken
     public function setToken(string $token): self
     {
         $this->token = $token;
+
         return $this;
     }
 
@@ -55,6 +57,7 @@ final class PasswordResetToken
     public function setCreatedAt(?\DateTime $createdAt): self
     {
         $this->createdAt = $createdAt;
+
         return $this;
     }
 }

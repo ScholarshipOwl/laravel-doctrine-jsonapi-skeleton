@@ -450,3 +450,12 @@ $this->authorize('update', $user); // Uses UserPolicy::update
 - Keep your ACL configuration (`config/acl.php`) up to date with your entities.
 
 For more details, see the `app/Entities/Role.php`, `app/Entities/User.php`, `app/Policies/RolePolicy.php`, `app/Policies/UserPolicy.php`, and `config/acl.php`.
+
+## 13. Coding Standards and Static Analysis for CI (PSR-12)
+
+- **CI/CD Updates:** The project now includes a comprehensive GitHub Actions workflow for continuous integration. Automated jobs run tests (with MySQL) and enforce code style and static analysis using `composer run lint` and PHPStan.
+- **PSR-12 Compliance:** All PHP code has been refactored to fully comply with the PSR-12 coding standard. Code style is enforced via Laravel Pint and PHPCS.
+- **Static Analysis:** A default `phpstan.neon` configuration is provided for static analysis, helping to catch bugs and ensure code quality.
+- **Entity Formatting:** Doctrine entity classes have been refactored for better readability and to match the latest conventions.
+
+These changes streamline development, improve code quality, and make contributing easier for everyone.

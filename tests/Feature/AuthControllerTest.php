@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace Tests\Feature;
 
 use App\Entities\User;
-use Doctrine\Common\Collections\ArrayCollection;
 use Illuminate\Support\Facades\Hash;
 use Tests\TestCase;
 

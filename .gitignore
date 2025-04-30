@@ -25,3 +25,6 @@ yarn-error.log
 # not sure if it must be ignored or commited
 # functionality described in scribe docs not working as expected
 .scribe
+
+# docker-compose override file
+docker-compose.override.yml

@@ -7,7 +7,7 @@ return [
     | Roles
     |--------------------------------------------------------------------------
     */
-    'roles'         => [
+    'roles' => [
         'entity' => App\Entities\Role::class,
     ],
     /*
@@ -19,10 +19,10 @@ return [
     | When set to config, add the permission names to list
     |
     */
-    'permissions'   => [
+    'permissions' => [
         'driver' => 'config',
         'entity' => App\Entities\Permission::class,
-        'list'   => [],
+        'list' => [],
     ],
     /*
     |--------------------------------------------------------------------------

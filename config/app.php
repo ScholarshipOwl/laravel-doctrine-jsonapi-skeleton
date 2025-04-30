@@ -163,15 +163,13 @@ return [
     'providers' => ServiceProvider::defaultProviders()->merge([
         App\Providers\AppServiceProvider::class,
     ])->replace([
-        \Illuminate\Auth\Passwords\PasswordResetServiceProvider::class =>
-             \LaravelDoctrine\ORM\Auth\Passwords\PasswordResetServiceProvider::class,
-        \Illuminate\Validation\ValidationServiceProvider::class =>
-             \LaravelDoctrine\ORM\Validation\PresenceVerifierProvider::class
+        \Illuminate\Auth\Passwords\PasswordResetServiceProvider::class => \LaravelDoctrine\ORM\Auth\Passwords\PasswordResetServiceProvider::class,
+        \Illuminate\Validation\ValidationServiceProvider::class => \LaravelDoctrine\ORM\Validation\PresenceVerifierProvider::class,
     ])
-    ->except([
-        env('APP_ENV') === 'production' ? null : ScribeServiceProvider::class
-    ])
-    ->toArray(),
+        ->except([
+            env('APP_ENV') === 'production' ? null : ScribeServiceProvider::class,
+        ])
+        ->toArray(),
 
     /*
     |--------------------------------------------------------------------------

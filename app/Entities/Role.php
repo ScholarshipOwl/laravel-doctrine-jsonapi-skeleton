@@ -11,18 +11,18 @@ use LaravelDoctrine\ACL\Attribute as ACL;
 use LaravelDoctrine\ACL\Contracts\HasPermissions;
 use LaravelDoctrine\ACL\Contracts\Role as RoleContract;
 use LaravelDoctrine\ACL\Permissions\WithPermissions;
-use Sowl\JsonApi\ResourceInterface;
 use Sowl\JsonApi\Relationships\MemoizeRelationshipsTrait;
 use Sowl\JsonApi\Relationships\RelationshipsCollection;
+use Sowl\JsonApi\ResourceInterface;
 use App\Transformers\RoleTransformer;
 use App\Entities\User;
 
 #[ORM\Entity]
-#[ORM\Table(name: "roles")]
-class Role implements RoleContract, HasPermissions, ResourceInterface
+#[ORM\Table(name: 'roles')]
+class Role implements HasPermissions, ResourceInterface, RoleContract
 {
-    use WithPermissions;
     use MemoizeRelationshipsTrait;
+    use WithPermissions;
 
     public const ADMIN = 'admin';
 
@@ -43,10 +43,10 @@ class Role implements RoleContract, HasPermissions, ResourceInterface
 
     #[ORM\Id]
     #[ORM\GeneratedValue]
-    #[ORM\Column(type: "integer")]
+    #[ORM\Column(type: 'integer')]
     private int $id;
 
-    #[ORM\Column(type: "string", length: 255, unique: true)]
+    #[ORM\Column(type: 'string', length: 255, unique: true)]
     private string $name;
 
     #[ACL\HasPermissions()]
@@ -75,6 +75,7 @@ class Role implements RoleContract, HasPermissions, ResourceInterface
     public function setName(string $name): self
     {
         $this->name = $name;
+
         return $this;
     }
 
@@ -88,12 +89,13 @@ class Role implements RoleContract, HasPermissions, ResourceInterface
     public function setPermissions(array $permissions): self
     {
         $this->permissions = $permissions;
+
         return $this;
     }
 
     public function addPermission(string $permission): self
     {
-        if (!in_array($permission, $this->permissions)) {
+        if (! in_array($permission, $this->permissions)) {
             $this->permissions[] = $permission;
         }
 
@@ -102,7 +104,8 @@ class Role implements RoleContract, HasPermissions, ResourceInterface
 
     public function removePermission(string $permission): self
     {
-        $this->permissions = array_filter($this->permissions, fn($p) => $p !== $permission);
+        $this->permissions = array_filter($this->permissions, fn ($p) => $p !== $permission);
+
         return $this;
     }
 }

@@ -11,30 +11,30 @@ use Doctrine\ORM\Mapping as ORM;
  * It is not intended for direct use or modification. Schema and logic should match Laravel's default.
  */
 #[ORM\Entity]
-#[ORM\Table(name: "jobs")]
+#[ORM\Table(name: 'jobs')]
 final class Job
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
-    #[ORM\Column(type: "bigint")]
+    #[ORM\Column(type: 'bigint')]
     private int $id;
 
-    #[ORM\Column(type: "string", length: 255)]
+    #[ORM\Column(type: 'string', length: 255)]
     private string $queue;
 
-    #[ORM\Column(type: "text")]
+    #[ORM\Column(type: 'text')]
     private string $payload;
 
-    #[ORM\Column(type: "smallint", options: ["unsigned" => true])]
+    #[ORM\Column(type: 'smallint', options: ['unsigned' => true])]
     private int $attempts;
 
-    #[ORM\Column(type: "integer", nullable: true, options: ["unsigned" => true])]
+    #[ORM\Column(type: 'integer', nullable: true, options: ['unsigned' => true])]
     private ?int $reservedAt = null;
 
-    #[ORM\Column(type: "integer", options: ["unsigned" => true])]
+    #[ORM\Column(type: 'integer', options: ['unsigned' => true])]
     private int $availableAt;
 
-    #[ORM\Column(type: "integer", options: ["unsigned" => true])]
+    #[ORM\Column(type: 'integer', options: ['unsigned' => true])]
     private int $createdAt;
 
     public function getId(): int
@@ -50,6 +50,7 @@ final class Job
     public function setQueue(string $queue): self
     {
         $this->queue = $queue;
+
         return $this;
     }
 
@@ -61,6 +62,7 @@ final class Job
     public function setPayload(string $payload): self
     {
         $this->payload = $payload;
+
         return $this;
     }
 
@@ -72,6 +74,7 @@ final class Job
     public function setAttempts(int $attempts): self
     {
         $this->attempts = $attempts;
+
         return $this;
     }
 
@@ -83,6 +86,7 @@ final class Job
     public function setReservedAt(?int $reservedAt): self
     {
         $this->reservedAt = $reservedAt;
+
         return $this;
     }
 
@@ -94,6 +98,7 @@ final class Job
     public function setAvailableAt(int $availableAt): self
     {
         $this->availableAt = $availableAt;
+
         return $this;
     }
 
@@ -105,6 +110,7 @@ final class Job
     public function setCreatedAt(int $createdAt): self
     {
         $this->createdAt = $createdAt;
+
         return $this;
     }
 }

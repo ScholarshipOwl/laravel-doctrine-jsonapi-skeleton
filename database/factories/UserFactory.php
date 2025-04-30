@@ -25,7 +25,7 @@ $factory->defineAs(User::class, 'admin', function (Faker $faker, array $attribut
         'email' => $attributes['email'] ?? $faker->unique()->safeEmail,
         'password' => $attributes['password'] ?? password_hash('password', PASSWORD_BCRYPT),
         'roles' => new ArrayCollection([
-            Role::admin()
-        ])
+            Role::admin(),
+        ]),
     ];
 });

@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers\Auth;
 
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Password;
-use Illuminate\Support\Facades\Hash;
 use App\Entities\User;
 use Illuminate\Auth\Events\PasswordReset;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Password;
 use Knuckles\Scribe\Attributes\Endpoint;
 use Knuckles\Scribe\Attributes\Group;
 use Knuckles\Scribe\Attributes\Response;
@@ -46,12 +46,12 @@ class AuthController
 
         if ($status === Password::RESET_LINK_SENT) {
             return response([
-                'status' => __($status)
+                'status' => __($status),
             ]);
         }
 
         return response([
-            'status' => __($status)
+            'status' => __($status),
         ], 400);
     }
 
@@ -74,12 +74,12 @@ class AuthController
 
         if ($status === Password::PASSWORD_RESET) {
             return response([
-                'status' => __($status)
+                'status' => __($status),
             ]);
         }
 
         return response([
-            'status' => __($status)
+            'status' => __($status),
         ], 400);
     }
 
@@ -90,8 +90,9 @@ class AuthController
         Auth::logout();
         $request->session()->invalidate();
         $request->session()->regenerateToken();
+
         return response([
-            'status' => __('Logged out successfully')
+            'status' => __('Logged out successfully'),
         ], 200);
     }
 }

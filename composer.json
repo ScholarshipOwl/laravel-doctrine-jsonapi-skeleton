@@ -1,21 +1,21 @@
 {
     "$schema": "https://getcomposer.org/schema.json",
-    "name": "laravel/laravel",
+    "name": "sowl/laravel-doctrine-jsonapi-skeleton",
     "type": "project",
-    "description": "The skeleton application for the Laravel framework.",
-    "keywords": ["laravel", "framework"],
+    "description": "The skeleton application for the Laravel Doctrine JSON:API.",
+    "keywords": ["laravel", "framework", "jsonapi", "doctrine", "orm", "migrations", "acl", "extensions"],
     "license": "MIT",
     "require": {
         "php": "^8.2",
         "doctrine/dbal": "^3.0.0,<3.9",
         "gedmo/doctrine-extensions": "^3.20",
         "knuckleswtf/scribe": "^5.2",
+        "laravel-doctrine/acl": "^2.0",
         "laravel-doctrine/extensions": "^2.0",
         "laravel-doctrine/migrations": "^3.4",
         "laravel-doctrine/orm": "^3.1",
         "laravel/framework": "^12.0",
         "laravel/tinker": "^2.10.1",
-        "sowl/laravel-doctrine-acl": "^2.0.x-dev",
         "sowl/laravel-doctrine-jsonapi": "dev-main"
     },
     "require-dev": {
@@ -25,7 +25,9 @@
         "laravel/sail": "^1.41",
         "mockery/mockery": "^1.6",
         "nunomaduro/collision": "^8.6",
-        "phpunit/phpunit": "^11.5.3"
+        "phpstan/phpstan": "^2.1",
+        "phpunit/phpunit": "^11.5.3",
+        "squizlabs/php_codesniffer": "^3.12"
     },
     "autoload": {
         "psr-4": {
@@ -51,7 +53,7 @@
         "post-create-project-cmd": [
             "@php artisan key:generate --ansi",
             "@php -r \"file_exists('database/database.sqlite') || touch('database/database.sqlite');\"",
-            "@php artisan migrate --graceful --ansi"
+            "@php artisan doctrine:migrations:migrate --ansi --no-interaction"
         ],
         "dev": [
             "Composer\\Config::disableProcessTimeout",
@@ -60,9 +62,13 @@
         "docs": [
             "@php artisan scribe:generate"
         ],
+        "lint": [
+            "vendor/bin/pint",
+            "vendor/bin/phpcs",
+            "vendor/bin/phpstan"
+        ],
         "test": [
-            "@php artisan config:clear --ansi",
-            "@php artisan test"
+            "vendor/bin/phpunit"
         ]
     },
     "extra": {

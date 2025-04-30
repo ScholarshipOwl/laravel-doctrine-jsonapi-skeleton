@@ -5,6 +5,7 @@ namespace Tests;
 use App\Entities\User;
 use Database\Seeders\DatabaseSeeder;
 use Doctrine\ORM\EntityManager;
+use Doctrine\DBAL\Logging\DebugStack;
 use Illuminate\Foundation\Testing\TestCase as BaseTestCase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Sowl\JsonApi\Testing\DoctrineRefreshDatabase;
@@ -12,9 +13,11 @@ use Sowl\JsonApi\Testing\InteractWithDoctrineDatabase;
 
 abstract class TestCase extends BaseTestCase
 {
-    use WithFaker;
     use DoctrineRefreshDatabase;
     use InteractWithDoctrineDatabase;
+    use WithFaker;
+
+    protected DebugStack $dbDebugStack;
 
     protected function setUp(): void
     {
@@ -23,6 +26,16 @@ abstract class TestCase extends BaseTestCase
         $this->refreshDoctrineDatabase();
         $this->interactsWithDoctrineDatabase();
 
+        // TODO: Move this to the base library
+        // You can dd($this->dbDebugStack->queries) to see the queries
+        $this->em()
+            ->getConnection()
+            ->getConfiguration()
+            ->setSQLLogger($this->dbDebugStack = new DebugStack());
+    }
+
+    protected function afterRefreshingDoctrineDatabase(): void
+    {
         $this->seed(DatabaseSeeder::class);
     }
 
@@ -35,6 +48,7 @@ abstract class TestCase extends BaseTestCase
     {
         $user = entity(User::class)->create();
         $this->actingAs($user);
+
         return $user;
     }
 
@@ -42,13 +56,14 @@ abstract class TestCase extends BaseTestCase
     {
         $user = entity(User::class, 'admin')->create();
         $this->actingAs($user);
+
         return $user;
     }
 
     /**
      * Assert that the response contains JSON:API validation errors for the given pointers.
      *
-     * @param array $pointers Array of JSON pointer strings, e.g., ['/data/attributes/email']
+     * @param  array  $pointers  Array of JSON pointer strings, e.g., ['/data/attributes/email']
      */
     public function assertJsonApiValidationErrors($response, array $pointers): void
     {

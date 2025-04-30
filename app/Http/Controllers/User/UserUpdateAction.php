@@ -9,6 +9,7 @@ use Sowl\JsonApi\Response;
 
 /**
  * @property UserUpdateRequest $request
+ *
  * @method UserUpdateRequest request()
  */
 class UserUpdateAction extends AbstractAction

@@ -92,10 +92,9 @@
   ```php
   public static function relationships(): RelationshipsCollection
   {
-      return static::memoizeRelationships(fn () => [
-          ToOneRelationship::create('author', User::class),
-          ToManyRelationship::create('comments', Comment::class),
-      ]);
+      return static::memoizeRelationships()
+          ->addToOne('author', User::class)
+          ->addToMany('comments', Comment::class);
   }
   ```
 

@@ -1,10 +1,10 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\AuthController;
+use Illuminate\Support\Facades\Route;
 
 // Web routes have been removed. Only API routes are exposed as per project rules.
-Route::get('/', fn() => response('', 200))->name('index');
+Route::get('/', fn () => response('', 200))->name('index');
 
 // JWT Auth endpoints (not JSON:API)
 Route::post('/auth/login', [AuthController::class, 'login'])->name('login');

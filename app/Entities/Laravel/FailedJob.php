@@ -11,30 +11,30 @@ use Doctrine\ORM\Mapping as ORM;
  * It is not intended for direct use or modification. Schema and logic should match Laravel's default.
  */
 #[ORM\Entity]
-#[ORM\Table(name: "failed_jobs")]
+#[ORM\Table(name: 'failed_jobs')]
 final class FailedJob
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
-    #[ORM\Column(type: "bigint")]
+    #[ORM\Column(type: 'bigint')]
     private int $id;
 
-    #[ORM\Column(type: "string", unique: true)]
+    #[ORM\Column(type: 'string', unique: true)]
     private string $uuid;
 
-    #[ORM\Column(type: "text")]
+    #[ORM\Column(type: 'text')]
     private string $connection;
 
-    #[ORM\Column(type: "text")]
+    #[ORM\Column(type: 'text')]
     private string $queue;
 
-    #[ORM\Column(type: "text")]
+    #[ORM\Column(type: 'text')]
     private string $payload;
 
-    #[ORM\Column(type: "text")]
+    #[ORM\Column(type: 'text')]
     private string $exception;
 
-    #[ORM\Column(type: "datetime_immutable")]
+    #[ORM\Column(type: 'datetime_immutable')]
     private \DateTimeImmutable $failedAt;
 
     public function getId(): int
@@ -50,6 +50,7 @@ final class FailedJob
     public function setUuid(string $uuid): self
     {
         $this->uuid = $uuid;
+
         return $this;
     }
 
@@ -61,6 +62,7 @@ final class FailedJob
     public function setConnection(string $connection): self
     {
         $this->connection = $connection;
+
         return $this;
     }
 
@@ -72,6 +74,7 @@ final class FailedJob
     public function setQueue(string $queue): self
     {
         $this->queue = $queue;
+
         return $this;
     }
 
@@ -83,6 +86,7 @@ final class FailedJob
     public function setPayload(string $payload): self
     {
         $this->payload = $payload;
+
         return $this;
     }
 
@@ -94,6 +98,7 @@ final class FailedJob
     public function setException(string $exception): self
     {
         $this->exception = $exception;
+
         return $this;
     }
 
@@ -105,6 +110,7 @@ final class FailedJob
     public function setFailedAt(\DateTimeImmutable $failedAt): self
     {
         $this->failedAt = $failedAt;
+
         return $this;
     }
 }

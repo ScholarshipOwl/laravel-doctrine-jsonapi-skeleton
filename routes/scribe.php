@@ -1,8 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Blade;
-use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Storage;
 
 // Scribe routes
 //

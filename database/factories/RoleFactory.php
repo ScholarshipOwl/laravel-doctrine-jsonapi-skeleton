@@ -3,7 +3,6 @@
 declare(strict_types=1);
 
 use App\Entities\Role;
-use Doctrine\Common\Collections\ArrayCollection;
 use Faker\Generator as Faker;
 use LaravelDoctrine\ORM\Testing\Factory;
 

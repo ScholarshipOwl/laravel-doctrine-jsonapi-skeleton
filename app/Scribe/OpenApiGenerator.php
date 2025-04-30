@@ -45,10 +45,6 @@ class OpenApiGenerator extends BaseOpenApiGenerator
 
     /**
      * Recursively merge two arrays, with the second array overriding the first.
-     *
-     * @param array $array1
-     * @param array $array2
-     * @return array
      */
     protected static function mergeRecursiveDistinct(array $array1, array $array2): array
     {
@@ -59,6 +55,7 @@ class OpenApiGenerator extends BaseOpenApiGenerator
                 $array1[$key] = $value;
             }
         }
+
         return $array1;
     }
 }

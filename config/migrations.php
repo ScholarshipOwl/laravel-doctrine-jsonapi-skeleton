@@ -27,7 +27,7 @@ return [
             | the migrations on disk haven't actually been run in the database.
             |
             */
-            'table_name'     => 'migrations',
+            'table_name' => 'migrations',
 
             /*
             |--------------------------------------------------------------------------
@@ -40,11 +40,11 @@ return [
             |
             */
             // Example: '/^(?!password_resets|failed_jobs).*$/'
-            'schema_filter'    => '/^.*$/',
+            'schema_filter' => '/^.*$/',
         ],
 
         'migrations_paths' => [
-            'Database\\Migrations' => database_path('migrations')
+            'Database\\Migrations' => database_path('migrations'),
         ],
 
         /*

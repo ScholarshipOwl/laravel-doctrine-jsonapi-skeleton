@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "f7a0d58195a3b8b460f0caece4d464bd",
+    "content-hash": "c0f0e53bc9adc74f66354502d8f2d6bd",
     "packages": [
         {
             "name": "behat/transliterator",
@@ -2299,6 +2299,86 @@
                 }
             ],
             "time": "2025-04-17T21:36:45+00:00"
+        },
+        {
+            "name": "laravel-doctrine/acl",
+            "version": "2.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/laravel-doctrine/acl.git",
+                "reference": "bbf7cb96bd7bc11186827b5402b886f36ffab2da"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/laravel-doctrine/acl/zipball/bbf7cb96bd7bc11186827b5402b886f36ffab2da",
+                "reference": "bbf7cb96bd7bc11186827b5402b886f36ffab2da",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/auth": "^11.0|^12.0",
+                "illuminate/config": "^11.0|^12.0",
+                "illuminate/contracts": "^11.0|^12.0",
+                "illuminate/support": "^11.0|^12.0",
+                "laravel-doctrine/orm": "^3.1",
+                "php": "^8.2"
+            },
+            "require-dev": {
+                "doctrine/coding-standard": "^12.0",
+                "laravel-doctrine/migrations": "^3.4",
+                "laravel/framework": "^11.0|^12.0",
+                "mockery/mockery": "^1.3.1",
+                "orchestra/testbench": "^10.2",
+                "php-parallel-lint/php-parallel-lint": "^1.4",
+                "phpstan/phpstan": "^2.1",
+                "phpstan/phpstan-deprecation-rules": "^2.0",
+                "phpunit/phpunit": "^11.5"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "LaravelDoctrine\\ACL\\AclServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "LaravelDoctrine\\ACL\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Patrick Brouwers",
+                    "email": "patrick@maatwebsite.nl"
+                },
+                {
+                    "name": "Pavlo Zhytomyrskyi",
+                    "email": "pavelz@scholarshipowl.com"
+                }
+            ],
+            "description": "ACL for Laravel and Doctrine",
+            "keywords": [
+                "abilities",
+                "acl",
+                "data mapper",
+                "database",
+                "doctrine",
+                "laravel",
+                "organisations",
+                "orm",
+                "permissions",
+                "policies",
+                "roles"
+            ],
+            "support": {
+                "issues": "https://github.com/laravel-doctrine/acl/issues",
+                "source": "https://github.com/laravel-doctrine/acl/tree/2.0.0"
+            },
+            "time": "2025-04-30T19:21:07+00:00"
         },
         {
             "name": "laravel-doctrine/extensions",
@@ -5148,85 +5228,6 @@
                 }
             ],
             "time": "2024-02-20T11:51:46+00:00"
-        },
-        {
-            "name": "sowl/laravel-doctrine-acl",
-            "version": "2.0.x-dev",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/ScholarshipOwl/laravel-doctrine-acl.git",
-                "reference": "adb20273b999aca6e67af175408e8d73fa34de3e"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/ScholarshipOwl/laravel-doctrine-acl/zipball/adb20273b999aca6e67af175408e8d73fa34de3e",
-                "reference": "adb20273b999aca6e67af175408e8d73fa34de3e",
-                "shasum": ""
-            },
-            "require": {
-                "illuminate/auth": "^11.0|^12.0",
-                "illuminate/config": "^11.0|^12.0",
-                "illuminate/contracts": "^11.0|^12.0",
-                "illuminate/support": "^11.0|^12.0",
-                "laravel-doctrine/orm": "^3.1",
-                "php": "^8.2"
-            },
-            "require-dev": {
-                "doctrine/coding-standard": "^12.0",
-                "laravel-doctrine/migrations": "^3.4",
-                "laravel/framework": "^11.0|^12.0",
-                "mockery/mockery": "^1.3.1",
-                "orchestra/testbench": "^10.2",
-                "php-parallel-lint/php-parallel-lint": "^1.4",
-                "phpstan/phpstan": "^2.1",
-                "phpstan/phpstan-deprecation-rules": "^2.0",
-                "phpunit/phpunit": "^11.5"
-            },
-            "type": "library",
-            "extra": {
-                "laravel": {
-                    "providers": [
-                        "LaravelDoctrine\\ACL\\AclServiceProvider"
-                    ]
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "LaravelDoctrine\\ACL\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Patrick Brouwers",
-                    "email": "patrick@maatwebsite.nl"
-                },
-                {
-                    "name": "Pavlo Zhytomyrskyi",
-                    "email": "pavelz@scholarshipowl.com"
-                }
-            ],
-            "description": "ACL for Laravel and Doctrine",
-            "keywords": [
-                "abilities",
-                "acl",
-                "data mapper",
-                "database",
-                "doctrine",
-                "laravel",
-                "organisations",
-                "orm",
-                "permissions",
-                "policies",
-                "roles"
-            ],
-            "support": {
-                "source": "https://github.com/ScholarshipOwl/laravel-doctrine-acl/tree/2.0.x"
-            },
-            "time": "2025-04-28T09:52:08+00:00"
         },
         {
             "name": "sowl/laravel-doctrine-jsonapi",
@@ -8927,6 +8928,64 @@
             "time": "2022-02-21T01:04:05+00:00"
         },
         {
+            "name": "phpstan/phpstan",
+            "version": "2.1.13",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/phpstan/phpstan.git",
+                "reference": "e55e03e6d4ac49cd1240907e5b08e5cd378572a9"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/phpstan/phpstan/zipball/e55e03e6d4ac49cd1240907e5b08e5cd378572a9",
+                "reference": "e55e03e6d4ac49cd1240907e5b08e5cd378572a9",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^7.4|^8.0"
+            },
+            "conflict": {
+                "phpstan/phpstan-shim": "*"
+            },
+            "bin": [
+                "phpstan",
+                "phpstan.phar"
+            ],
+            "type": "library",
+            "autoload": {
+                "files": [
+                    "bootstrap.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "PHPStan - PHP Static Analysis Tool",
+            "keywords": [
+                "dev",
+                "static analysis"
+            ],
+            "support": {
+                "docs": "https://phpstan.org/user-guide/getting-started",
+                "forum": "https://github.com/phpstan/phpstan/discussions",
+                "issues": "https://github.com/phpstan/phpstan/issues",
+                "security": "https://github.com/phpstan/phpstan/security/policy",
+                "source": "https://github.com/phpstan/phpstan-src"
+            },
+            "funding": [
+                {
+                    "url": "https://github.com/ondrejmirtes",
+                    "type": "github"
+                },
+                {
+                    "url": "https://github.com/phpstan",
+                    "type": "github"
+                }
+            ],
+            "time": "2025-04-27T12:28:25+00:00"
+        },
+        {
             "name": "phpunit/php-code-coverage",
             "version": "11.0.9",
             "source": {
@@ -10285,6 +10344,90 @@
             "time": "2024-10-09T05:16:32+00:00"
         },
         {
+            "name": "squizlabs/php_codesniffer",
+            "version": "3.12.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/PHPCSStandards/PHP_CodeSniffer.git",
+                "reference": "6d4cf6032d4b718f168c90a96e36c7d0eaacb2aa"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/PHPCSStandards/PHP_CodeSniffer/zipball/6d4cf6032d4b718f168c90a96e36c7d0eaacb2aa",
+                "reference": "6d4cf6032d4b718f168c90a96e36c7d0eaacb2aa",
+                "shasum": ""
+            },
+            "require": {
+                "ext-simplexml": "*",
+                "ext-tokenizer": "*",
+                "ext-xmlwriter": "*",
+                "php": ">=5.4.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^4.0 || ^5.0 || ^6.0 || ^7.0 || ^8.0 || ^9.3.4"
+            },
+            "bin": [
+                "bin/phpcbf",
+                "bin/phpcs"
+            ],
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "3.x-dev"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Greg Sherwood",
+                    "role": "Former lead"
+                },
+                {
+                    "name": "Juliette Reinders Folmer",
+                    "role": "Current lead"
+                },
+                {
+                    "name": "Contributors",
+                    "homepage": "https://github.com/PHPCSStandards/PHP_CodeSniffer/graphs/contributors"
+                }
+            ],
+            "description": "PHP_CodeSniffer tokenizes PHP, JavaScript and CSS files and detects violations of a defined set of coding standards.",
+            "homepage": "https://github.com/PHPCSStandards/PHP_CodeSniffer",
+            "keywords": [
+                "phpcs",
+                "standards",
+                "static analysis"
+            ],
+            "support": {
+                "issues": "https://github.com/PHPCSStandards/PHP_CodeSniffer/issues",
+                "security": "https://github.com/PHPCSStandards/PHP_CodeSniffer/security/policy",
+                "source": "https://github.com/PHPCSStandards/PHP_CodeSniffer",
+                "wiki": "https://github.com/PHPCSStandards/PHP_CodeSniffer/wiki"
+            },
+            "funding": [
+                {
+                    "url": "https://github.com/PHPCSStandards",
+                    "type": "github"
+                },
+                {
+                    "url": "https://github.com/jrfnl",
+                    "type": "github"
+                },
+                {
+                    "url": "https://opencollective.com/php_codesniffer",
+                    "type": "open_collective"
+                },
+                {
+                    "url": "https://thanks.dev/u/gh/phpcsstandards",
+                    "type": "thanks_dev"
+                }
+            ],
+            "time": "2025-04-13T04:10:18+00:00"
+        },
+        {
             "name": "staabm/side-effects-detector",
             "version": "1.0.5",
             "source": {
@@ -10390,7 +10533,6 @@
     "aliases": [],
     "minimum-stability": "stable",
     "stability-flags": {
-        "sowl/laravel-doctrine-acl": 20,
         "sowl/laravel-doctrine-jsonapi": 20
     },
     "prefer-stable": true,

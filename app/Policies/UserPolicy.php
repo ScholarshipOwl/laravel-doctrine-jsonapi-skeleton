@@ -2,8 +2,8 @@
 
 namespace App\Policies;
 
-use App\Entities\User;
 use App\Entities\Role;
+use App\Entities\User;
 
 class UserPolicy
 {

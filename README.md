@@ -1,6 +1,6 @@
 # Laravel Doctrine JSON:API Skeleton
 
-This repository provides a template for building API-only Laravel applications using Doctrine ORM and the [laravel-doctrine-jsonapi](https://github.com/ScholarshipOwl/laravel-doctrine-jsonapi) package for fully compliant [JSON:API](https://jsonapi.org/) implementations.
+This skeleton provides a template for building API-only Laravel applications using Doctrine ORM and the [laravel-doctrine-jsonapi](https://github.com/ScholarshipOwl/laravel-doctrine-jsonapi) package for fully compliant [JSON:API](https://jsonapi.org/) implementations.
 
 **Key Features:**
 - **Doctrine ORM**: Replaces Eloquent as the database layer, leveraging Doctrine's advanced data-mapping capabilities via [laravel-doctrine/orm](https://github.com/laravel-doctrine/orm).
@@ -19,6 +19,16 @@ This project is intended as a starting point for developers who want to:
 - Expose only JSON:API-compliant endpoints (no web UI)
 
 You get a clean Laravel installation, ready for Doctrine and JSON:API integration.
+
+---
+
+## Quick Start
+
+You can start a new project using this skeleton by running:
+
+```bash
+composer create-project sowl/laravel-doctrine-jsonapi-skeleton jsonapi
+```
 
 ---
 
@@ -63,7 +73,7 @@ This is a high-level roadmap for fully implementing the skeleton:
   - [X] Configure Scribe for API-only docs
   - [X] Ensure docs include OpenAPI spec, Postman collection, and sample responses
   - [X] Add custom docs for example resource
-- [ ] Configure proper exception handling with showing JSON:API errors.
+- [X] Configure proper exception handling with showing JSON:API errors.
 - [ ] Use GUID for the primary key of the entities.
 - [ ] Implement extensive testing of this skeleton
   - [ ] Make sure all features work as expected
@@ -74,7 +84,7 @@ This is a high-level roadmap for fully implementing the skeleton:
   - [ ] Add tests for validation
   - [ ] Add tests for API endpoints
   - [ ] Add tests for API docs
-- [ ] Implement RBAC (Role-Based Access Control) authorization logic
+- [X] Implement RBAC (Role-Based Access Control) authorization logic
   - [ ] Define roles and permissions (e.g., Admin, User, Guest)
   - [ ] Assign roles to users and restrict resource actions accordingly
   - [ ] Add policies and middleware for RBAC enforcement
@@ -90,7 +100,9 @@ This is a high-level roadmap for fully implementing the skeleton:
 - [ ] Add API rate limiting and throttling
   - [ ] Configure Laravel's built-in rate limiting for API endpoints
   - [ ] Add custom logic for user/role-based limits if needed
-- [ ] Set up CI/CD for automated testing and code quality checks
+- [X] Set up CI/CD for automated testing and code quality checks
+  - [X] Set up GitHub Actions for CI/CD
+  - [X] Set up GitHub Actions for code quality checks
 
 ---
 

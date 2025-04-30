@@ -9,8 +9,6 @@ class UserMeAction extends AbstractAction
 {
     /**
      * Handle the action to show the current authenticated user.
-     *
-     * @return Response
      */
     public function handle(): Response
     {

@@ -3,6 +3,9 @@
     <description>Project coding standard: PSR-12</description>
     <rule ref="PSR12"/>
 
+    <file>app</file>
+    <file>tests</file>
+
     <!-- Exclude vendor and node_modules directories -->
     <exclude-pattern>vendor/*</exclude-pattern>
     <exclude-pattern>node_modules/*</exclude-pattern>

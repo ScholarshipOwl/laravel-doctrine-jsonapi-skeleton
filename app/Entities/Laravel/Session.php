@@ -11,26 +11,26 @@ use Doctrine\ORM\Mapping as ORM;
  * It is not intended for direct use or modification. Schema and logic should match Laravel's default.
  */
 #[ORM\Entity]
-#[ORM\Table(name: "sessions")]
+#[ORM\Table(name: 'sessions')]
 final class Session
 {
     #[ORM\Id]
-    #[ORM\Column(type: "string")]
+    #[ORM\Column(type: 'string')]
     private string $id;
 
-    #[ORM\Column(type: "bigint", nullable: true)]
+    #[ORM\Column(type: 'bigint', nullable: true)]
     private ?int $userId = null;
 
-    #[ORM\Column(type: "string", length: 45, nullable: true)]
+    #[ORM\Column(type: 'string', length: 45, nullable: true)]
     private ?string $ipAddress = null;
 
-    #[ORM\Column(type: "text", nullable: true)]
+    #[ORM\Column(type: 'text', nullable: true)]
     private ?string $userAgent = null;
 
-    #[ORM\Column(type: "text")]
+    #[ORM\Column(type: 'text')]
     private string $payload;
 
-    #[ORM\Column(type: "integer")]
+    #[ORM\Column(type: 'integer')]
     private int $lastActivity;
 
     // Getters and setters
@@ -42,6 +42,7 @@ final class Session
     public function setId(string $id): self
     {
         $this->id = $id;
+
         return $this;
     }
 
@@ -53,6 +54,7 @@ final class Session
     public function setUserId(?int $userId): self
     {
         $this->userId = $userId;
+
         return $this;
     }
 
@@ -64,6 +66,7 @@ final class Session
     public function setIpAddress(?string $ipAddress): self
     {
         $this->ipAddress = $ipAddress;
+
         return $this;
     }
 
@@ -75,6 +78,7 @@ final class Session
     public function setUserAgent(?string $userAgent): self
     {
         $this->userAgent = $userAgent;
+
         return $this;
     }
 
@@ -86,6 +90,7 @@ final class Session
     public function setPayload(string $payload): self
     {
         $this->payload = $payload;
+
         return $this;
     }
 
@@ -97,6 +102,7 @@ final class Session
     public function setLastActivity(int $lastActivity): self
     {
         $this->lastActivity = $lastActivity;
+
         return $this;
     }
 }

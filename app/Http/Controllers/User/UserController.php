@@ -2,11 +2,6 @@
 
 namespace App\Http\Controllers\User;
 
-use App\Http\Controllers\User\UserMeAction;
-use App\Http\Controllers\User\UserCreateRequest;
-use App\Http\Controllers\User\UserCreateAction;
-use App\Http\Controllers\User\UserUpdateAction;
-use App\Http\Controllers\User\UserUpdateRequest;
 use App\Http\Controllers\Controller;
 use Knuckles\Scribe\Attributes\Endpoint;
 use Sowl\JsonApi\Request;

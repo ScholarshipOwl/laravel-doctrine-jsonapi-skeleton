@@ -9,6 +9,7 @@ use Sowl\JsonApi\Response;
 
 /**
  * @property UserCreateRequest $request
+ *
  * @method UserCreateRequest request()
  */
 class UserCreateAction extends AbstractAction
@@ -22,8 +23,8 @@ class UserCreateAction extends AbstractAction
 
         $user = new User();
         $user->setEmail($attributes['email'])
-             ->setPassword(Hash::make($attributes['password']))
-             ->setName($attributes['name']);
+            ->setPassword(Hash::make($attributes['password']))
+            ->setName($attributes['name']);
 
         $em = $this->repository()->em();
         $em->persist($user);
