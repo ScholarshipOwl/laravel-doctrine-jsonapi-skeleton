@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-abstract class Controller extends \Sowl\JsonApi\Controller
+abstract class Controller extends \Illuminate\Routing\Controller
 {
     //
 }
