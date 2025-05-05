@@ -5235,12 +5235,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/ScholarshipOwl/laravel-doctrine-jsonapi.git",
-                "reference": "669defbb0b764671b3f714d3b7b2fe913be8cfba"
+                "reference": "7b91a06f35df4fdf1c5ee8c20dc72f1e20122c3d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ScholarshipOwl/laravel-doctrine-jsonapi/zipball/669defbb0b764671b3f714d3b7b2fe913be8cfba",
-                "reference": "669defbb0b764671b3f714d3b7b2fe913be8cfba",
+                "url": "https://api.github.com/repos/ScholarshipOwl/laravel-doctrine-jsonapi/zipball/7b91a06f35df4fdf1c5ee8c20dc72f1e20122c3d",
+                "reference": "7b91a06f35df4fdf1c5ee8c20dc72f1e20122c3d",
                 "shasum": ""
             },
             "require": {
@@ -5283,7 +5283,7 @@
                 "issues": "https://github.com/ScholarshipOwl/laravel-doctrine-jsonapi/issues",
                 "source": "https://github.com/ScholarshipOwl/laravel-doctrine-jsonapi/tree/main"
             },
-            "time": "2025-05-04T20:23:00+00:00"
+            "time": "2025-05-05T09:25:32+00:00"
         },
         {
             "name": "spatie/data-transfer-object",

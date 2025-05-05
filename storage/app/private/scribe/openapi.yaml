@@ -42,10 +42,10 @@ components:
               properties:
                 name:
                   type: string
-                  example: 'Okey Towne'
+                  example: 'Sebastian Haag I'
                 email:
                   type: string
-                  example: emilie87@example.org
+                  example: daphne59@example.com
             relationships:
               type: object
               properties:
@@ -90,30 +90,10 @@ components:
               properties:
                 name:
                   type: string
-                  example: sint
+                  example: libero
                 permissions:
                   type: array
                   example: []
-            relationships:
-              type: object
-              properties:
-                users:
-                  type: object
-                  properties:
-                    data:
-                      type: object
-                      required:
-                        - id
-                        - type
-                      properties:
-                        id:
-                          type: string
-                          example: '1'
-                        type:
-                          type: string
-                          example: users
-                          enum:
-                            - users
 paths:
   /auth/login:
     post:
@@ -304,21 +284,12 @@ paths:
           in: query
           name: 'fields[roles]'
           description: "Sparse fieldsets - specify which fields to include in the response for each resource type. ([Spec](https://jsonapi.org/format/#fetching-sparse-fieldsets))\n\n**Available fields:** `name`, `permissions`"
+          example: null
           required: false
           schema:
             type: string
             description: "Sparse fieldsets - specify which fields to include in the response for each resource type. ([Spec](https://jsonapi.org/format/#fetching-sparse-fieldsets))\n\n**Available fields:** `name`, `permissions`"
-            nullable: false
-        -
-          in: query
-          name: include
-          description: "Include related resources. ([Spec](https://jsonapi.org/format/#fetching-includes))\n\n**Available includes:** `users`"
-          example: users
-          required: false
-          schema:
-            type: string
-            description: "Include related resources. ([Spec](https://jsonapi.org/format/#fetching-includes))\n\n**Available includes:** `users`"
-            example: users
+            example: null
             nullable: false
         -
           in: query
@@ -346,10 +317,12 @@ paths:
           in: query
           name: sort
           description: "Sort the results by attributes. Prefix with `-` for descending order. ([Spec](https://jsonapi.org/format/#fetching-sorting))\n\n**Available sort fields:** `name`, `permissions`"
+          example: null
           required: false
           schema:
             type: string
             description: "Sort the results by attributes. Prefix with `-` for descending order. ([Spec](https://jsonapi.org/format/#fetching-sorting))\n\n**Available sort fields:** `name`, `permissions`"
+            example: null
             nullable: false
       responses:
         200:
@@ -484,6 +457,18 @@ paths:
                       last:
                         type: string
                         example: 'roles?page%5Bnumber%5D=1&page%5Bsize%5D=3'
+        401:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: Unauthenticated.
+                properties:
+                  message:
+                    type: string
+                    example: Unauthenticated.
       tags:
         - Roles
       security: []
@@ -496,21 +481,12 @@ paths:
           in: query
           name: 'fields[roles]'
           description: "Sparse fieldsets - specify which fields to include in the response for each resource type. ([Spec](https://jsonapi.org/format/#fetching-sparse-fieldsets))\n\n**Available fields:** `name`, `permissions`"
+          example: null
           required: false
           schema:
             type: string
             description: "Sparse fieldsets - specify which fields to include in the response for each resource type. ([Spec](https://jsonapi.org/format/#fetching-sparse-fieldsets))\n\n**Available fields:** `name`, `permissions`"
-            nullable: false
-        -
-          in: query
-          name: include
-          description: "Include related resources. ([Spec](https://jsonapi.org/format/#fetching-includes))\n\n**Available includes:** `users`"
-          example: users
-          required: false
-          schema:
-            type: string
-            description: "Include related resources. ([Spec](https://jsonapi.org/format/#fetching-includes))\n\n**Available includes:** `users`"
-            example: users
+            example: null
             nullable: false
       responses:
         201:
@@ -583,26 +559,6 @@ paths:
                           example: null
                           nullable: false
                           properties: {  }
-                    relationships:
-                      type: object
-                      description: ''
-                      nullable: false
-                      properties:
-                        users:
-                          type: object
-                          description: ''
-                          nullable: false
-                          properties:
-                            data:
-                              type: object
-                              description: 'The resource identifier for a Users.'
-                              example:
-                                id: '1'
-                                type: users
-                              nullable: false
-                              properties: {  }
-                          required:
-                            - data
               required:
                 - data
       security: []
@@ -616,21 +572,12 @@ paths:
           in: query
           name: 'fields[roles]'
           description: "Sparse fieldsets - specify which fields to include in the response for each resource type. ([Spec](https://jsonapi.org/format/#fetching-sparse-fieldsets))\n\n**Available fields:** `name`, `permissions`"
+          example: null
           required: false
           schema:
             type: string
             description: "Sparse fieldsets - specify which fields to include in the response for each resource type. ([Spec](https://jsonapi.org/format/#fetching-sparse-fieldsets))\n\n**Available fields:** `name`, `permissions`"
-            nullable: false
-        -
-          in: query
-          name: include
-          description: "Include related resources. ([Spec](https://jsonapi.org/format/#fetching-includes))\n\n**Available includes:** `users`"
-          example: users
-          required: false
-          schema:
-            type: string
-            description: "Include related resources. ([Spec](https://jsonapi.org/format/#fetching-includes))\n\n**Available includes:** `users`"
-            example: users
+            example: null
             nullable: false
       responses:
         200:
@@ -673,6 +620,18 @@ paths:
                           self:
                             type: string
                             example: /roles/1
+        401:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: Unauthenticated.
+                properties:
+                  message:
+                    type: string
+                    example: Unauthenticated.
       tags:
         - Roles
       security: []
@@ -685,21 +644,12 @@ paths:
           in: query
           name: 'fields[roles]'
           description: "Sparse fieldsets - specify which fields to include in the response for each resource type. ([Spec](https://jsonapi.org/format/#fetching-sparse-fieldsets))\n\n**Available fields:** `name`, `permissions`"
+          example: null
           required: false
           schema:
             type: string
             description: "Sparse fieldsets - specify which fields to include in the response for each resource type. ([Spec](https://jsonapi.org/format/#fetching-sparse-fieldsets))\n\n**Available fields:** `name`, `permissions`"
-            nullable: false
-        -
-          in: query
-          name: include
-          description: "Include related resources. ([Spec](https://jsonapi.org/format/#fetching-includes))\n\n**Available includes:** `users`"
-          example: users
-          required: false
-          schema:
-            type: string
-            description: "Include related resources. ([Spec](https://jsonapi.org/format/#fetching-includes))\n\n**Available includes:** `users`"
-            example: users
+            example: null
             nullable: false
       responses:
         200:
@@ -772,26 +722,6 @@ paths:
                           example: null
                           nullable: false
                           properties: {  }
-                    relationships:
-                      type: object
-                      description: ''
-                      nullable: false
-                      properties:
-                        users:
-                          type: object
-                          description: ''
-                          nullable: false
-                          properties:
-                            data:
-                              type: object
-                              description: 'The resource identifier for a Users.'
-                              example:
-                                id: '1'
-                                type: users
-                              nullable: false
-                              properties: {  }
-                          required:
-                            - data
               required:
                 - data
       security: []
@@ -815,1041 +745,6 @@ paths:
         required: true
         schema:
           type: number
-  '/roles/{id}/users':
-    get:
-      summary: 'List related Users'
-      operationId: listRelatedUsers
-      description: 'Retrieve the list of related Users for a specific Role.'
-      parameters:
-        -
-          in: query
-          name: 'fields[roles]'
-          description: "Sparse fieldsets - specify which fields to include in the response for each resource type. ([Spec](https://jsonapi.org/format/#fetching-sparse-fieldsets))\n\n**Available fields:** `name`, `permissions`"
-          required: false
-          schema:
-            type: string
-            description: "Sparse fieldsets - specify which fields to include in the response for each resource type. ([Spec](https://jsonapi.org/format/#fetching-sparse-fieldsets))\n\n**Available fields:** `name`, `permissions`"
-            nullable: false
-        -
-          in: query
-          name: include
-          description: "Include related resources. ([Spec](https://jsonapi.org/format/#fetching-includes))\n\n**Available includes:** `users`"
-          example: users
-          required: false
-          schema:
-            type: string
-            description: "Include related resources. ([Spec](https://jsonapi.org/format/#fetching-includes))\n\n**Available includes:** `users`"
-            example: users
-            nullable: false
-      responses:
-        200:
-          description: ''
-          content:
-            application/json:
-              schema:
-                oneOf:
-                  -
-                    description: ''
-                    type: object
-                    example:
-                      data:
-                        -
-                          type: users
-                          id: '1'
-                          attributes:
-                            name: 'Jermaine Tillman'
-                            email: pfritsch@example.com
-                          links:
-                            self: /users/1
-                        -
-                          type: users
-                          id: '2'
-                          attributes:
-                            name: 'Carey Smitham'
-                            email: tleuschke@example.net
-                          links:
-                            self: /users/2
-                        -
-                          type: users
-                          id: '3'
-                          attributes:
-                            name: 'Janick Schultz DDS'
-                            email: kconsidine@example.net
-                          links:
-                            self: /users/3
-                      meta:
-                        pagination:
-                          total: 100
-                          count: 20
-                          per_page: 3
-                          current_page: 1
-                          total_pages: 5
-                      links:
-                        self: 'users?page%5Bnumber%5D=1&page%5Bsize%5D=3'
-                        first: 'users?page%5Bnumber%5D=1&page%5Bsize%5D=3'
-                        next: 'users?page%5Bnumber%5D=1&page%5Bsize%5D=3'
-                        last: 'users?page%5Bnumber%5D=1&page%5Bsize%5D=3'
-                    properties:
-                      data:
-                        type: array
-                        example:
-                          -
-                            type: users
-                            id: '1'
-                            attributes:
-                              name: 'Jermaine Tillman'
-                              email: pfritsch@example.com
-                            links:
-                              self: /users/1
-                          -
-                            type: users
-                            id: '2'
-                            attributes:
-                              name: 'Carey Smitham'
-                              email: tleuschke@example.net
-                            links:
-                              self: /users/2
-                          -
-                            type: users
-                            id: '3'
-                            attributes:
-                              name: 'Janick Schultz DDS'
-                              email: kconsidine@example.net
-                            links:
-                              self: /users/3
-                        items:
-                          type: object
-                          properties:
-                            type:
-                              type: string
-                              example: users
-                            id:
-                              type: string
-                              example: '1'
-                            attributes:
-                              type: object
-                              properties:
-                                name:
-                                  type: string
-                                  example: 'Jermaine Tillman'
-                                email:
-                                  type: string
-                                  example: pfritsch@example.com
-                            links:
-                              type: object
-                              properties:
-                                self:
-                                  type: string
-                                  example: /users/1
-                      meta:
-                        type: object
-                        properties:
-                          pagination:
-                            type: object
-                            properties:
-                              total:
-                                type: integer
-                                example: 100
-                              count:
-                                type: integer
-                                example: 20
-                              per_page:
-                                type: integer
-                                example: 3
-                              current_page:
-                                type: integer
-                                example: 1
-                              total_pages:
-                                type: integer
-                                example: 5
-                      links:
-                        type: object
-                        properties:
-                          self:
-                            type: string
-                            example: 'users?page%5Bnumber%5D=1&page%5Bsize%5D=3'
-                          first:
-                            type: string
-                            example: 'users?page%5Bnumber%5D=1&page%5Bsize%5D=3'
-                          next:
-                            type: string
-                            example: 'users?page%5Bnumber%5D=1&page%5Bsize%5D=3'
-                          last:
-                            type: string
-                            example: 'users?page%5Bnumber%5D=1&page%5Bsize%5D=3'
-                  -
-                    description: ''
-                    type: object
-                    example:
-                      data:
-                        -
-                          type: users
-                          id: '1'
-                          attributes:
-                            name: 'Kirstin Nitzsche V'
-                            email: verlie08@example.net
-                          links:
-                            self: /users/1
-                        -
-                          type: users
-                          id: '2'
-                          attributes:
-                            name: 'Cynthia Fahey'
-                            email: balistreri.josiane@example.net
-                          links:
-                            self: /users/2
-                        -
-                          type: users
-                          id: '3'
-                          attributes:
-                            name: "Rodrigo O'Connell"
-                            email: emanuel.emmerich@example.org
-                          links:
-                            self: /users/3
-                      meta:
-                        pagination:
-                          total: 100
-                          count: 20
-                          per_page: 3
-                          current_page: 1
-                          total_pages: 5
-                      links:
-                        self: 'users?page%5Bnumber%5D=1&page%5Bsize%5D=3'
-                        first: 'users?page%5Bnumber%5D=1&page%5Bsize%5D=3'
-                        next: 'users?page%5Bnumber%5D=1&page%5Bsize%5D=3'
-                        last: 'users?page%5Bnumber%5D=1&page%5Bsize%5D=3'
-                    properties:
-                      data:
-                        type: array
-                        example:
-                          -
-                            type: users
-                            id: '1'
-                            attributes:
-                              name: 'Kirstin Nitzsche V'
-                              email: verlie08@example.net
-                            links:
-                              self: /users/1
-                          -
-                            type: users
-                            id: '2'
-                            attributes:
-                              name: 'Cynthia Fahey'
-                              email: balistreri.josiane@example.net
-                            links:
-                              self: /users/2
-                          -
-                            type: users
-                            id: '3'
-                            attributes:
-                              name: "Rodrigo O'Connell"
-                              email: emanuel.emmerich@example.org
-                            links:
-                              self: /users/3
-                        items:
-                          type: object
-                          properties:
-                            type:
-                              type: string
-                              example: users
-                            id:
-                              type: string
-                              example: '1'
-                            attributes:
-                              type: object
-                              properties:
-                                name:
-                                  type: string
-                                  example: 'Kirstin Nitzsche V'
-                                email:
-                                  type: string
-                                  example: verlie08@example.net
-                            links:
-                              type: object
-                              properties:
-                                self:
-                                  type: string
-                                  example: /users/1
-                      meta:
-                        type: object
-                        properties:
-                          pagination:
-                            type: object
-                            properties:
-                              total:
-                                type: integer
-                                example: 100
-                              count:
-                                type: integer
-                                example: 20
-                              per_page:
-                                type: integer
-                                example: 3
-                              current_page:
-                                type: integer
-                                example: 1
-                              total_pages:
-                                type: integer
-                                example: 5
-                      links:
-                        type: object
-                        properties:
-                          self:
-                            type: string
-                            example: 'users?page%5Bnumber%5D=1&page%5Bsize%5D=3'
-                          first:
-                            type: string
-                            example: 'users?page%5Bnumber%5D=1&page%5Bsize%5D=3'
-                          next:
-                            type: string
-                            example: 'users?page%5Bnumber%5D=1&page%5Bsize%5D=3'
-                          last:
-                            type: string
-                            example: 'users?page%5Bnumber%5D=1&page%5Bsize%5D=3'
-      tags:
-        - Roles
-      security: []
-    parameters:
-      -
-        in: path
-        name: id
-        description: "The unique identifier of the 'roles' resource"
-        example: 1
-        required: true
-        schema:
-          type: number
-  '/roles/{id}/relationships/users':
-    get:
-      summary: 'Show Users relationships'
-      operationId: showUsersRelationships
-      description: 'Retrieve the identifiers of the related Users for a specific Role.'
-      parameters: []
-      responses:
-        200:
-          description: ''
-          content:
-            application/json:
-              schema:
-                oneOf:
-                  -
-                    description: ''
-                    type: object
-                    example:
-                      data:
-                        -
-                          type: users
-                          id: '1'
-                          links:
-                            self: /users/1
-                        -
-                          type: users
-                          id: '2'
-                          links:
-                            self: /users/2
-                        -
-                          type: users
-                          id: '3'
-                          links:
-                            self: /users/3
-                      meta:
-                        pagination:
-                          total: 100
-                          count: 20
-                          per_page: 3
-                          current_page: 1
-                          total_pages: 5
-                      links:
-                        self: 'users?page%5Bnumber%5D=1&page%5Bsize%5D=3'
-                        first: 'users?page%5Bnumber%5D=1&page%5Bsize%5D=3'
-                        next: 'users?page%5Bnumber%5D=1&page%5Bsize%5D=3'
-                        last: 'users?page%5Bnumber%5D=1&page%5Bsize%5D=3'
-                    properties:
-                      data:
-                        type: array
-                        example:
-                          -
-                            type: users
-                            id: '1'
-                            links:
-                              self: /users/1
-                          -
-                            type: users
-                            id: '2'
-                            links:
-                              self: /users/2
-                          -
-                            type: users
-                            id: '3'
-                            links:
-                              self: /users/3
-                        items:
-                          type: object
-                          properties:
-                            type:
-                              type: string
-                              example: users
-                            id:
-                              type: string
-                              example: '1'
-                            links:
-                              type: object
-                              properties:
-                                self:
-                                  type: string
-                                  example: /users/1
-                      meta:
-                        type: object
-                        properties:
-                          pagination:
-                            type: object
-                            properties:
-                              total:
-                                type: integer
-                                example: 100
-                              count:
-                                type: integer
-                                example: 20
-                              per_page:
-                                type: integer
-                                example: 3
-                              current_page:
-                                type: integer
-                                example: 1
-                              total_pages:
-                                type: integer
-                                example: 5
-                      links:
-                        type: object
-                        properties:
-                          self:
-                            type: string
-                            example: 'users?page%5Bnumber%5D=1&page%5Bsize%5D=3'
-                          first:
-                            type: string
-                            example: 'users?page%5Bnumber%5D=1&page%5Bsize%5D=3'
-                          next:
-                            type: string
-                            example: 'users?page%5Bnumber%5D=1&page%5Bsize%5D=3'
-                          last:
-                            type: string
-                            example: 'users?page%5Bnumber%5D=1&page%5Bsize%5D=3'
-                  -
-                    description: ''
-                    type: object
-                    example:
-                      data:
-                        -
-                          type: users
-                          id: '1'
-                          links:
-                            self: /users/1
-                        -
-                          type: users
-                          id: '2'
-                          links:
-                            self: /users/2
-                        -
-                          type: users
-                          id: '3'
-                          links:
-                            self: /users/3
-                      meta:
-                        pagination:
-                          total: 100
-                          count: 20
-                          per_page: 3
-                          current_page: 1
-                          total_pages: 5
-                      links:
-                        self: 'users?page%5Bnumber%5D=1&page%5Bsize%5D=3'
-                        first: 'users?page%5Bnumber%5D=1&page%5Bsize%5D=3'
-                        next: 'users?page%5Bnumber%5D=1&page%5Bsize%5D=3'
-                        last: 'users?page%5Bnumber%5D=1&page%5Bsize%5D=3'
-                    properties:
-                      data:
-                        type: array
-                        example:
-                          -
-                            type: users
-                            id: '1'
-                            links:
-                              self: /users/1
-                          -
-                            type: users
-                            id: '2'
-                            links:
-                              self: /users/2
-                          -
-                            type: users
-                            id: '3'
-                            links:
-                              self: /users/3
-                        items:
-                          type: object
-                          properties:
-                            type:
-                              type: string
-                              example: users
-                            id:
-                              type: string
-                              example: '1'
-                            links:
-                              type: object
-                              properties:
-                                self:
-                                  type: string
-                                  example: /users/1
-                      meta:
-                        type: object
-                        properties:
-                          pagination:
-                            type: object
-                            properties:
-                              total:
-                                type: integer
-                                example: 100
-                              count:
-                                type: integer
-                                example: 20
-                              per_page:
-                                type: integer
-                                example: 3
-                              current_page:
-                                type: integer
-                                example: 1
-                              total_pages:
-                                type: integer
-                                example: 5
-                      links:
-                        type: object
-                        properties:
-                          self:
-                            type: string
-                            example: 'users?page%5Bnumber%5D=1&page%5Bsize%5D=3'
-                          first:
-                            type: string
-                            example: 'users?page%5Bnumber%5D=1&page%5Bsize%5D=3'
-                          next:
-                            type: string
-                            example: 'users?page%5Bnumber%5D=1&page%5Bsize%5D=3'
-                          last:
-                            type: string
-                            example: 'users?page%5Bnumber%5D=1&page%5Bsize%5D=3'
-      tags:
-        - Roles
-      security: []
-    post:
-      summary: 'Add to Users relationships'
-      operationId: addToUsersRelationships
-      description: 'Add identifiers to the Users relationship of a specific Role.'
-      parameters: []
-      responses:
-        201:
-          description: ''
-          content:
-            application/json:
-              schema:
-                oneOf:
-                  -
-                    description: ''
-                    type: object
-                    example:
-                      data:
-                        -
-                          type: users
-                          id: '1'
-                          links:
-                            self: /users/1
-                        -
-                          type: users
-                          id: '2'
-                          links:
-                            self: /users/2
-                        -
-                          type: users
-                          id: '3'
-                          links:
-                            self: /users/3
-                      meta:
-                        pagination:
-                          total: 100
-                          count: 20
-                          per_page: 3
-                          current_page: 1
-                          total_pages: 5
-                      links:
-                        self: 'users?page%5Bnumber%5D=1&page%5Bsize%5D=3'
-                        first: 'users?page%5Bnumber%5D=1&page%5Bsize%5D=3'
-                        next: 'users?page%5Bnumber%5D=1&page%5Bsize%5D=3'
-                        last: 'users?page%5Bnumber%5D=1&page%5Bsize%5D=3'
-                    properties:
-                      data:
-                        type: array
-                        example:
-                          -
-                            type: users
-                            id: '1'
-                            links:
-                              self: /users/1
-                          -
-                            type: users
-                            id: '2'
-                            links:
-                              self: /users/2
-                          -
-                            type: users
-                            id: '3'
-                            links:
-                              self: /users/3
-                        items:
-                          type: object
-                          properties:
-                            type:
-                              type: string
-                              example: users
-                            id:
-                              type: string
-                              example: '1'
-                            links:
-                              type: object
-                              properties:
-                                self:
-                                  type: string
-                                  example: /users/1
-                      meta:
-                        type: object
-                        properties:
-                          pagination:
-                            type: object
-                            properties:
-                              total:
-                                type: integer
-                                example: 100
-                              count:
-                                type: integer
-                                example: 20
-                              per_page:
-                                type: integer
-                                example: 3
-                              current_page:
-                                type: integer
-                                example: 1
-                              total_pages:
-                                type: integer
-                                example: 5
-                      links:
-                        type: object
-                        properties:
-                          self:
-                            type: string
-                            example: 'users?page%5Bnumber%5D=1&page%5Bsize%5D=3'
-                          first:
-                            type: string
-                            example: 'users?page%5Bnumber%5D=1&page%5Bsize%5D=3'
-                          next:
-                            type: string
-                            example: 'users?page%5Bnumber%5D=1&page%5Bsize%5D=3'
-                          last:
-                            type: string
-                            example: 'users?page%5Bnumber%5D=1&page%5Bsize%5D=3'
-                  -
-                    description: ''
-                    type: object
-                    example:
-                      data:
-                        -
-                          type: users
-                          id: '1'
-                          links:
-                            self: /users/1
-                        -
-                          type: users
-                          id: '2'
-                          links:
-                            self: /users/2
-                        -
-                          type: users
-                          id: '3'
-                          links:
-                            self: /users/3
-                      meta:
-                        pagination:
-                          total: 100
-                          count: 20
-                          per_page: 3
-                          current_page: 1
-                          total_pages: 5
-                      links:
-                        self: 'users?page%5Bnumber%5D=1&page%5Bsize%5D=3'
-                        first: 'users?page%5Bnumber%5D=1&page%5Bsize%5D=3'
-                        next: 'users?page%5Bnumber%5D=1&page%5Bsize%5D=3'
-                        last: 'users?page%5Bnumber%5D=1&page%5Bsize%5D=3'
-                    properties:
-                      data:
-                        type: array
-                        example:
-                          -
-                            type: users
-                            id: '1'
-                            links:
-                              self: /users/1
-                          -
-                            type: users
-                            id: '2'
-                            links:
-                              self: /users/2
-                          -
-                            type: users
-                            id: '3'
-                            links:
-                              self: /users/3
-                        items:
-                          type: object
-                          properties:
-                            type:
-                              type: string
-                              example: users
-                            id:
-                              type: string
-                              example: '1'
-                            links:
-                              type: object
-                              properties:
-                                self:
-                                  type: string
-                                  example: /users/1
-                      meta:
-                        type: object
-                        properties:
-                          pagination:
-                            type: object
-                            properties:
-                              total:
-                                type: integer
-                                example: 100
-                              count:
-                                type: integer
-                                example: 20
-                              per_page:
-                                type: integer
-                                example: 3
-                              current_page:
-                                type: integer
-                                example: 1
-                              total_pages:
-                                type: integer
-                                example: 5
-                      links:
-                        type: object
-                        properties:
-                          self:
-                            type: string
-                            example: 'users?page%5Bnumber%5D=1&page%5Bsize%5D=3'
-                          first:
-                            type: string
-                            example: 'users?page%5Bnumber%5D=1&page%5Bsize%5D=3'
-                          next:
-                            type: string
-                            example: 'users?page%5Bnumber%5D=1&page%5Bsize%5D=3'
-                          last:
-                            type: string
-                            example: 'users?page%5Bnumber%5D=1&page%5Bsize%5D=3'
-      tags:
-        - Roles
-      requestBody:
-        required: true
-        content:
-          application/vnd.api+json:
-            schema:
-              type: object
-              properties:
-                data:
-                  type: array
-                  description: 'The resource identifier for a Users.'
-                  example:
-                    -
-                      id: '1'
-                      type: users
-                  items:
-                    type: object
-              required:
-                - data
-      security: []
-    patch:
-      summary: 'Update Users relationships'
-      operationId: updateUsersRelationships
-      description: 'Replace all identifiers in the Users relationship of a specific Role.'
-      parameters: []
-      responses:
-        200:
-          description: ''
-          content:
-            application/json:
-              schema:
-                oneOf:
-                  -
-                    description: ''
-                    type: object
-                    example:
-                      data:
-                        -
-                          type: users
-                          id: '1'
-                          links:
-                            self: /users/1
-                        -
-                          type: users
-                          id: '2'
-                          links:
-                            self: /users/2
-                        -
-                          type: users
-                          id: '3'
-                          links:
-                            self: /users/3
-                      meta:
-                        pagination:
-                          total: 100
-                          count: 20
-                          per_page: 3
-                          current_page: 1
-                          total_pages: 5
-                      links:
-                        self: 'users?page%5Bnumber%5D=1&page%5Bsize%5D=3'
-                        first: 'users?page%5Bnumber%5D=1&page%5Bsize%5D=3'
-                        next: 'users?page%5Bnumber%5D=1&page%5Bsize%5D=3'
-                        last: 'users?page%5Bnumber%5D=1&page%5Bsize%5D=3'
-                    properties:
-                      data:
-                        type: array
-                        example:
-                          -
-                            type: users
-                            id: '1'
-                            links:
-                              self: /users/1
-                          -
-                            type: users
-                            id: '2'
-                            links:
-                              self: /users/2
-                          -
-                            type: users
-                            id: '3'
-                            links:
-                              self: /users/3
-                        items:
-                          type: object
-                          properties:
-                            type:
-                              type: string
-                              example: users
-                            id:
-                              type: string
-                              example: '1'
-                            links:
-                              type: object
-                              properties:
-                                self:
-                                  type: string
-                                  example: /users/1
-                      meta:
-                        type: object
-                        properties:
-                          pagination:
-                            type: object
-                            properties:
-                              total:
-                                type: integer
-                                example: 100
-                              count:
-                                type: integer
-                                example: 20
-                              per_page:
-                                type: integer
-                                example: 3
-                              current_page:
-                                type: integer
-                                example: 1
-                              total_pages:
-                                type: integer
-                                example: 5
-                      links:
-                        type: object
-                        properties:
-                          self:
-                            type: string
-                            example: 'users?page%5Bnumber%5D=1&page%5Bsize%5D=3'
-                          first:
-                            type: string
-                            example: 'users?page%5Bnumber%5D=1&page%5Bsize%5D=3'
-                          next:
-                            type: string
-                            example: 'users?page%5Bnumber%5D=1&page%5Bsize%5D=3'
-                          last:
-                            type: string
-                            example: 'users?page%5Bnumber%5D=1&page%5Bsize%5D=3'
-                  -
-                    description: ''
-                    type: object
-                    example:
-                      data:
-                        -
-                          type: users
-                          id: '1'
-                          links:
-                            self: /users/1
-                        -
-                          type: users
-                          id: '2'
-                          links:
-                            self: /users/2
-                        -
-                          type: users
-                          id: '3'
-                          links:
-                            self: /users/3
-                      meta:
-                        pagination:
-                          total: 100
-                          count: 20
-                          per_page: 3
-                          current_page: 1
-                          total_pages: 5
-                      links:
-                        self: 'users?page%5Bnumber%5D=1&page%5Bsize%5D=3'
-                        first: 'users?page%5Bnumber%5D=1&page%5Bsize%5D=3'
-                        next: 'users?page%5Bnumber%5D=1&page%5Bsize%5D=3'
-                        last: 'users?page%5Bnumber%5D=1&page%5Bsize%5D=3'
-                    properties:
-                      data:
-                        type: array
-                        example:
-                          -
-                            type: users
-                            id: '1'
-                            links:
-                              self: /users/1
-                          -
-                            type: users
-                            id: '2'
-                            links:
-                              self: /users/2
-                          -
-                            type: users
-                            id: '3'
-                            links:
-                              self: /users/3
-                        items:
-                          type: object
-                          properties:
-                            type:
-                              type: string
-                              example: users
-                            id:
-                              type: string
-                              example: '1'
-                            links:
-                              type: object
-                              properties:
-                                self:
-                                  type: string
-                                  example: /users/1
-                      meta:
-                        type: object
-                        properties:
-                          pagination:
-                            type: object
-                            properties:
-                              total:
-                                type: integer
-                                example: 100
-                              count:
-                                type: integer
-                                example: 20
-                              per_page:
-                                type: integer
-                                example: 3
-                              current_page:
-                                type: integer
-                                example: 1
-                              total_pages:
-                                type: integer
-                                example: 5
-                      links:
-                        type: object
-                        properties:
-                          self:
-                            type: string
-                            example: 'users?page%5Bnumber%5D=1&page%5Bsize%5D=3'
-                          first:
-                            type: string
-                            example: 'users?page%5Bnumber%5D=1&page%5Bsize%5D=3'
-                          next:
-                            type: string
-                            example: 'users?page%5Bnumber%5D=1&page%5Bsize%5D=3'
-                          last:
-                            type: string
-                            example: 'users?page%5Bnumber%5D=1&page%5Bsize%5D=3'
-      tags:
-        - Roles
-      requestBody:
-        required: true
-        content:
-          application/vnd.api+json:
-            schema:
-              type: object
-              properties:
-                data:
-                  type: array
-                  description: 'The resource identifier for a Users.'
-                  example:
-                    -
-                      id: '1'
-                      type: users
-                  items:
-                    type: object
-              required:
-                - data
-      security: []
-    delete:
-      summary: 'Remove from Users relationships'
-      operationId: removeFromUsersRelationships
-      description: 'Remove identifiers from the Users relationship of a specific Role.'
-      parameters: []
-      responses:
-        204:
-          description: ''
-      tags:
-        - Roles
-      requestBody:
-        required: true
-        content:
-          application/vnd.api+json:
-            schema:
-              type: object
-              properties:
-                data:
-                  type: array
-                  description: 'The resource identifier for a Users.'
-                  example:
-                    -
-                      id: '1'
-                      type: users
-                  items:
-                    type: object
-              required:
-                - data
-      security: []
-    parameters:
-      -
-        in: path
-        name: id
-        description: "The unique identifier of the 'roles' resource"
-        example: 1
-        required: true
-        schema:
-          type: number
   /users:
     post:
       summary: 'User registration'
@@ -1860,10 +755,12 @@ paths:
           in: query
           name: 'fields[users]'
           description: "Sparse fieldsets - specify which fields to include in the response for each resource type. ([Spec](https://jsonapi.org/format/#fetching-sparse-fieldsets))\n\n**Available fields:** `name`, `email`"
+          example: null
           required: false
           schema:
             type: string
             description: "Sparse fieldsets - specify which fields to include in the response for each resource type. ([Spec](https://jsonapi.org/format/#fetching-sparse-fieldsets))\n\n**Available fields:** `name`, `email`"
+            example: null
             nullable: false
         -
           in: query
@@ -1974,10 +871,12 @@ paths:
           in: query
           name: 'fields[users]'
           description: "Sparse fieldsets - specify which fields to include in the response for each resource type. ([Spec](https://jsonapi.org/format/#fetching-sparse-fieldsets))\n\n**Available fields:** `name`, `email`"
+          example: null
           required: false
           schema:
             type: string
             description: "Sparse fieldsets - specify which fields to include in the response for each resource type. ([Spec](https://jsonapi.org/format/#fetching-sparse-fieldsets))\n\n**Available fields:** `name`, `email`"
+            example: null
             nullable: false
         -
           in: query
@@ -2016,10 +915,12 @@ paths:
           in: query
           name: sort
           description: "Sort the results by attributes. Prefix with `-` for descending order. ([Spec](https://jsonapi.org/format/#fetching-sorting))\n\n**Available sort fields:** `name`, `email`"
+          example: null
           required: false
           schema:
             type: string
             description: "Sort the results by attributes. Prefix with `-` for descending order. ([Spec](https://jsonapi.org/format/#fetching-sorting))\n\n**Available sort fields:** `name`, `email`"
+            example: null
             nullable: false
       responses:
         200:
@@ -2154,6 +1055,18 @@ paths:
                       last:
                         type: string
                         example: 'users?page%5Bnumber%5D=1&page%5Bsize%5D=3'
+        401:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: Unauthenticated.
+                properties:
+                  message:
+                    type: string
+                    example: Unauthenticated.
       tags:
         - Users
       security: []
@@ -2167,10 +1080,12 @@ paths:
           in: query
           name: 'fields[users]'
           description: "Sparse fieldsets - specify which fields to include in the response for each resource type. ([Spec](https://jsonapi.org/format/#fetching-sparse-fieldsets))\n\n**Available fields:** `name`, `email`"
+          example: null
           required: false
           schema:
             type: string
             description: "Sparse fieldsets - specify which fields to include in the response for each resource type. ([Spec](https://jsonapi.org/format/#fetching-sparse-fieldsets))\n\n**Available fields:** `name`, `email`"
+            example: null
             nullable: false
         -
           in: query
@@ -2224,6 +1139,18 @@ paths:
                           self:
                             type: string
                             example: /users/1
+        401:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: Unauthenticated.
+                properties:
+                  message:
+                    type: string
+                    example: Unauthenticated.
       tags:
         - Users
       security: []
@@ -2237,10 +1164,12 @@ paths:
           in: query
           name: 'fields[users]'
           description: "Sparse fieldsets - specify which fields to include in the response for each resource type. ([Spec](https://jsonapi.org/format/#fetching-sparse-fieldsets))\n\n**Available fields:** `name`, `email`"
+          example: null
           required: false
           schema:
             type: string
             description: "Sparse fieldsets - specify which fields to include in the response for each resource type. ([Spec](https://jsonapi.org/format/#fetching-sparse-fieldsets))\n\n**Available fields:** `name`, `email`"
+            example: null
             nullable: false
         -
           in: query
@@ -2338,10 +1267,12 @@ paths:
           in: query
           name: 'fields[users]'
           description: "Sparse fieldsets - specify which fields to include in the response for each resource type. ([Spec](https://jsonapi.org/format/#fetching-sparse-fieldsets))\n\n**Available fields:** `name`, `email`"
+          example: null
           required: false
           schema:
             type: string
             description: "Sparse fieldsets - specify which fields to include in the response for each resource type. ([Spec](https://jsonapi.org/format/#fetching-sparse-fieldsets))\n\n**Available fields:** `name`, `email`"
+            example: null
             nullable: false
         -
           in: query
@@ -2395,6 +1326,18 @@ paths:
                           self:
                             type: string
                             example: /users/1
+        401:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: Unauthenticated.
+                properties:
+                  message:
+                    type: string
+                    example: Unauthenticated.
       tags:
         - Users
       security: []
@@ -2428,10 +1371,12 @@ paths:
           in: query
           name: 'fields[users]'
           description: "Sparse fieldsets - specify which fields to include in the response for each resource type. ([Spec](https://jsonapi.org/format/#fetching-sparse-fieldsets))\n\n**Available fields:** `name`, `email`"
+          example: null
           required: false
           schema:
             type: string
             description: "Sparse fieldsets - specify which fields to include in the response for each resource type. ([Spec](https://jsonapi.org/format/#fetching-sparse-fieldsets))\n\n**Available fields:** `name`, `email`"
+            example: null
             nullable: false
         -
           in: query
@@ -2709,6 +1654,18 @@ paths:
                           last:
                             type: string
                             example: 'roles?page%5Bnumber%5D=1&page%5Bsize%5D=3'
+        401:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: Unauthenticated.
+                properties:
+                  message:
+                    type: string
+                    example: Unauthenticated.
       tags:
         - Users
       security: []
@@ -2938,6 +1895,18 @@ paths:
                           last:
                             type: string
                             example: 'roles?page%5Bnumber%5D=1&page%5Bsize%5D=3'
+        401:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: Unauthenticated.
+                properties:
+                  message:
+                    type: string
+                    example: Unauthenticated.
       tags:
         - Users
       security: []

@@ -27,15 +27,15 @@ class UserController extends Controller
     #[Endpoint(title: 'User registration', description: '**New user registration**')]
     #[ResourceRequestCreate]
     #[ResourceResponse]
-    public function create(UserCreateAction $action): Response
+    public function create(UserCreateRequest $request): Response
     {
-        return $action->dispatch();
+        return (new UserCreateAction($request))->dispatch();
     }
 
     #[ResourceRequest]
     #[ResourceResponse]
-    public function update(UserUpdateAction $action): Response
+    public function update(UserUpdateRequest $request): Response
     {
-        return $action->dispatch();
+        return (new UserUpdateAction($request))->dispatch();
     }
 }
