@@ -103,7 +103,7 @@ This is a high-level roadmap for fully implementing the skeleton:
 - [X] Set up CI/CD for automated testing and code quality checks
   - [X] Set up GitHub Actions for CI/CD
   - [X] Set up GitHub Actions for code quality checks
-
+- [ ] Move the scribe.blade.php to the base library.
 ---
 
 ## References

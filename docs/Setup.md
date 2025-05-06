@@ -459,3 +459,25 @@ For more details, see the `app/Entities/Role.php`, `app/Entities/User.php`, `app
 - **Entity Formatting:** Doctrine entity classes have been refactored for better readability and to match the latest conventions.
 
 These changes streamline development, improve code quality, and make contributing easier for everyone.
+
+## 14. Installing Laravel Sail
+
+Laravel Sail provides a simple command-line interface for interacting with Laravel's default Docker development environment. If you want to use Docker for local development, you can install Sail using Composer:
+
+```bash
+composer require laravel/sail --dev
+```
+
+After installing Sail, you may publish its Docker files:
+
+```bash
+php artisan sail:install
+```
+
+You can then start your development environment using:
+
+```bash
+./vendor/bin/sail up
+```
+
+For more details and advanced usage, refer to the [official Laravel Sail documentation](https://laravel.com/docs/12.x/sail).

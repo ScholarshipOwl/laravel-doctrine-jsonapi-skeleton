@@ -12,11 +12,5 @@ Route::post('/auth/request-reset-password', [AuthController::class, 'requestRese
 Route::post('/auth/reset-password', [AuthController::class, 'resetPassword'])->name('reset-password');
 Route::post('/auth/logout', [AuthController::class, 'logout'])->middleware('auth')->name('logout');
 
-// JSON:API routes registration
-Route::prefix(config('jsonapi.routing.rootPathPrefix', ''))
-    ->name(config('jsonapi.routing.rootNamePrefix', 'jsonapi.'))
-    ->middleware(config('jsonapi.routing.rootMiddleware'))
-    ->group(base_path('routes/jsonapi.php'));
-
 // Scribe routes
 Route::group([], base_path('routes/scribe.php'));

@@ -4,6 +4,7 @@ namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
 use Knuckles\Scribe\Attributes\Endpoint;
+use Sowl\JsonApi\Request;
 use Sowl\JsonApi\Response;
 use Sowl\JsonApi\Scribe\Attributes\ResourceRequest;
 use Sowl\JsonApi\Scribe\Attributes\ResourceRequestCreate;
@@ -19,9 +20,9 @@ class UserController extends Controller
      */
     #[ResourceRequest]
     #[ResourceResponse]
-    public function me(UserMeAction $action): Response
+    public function me(Request $request): Response
     {
-        return $action->dispatch();
+        return UserMeAction::makeDispatch($request);
     }
 
     #[Endpoint(title: 'User registration', description: '**New user registration**')]
