@@ -18,16 +18,16 @@ class RoleTest extends TestCase
 
         // Endpoints to test
         $endpoints = [
-            'list'   => ['method' => 'getJson', 'path' => '/roles'],
+            'list'   => ['method' => 'getJson', 'path' => '/api/roles'],
             'create' => [
                 'method' => 'postJson',
-                'path' => '/roles',
+                'path' => '/api/roles',
                 'data' => ['data' => ['type' => 'roles', 'attributes' => ['name' => 'NewRole', 'permissions' => []]]]
             ],
-            'view'   => ['method' => 'getJson', 'path' => "/roles/{$roleId}"],
+            'view'   => ['method' => 'getJson', 'path' => "/api/roles/{$roleId}"],
             'update' => [
                 'method' => 'patchJson',
-                'path' => "/roles/{$roleId}",
+                'path' => "/api/roles/{$roleId}",
                 'data' => [
                     'data' => [
                         'type' => 'roles',
@@ -36,13 +36,13 @@ class RoleTest extends TestCase
                     ]
                 ]
             ],
-            'delete' => ['method' => 'deleteJson', 'path' => "/roles/{$roleId}"],
+            'delete' => ['method' => 'deleteJson', 'path' => "/api/roles/{$roleId}"],
         ];
 
         // 1. Test Unauthenticated Access (401)
         foreach ($endpoints as $action => $details) {
             $this->{$details['method']}($details['path'], $details['data'] ?? [])
-                 ->assertStatus(401);
+                 ->assertStatus(401, "Failed to assert 401 for {$action} endpoint");
         }
 
         // 2. Test Regular User Access (403)
@@ -54,20 +54,20 @@ class RoleTest extends TestCase
 
         // 3. Test Admin Access (2xx) - Basic checks for accessibility
         $this->actingAsAdmin();
-        $this->getJson('/roles')->assertOk();
-        $this->getJson("/roles/{$roleId}")->assertOk();
+        $this->getJson('/api/roles')->assertOk();
+        $this->getJson("/api/roles/{$roleId}")->assertOk();
         // POST, PATCH, DELETE require more specific assertions (like checking DB state)
         // which are better suited for dedicated tests (e.g., testAdminCanCreateRole).
         // We'll just check they don't return 401/403 here.
-        $this->postJson('/roles', $endpoints['create']['data'])->assertStatus(201); // Created
-        $this->patchJson("/roles/{$roleId}", $endpoints['update']['data'])->assertOk();
+        $this->postJson('/api/roles', $endpoints['create']['data'])->assertStatus(201); // Created
+        $this->patchJson("/api/roles/{$roleId}", $endpoints['update']['data'])->assertOk();
         // Re-create the role for the delete test since the previous one might be updated
         $roleToDelete = entity(Role::class)->create(['name' => 'ToDeleteRole']);
-        $this->deleteJson("/roles/{$roleToDelete->getId()}")->assertStatus(204); // No Content
+        $this->deleteJson("/api/roles/{$roleToDelete->getId()}")->assertStatus(204); // No Content
     }
 
     /**
-     * Test GET /roles/{id} returns JSON:API compliant response for existing role.
+     * Test GET /api/roles/{id} returns JSON:API compliant response for existing role.
      */
     public function testCanGetRoleByIdJsonapi(): void
     {
@@ -78,7 +78,7 @@ class RoleTest extends TestCase
 
         $this->actingAsAdmin();
         // Perform GET request to JSON:API endpoint
-        $response = $this->getJson("/roles/{$role->getId()}");
+        $response = $this->getJson("/api/roles/{$role->getId()}");
 
         // Assert response is successful
         $response->assertStatus(200);
@@ -110,18 +110,18 @@ class RoleTest extends TestCase
     }
 
     /**
-     * Test GET /roles/{id} returns 404 for non-existent role.
+     * Test GET /api/roles/{id} returns 404 for non-existent role.
      */
     public function testGetRoleByIdReturns404ForMissingRole(): void
     {
         $user = entity(User::class)->create();
         $this->actingAs($user);
-        $response = $this->getJson('/roles/999999');
+        $response = $this->getJson('/api/roles/999999');
         $response->assertStatus(404);
     }
 
     /**
-     * Test GET /roles returns a list of roles in JSON:API format.
+     * Test GET /api/roles returns a list of roles in JSON:API format.
      */
     public function testCanGetRolesListJsonapi(): void
     {
@@ -131,7 +131,7 @@ class RoleTest extends TestCase
         $roles = entity(Role::class, 3)->create();
 
         $this->actingAsAdmin();
-        $response = $this->getJson('/roles');
+        $response = $this->getJson('/api/roles');
         $response->assertStatus(200);
         $response->assertJsonStructure([
             'data' => [

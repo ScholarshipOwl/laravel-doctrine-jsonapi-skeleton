@@ -162,6 +162,7 @@ return [
 
     'providers' => ServiceProvider::defaultProviders()->merge([
         App\Providers\AppServiceProvider::class,
+        App\Sanctum\SanctumServiceProvider::class,
     ])->replace([
         \Illuminate\Auth\Passwords\PasswordResetServiceProvider::class => \LaravelDoctrine\ORM\Auth\Passwords\PasswordResetServiceProvider::class,
         \Illuminate\Validation\ValidationServiceProvider::class => \LaravelDoctrine\ORM\Validation\PresenceVerifierProvider::class,

@@ -10,6 +10,7 @@
 - Do not add docblock of @param if param type is already defined.
 - Do not add docblock of @return if return type is already defined.
 - Always import class that you are using in a generated code, do not use fully qualified names, only imported names. Make sure to import all classes that you are using in a generated code.
+- Create folder if it does not exist, before creating a new file in it. (use `mkdir -p {folder}` command)
 
 ## Workflow
 - Pull requests must be reviewed before merging.
@@ -19,6 +20,9 @@
 ## Laravel
 - Use Laravel 12 for development.
 - Look into `config` and `.env` files for configuration.
+
+### Controllers
+- Place all the requests and actions in single controller folder. Example: app/Http/Controllers/Auth/{files}
 
 ## API Guidelines
 - Expose only API routes; do not use web or Blade routes.
@@ -58,7 +62,7 @@
 - Write unit tests for all entities and controllers.
 - Run tests after you doing change to confirm that it is working.
 - Use camelCase in the test names.
-- Use command `./vendor/bin/phpunit` to run tests.
+- Use command `sail phpunit` to run tests.
 - On test failure make sure link failed tests with line numbers in response message. Link them in format that Cascade can understand and the links are clickable and will open file in editor.
 - Use options `--stop-on-failure` and `--stop-on-error` to stop on first failure or error, use this approach by default.
 - Use `--filter` option if changes done in single controller and we still in development phase.

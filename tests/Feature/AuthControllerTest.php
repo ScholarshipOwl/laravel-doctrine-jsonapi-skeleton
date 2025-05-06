@@ -10,31 +10,35 @@ use Tests\TestCase;
 
 class AuthControllerTest extends TestCase
 {
+    protected User $user;
+
+    protected function setUp(): void
+    {
+        parent::setUp();
+
+        $this->user = entity(User::class)->create([
+            'email' => 'test@example.com',
+            'password' => Hash::make('password'),
+        ]);
+    }
+
     public function testLoginWithValidCredentials(): void
     {
-        $user = entity(User::class)->create([
-            'email' => 'test@example.com',
-            'password' => Hash::make('password123'),
-        ]);
-
+        // Use the user created in setUp()
         $response = $this->postJson('/auth/login', [
-            'email' => 'test@example.com',
-            'password' => 'password123',
+            'email' => $this->user->getEmail(),
+            'password' => 'password', // The password set in setUp()
         ]);
 
         $response->assertOk();
-        $response->assertJson(['id' => $user->getId()]);
+        $response->assertJson(['id' => $this->user->getId()]);
     }
 
     public function testLoginWithInvalidCredentials(): void
     {
-        entity(User::class)->create([
-            'email' => 'test@example.com',
-            'password' => Hash::make('password123'),
-        ]);
-
+        // Use the user from setUp() and attempt login with a wrong password
         $response = $this->postJson('/auth/login', [
-            'email' => 'test@example.com',
+            'email' => $this->user->getEmail(), // Email from setUp() user
             'password' => 'wrong-password',
         ]);
 
@@ -93,9 +97,64 @@ class AuthControllerTest extends TestCase
             'password' => Hash::make('password123'),
         ]);
 
-        $this->be($user);
+        $this->actingAs($user);
+
         $response = $this->postJson('/auth/logout');
-        $response->assertOk();
-        $response->assertJson(['status' => true]);
+
+        $response->assertStatus(204); // Expect 204 No Content
+        $this->assertGuest(); // Ensure user is logged out
+    }
+
+    public function testCanCreateTokenAndAuthenticate(): void
+    {
+        $deviceName = 'test-device';
+
+        // 1. Create Token
+        $response = $this->postJson(route('auth.token'), [
+            'email' => $this->user->getEmail(),
+            'password' => 'password', // Plain text password
+            'deviceName' => $deviceName,
+        ]);
+
+        $response->assertStatus(200)
+            ->assertJsonStructure(['token'])
+            ->assertJsonMissingPath('errors');
+
+        $token = $response->json('token');
+        $this->assertNotEmpty($token);
+
+        // 2. Authenticate with Token
+        // Assuming '/api/users/me' is a sanctum protected route
+        $authResponse = $this->withHeaders([
+            'Authorization' => 'Bearer ' . $token,
+            'Accept' => 'application/vnd.api+json',
+        ])->getJson('/api/users/me');
+
+        $authResponse->assertStatus(200)
+            ->assertJsonPath('data.attributes.email', $this->user->getEmail());
+    }
+
+    public function testCannotCreateTokenWithInvalidCredentials(): void
+    {
+        $response = $this->postJson(route('auth.token'), [
+            'email' => $this->user->getEmail(),
+            'password' => 'wrong-password',
+            'deviceName' => 'test-device',
+        ]);
+
+        $response->assertStatus(422) // Laravel validation exception for auth.failed
+            ->assertJsonValidationErrors(['email' => __('auth.failed')]);
+    }
+
+    public function testCannotCreateTokenWithoutDeviceName(): void
+    {
+        $response = $this->postJson(route('auth.token'), [
+            'email' => $this->user->getEmail(),
+            'password' => 'password',
+            // 'deviceName' is missing
+        ]);
+
+        $response->assertStatus(422)
+            ->assertJsonValidationErrors(['deviceName']);
     }
 }

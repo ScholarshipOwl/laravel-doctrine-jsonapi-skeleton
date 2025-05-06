@@ -34,7 +34,12 @@ abstract class TestCase extends BaseTestCase
             ->setSQLLogger($this->dbDebugStack = new DebugStack());
     }
 
-    protected function afterRefreshingDoctrineDatabase(): void
+    protected function doctrineRunMigrations(): bool
+    {
+        return false;
+    }
+
+    protected function seedDatabase(): void
     {
         $this->seed(DatabaseSeeder::class);
     }

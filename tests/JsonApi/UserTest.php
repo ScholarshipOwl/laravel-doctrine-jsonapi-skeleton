@@ -19,16 +19,16 @@ class UserTest extends TestCase
         $role = entity(Role::class)->create(); // Role for relationship checks
 
         // URLs and Data
-        $userUrl = "/users/{$user->getId()}";
+        $userUrl = "/api/users/{$user->getId()}";
         $rolesUrl = "{$userUrl}/relationships/roles";
         $roleData = ['data' => [['type' => 'roles', 'id' => (string) $role->getId()]]];
 
         // 1. Test Unauthenticated Access (401)
         $this->getJson($userUrl)->assertStatus(401);
-        $this->getJson('/users/me')->assertStatus(401);
+        $this->getJson('/api/users/me')->assertStatus(401);
         $this->patchJson($userUrl, [])->assertStatus(401);
         $this->deleteJson($userUrl)->assertStatus(401);
-        $this->getJson('/users')->assertStatus(401); // List users requires auth (admin only)
+        $this->getJson('/api/users')->assertStatus(401); // List users requires auth (admin only)
         $this->getJson($rolesUrl)->assertStatus(401); // View roles relationship
         $this->postJson($rolesUrl, $roleData)->assertStatus(401); // Add role relationship
         $this->patchJson($rolesUrl, $roleData)->assertStatus(401); // Replace role relationship
@@ -44,7 +44,7 @@ class UserTest extends TestCase
         // Cannot delete a different user
         $this->deleteJson($userUrl)->assertStatus(403);
         // Cannot list users (regular user)
-        $this->getJson('/users')->assertStatus(403);
+        $this->getJson('/api/users')->assertStatus(403);
         // Cannot view/manage other user's roles
         $this->getJson($rolesUrl)->assertStatus(403);
         $this->postJson($rolesUrl, $roleData)->assertStatus(403);
@@ -54,7 +54,7 @@ class UserTest extends TestCase
         // 3. Test Allowed Access (Acting as $user for self-actions)
         $this->actingAs($user);
         $this->getJson($userUrl)->assertOk(); // Can view self
-        $this->getJson('/users/me')->assertOk(); // Can view 'me'
+        $this->getJson('/api/users/me')->assertOk(); // Can view 'me'
 
         // Update and delete require specific tests with data and assertions,
         // so they are better handled in dedicated test methods.
@@ -62,11 +62,11 @@ class UserTest extends TestCase
 
     public function testNotAuthenticated(): void
     {
-        $this->getJson('/users/me')->assertStatus(401);
+        $this->getJson('/api/users/me')->assertStatus(401);
     }
 
     /**
-     * Test GET /users/{id} returns JSON:API compliant response for existing user.
+     * Test GET /api/users/{id} returns JSON:API compliant response for existing user.
      */
     public function testCanGetUserByIdJsonapi(): void
     {
@@ -76,7 +76,7 @@ class UserTest extends TestCase
         $this->actingAs($user);
 
         // Perform GET request to JSON:API endpoint
-        $response = $this->getJson("/users/{$user->getId()}");
+        $response = $this->getJson("/api/users/{$user->getId()}");
 
         // Assert response is successful
         $response->assertStatus(200);
@@ -108,17 +108,17 @@ class UserTest extends TestCase
     }
 
     /**
-     * Test GET /users/{id} returns 404 for non-existent user.
+     * Test GET /api/users/{id} returns 404 for non-existent user.
      */
     public function testGetUserByIdReturns404ForMissingUser(): void
     {
         $this->actingAsAdmin();
-        $response = $this->getJson('/users/999999');
+        $response = $this->getJson('/api/users/999999');
         $response->assertStatus(404);
     }
 
     /**
-     * Test GET /users returns a list of users in JSON:API format.
+     * Test GET /api/users returns a list of users in JSON:API format.
      */
     public function testCanListUsersJsonapi(): void
     {
@@ -126,7 +126,7 @@ class UserTest extends TestCase
 
         $this->actingAs(entity(User::class, 'admin')->create());
 
-        $response = $this->getJson('/users');
+        $response = $this->getJson('/api/users');
 
         $response->assertStatus(200);
         $response->assertJsonStructure([
@@ -148,7 +148,7 @@ class UserTest extends TestCase
     }
 
     /**
-     * Test POST /users creates a new user and returns JSON:API resource.
+     * Test POST /api/users creates a new user and returns JSON:API resource.
      */
     public function testCanCreateUserJsonapi(): void
     {
@@ -163,14 +163,14 @@ class UserTest extends TestCase
             ],
         ];
 
-        $response = $this->postJson('/users', $payload);
+        $response = $this->postJson('/api/users', $payload);
 
         $response->assertStatus(201);
         $response->assertHeader('Location');
         $location = $response->headers->get('Location');
         $this->assertNotEmpty($location);
         $id = $response->json('data.id');
-        $this->assertStringContainsString("/users/{$id}", $location);
+        $this->assertStringContainsString("/api/users/{$id}", $location);
 
         $response->assertJsonStructure([
             'data' => [
@@ -197,7 +197,7 @@ class UserTest extends TestCase
     }
 
     /**
-     * Test PATCH /users/{id} updates user attributes.
+     * Test PATCH /api/users/{id} updates user attributes.
      */
     public function testCanUpdateUserJsonapi(): void
     {
@@ -212,7 +212,7 @@ class UserTest extends TestCase
             ],
         ];
         $this->actingAs($user);
-        $response = $this->patchJson("/users/{$user->getId()}", $payload);
+        $response = $this->patchJson("/api/users/{$user->getId()}", $payload);
 
         $response->assertStatus(200);
         $response->assertJsonStructure([
@@ -232,7 +232,7 @@ class UserTest extends TestCase
     }
 
     /**
-     * Test PATCH /users/{id} fails validation for invalid email.
+     * Test PATCH /api/users/{id} fails validation for invalid email.
      */
     public function testUpdateUserFailsWithInvalidEmail(): void
     {
@@ -247,13 +247,13 @@ class UserTest extends TestCase
             ],
         ];
         $this->actingAs($user);
-        $response = $this->patchJson("/users/{$user->getId()}", $payload);
+        $response = $this->patchJson("/api/users/{$user->getId()}", $payload);
         $response->assertStatus(422);
         $this->assertJsonApiValidationErrors($response, ['/data/attributes/email']);
     }
 
     /**
-     * Test PATCH /users/{id} fails validation for short password.
+     * Test PATCH /api/users/{id} fails validation for short password.
      */
     public function testUpdateUserFailsWithShortPassword(): void
     {
@@ -268,13 +268,13 @@ class UserTest extends TestCase
             ],
         ];
         $this->actingAs($user);
-        $response = $this->patchJson("/users/{$user->getId()}", $payload);
+        $response = $this->patchJson("/api/users/{$user->getId()}", $payload);
         $response->assertStatus(422);
         $this->assertJsonApiValidationErrors($response, ['/data/attributes/password']);
     }
 
     /**
-     * Test PATCH /users/{id} fails validation for too long name.
+     * Test PATCH /api/users/{id} fails validation for too long name.
      */
     public function testUpdateUserFailsWithLongName(): void
     {
@@ -289,32 +289,32 @@ class UserTest extends TestCase
             ],
         ];
         $this->actingAs($user);
-        $response = $this->patchJson("/users/{$user->getId()}", $payload);
+        $response = $this->patchJson("/api/users/{$user->getId()}", $payload);
         $response->assertStatus(422);
         $this->assertJsonApiValidationErrors($response, ['/data/attributes/name']);
     }
 
     /**
-     * Test DELETE /users/{id} deletes the user.
+     * Test DELETE /api/users/{id} deletes the user.
      */
     public function testCanDeleteUserJsonapi(): void
     {
         $user = entity(User::class)->create();
         $userId = $user->getId(); // Capture ID before deletion
         $this->actingAs($user);
-        $response = $this->deleteJson("/users/{$userId}");
+        $response = $this->deleteJson("/api/users/{$userId}");
         $response->assertStatus(204);
         $this->assertDatabaseMissing('users', ['id' => $userId]);
     }
 
     /**
-     * Test GET /users/me returns the current user's profile.
+     * Test GET /api/users/me returns the current user's profile.
      */
     public function testCanGetCurrentUserProfile(): void
     {
         $this->actingAs($user = entity(User::class)->create());
 
-        $response = $this->getJson('/users/me');
+        $response = $this->getJson('/api/users/me');
         $response->assertStatus(200);
         $response->assertJson([
             'data' => [
@@ -329,16 +329,16 @@ class UserTest extends TestCase
     }
 
     /**
-     * Test GET /users/me returns 401 Unauthorized when the user is not authenticated.
+     * Test GET /api/users/me returns 401 Unauthorized when the user is not authenticated.
      */
     public function testCannotGetCurrentUserProfileWhenNotAuthenticated(): void
     {
-        $response = $this->getJson('/users/me');
+        $response = $this->getJson('/api/users/me');
         $response->assertStatus(401);
     }
 
     /**
-     * Test PATCH /users/{id} allows a user to update their own profile.
+     * Test PATCH /api/users/{id} allows a user to update their own profile.
      */
     public function testUserCanUpdateSelf(): void
     {
@@ -356,7 +356,7 @@ class UserTest extends TestCase
             ],
         ];
 
-        $response = $this->patchJson("/users/{$user->getId()}", $updateData);
+        $response = $this->patchJson("/api/users/{$user->getId()}", $updateData);
 
         $response->assertStatus(200)
             ->assertJsonPath('data.attributes.name', $newName);
@@ -367,7 +367,7 @@ class UserTest extends TestCase
     }
 
     /**
-     * Test DELETE /users/{id} allows a user to delete their own account.
+     * Test DELETE /api/users/{id} allows a user to delete their own account.
      */
     public function testUserCanDeleteSelf(): void
     {
@@ -375,7 +375,7 @@ class UserTest extends TestCase
         $userId = $user->getId();
         $this->actingAs($user);
 
-        $response = $this->deleteJson("/users/{$userId}");
+        $response = $this->deleteJson("/api/users/{$userId}");
 
         $response->assertStatus(204);
 
@@ -385,7 +385,7 @@ class UserTest extends TestCase
     }
 
     /**
-     * Test GET /users allows an admin to list all users.
+     * Test GET /api/users allows an admin to list all users.
      */
     public function testAdminCanListUsers(): void
     {
@@ -395,7 +395,7 @@ class UserTest extends TestCase
 
         $this->actingAs($admin);
 
-        $response = $this->getJson('/users');
+        $response = $this->getJson('/api/users');
 
         $response->assertStatus(200)
             ->assertJsonStructure([
@@ -411,7 +411,7 @@ class UserTest extends TestCase
     }
 
     /**
-     * Test GET /users/{id}/relationships/roles allows a user to view their own roles.
+     * Test GET /api/users/{id}/relationships/roles allows a user to view their own roles.
      */
     public function testUserCanViewOwnRolesRelationship(): void
     {
@@ -422,7 +422,7 @@ class UserTest extends TestCase
 
         $this->actingAs($user);
 
-        $url = "/users/{$user->getId()}/relationships/roles";
+        $url = "/api/users/{$user->getId()}/relationships/roles";
         $this->getJson($url)
             ->assertOk()
             ->assertJsonStructure(['data' => [['type', 'id']]])
@@ -430,7 +430,7 @@ class UserTest extends TestCase
     }
 
     /**
-     * Test Admin can manage roles via /users/{id}/relationships/roles.
+     * Test Admin can manage roles via /api/users/{id}/relationships/roles.
      */
     public function testAdminCanManageUserRoles(): void
     {
@@ -440,7 +440,7 @@ class UserTest extends TestCase
         $role2 = entity(Role::class)->create(['name' => 'Role2']);
         $role3 = entity(Role::class)->create(['name' => 'Role3']);
 
-        $url = "/users/{$user->getId()}/relationships/roles";
+        $url = "/api/users/{$user->getId()}/relationships/roles";
 
         $this->actingAs($admin);
 

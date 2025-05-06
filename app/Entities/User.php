@@ -2,6 +2,7 @@
 
 namespace App\Entities;
 
+use App\Sanctum\WithApiTokens;
 use App\Transformers\UserTransformer;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
@@ -11,6 +12,7 @@ use Illuminate\Contracts\Auth\Access\Authorizable as AuthorizableContract;
 use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
 use Illuminate\Contracts\Auth\CanResetPassword as CanResetPasswordContract;
 use Illuminate\Foundation\Auth\Access\Authorizable;
+use Laravel\Sanctum\Contracts\HasApiTokens;
 use LaravelDoctrine\ACL\Attribute as ACL;
 use LaravelDoctrine\ACL\Contracts\HasPermissions;
 use LaravelDoctrine\ACL\Contracts\HasRoles;
@@ -32,7 +34,8 @@ class User implements
     CanResetPasswordContract,
     HasPermissions,
     HasRoles,
-    ResourceInterface
+    ResourceInterface,
+    HasApiTokens
 {
     use Authenticatable;
     use Authorizable;
@@ -42,6 +45,7 @@ class User implements
     use Notifiable;
     use WithPermissions;
     use WithRoles;
+    use WithApiTokens;
 
     public static function getResourceType(): string
     {
@@ -82,6 +86,7 @@ class User implements
     public function __construct()
     {
         $this->roles = new ArrayCollection();
+        $this->tokens = new ArrayCollection();
     }
 
     public function getId(): int

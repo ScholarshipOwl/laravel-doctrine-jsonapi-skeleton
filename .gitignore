@@ -28,3 +28,6 @@ yarn-error.log
 
 # docker-compose override file
 docker-compose.override.yml
+
+# local dev
+database/mysql
