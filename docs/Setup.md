@@ -154,7 +154,87 @@ Route::post('/auth/logout', [AuthController::class, 'logout'])->middleware('auth
 
 ---
 
-## 7. Doctrine Migrations: What We Changed
+## 7. API Authentication with Laravel Sanctum (Doctrine Integration)
+
+This project utilizes Laravel Sanctum for stateless API authentication using tokens. Due to the use of Doctrine ORM instead of Eloquent, a custom integration for Sanctum is implemented to work seamlessly with Doctrine entities and repositories.
+
+### Key Components of the Integration:
+
+1.  **Installation & Initial Setup**:
+    *   **Install Sanctum**:
+        ```bash
+        composer require laravel/sanctum
+        ```
+    *   **Disable Auto-Discovery**: To use the custom Doctrine-compatible service provider, Laravel's default auto-discovery for `laravel/sanctum` is disabled in `composer.json`:
+        ```json
+        // composer.json
+        "extra": {
+            "laravel": {
+                "dont-discover": [
+                    "laravel/sanctum"
+                ]
+            }
+        },
+        ```
+        Remember to run `composer dump-autoload` after this change.
+    *   **Publish Sanctum Configuration**:
+        ```bash
+        php artisan vendor:publish --provider="Laravel\Sanctum\SanctumServiceProvider" --tag="sanctum-config"
+        ```
+        This creates `config/sanctum.php`, which will be customized.
+
+2.  **Doctrine-Specific Configuration**:
+    *   **Custom Service Provider (`App\Sanctum\SanctumServiceProvider`)**: This provider configures Sanctum to use Doctrine. It's registered in `config/app.php`, and the default `Laravel\Sanctum\SanctumServiceProvider` should be removed or not discovered.
+        ```php
+        // config/app.php
+        'providers' => ServiceProvider::defaultProviders()->merge([
+            // ... other providers
+            App\Sanctum\SanctumServiceProvider::class, // Add custom Sanctum provider
+        ])->replace([
+            // ... other replacements
+            // Ensure Laravel\Sanctum\SanctumServiceProvider::class is not here or handled appropriately
+        ])->toArray(),
+        ```
+    *   **Sanctum Configuration (`config/sanctum.php`)**: Modified to point to the custom Doctrine entity for personal access tokens:
+        ```php
+        // config/sanctum.php
+        'personal_access_token' => [
+            'model' => App\Sanctum\Entities\PersonalAccessToken::class,
+        ],
+        ```
+    *   **User Entity (`App\Entities\User`)**:
+        - Implements `Laravel\Sanctum\Contracts\HasApiTokens`.
+        - Uses the custom `App\Sanctum\WithApiTokens` trait (adapted for Doctrine).
+    *   **Personal Access Token Entity (`App\Sanctum\Entities\PersonalAccessToken`)**: A Doctrine entity that stores API tokens, replacing Eloquent's default.
+    *   **Custom Guard (`App\Sanctum\Guard`)**: Handles token authentication with Doctrine, used by the custom service provider.
+
+3.  **Database Migration**:
+    A Doctrine migration (e.g., `Version20250506210429.php`) creates the `personal_access_tokens` table. Apply it with:
+    ```bash
+    php artisan doctrine:migrations:migrate
+    ```
+
+4.  **Protecting API Routes**:
+    API routes are protected using the `auth:sanctum` middleware, typically in `routes/jsonapi.php` or `routes/api.php`.
+    ```php
+    // routes/jsonapi.php
+    Route::group([
+        // ... other group settings
+        'middleware' => ['auth:sanctum'], // Apply Sanctum auth
+    ], function () {
+        // Protected routes here
+
+        // Example: User registration can be made public
+        Route::post('/users', [UserController::class, 'create'])
+            ->withoutMiddleware('auth:sanctum') // Exclude from auth
+            ->name('users.create');
+    });
+    ```
+    Publicly accessible endpoints within a protected group (like user registration) should use `->withoutMiddleware('auth:sanctum')`.
+
+---
+
+## 8. Doctrine Migrations: What We Changed
 
 All database schema changes in this project are managed using Doctrine migrations, not Laravel's default migration system.
 
@@ -187,7 +267,7 @@ These commands ensure your database schema always matches your Doctrine entities
 
 ---
 
-## 8. Testing with Doctrine: RefreshDatabase, Migrations & Factories
+## 9. Testing with Doctrine: RefreshDatabase, Migrations & Factories
 
 This project replaces Laravel's Eloquent-based test helpers with Doctrine-specific logic for all database testing and seeding. Key setup and usage:
 
@@ -248,7 +328,7 @@ public function testProtectedRouteFails(): void
 
 ---
 
-## 9. JSON:API Skeleton Folder Structure and Conventions
+## 10. JSON:API Skeleton Folder Structure and Conventions
 
 This skeleton enforces strict conventions for organizing JSON:API controllers, actions, requests, and responses. This ensures maintainability and consistency across all resources.
 
@@ -283,7 +363,7 @@ This skeleton enforces strict conventions for organizing JSON:API controllers, a
 
 ---
 
-## 10. JSON:API Validation Testing
+## 11. JSON:API Validation Testing
 
 ### Custom Requests and Actions for Validation
 
@@ -391,7 +471,7 @@ $this->assertJsonApiValidationErrors($response, ['/data/attributes/email']);
 
 ---
 
-## 11. Integrate Scribe for API Documentation
+## 12. Integrate Scribe for API Documentation
 
 This project uses [Scribe](https://scribe.knuckles.wtf/) to automatically generate OpenAPI specifications, Postman collections, and static API documentation for all API endpoints.
 
@@ -419,7 +499,7 @@ This project uses [Scribe](https://scribe.knuckles.wtf/) to automatically genera
 
 ---
 
-## 12. Role-Based Access Control (RBAC) & ACL
+## 13. Role-Based Access Control (RBAC) & ACL
 
 This project uses Laravel Doctrine ACL for robust Role-Based Access Control (RBAC), allowing you to define roles, assign permissions, and protect resources using policies.
 
@@ -450,15 +530,6 @@ $this->authorize('update', $user); // Uses UserPolicy::update
 - Keep your ACL configuration (`config/acl.php`) up to date with your entities.
 
 For more details, see the `app/Entities/Role.php`, `app/Entities/User.php`, `app/Policies/RolePolicy.php`, `app/Policies/UserPolicy.php`, and `config/acl.php`.
-
-## 13. Coding Standards and Static Analysis for CI (PSR-12)
-
-- **CI/CD Updates:** The project now includes a comprehensive GitHub Actions workflow for continuous integration. Automated jobs run tests (with MySQL) and enforce code style and static analysis using `composer run lint` and PHPStan.
-- **PSR-12 Compliance:** All PHP code has been refactored to fully comply with the PSR-12 coding standard. Code style is enforced via Laravel Pint and PHPCS.
-- **Static Analysis:** A default `phpstan.neon` configuration is provided for static analysis, helping to catch bugs and ensure code quality.
-- **Entity Formatting:** Doctrine entity classes have been refactored for better readability and to match the latest conventions.
-
-These changes streamline development, improve code quality, and make contributing easier for everyone.
 
 ## 14. Installing Laravel Sail
 

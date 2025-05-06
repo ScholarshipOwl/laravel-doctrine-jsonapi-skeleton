@@ -4,7 +4,10 @@ use App\Http\Controllers\User\UserController;
 use Illuminate\Support\Facades\Route;
 use Sowl\JsonApi\Default\Controller as DefaultController;
 
-Route::group(['as' => config('jsonapi.routing.name', 'jsonapi.')], function () {
+Route::group([
+    'as' => config('jsonapi.routing.name', 'jsonapi.'),
+    'middleware' => ['auth:sanctum'],
+], function () {
 
     /* ---------------------------------------------------------
     * Add any new custom routes here.
@@ -17,7 +20,7 @@ Route::group(['as' => config('jsonapi.routing.name', 'jsonapi.')], function () {
     ], function () {
         // User registration without authentication
         Route::post('', [UserController::class, 'create'])
-            ->withoutMiddleware('auth')
+            ->withoutMiddleware('auth:sanctum')
             ->name('create');
 
         // Current user profile ("me") endpoint

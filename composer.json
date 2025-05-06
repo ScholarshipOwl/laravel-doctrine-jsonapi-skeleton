@@ -15,6 +15,7 @@
         "laravel-doctrine/migrations": "^3.4",
         "laravel-doctrine/orm": "^3.1",
         "laravel/framework": "^12.0",
+        "laravel/sanctum": "^4.0",
         "laravel/tinker": "^2.10.1",
         "sowl/laravel-doctrine-jsonapi": "dev-main"
     },
@@ -73,7 +74,9 @@
     },
     "extra": {
         "laravel": {
-            "dont-discover": [],
+            "dont-discover": [
+                "laravel/sanctum"
+            ],
             "providers": []
         }
     },

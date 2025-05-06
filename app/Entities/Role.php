@@ -15,7 +15,6 @@ use Sowl\JsonApi\Relationships\MemoizeRelationshipsTrait;
 use Sowl\JsonApi\Relationships\RelationshipsCollection;
 use Sowl\JsonApi\ResourceInterface;
 use App\Transformers\RoleTransformer;
-use App\Entities\User;
 
 #[ORM\Entity]
 #[ORM\Table(name: 'roles')]

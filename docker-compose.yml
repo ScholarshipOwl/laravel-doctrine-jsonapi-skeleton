@@ -34,8 +34,12 @@ services:
             MYSQL_USER: '${DB_USERNAME}'
             MYSQL_PASSWORD: '${DB_PASSWORD}'
             MYSQL_ALLOW_EMPTY_PASSWORD: 1
+        command: >
+            --default-authentication-plugin=mysql_native_password
+            --general-log=1
+            --general-log-file=/var/lib/mysql/query.log
         volumes:
-            - 'sail-mysql:/var/lib/mysql'
+            - './database/mysql:/var/lib/mysql'
             - './docker/mysql/create-testing-database.sh:/docker-entrypoint-initdb.d/10-create-testing-database.sh'
         networks:
             - sail
@@ -47,9 +51,19 @@ services:
                 - '-p${DB_PASSWORD}'
             retries: 3
             timeout: 5s
+    phpmyadmin:
+        image: phpmyadmin/phpmyadmin
+        ports:
+            - '${FORWARD_PHPMYADMIN_PORT:-81}:80'
+        environment:
+            PMA_HOST: mysql
+            PMA_PORT: 3306
+            UPLOAD_LIMIT: 1G
+        networks:
+            - sail
+        depends_on:
+            - mysql
+
 networks:
     sail:
         driver: bridge
-volumes:
-    sail-mysql:
-        driver: local
