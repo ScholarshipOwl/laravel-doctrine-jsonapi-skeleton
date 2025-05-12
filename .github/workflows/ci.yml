@@ -54,7 +54,10 @@ jobs:
         run: composer install --prefer-dist --no-interaction --no-progress
 
       - name: Prepare database
-        run: php artisan doctrine:migrations:migrate --env=testing --no-interaction && php artisan db:seed --env=testing
+        run: |
+          php artisan doctrine:migrations:diff
+          php artisan doctrine:migrations:migrate --no-interaction
+          php artisan db:seed --force
 
       - name: Run tests
         run: composer run test
